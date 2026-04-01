@@ -1,0 +1,40 @@
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bg2" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" style="stop-color:#fef3c7"/>
+      <stop offset="100%" style="stop-color:#f59e0b"/>
+    </radialGradient>
+  </defs>
+  
+  <!-- Background Circle -->
+  <circle cx="60" cy="60" r="60" fill="url(#bg2)"/>
+  
+  <!-- Face -->
+  <circle cx="60" cy="50" r="25" fill="#fcd34d"/>
+  
+  <!-- Hair (Different style) -->
+  <path d="M30 38 Q30 18 60 18 Q90 18 90 38 Q85 33 60 33 Q35 33 30 38 L30 48 Q35 43 60 43 Q85 43 90 48 L90 38" fill="#92400e"/>
+  
+  <!-- Eyes -->
+  <circle cx="52" cy="45" r="2.5" fill="#1f2937"/>
+  <circle cx="68" cy="45" r="2.5" fill="#1f2937"/>
+  <circle cx="52.5" cy="44.5" r="0.8" fill="#ffffff"/>
+  <circle cx="68.5" cy="44.5" r="0.8" fill="#ffffff"/>
+  
+  <!-- Eyebrows -->
+  <path d="M47 40 Q52 38 57 40" stroke="#92400e" stroke-width="1.5" fill="none"/>
+  <path d="M63 40 Q68 38 73 40" stroke="#92400e" stroke-width="1.5" fill="none"/>
+  
+  <!-- Nose -->
+  <ellipse cx="60" cy="52" rx="1.5" ry="2" fill="#f59e0b"/>
+  
+  <!-- Mouth (Smile) -->
+  <path d="M54 58 Q60 63 66 58" stroke="#dc2626" stroke-width="2" fill="none"/>
+  
+  <!-- Body/Clothing -->
+  <rect x="40" y="75" width="40" height="45" fill="#06b6d4" rx="20"/>
+  
+  <!-- Blush -->
+  <circle cx="45" cy="52" r="3" fill="#f87171" opacity="0.3"/>
+  <circle cx="75" cy="52" r="3" fill="#f87171" opacity="0.3"/>
+</svg> 

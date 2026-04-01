@@ -1,0 +1,43 @@
+<!-- This is a placeholder for Romeena De Silva testimonial image #1 -->
+<!-- In a real project, this would be replaced with an actual image file -->
+
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bg1" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" style="stop-color:#f3e8ff"/>
+      <stop offset="100%" style="stop-color:#e879f9"/>
+    </radialGradient>
+  </defs>
+  
+  <!-- Background Circle -->
+  <circle cx="60" cy="60" r="60" fill="url(#bg1)"/>
+  
+  <!-- Face -->
+  <circle cx="60" cy="50" r="25" fill="#fbbf24"/>
+  
+  <!-- Hair -->
+  <path d="M35 35 Q35 15 60 15 Q85 15 85 35 Q80 30 60 30 Q40 30 35 35 L35 45 Q40 40 60 40 Q80 40 85 45 L85 35" fill="#8b4513"/>
+  
+  <!-- Eyes -->
+  <circle cx="52" cy="45" r="2.5" fill="#1f2937"/>
+  <circle cx="68" cy="45" r="2.5" fill="#1f2937"/>
+  <circle cx="52.5" cy="44.5" r="0.8" fill="#ffffff"/>
+  <circle cx="68.5" cy="44.5" r="0.8" fill="#ffffff"/>
+  
+  <!-- Eyebrows -->
+  <path d="M47 40 Q52 38 57 40" stroke="#8b4513" stroke-width="1.5" fill="none"/>
+  <path d="M63 40 Q68 38 73 40" stroke="#8b4513" stroke-width="1.5" fill="none"/>
+  
+  <!-- Nose -->
+  <ellipse cx="60" cy="52" rx="1.5" ry="2" fill="#f59e0b"/>
+  
+  <!-- Mouth -->
+  <path d="M55 58 Q60 62 65 58" stroke="#dc2626" stroke-width="2" fill="none"/>
+  
+  <!-- Body/Clothing -->
+  <rect x="40" y="75" width="40" height="45" fill="#8b5cf6" rx="20"/>
+  
+  <!-- Blush -->
+  <circle cx="45" cy="52" r="3" fill="#f87171" opacity="0.3"/>
+  <circle cx="75" cy="52" r="3" fill="#f87171" opacity="0.3"/>
+</svg> 

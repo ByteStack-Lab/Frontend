@@ -1,0 +1,21 @@
+<svg width="200" height="80" viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gradient3" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#059669"/>
+      <stop offset="100%" style="stop-color:#10B981"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="200" height="80" fill="white" rx="8"/>
+  
+  <!-- Bridge Icon -->
+  <path d="M20 50 Q50 30 80 50" stroke="url(#gradient3)" stroke-width="3" fill="none"/>
+  <path d="M25 50 Q50 35 75 50" stroke="url(#gradient3)" stroke-width="2" fill="none"/>
+  <rect x="18" y="48" width="4" height="15" fill="url(#gradient3)"/>
+  <rect x="78" y="48" width="4" height="15" fill="url(#gradient3)"/>
+  
+  <!-- Company Name -->
+  <text x="100" y="35" fill="url(#gradient3)" font-family="Arial, sans-serif" font-size="20" font-weight="bold">PJC</text>
+  <text x="100" y="55" fill="#6B7280" font-family="Arial, sans-serif" font-size="14" font-weight="600">BRIDGE</text>
+</svg> 

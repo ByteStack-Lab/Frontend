@@ -1,0 +1,29 @@
+<!-- This is a placeholder for Romeena De Silva testimonial image #1 -->
+<!-- In a real project, this would be replaced with an actual image file -->
+
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Circle -->
+  <circle cx="60" cy="60" r="60" fill="#f3e8ff"/>
+  
+  <!-- Face -->
+  <circle cx="60" cy="50" r="25" fill="#fbbf24"/>
+  
+  <!-- Hair -->
+  <path d="M35 40 Q35 20 60 20 Q85 20 85 40 Q80 35 60 35 Q40 35 35 40" fill="#8b4513"/>
+  
+  <!-- Eyes -->
+  <circle cx="52" cy="45" r="2" fill="#1f2937"/>
+  <circle cx="68" cy="45" r="2" fill="#1f2937"/>
+  
+  <!-- Nose -->
+  <circle cx="60" cy="52" r="1" fill="#f59e0b"/>
+  
+  <!-- Mouth -->
+  <path d="M55 58 Q60 62 65 58" stroke="#dc2626" stroke-width="2" fill="none"/>
+  
+  <!-- Body -->
+  <rect x="45" y="75" width="30" height="45" fill="#8b5cf6" rx="15"/>
+  
+  <!-- Text -->
+  <text x="60" y="110" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#4c1d95">Romeena</text>
+</svg> 

@@ -1,0 +1,25 @@
+<svg width="200" height="80" viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gradient4" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F59E0B"/>
+      <stop offset="100%" style="stop-color:#EF4444"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="200" height="80" fill="white" rx="8"/>
+  
+  <!-- Click Icon -->
+  <circle cx="40" cy="40" r="12" fill="url(#gradient4)" opacity="0.2"/>
+  <circle cx="40" cy="40" r="8" fill="url(#gradient4)" opacity="0.4"/>
+  <circle cx="40" cy="40" r="4" fill="url(#gradient4)"/>
+  
+  <!-- Order Icon -->
+  <rect x="25" y="25" width="30" height="4" fill="url(#gradient4)" opacity="0.6"/>
+  <rect x="25" y="35" width="20" height="3" fill="url(#gradient4)" opacity="0.6"/>
+  <rect x="25" y="45" width="25" height="3" fill="url(#gradient4)" opacity="0.6"/>
+  
+  <!-- Company Name -->
+  <text x="70" y="35" fill="url(#gradient4)" font-family="Arial, sans-serif" font-size="18" font-weight="bold">Click</text>
+  <text x="70" y="55" fill="#6B7280" font-family="Arial, sans-serif" font-size="18" font-weight="bold">Order</text>
+</svg> 

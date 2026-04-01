@@ -1,0 +1,19 @@
+<svg width="200" height="80" viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3B82F6"/>
+      <stop offset="100%" style="stop-color:#06B6D4"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="200" height="80" fill="white" rx="8"/>
+  
+  <!-- Logo Symbol -->
+  <path d="M30 20 L50 40 L30 60 L40 60 L60 40 L40 20 Z" fill="url(#gradient2)"/>
+  
+  <!-- Company Name -->
+  <text x="80" y="35" fill="url(#gradient2)" font-family="Arial, sans-serif" font-size="18" font-weight="bold">Ad</text>
+  <text x="105" y="35" fill="#6B7280" font-family="Arial, sans-serif" font-size="18" font-weight="bold">Clipse</text>
+  <text x="80" y="55" fill="#6B7280" font-family="Arial, sans-serif" font-size="10">Digital Marketing</text>
+</svg> 

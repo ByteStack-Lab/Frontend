@@ -1,0 +1,54 @@
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bg5" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" style="stop-color:#fef7ff"/>
+      <stop offset="100%" style="stop-color:#a855f7"/>
+    </radialGradient>
+  </defs>
+  
+  <!-- Background Circle -->
+  <circle cx="60" cy="60" r="60" fill="url(#bg5)"/>
+  
+  <!-- Face -->
+  <circle cx="60" cy="50" r="25" fill="#fed7aa"/>
+  
+  <!-- Hair (Elegant style) -->
+  <path d="M35 40 Q35 20 60 20 Q85 20 85 40 Q80 35 60 35 Q40 35 35 40" fill="#6b21a8"/>
+  <path d="M30 42 Q30 25 60 25 Q90 25 90 42 Q85 37 60 37 Q35 37 30 42" fill="#6b21a8"/>
+  
+  <!-- Eyes -->
+  <circle cx="52" cy="45" r="2.5" fill="#1f2937"/>
+  <circle cx="68" cy="45" r="2.5" fill="#1f2937"/>
+  <circle cx="52.5" cy="44.5" r="0.8" fill="#ffffff"/>
+  <circle cx="68.5" cy="44.5" r="0.8" fill="#ffffff"/>
+  
+  <!-- Eyelashes -->
+  <path d="M52 42 L52 40" stroke="#1f2937" stroke-width="1"/>
+  <path d="M68 42 L68 40" stroke="#1f2937" stroke-width="1"/>
+  <path d="M50 42 L49 40" stroke="#1f2937" stroke-width="1"/>
+  <path d="M70 42 L71 40" stroke="#1f2937" stroke-width="1"/>
+  
+  <!-- Eyebrows -->
+  <path d="M47 40 Q52 38 57 40" stroke="#6b21a8" stroke-width="1.5" fill="none"/>
+  <path d="M63 40 Q68 38 73 40" stroke="#6b21a8" stroke-width="1.5" fill="none"/>
+  
+  <!-- Nose -->
+  <ellipse cx="60" cy="52" rx="1.5" ry="2" fill="#f59e0b"/>
+  
+  <!-- Mouth (Elegant smile) -->
+  <path d="M55 58 Q60 62 65 58" stroke="#dc2626" stroke-width="2" fill="none"/>
+  
+  <!-- Lipstick -->
+  <path d="M55 58 Q60 62 65 58" stroke="#be185d" stroke-width="3" fill="none"/>
+  
+  <!-- Body/Clothing -->
+  <rect x="40" y="75" width="40" height="45" fill="#7c3aed" rx="20"/>
+  
+  <!-- Necklace -->
+  <circle cx="60" cy="76" r="3" fill="#fbbf24"/>
+  <path d="M45 76 Q60 80 75 76" stroke="#fbbf24" stroke-width="2" fill="none"/>
+  
+  <!-- Blush -->
+  <circle cx="45" cy="52" r="3" fill="#f87171" opacity="0.3"/>
+  <circle cx="75" cy="52" r="3" fill="#f87171" opacity="0.3"/>
+</svg> 
