@@ -727,8 +727,12 @@ const submitForm = async () => {
     let errorMessage =
       "Sorry, there was an error sending your message. Please try again.";
 
-    // Check if it's a validation error
-    if (error.response?.status === 422 && error.response?.data?.errors) {
+    // Check if it's a rate limit error
+    if (error.status === 429 || error.response?.status === 429) {
+      errorMessage =
+        "Too many requests. Please wait a few minutes before trying again.";
+    } else if (error.response?.status === 422 && error.response?.data?.errors) {
+      // Check if it's a validation error
       const firstError = Object.values(error.response.data.errors)[0][0];
       errorMessage = firstError || errorMessage;
     }
