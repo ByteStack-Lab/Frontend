@@ -1,7 +1,7 @@
 <template>
   <section
-    ref="elementRef"
     id="about"
+    ref="elementRef"
     class="py-16 md:py-24 lg:py-20 bg-white transition-all duration-1000 ease-out"
     :class="{
       'opacity-0 translate-y-20': !isVisible,
@@ -19,7 +19,7 @@
           <!-- Decorative Line -->
           <div
             class="w-16 h-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full"
-          ></div>
+          />
 
           <!-- Main Content -->
           <div class="space-y-6">
@@ -33,7 +33,7 @@
             <h2
               class="text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 leading-tight"
             >
-              Building Software That<br />
+              Building Software That<br >
               <span
                 class="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent"
                 >Businesses Depend On</span
@@ -102,20 +102,20 @@
                 class="absolute inset-0 w-full h-full object-cover"
                 @load="handleImageLoad"
                 @error="handleImageError"
-              />
+              >
               <!-- Fallback SVG thumbnail -->
               <img
                 ref="fallbackImage"
                 src="/images/video-thumbnail.svg"
                 alt="Video thumbnail fallback"
                 class="absolute inset-0 w-full h-full object-cover hidden"
-              />
+              >
 
               <!-- Video Overlay - Very light to show thumbnail clearly -->
               <div
                 class="absolute inset-0 video-overlay transition-all duration-300"
                 style="background: rgba(0, 0, 0, 0.15)"
-              ></div>
+              />
 
               <!-- Play Button Container -->
               <div class="absolute inset-0 flex items-center justify-center">
@@ -125,18 +125,18 @@
                   <div class="absolute inset-0 animate-ping">
                     <div
                       class="w-16 h-16 bg-white bg-opacity-20 rounded-full"
-                    ></div>
+                    />
                   </div>
                   <div class="absolute inset-0 animate-pulse">
                     <div
                       class="w-20 h-20 bg-white bg-opacity-10 rounded-full -m-2"
-                    ></div>
+                    />
                   </div>
 
                   <!-- Main Play Button -->
                   <button
-                    @click="openVideoModal"
                     class="interactive-button pulse-on-hover relative w-16 h-16 bg-white rounded-full shadow-lg flex items-center justify-center group hover:scale-110 transition-all duration-300 hover:shadow-xl"
+                    @click="openVideoModal"
                   >
                     <!-- Play Icon -->
                     <svg
@@ -155,10 +155,10 @@
           <!-- Decorative Elements -->
           <div
             class="absolute -top-3 -right-3 w-8 h-8 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full shadow-md animate-bounce"
-          ></div>
+          />
           <div
             class="absolute -bottom-3 -left-3 w-6 h-6 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full shadow-md animate-pulse"
-          ></div>
+          />
         </div>
       </div>
     </div>
@@ -176,8 +176,8 @@
       >
         <!-- Close Button -->
         <button
-          @click="closeVideoModal"
           class="absolute -top-4 -right-4 w-14 h-14 bg-white rounded-full shadow-2xl flex items-center justify-center text-gray-700 hover:text-red-500 hover:bg-red-50 transition-all duration-300 z-20 border-4 border-white ring-4 ring-purple-500/40 hover:ring-red-500/50"
+          @click="closeVideoModal"
         >
           <svg
             class="w-6 h-6"
@@ -214,7 +214,7 @@
                 picture-in-picture;
               "
               allowfullscreen
-            ></iframe>
+            />
           </div>
         </div>
       </div>

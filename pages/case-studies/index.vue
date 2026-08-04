@@ -5,22 +5,22 @@
       <!-- Animated Background -->
       <div class="absolute inset-0 overflow-hidden pointer-events-none">
         <!-- Matrix-style Grid Lines -->
-        <div class="absolute left-32 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-blue-400/20 to-transparent animate-pulse-slow"></div>
-        <div class="absolute left-64 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-purple-400/15 to-transparent animate-pulse-medium"></div>
-        <div class="absolute right-32 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-indigo-400/20 to-transparent animate-pulse-slow"></div>
-        <div class="absolute right-64 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-pink-400/15 to-transparent animate-pulse-medium"></div>
-        <div class="absolute top-32 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-400/15 to-transparent animate-pulse-slow"></div>
-        <div class="absolute top-64 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-400/20 to-transparent animate-pulse-medium"></div>
+        <div class="absolute left-32 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-blue-400/20 to-transparent animate-pulse-slow"/>
+        <div class="absolute left-64 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-purple-400/15 to-transparent animate-pulse-medium"/>
+        <div class="absolute right-32 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-indigo-400/20 to-transparent animate-pulse-slow"/>
+        <div class="absolute right-64 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-pink-400/15 to-transparent animate-pulse-medium"/>
+        <div class="absolute top-32 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-400/15 to-transparent animate-pulse-slow"/>
+        <div class="absolute top-64 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-400/20 to-transparent animate-pulse-medium"/>
         <!-- Floating dots -->
-        <div class="absolute top-48 left-36 w-2 h-2 bg-blue-500/40 rounded-full animate-float-1"></div>
-        <div class="absolute top-72 right-48 w-2 h-2 bg-purple-500/40 rounded-full animate-float-2"></div>
-        <div class="absolute bottom-48 left-72 w-2 h-2 bg-indigo-500/40 rounded-full animate-float-3"></div>
-        <div class="absolute bottom-72 right-36 w-2 h-2 bg-pink-500/40 rounded-full animate-float-4"></div>
+        <div class="absolute top-48 left-36 w-2 h-2 bg-blue-500/40 rounded-full animate-float-1"/>
+        <div class="absolute top-72 right-48 w-2 h-2 bg-purple-500/40 rounded-full animate-float-2"/>
+        <div class="absolute bottom-48 left-72 w-2 h-2 bg-indigo-500/40 rounded-full animate-float-3"/>
+        <div class="absolute bottom-72 right-36 w-2 h-2 bg-pink-500/40 rounded-full animate-float-4"/>
       </div>
 
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
         <div class="text-center mb-6">
-          <div class="w-16 h-1 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full mx-auto mb-6"></div>
+          <div class="w-16 h-1 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full mx-auto mb-6"/>
           <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
             <span class="text-gray-900">Our</span>
             <span class="bg-gradient-to-r from-[#3533cd] via-[#6675F7] to-[#1e1b69] bg-clip-text text-transparent"> Case Studies</span>
@@ -38,17 +38,17 @@
             </div>
             <div class="text-sm text-gray-500 mt-1">Case Studies</div>
           </div>
-          <div class="w-px h-12 bg-gray-200 self-center hidden sm:block"></div>
+          <div class="w-px h-12 bg-gray-200 self-center hidden sm:block"/>
           <div class="text-center">
             <div class="text-3xl font-bold text-[#3533cd]">100+</div>
             <div class="text-sm text-gray-500 mt-1">Happy Clients</div>
           </div>
-          <div class="w-px h-12 bg-gray-200 self-center hidden sm:block"></div>
+          <div class="w-px h-12 bg-gray-200 self-center hidden sm:block"/>
           <div class="text-center">
             <div class="text-3xl font-bold text-[#3533cd]">10+</div>
             <div class="text-sm text-gray-500 mt-1">Industries</div>
           </div>
-          <div class="w-px h-12 bg-gray-200 self-center hidden sm:block"></div>
+          <div class="w-px h-12 bg-gray-200 self-center hidden sm:block"/>
           <div class="text-center">
             <div class="text-3xl font-bold text-[#3533cd]">5+</div>
             <div class="text-sm text-gray-500 mt-1">Years Experience</div>
@@ -62,26 +62,26 @@
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
         <div class="flex flex-wrap justify-center gap-3">
           <button
-            @click="selectedFilter = ''"
             :class="[
               'px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300',
               selectedFilter === ''
                 ? 'bg-gradient-to-r from-[#3533cd] to-[#6675F7] text-white shadow-md'
                 : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
             ]"
+            @click="selectedFilter = ''"
           >
             All Case Studies
           </button>
           <button
             v-for="filter in filters"
             :key="filter"
-            @click="selectedFilter = filter"
             :class="[
               'px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300',
               selectedFilter === filter
                 ? 'bg-gradient-to-r from-[#3533cd] to-[#6675F7] text-white shadow-md'
                 : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
             ]"
+            @click="selectedFilter = filter"
           >
             {{ filter }}
           </button>
@@ -95,14 +95,14 @@
 
         <!-- Loading State -->
         <div v-if="pending" class="flex justify-center items-center py-12">
-          <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-[#3533cd]"></div>
+          <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-[#3533cd]"/>
           <p class="mt-4 text-gray-600">Loading case studies...</p>
         </div>
 
         <!-- Error State -->
         <div v-else-if="error" class="text-center py-12">
           <p class="text-red-600">Failed to load case studies. Please try again later.</p>
-          <button @click="retryLoading" class="mt-4 px-6 py-2 bg-[#3533cd] text-white rounded-lg hover:bg-[#1e1b69] transition-colors">
+          <button class="mt-4 px-6 py-2 bg-[#3533cd] text-white rounded-lg hover:bg-[#1e1b69] transition-colors" @click="retryLoading">
             Retry
           </button>
         </div>
@@ -141,9 +141,9 @@
                       :src="getImageUrl(caseStudy)" 
                       :alt="caseStudy.title || 'Case Study'"
                       class="w-full h-auto rounded-2xl shadow-lg hover:scale-105 transition-transform duration-300"
-                      @error="handleImageError"
                       loading="lazy"
-                    />
+                      @error="handleImageError"
+                    >
                     <!-- Hidden fallback that shows on error -->
                     <div class="absolute inset-0 w-full h-64 bg-gradient-to-br from-[#3533cd]/10 to-[#1e1b69]/10 rounded-2xl shadow-lg items-center justify-center border border-gray-200 hidden">
                       <div class="text-center">

@@ -5,19 +5,19 @@
       <div class="pointer-events-none absolute inset-0 overflow-hidden">
         <div
           class="absolute left-20 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#6675F7]/25 to-transparent"
-        ></div>
+        />
         <div
           class="absolute right-24 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#3533cd]/20 to-transparent"
-        ></div>
+        />
         <div
           class="absolute top-28 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#6675F7]/20 to-transparent"
-        ></div>
+        />
       </div>
 
       <div class="relative max-w-6xl mx-auto px-6 lg:px-8 text-center">
         <div
           class="w-16 h-1 bg-gradient-to-r from-[#3533cd] via-[#6675F7] to-[#1e1b69] rounded-full mx-auto mb-6"
-        ></div>
+        />
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-5">
           Terms &amp; Conditions
         </h1>
@@ -36,7 +36,8 @@
           <div class="bg-white border border-[#dfe3ff] rounded-2xl p-6 shadow-sm flex gap-4">
             <div class="w-10 h-10 rounded-xl bg-[#eef0ff] flex items-center justify-center flex-shrink-0">
               <svg class="w-5 h-5 text-[#3533cd]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                <path
+stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
@@ -51,7 +52,8 @@
           <div class="bg-white border border-[#dfe3ff] rounded-2xl p-6 shadow-sm flex gap-4">
             <div class="w-10 h-10 rounded-xl bg-[#eef0ff] flex items-center justify-center flex-shrink-0">
               <svg class="w-5 h-5 text-[#3533cd]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                <path
+stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
               </svg>
             </div>
@@ -66,7 +68,8 @@
           <div class="bg-white border border-[#dfe3ff] rounded-2xl p-6 shadow-sm flex gap-4">
             <div class="w-10 h-10 rounded-xl bg-[#eef0ff] flex items-center justify-center flex-shrink-0">
               <svg class="w-5 h-5 text-[#3533cd]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                <path
+stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
               </svg>
             </div>
@@ -101,7 +104,7 @@
                 :key="point"
                 class="flex items-start gap-3 text-gray-700 text-sm"
               >
-                <span class="mt-2 h-1.5 w-1.5 rounded-full bg-[#3533cd] flex-shrink-0"></span>
+                <span class="mt-2 h-1.5 w-1.5 rounded-full bg-[#3533cd] flex-shrink-0"/>
                 <span>{{ point }}</span>
               </li>
             </ul>
@@ -128,7 +131,8 @@
           >
             Contact Our Team
             <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              <path
+stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </NuxtLink>

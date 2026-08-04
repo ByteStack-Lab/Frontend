@@ -123,11 +123,11 @@
                 {{ notification.title }}
               </h3>
               <button 
-                @click="hideNotification"
                 :class="[
                   'ml-3 inline-flex rounded-full p-1.5 focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all duration-200 hover:scale-110',
                   closeButtonClasses
                 ]"
+                @click="hideNotification"
               >
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -154,7 +154,7 @@
                   'h-full rounded-full transition-all duration-100 ease-linear progress-bar',
                   progressBarClasses
                 ]"
-              ></div>
+              />
             </div>
           </div>
         </div>

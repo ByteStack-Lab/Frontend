@@ -7,16 +7,16 @@
         <!-- Matrix-style Grid Lines -->
         <div
           class="absolute left-32 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-blue-400/20 to-transparent animate-pulse-slow"
-        ></div>
+        />
         <div
           class="absolute right-32 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-purple-400/20 to-transparent animate-pulse-medium"
-        ></div>
+        />
         <div
           class="absolute top-32 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-400/15 to-transparent animate-pulse-slow"
-        ></div>
+        />
         <div
           class="absolute bottom-32 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-400/15 to-transparent animate-pulse-medium"
-        ></div>
+        />
       </div>
 
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
@@ -53,7 +53,7 @@
             </p>
           </div>
 
-          <form @submit.prevent="submitForm" class="space-y-6">
+          <form class="space-y-6" @submit.prevent="submitForm">
             <!-- Name Fields -->
             <div class="grid md:grid-cols-2 gap-6">
               <div>
@@ -64,13 +64,13 @@
                   First Name *
                 </label>
                 <input
-                  type="text"
                   id="firstName"
                   v-model="form.firstName"
+                  type="text"
                   required
                   class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#3533cd] focus:border-transparent transition-all duration-200 form-input"
                   placeholder="John"
-                />
+                >
               </div>
               <div>
                 <label
@@ -80,13 +80,13 @@
                   Last Name *
                 </label>
                 <input
-                  type="text"
                   id="lastName"
                   v-model="form.lastName"
+                  type="text"
                   required
                   class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#3533cd] focus:border-transparent transition-all duration-200 form-input"
                   placeholder="Doe"
-                />
+                >
               </div>
             </div>
 
@@ -99,13 +99,13 @@
                 Email Address *
               </label>
               <input
-                type="email"
                 id="email"
                 v-model="form.email"
+                type="email"
                 required
                 class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#3533cd] focus:border-transparent transition-all duration-200 form-input"
                 placeholder="john@company.com"
-              />
+              >
             </div>
 
             <!-- Phone -->
@@ -117,12 +117,12 @@
                 Phone Number
               </label>
               <input
-                type="tel"
                 id="phone"
                 v-model="form.phone"
+                type="tel"
                 class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#3533cd] focus:border-transparent transition-all duration-200 form-input"
                 placeholder="+880 1812 209019"
-              />
+              >
             </div>
 
             <!-- Company -->
@@ -134,12 +134,12 @@
                 Company Name
               </label>
               <input
-                type="text"
                 id="company"
                 v-model="form.company"
+                type="text"
                 class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#3533cd] focus:border-transparent transition-all duration-200 form-input"
                 placeholder="Your Company"
-              />
+              >
             </div>
 
             <!-- Service Type -->
@@ -180,7 +180,7 @@
                 rows="5"
                 class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#3533cd] focus:border-transparent transition-all duration-200 resize-none form-input"
                 placeholder="Tell us about your project, goals, and requirements..."
-              ></textarea>
+              />
             </div>
 
             <!-- Newsletter Subscription -->
@@ -190,11 +190,11 @@
               <div class="flex items-start space-x-3">
                 <div class="flex items-center h-5">
                   <input
-                    type="checkbox"
                     id="subscribe_newsletter"
                     v-model="form.subscribeNewsletter"
+                    type="checkbox"
                     class="h-4 w-4 text-[#3533cd] focus:ring-[#3533cd] focus:ring-offset-2 border-2 border-gray-300 rounded transition-all duration-200"
-                  />
+                  >
                 </div>
                 <div class="flex-1">
                   <label
@@ -226,7 +226,7 @@
                 name="website"
                 tabindex="-1"
                 autocomplete="off"
-              />
+              >
             </div>
 
             <!-- Submit Button -->
@@ -250,12 +250,12 @@
                     r="10"
                     stroke="currentColor"
                     stroke-width="4"
-                  ></circle>
+                  />
                   <path
                     class="opacity-75"
                     fill="currentColor"
                     d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                  ></path>
+                  />
                 </svg>
                 Sending...
               </span>
@@ -292,8 +292,8 @@
                 class="border border-gray-200 rounded-lg overflow-hidden"
               >
                 <button
-                  @click="toggleFaq(index)"
                   class="w-full px-4 py-3 text-left bg-gray-50 hover:bg-gray-100 transition-colors duration-200 flex justify-between items-center"
+                  @click="toggleFaq(index)"
                 >
                   <h4 class="font-medium text-gray-900 pr-4 text-sm">
                     {{ faq.question }}
@@ -375,7 +375,7 @@
                 <div>
                   <h4 class="font-semibold text-gray-900 mb-1">Address</h4>
                   <p class="text-gray-600 leading-relaxed">
-                    Uttara Sector 10, Dhaka, Bangladesh<br />
+                    Uttara Sector 10, Dhaka, Bangladesh<br >
                     Available for remote and on-site consultations
                   </p>
                 </div>
@@ -503,7 +503,7 @@
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"
                 class="absolute inset-0"
-              ></iframe>
+              />
             </div>
 
             <!-- Map Info -->

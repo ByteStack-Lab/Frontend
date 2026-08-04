@@ -1,9 +1,13 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import { $fetch } from 'ofetch'
+
+const apiBase = process.env.NUXT_PUBLIC_API_BASE || 'https://api.bytestacklab.com/api'
+
 export default defineNuxtConfig({
   compatibilityDate: '2025-05-15',
   devtools: { enabled: process.env.NODE_ENV !== 'production' },
   css: ['~/assets/css/main.css'],
-  modules: ['@nuxtjs/google-fonts', '@nuxtjs/tailwindcss', '@nuxt/eslint'],
+  modules: ['@nuxtjs/google-fonts', '@nuxtjs/tailwindcss', '@nuxt/eslint', '@nuxtjs/sitemap'],
   googleFonts: {
     families: {
       Inter: [400, 500, 600, 700, 800],
@@ -12,7 +16,45 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      apiBase: process.env.NUXT_PUBLIC_API_BASE || 'https://api.bytestacklab.com/api'
+      apiBase,
+      // Optional — GA4 measurement ID (e.g. G-XXXXXXX). When unset, no
+      // analytics script is injected at all (see plugins/analytics.client.js).
+      gaId: process.env.NUXT_PUBLIC_GA_ID || ''
+    }
+  },
+  site: {
+    url: process.env.NUXT_PUBLIC_SITE_URL || 'https://bytestacklab.com'
+  },
+  sitemap: {
+    // Static pages (/, /about, /services, etc.) are picked up automatically
+    // from pages/. Only the API-driven detail pages need to be supplied here.
+    urls: async () => {
+      const fetchSlugs = async (endpoint) => {
+        try {
+          const response = await $fetch(`${apiBase}${endpoint}`)
+          return response?.data ?? []
+        } catch {
+          // Sitemap generation shouldn't fail the whole request if the API
+          // is briefly unreachable — just omit that section this time.
+          return []
+        }
+      }
+
+      const [services, blogs, caseStudies, products, careerJobs] = await Promise.all([
+        fetchSlugs('/services'),
+        fetchSlugs('/blogs'),
+        fetchSlugs('/case-studies'),
+        fetchSlugs('/products'),
+        fetchSlugs('/career-jobs')
+      ])
+
+      return [
+        ...services.map((item) => ({ loc: `/services/${item.slug}`, changefreq: 'weekly', priority: 0.8 })),
+        ...blogs.map((item) => ({ loc: `/blog/${item.slug}`, changefreq: 'monthly', priority: 0.7 })),
+        ...caseStudies.map((item) => ({ loc: `/case-studies/${item.slug}`, changefreq: 'monthly', priority: 0.7 })),
+        ...products.map((item) => ({ loc: `/products/${item.slug}`, changefreq: 'weekly', priority: 0.7 })),
+        ...careerJobs.map((item) => ({ loc: `/careers/${item.slug}`, changefreq: 'weekly', priority: 0.6 }))
+      ]
     }
   },
   app: {

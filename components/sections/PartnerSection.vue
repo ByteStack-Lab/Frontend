@@ -7,7 +7,7 @@
         <div>
           <div
             class="w-16 h-1 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full mb-4"
-          ></div>
+          />
           <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-1">
             <span
               class="bg-gradient-to-r from-[#3533cd] to-[#1e1b69] bg-clip-text text-transparent"
@@ -20,8 +20,8 @@
         <!-- Right: Navigation Arrows -->
         <div class="flex space-x-4">
           <button
-            @click="prevSlide"
             class="w-12 h-12 rounded-full border-2 border-[#3533cd] text-[#3533cd] flex items-center justify-center hover:bg-[#3533cd] hover:text-white transition-all duration-300 cursor-pointer"
+            @click="prevSlide"
           >
             <svg
               class="w-5 h-5"
@@ -39,8 +39,8 @@
           </button>
 
           <button
-            @click="nextSlide"
             class="w-12 h-12 rounded-full bg-[#3533cd] text-white flex items-center justify-center hover:bg-[#1e1b69] transition-all duration-300 cursor-pointer"
+            @click="nextSlide"
           >
             <svg
               class="w-5 h-5"
@@ -63,7 +63,7 @@
       <div v-if="pending" class="flex justify-center items-center py-12">
         <div
           class="animate-spin rounded-full h-12 w-12 border-b-2 border-[#3533cd]"
-        ></div>
+        />
       </div>
 
       <!-- Error State -->
@@ -72,8 +72,8 @@
           Failed to load partners. Please try again later.
         </p>
         <button
-          @click="refresh()"
           class="px-4 py-2 bg-[#3533cd] text-white rounded-lg hover:bg-[#1e1b69] transition-colors"
+          @click="refresh()"
         >
           Retry
         </button>
@@ -106,7 +106,7 @@
                   :src="partner.logo"
                   :alt="partner.name"
                   class="h-12 lg:h-16 object-contain filter grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100"
-                />
+                >
               </a>
               <img
                 v-else
@@ -114,7 +114,7 @@
                 :alt="partner.name"
                 :title="partner.name"
                 class="h-12 lg:h-16 object-contain filter grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100"
-              />
+              >
             </div>
           </div>
         </Transition>

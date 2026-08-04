@@ -14,7 +14,7 @@
         <!-- Decorative line -->
         <div
           class="w-20 h-1 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full mx-auto mb-6"
-        ></div>
+        />
 
         <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
           <span
@@ -31,9 +31,9 @@
 
         <!-- Subtitle -->
         <div class="flex items-center justify-center mt-4 space-x-2">
-          <div class="w-2 h-2 rounded-full bg-[#3533cd] animate-pulse"></div>
+          <div class="w-2 h-2 rounded-full bg-[#3533cd] animate-pulse"/>
           <p class="text-sm text-gray-500 font-medium">Featured Services</p>
-          <div class="w-2 h-2 rounded-full bg-[#3533cd] animate-pulse"></div>
+          <div class="w-2 h-2 rounded-full bg-[#3533cd] animate-pulse"/>
         </div>
       </div>
 
@@ -44,7 +44,7 @@
           <div class="text-center">
             <div
               class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-[#3533cd]"
-            ></div>
+            />
             <p class="mt-4 text-gray-600">Loading services...</p>
           </div>
         </div>
@@ -56,13 +56,13 @@
             <!-- Left Arrow -->
             <button
               v-if="canSlide"
-              @click="prevSlide"
               class="flex-shrink-0 flex items-center justify-center w-11 h-11 rounded-full border-2 border-[#3533cd] text-[#3533cd] hover:bg-[#3533cd] hover:text-white transition-all duration-300 mr-4 z-10"
               :class="
                 currentSlide === 0
                   ? 'opacity-40 cursor-not-allowed'
                   : 'hover:scale-105'
               "
+              @click="prevSlide"
             >
               <svg
                 class="w-5 h-5"
@@ -139,7 +139,7 @@
                                 :src="service.icon"
                                 :alt="service.title || service.name"
                                 class="w-10 h-10 object-contain"
-                              />
+                              >
                               <span
                                 v-else
                                 class="text-white text-3xl font-bold transition-all duration-300"
@@ -214,13 +214,13 @@
             <!-- Right Arrow -->
             <button
               v-if="canSlide"
-              @click="nextSlide"
               class="flex-shrink-0 flex items-center justify-center w-11 h-11 rounded-full bg-[#3533cd] text-white hover:bg-[#1e1b69] transition-all duration-300 ml-4 z-10"
               :class="
                 currentSlide === maxSlides
                   ? 'opacity-40 cursor-not-allowed'
                   : 'hover:scale-105'
               "
+              @click="nextSlide"
             >
               <svg
                 class="w-5 h-5"
@@ -243,14 +243,14 @@
             <button
               v-for="(dot, index) in totalSlidePositions"
               :key="index"
-              @click="goToSlide(index)"
               class="w-3 h-3 rounded-full transition-all duration-300 hover:scale-125"
               :class="
                 currentSlide === index
                   ? 'bg-[#3533cd] scale-125'
                   : 'bg-gray-300 hover:bg-gray-400'
               "
-            ></button>
+              @click="goToSlide(index)"
+            />
           </div>
         </div>
 

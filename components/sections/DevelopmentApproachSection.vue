@@ -9,7 +9,7 @@
       <div class="text-center mb-16">
         <div
           class="w-16 h-1 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full mx-auto mb-6"
-        ></div>
+        />
         <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-2">
           Our Software Development
         </h2>

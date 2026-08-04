@@ -71,13 +71,13 @@
             </div>
             <div class="ml-4 flex-shrink-0">
               <button
-                @click="hideNotification"
                 :class="[
                   'inline-flex rounded-md p-1.5 focus:outline-none focus:ring-2 focus:ring-offset-2',
                   notification.type === 'success'
                     ? 'text-green-500 hover:bg-green-100 focus:ring-green-600'
                     : 'text-red-500 hover:bg-red-100 focus:ring-red-600',
                 ]"
+                @click="hideNotification"
               >
                 <svg
                   class="w-4 h-4"
@@ -104,7 +104,7 @@
       <div class="text-center">
         <div
           class="w-16 h-16 border-4 border-[#3533cd] border-t-transparent rounded-full animate-spin mx-auto mb-4"
-        ></div>
+        />
         <p class="text-gray-600">Loading job details...</p>
       </div>
     </div>
@@ -231,7 +231,7 @@
               <h1 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
                 {{ job.title }}
               </h1>
-              <p class="text-lg text-gray-600 mb-6" v-if="job.experience_level">
+              <p v-if="job.experience_level" class="text-lg text-gray-600 mb-6">
                 {{ job.experience_level }}
               </p>
 
@@ -254,7 +254,7 @@
                   </svg>
                   <span class="font-semibold">{{ job.salary_range }}</span>
                 </div>
-                <div class="flex items-center" v-if="job.application_deadline">
+                <div v-if="job.application_deadline" class="flex items-center">
                   <svg
                     class="w-5 h-5 mr-2"
                     fill="none"
@@ -277,8 +277,8 @@
 
             <div class="lg:ml-8 mt-6 lg:mt-0">
               <button
-                @click="scrollToApplication"
                 class="bg-gradient-to-r from-[#3533cd] via-[#6675F7] to-[#1e1b69] text-white px-8 py-4 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 flex items-center w-full lg:w-auto justify-center text-lg hover:scale-105"
+                @click="scrollToApplication"
               >
                 Apply Now
                 <svg
@@ -311,14 +311,14 @@
               </h2>
               <div
                 class="prose prose-lg max-w-none text-gray-600"
-                v-html="job.description"
-              ></div>
+                v-html="sanitizeHtml(job.description)"
+              />
             </div>
 
             <!-- Responsibilities -->
             <div
-              class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-6 lg:p-8"
               v-if="job.responsibilities && job.responsibilities.length > 0"
+              class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-6 lg:p-8"
             >
               <h2 class="text-2xl font-bold text-gray-900 mb-6">
                 Key Responsibilities
@@ -349,8 +349,8 @@
 
             <!-- Requirements -->
             <div
-              class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-6 lg:p-8"
               v-if="job.requirements && job.requirements.length > 0"
+              class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-6 lg:p-8"
             >
               <h2 class="text-2xl font-bold text-gray-900 mb-6">
                 Requirements
@@ -381,8 +381,8 @@
 
             <!-- Benefits -->
             <div
-              class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-6 lg:p-8"
               v-if="job.benefits && job.benefits.length > 0"
+              class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-6 lg:p-8"
             >
               <h2 class="text-2xl font-bold text-gray-900 mb-6">
                 Benefits & Perks
@@ -444,8 +444,8 @@
                   with us. Submit your application today!
                 </p>
                 <button
-                  @click="scrollToApplication"
                   class="w-full bg-gradient-to-r from-[#3533cd] via-[#6675F7] to-[#1e1b69] text-white px-6 py-4 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2"
+                  @click="scrollToApplication"
                 >
                   <svg
                     class="w-5 h-5"
@@ -530,9 +530,9 @@
               </h3>
               <div class="flex justify-center space-x-4">
                 <button
-                  @click="shareJob('twitter')"
                   class="w-12 h-12 bg-black text-white rounded-full hover:bg-gray-800 transition-all duration-300 hover:scale-110 flex items-center justify-center group share-button"
                   title="Share on X"
+                  @click="shareJob('twitter')"
                 >
                   <svg
                     class="w-5 h-5 group-hover:scale-110 transition-transform"
@@ -545,9 +545,9 @@
                   </svg>
                 </button>
                 <button
-                  @click="shareJob('linkedin')"
                   class="w-12 h-12 bg-blue-700 text-white rounded-full hover:bg-blue-800 transition-all duration-300 hover:scale-110 flex items-center justify-center group share-button"
                   title="Share on LinkedIn"
+                  @click="shareJob('linkedin')"
                 >
                   <svg
                     class="w-5 h-5 group-hover:scale-110 transition-transform"
@@ -560,9 +560,9 @@
                   </svg>
                 </button>
                 <button
-                  @click="shareJob('facebook')"
                   class="w-12 h-12 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-all duration-300 hover:scale-110 flex items-center justify-center group share-button"
                   title="Share on Facebook"
+                  @click="shareJob('facebook')"
                 >
                   <svg
                     class="w-5 h-5 group-hover:scale-110 transition-transform"
@@ -575,9 +575,9 @@
                   </svg>
                 </button>
                 <button
-                  @click="shareJob('whatsapp')"
                   class="w-12 h-12 bg-green-500 text-white rounded-full hover:bg-green-600 transition-all duration-300 hover:scale-110 flex items-center justify-center group share-button"
                   title="Share on WhatsApp"
+                  @click="shareJob('whatsapp')"
                 >
                   <svg
                     class="w-5 h-5 group-hover:scale-110 transition-transform"
@@ -590,9 +590,9 @@
                   </svg>
                 </button>
                 <button
-                  @click="copyJobLink"
                   class="w-12 h-12 bg-gray-600 text-white rounded-full hover:bg-gray-700 transition-all duration-300 hover:scale-110 flex items-center justify-center group share-button"
                   title="Copy Job Link"
+                  @click="copyJobLink"
                 >
                   <svg
                     class="w-5 h-5 group-hover:scale-110 transition-transform"
@@ -622,7 +622,7 @@
             Apply for this Position
           </h2>
 
-          <form @submit.prevent="submitApplication" class="space-y-6">
+          <form class="space-y-6" @submit.prevent="submitApplication">
             <!-- Honeypot field — hidden from real users, catches bots that auto-fill every input -->
             <div
               class="absolute -left-[9999px] top-0 h-px w-px overflow-hidden"
@@ -636,7 +636,7 @@
                 name="website"
                 tabindex="-1"
                 autocomplete="off"
-              />
+              >
             </div>
             <div class="grid md:grid-cols-2 gap-6">
               <div>
@@ -649,7 +649,7 @@
                   required
                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#3533cd] focus:border-transparent"
                   placeholder="Enter your first name"
-                />
+                >
               </div>
               <div>
                 <label class="block text-sm font-medium text-gray-700 mb-2"
@@ -661,7 +661,7 @@
                   required
                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#3533cd] focus:border-transparent"
                   placeholder="Enter your last name"
-                />
+                >
               </div>
             </div>
 
@@ -676,7 +676,7 @@
                   required
                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#3533cd] focus:border-transparent"
                   placeholder="Enter your email"
-                />
+                >
               </div>
               <div>
                 <label class="block text-sm font-medium text-gray-700 mb-2"
@@ -687,7 +687,7 @@
                   type="tel"
                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#3533cd] focus:border-transparent"
                   placeholder="Enter your phone number"
-                />
+                >
               </div>
             </div>
 
@@ -696,12 +696,12 @@
                 >Resume/CV *</label
               >
               <input
-                @change="handleFileUpload"
                 type="file"
                 accept=".pdf,.doc,.docx"
                 required
                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#3533cd] focus:border-transparent"
-              />
+                @change="handleFileUpload"
+              >
               <p class="text-sm text-gray-500 mt-1">
                 Upload your resume in PDF, DOC, or DOCX format (max 5MB)
               </p>
@@ -717,7 +717,7 @@
                   type="url"
                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#3533cd] focus:border-transparent"
                   placeholder="https://yourportfolio.com"
-                />
+                >
               </div>
               <div>
                 <label class="block text-sm font-medium text-gray-700 mb-2"
@@ -728,7 +728,7 @@
                   type="url"
                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#3533cd] focus:border-transparent"
                   placeholder="https://linkedin.com/in/yourprofile"
-                />
+                >
               </div>
             </div>
 
@@ -741,7 +741,7 @@
                 type="url"
                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#3533cd] focus:border-transparent"
                 placeholder="https://github.com/yourusername"
-              />
+              >
             </div>
 
             <div>
@@ -753,7 +753,7 @@
                 rows="6"
                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#3533cd] focus:border-transparent"
                 placeholder="Tell us why you're interested in this position and why you'd be a great fit..."
-              ></textarea>
+              />
             </div>
 
             <div>
@@ -765,7 +765,7 @@
                 rows="4"
                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#3533cd] focus:border-transparent"
                 placeholder="Any additional information you'd like to share..."
-              ></textarea>
+              />
             </div>
 
             <div class="flex items-center justify-between pt-6">
@@ -776,7 +776,7 @@
                   type="checkbox"
                   required
                   class="w-4 h-4 text-[#3533cd] bg-gray-100 border-gray-300 rounded focus:ring-[#3533cd]"
-                />
+                >
                 <label for="terms" class="ml-2 text-sm text-gray-700">
                   I agree to the
                   <NuxtLink to="/terms-conditions" class="text-[#3533cd] hover:underline">Terms of Service</NuxtLink>
@@ -805,12 +805,12 @@
                   r="10"
                   stroke="currentColor"
                   stroke-width="4"
-                ></circle>
+                />
                 <path
                   class="opacity-75"
                   fill="currentColor"
                   d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                ></path>
+                />
               </svg>
               {{ submitting ? "Submitting..." : "Submit Application" }}
             </button>
@@ -882,16 +882,28 @@ if (import.meta.server && !job.value) {
 
 // Dynamic SEO meta tags
 useHead(() => {
-  if (!job.value?.meta_title) return {};
-  return {
-    title: job.value.meta_title,
-    meta: [
+  const head = {};
+
+  if (job.value?.meta_title) {
+    head.title = job.value.meta_title;
+    head.meta = [
       {
         name: "description",
         content: job.value.meta_description || job.value.description,
       },
-    ],
-  };
+    ];
+  }
+
+  if (job.value?.schemaMarkup) {
+    head.script = [
+      {
+        type: "application/ld+json",
+        innerHTML: JSON.stringify(job.value.schemaMarkup),
+      },
+    ];
+  }
+
+  return head;
 });
 
 // Get department class for styling

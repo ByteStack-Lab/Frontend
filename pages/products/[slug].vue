@@ -43,7 +43,7 @@
       <div class="inline-block">
         <div
           class="w-12 h-12 border-4 border-[#3533cd]/20 border-t-[#3533cd] rounded-full animate-spin mb-6"
-        ></div>
+        />
       </div>
       <h2 class="text-2xl font-bold text-gray-900">Loading product...</h2>
     </div>
@@ -108,7 +108,7 @@
               <div
                 class="text-lg text-gray-600 leading-relaxed mb-8 prose prose-sm max-w-none"
                 v-html="sanitizeHtml(product.description)"
-              ></div>
+              />
 
               <!-- Key Features -->
               <div class="grid grid-cols-2 gap-3 mb-10">
@@ -153,7 +153,7 @@
                 <p
                   class="text-gray-500 text-sm mb-6"
                   v-html="sanitizeHtml(product.pricing_note)"
-                ></p>
+                />
 
                 <div class="flex flex-col sm:flex-row gap-3">
                   <button
@@ -209,10 +209,10 @@
                 <!-- Decorative blobs -->
                 <div
                   class="absolute top-0 right-0 w-48 h-48 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2"
-                ></div>
+                />
                 <div
                   class="absolute bottom-0 left-0 w-64 h-64 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/2"
-                ></div>
+                />
 
                 <div
                   class="relative p-12 flex flex-col items-center text-center"
@@ -312,14 +312,14 @@
               type="button"
               role="tab"
               :aria-selected="activeTab === 'overview'"
-              @mousedown.prevent="setActiveTab('overview')"
-              @click="setActiveTab('overview')"
               :class="[
                 'px-6 py-3 font-semibold text-sm transition-all duration-300 border-b-2 -mb-px',
                 activeTab === 'overview'
                   ? 'border-[#3533cd] text-[#3533cd]'
                   : 'border-transparent text-gray-500 hover:text-gray-700',
               ]"
+              @mousedown.prevent="setActiveTab('overview')"
+              @click="setActiveTab('overview')"
             >
               Overview
             </button>
@@ -328,14 +328,14 @@
               type="button"
               role="tab"
               :aria-selected="activeTab === 'pricing'"
-              @mousedown.prevent="setActiveTab('pricing')"
-              @click="setActiveTab('pricing')"
               :class="[
                 'px-6 py-3 font-semibold text-sm transition-all duration-300 border-b-2 -mb-px',
                 activeTab === 'pricing'
                   ? 'border-[#3533cd] text-[#3533cd]'
                   : 'border-transparent text-gray-500 hover:text-gray-700',
               ]"
+              @mousedown.prevent="setActiveTab('pricing')"
+              @click="setActiveTab('pricing')"
             >
               Pricing & Plans
             </button>
@@ -344,14 +344,14 @@
               type="button"
               role="tab"
               :aria-selected="activeTab === 'reviews'"
-              @mousedown.prevent="setActiveTab('reviews')"
-              @click="setActiveTab('reviews')"
               :class="[
                 'px-6 py-3 font-semibold text-sm transition-all duration-300 border-b-2 -mb-px',
                 activeTab === 'reviews'
                   ? 'border-[#3533cd] text-[#3533cd]'
                   : 'border-transparent text-gray-500 hover:text-gray-700',
               ]"
+              @mousedown.prevent="setActiveTab('reviews')"
+              @click="setActiveTab('reviews')"
             >
               Reviews
             </button>
@@ -395,7 +395,7 @@
                   <p
                     class="text-gray-600 text-sm leading-relaxed"
                     v-html="sanitizeHtml(highlight.description)"
-                  ></p>
+                  />
                 </div>
               </div>
               <div
@@ -540,7 +540,7 @@
                       <p
                         class="text-gray-600 text-sm leading-relaxed"
                         v-html="sanitizeHtml(review.text)"
-                      ></p>
+                      />
                     </div>
                   </div>
                 </div>
@@ -570,7 +570,7 @@
           <div class="text-center mb-12">
             <div
               class="w-16 h-1 bg-gradient-to-r from-[#3533cd] to-[#E56F8C] rounded-full mx-auto mb-6"
-            ></div>
+            />
             <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Product Gallery
             </h2>
@@ -647,7 +647,7 @@
                       );
                       background-size: 32px 32px;
                     "
-                  ></div>
+                  />
 
                   <!-- Hover overlay: zoom & view icon -->
                   <div
@@ -703,8 +703,8 @@
                 <!-- Prev Arrow -->
                 <button
                   v-if="product.gallery_items.length > 1"
-                  @click.stop="galleryPrev"
                   class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 hover:bg-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 z-10"
+                  @click.stop="galleryPrev"
                 >
                   <svg
                     class="w-5 h-5 text-gray-800"
@@ -724,8 +724,8 @@
                 <!-- Next Arrow -->
                 <button
                   v-if="product.gallery_items.length > 1"
-                  @click.stop="galleryNext"
                   class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 hover:bg-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 z-10"
+                  @click.stop="galleryNext"
                 >
                   <svg
                     class="w-5 h-5 text-gray-800"
@@ -748,13 +748,13 @@
                 <button
                   v-for="(img, idx) in product.gallery"
                   :key="idx"
-                  @click="galleryIndex = idx"
                   :class="[
                     'flex-shrink-0 relative overflow-hidden rounded-xl transition-all duration-300 border-2',
                     galleryIndex === idx
                       ? 'border-[#3533cd] ring-2 ring-[#3533cd]/30 opacity-100 scale-105'
                       : 'border-transparent opacity-60 hover:opacity-90 hover:scale-102',
                   ]"
+                  @click="galleryIndex = idx"
                 >
                   <div
                     class="w-20 h-14 flex items-center justify-center"
@@ -779,7 +779,7 @@
                     v-if="galleryIndex === idx"
                     class="absolute inset-0 bg-[#3533cd]/20 flex items-center justify-center"
                   >
-                    <div class="w-2 h-2 bg-white rounded-full shadow"></div>
+                    <div class="w-2 h-2 bg-white rounded-full shadow"/>
                   </div>
                 </button>
               </div>
@@ -789,14 +789,14 @@
                 <button
                   v-for="(img, idx) in product.gallery"
                   :key="idx"
-                  @click="galleryIndex = idx"
                   :class="[
                     'rounded-full transition-all duration-300',
                     galleryIndex === idx
                       ? 'w-6 h-2 bg-[#3533cd]'
                       : 'w-2 h-2 bg-gray-300 hover:bg-gray-400',
                   ]"
-                ></button>
+                  @click="galleryIndex = idx"
+                />
               </div>
             </div>
 
@@ -809,16 +809,16 @@
               <div
                 v-for="(img, idx) in product.gallery"
                 :key="idx"
-                @click="
-                  galleryIndex = idx;
-                  openLightbox(idx);
-                "
                 :class="[
                   'flex items-center gap-4 p-4 rounded-xl border-2 cursor-pointer transition-all duration-300',
                   galleryIndex === idx
                     ? 'border-[#3533cd] bg-indigo-50 shadow-md'
                     : 'border-gray-100 bg-white hover:border-indigo-200 hover:bg-gray-50 shadow-card',
                 ]"
+                @click="
+                  galleryIndex = idx;
+                  openLightbox(idx);
+                "
               >
                 <!-- Mini thumbnail -->
                 <div
@@ -859,13 +859,13 @@
                     'w-2 h-2 rounded-full flex-shrink-0 transition-colors duration-300',
                     galleryIndex === idx ? 'bg-[#3533cd]' : 'bg-gray-200',
                   ]"
-                ></div>
+                />
               </div>
 
               <!-- View all in lightbox -->
               <button
-                @click="openLightbox(0)"
                 class="w-full mt-2 py-3 rounded-xl border-2 border-dashed border-[#3533cd]/40 text-[#3533cd] font-semibold text-sm hover:bg-indigo-50 hover:border-[#3533cd] transition-all duration-300 flex items-center justify-center gap-2"
+                @click="openLightbox(0)"
               >
                 <svg
                   class="w-4 h-4"
@@ -896,8 +896,8 @@
         >
           <!-- Close -->
           <button
-            @click="closeLightbox"
             class="absolute top-6 right-6 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors duration-200 z-10"
+            @click="closeLightbox"
           >
             <svg
               class="w-6 h-6"
@@ -924,8 +924,8 @@
           <!-- Prev Arrow -->
           <button
             v-if="product.gallery_items.length > 1"
-            @click.stop="lightboxPrev"
             class="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 hover:bg-white/25 rounded-full flex items-center justify-center text-white transition-all duration-200 hover:scale-110"
+            @click.stop="lightboxPrev"
           >
             <svg
               class="w-6 h-6"
@@ -945,8 +945,8 @@
           <!-- Next Arrow -->
           <button
             v-if="product.gallery_items.length > 1"
-            @click.stop="lightboxNext"
             class="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 hover:bg-white/25 rounded-full flex items-center justify-center text-white transition-all duration-200 hover:scale-110"
+            @click.stop="lightboxNext"
           >
             <svg
               class="w-6 h-6"
@@ -983,7 +983,7 @@
                     );
                     background-size: 32px 32px;
                   "
-                ></div>
+                />
 
                 <div class="relative z-10 text-center">
                   <div
@@ -1043,14 +1043,14 @@
                   <button
                     v-for="(img, idx) in product.gallery"
                     :key="idx"
-                    @click="lightboxIndex = idx"
                     :class="[
                       'w-2 h-2 rounded-full transition-all duration-300',
                       lightboxIndex === idx
                         ? 'bg-white w-5'
                         : 'bg-white/40 hover:bg-white/70',
                     ]"
-                  ></button>
+                    @click="lightboxIndex = idx"
+                  />
                 </div>
               </div>
             </div>
@@ -1175,16 +1175,6 @@ const parseMaybeJson = (value, fallback) => {
   }
 
   return fallback;
-};
-
-const sanitizeHtml = (content) => {
-  if (!content) return "";
-  if (typeof content !== "string") return String(content);
-
-  return content
-    .replace(/<script[\s\S]*?>[\s\S]*?<\/script>/gi, "")
-    .replace(/\son\w+\s*=\s*(['"]).*?\1/gi, "")
-    .replace(/javascript:/gi, "");
 };
 
 const normalizeProduct = (rawProduct) => {
@@ -1383,5 +1373,13 @@ useHead(() => ({
       content: product.value?.description || "Product not found.",
     },
   ],
+  script: product.value?.seo?.schema_markup
+    ? [
+        {
+          type: "application/ld+json",
+          innerHTML: JSON.stringify(product.value.seo.schema_markup),
+        },
+      ]
+    : [],
 }));
 </script>

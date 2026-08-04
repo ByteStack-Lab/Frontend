@@ -1,7 +1,7 @@
 <template>
   <section
-    ref="elementRef"
     id="blog"
+    ref="elementRef"
     class="py-14 md:py-20 lg:py-16 bg-gradient-to-br from-gray-50 via-white to-purple-50 relative overflow-hidden transition-all duration-1000 ease-out"
     :class="{
       'opacity-0 translate-y-20': !isVisible,
@@ -18,14 +18,14 @@
             radial-gradient(circle at 75px 75px, #1e1b69 2px, transparent 0);
           background-size: 100px 100px;
         "
-      ></div>
+      />
     </div>
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <!-- Section Header -->
       <div class="text-center mb-16">
         <div
           class="w-16 h-1 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full mx-auto mb-6"
-        ></div>
+        />
         <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-2">
           Featured
         </h2>
@@ -47,7 +47,7 @@
         <div v-if="isLoading" class="flex justify-center items-center py-20">
           <div
             class="animate-spin rounded-full h-12 w-12 border-b-2 border-[#3533cd]"
-          ></div>
+          />
         </div>
 
         <!-- Empty State -->
@@ -71,9 +71,9 @@
             No featured blogs available at the moment
           </p>
           <button
-            @click="goToBlog"
             class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] text-white font-medium rounded-lg hover:from-[#1e1b69] hover:to-[#3533cd] transition-all duration-300"
             type="button"
+            @click="goToBlog"
           >
             View All Blogs
           </button>
@@ -110,14 +110,14 @@
                   <img
                     :src="
                       blog.featuredImage ||
-                      `https://picsum.photos/800/400?random=${blog.id || index + 1}`
+                      `/images/blogs/${((blog.id || index + 1) % 3) + 1}.png`
                     "
                     :alt="blog.title"
                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     @error="
-                      $event.target.src = `https://picsum.photos/800/400?random=${blog.id || index + 1}`
+                      $event.target.src = `/images/blogs/${((blog.id || index + 1) % 3) + 1}.png`
                     "
-                  />
+                  >
                 </div>
 
                 <!-- Blog Content -->
@@ -275,11 +275,11 @@
         class="text-center mt-12 relative z-50"
       >
         <button
+          class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] text-white font-semibold rounded-full hover:from-[#1e1b69] hover:to-[#3533cd] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 group cursor-pointer select-none relative z-50"
+          style="pointer-events: auto; position: relative; z-index: 9999"
           @click="goToBlog"
           @mouseenter="stopAutoSlide"
           @mouseleave="startAutoSlide"
-          class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] text-white font-semibold rounded-full hover:from-[#1e1b69] hover:to-[#3533cd] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 group cursor-pointer select-none relative z-50"
-          style="pointer-events: auto; position: relative; z-index: 9999"
         >
           <svg
             class="w-5 h-5 mr-2"

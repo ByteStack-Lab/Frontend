@@ -1,7 +1,7 @@
 <template>
   <section
-    ref="elementRef"
     id="how-development"
+    ref="elementRef"
     class="py-14 md:py-20 lg:py-16 transition-all duration-1000 ease-out"
     :class="{
       'opacity-0 translate-y-20': !isVisible,
@@ -14,7 +14,7 @@
       <div class="text-center mb-20">
         <div
           class="w-16 h-1 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full mx-auto mb-6"
-        ></div>
+        />
         <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-2">
           How Development
         </h2>
@@ -33,7 +33,7 @@
           <!-- Timeline Line -->
           <div
             class="absolute top-1/2 left-16 right-16 h-0.5 bg-[#3533cd] transform -translate-y-1/2 z-0"
-          ></div>
+          />
 
           <!-- Trophy Icon at end of timeline -->
           <div
@@ -43,7 +43,7 @@
               src="/images/icons/Trophy.png"
               alt="Trophy"
               class="w-10 h-10 object-contain"
-            />
+            >
           </div>
 
           <!-- Process Steps -->
@@ -73,7 +73,7 @@
                 <div
                   class="absolute bottom-0 w-0.5 h-8 bg-[#3533cd]"
                   style="left: 30%; top: calc(100% + 8px)"
-                ></div>
+                />
               </div>
 
               <!-- Step 3: Tech architecture -->
@@ -100,7 +100,7 @@
                 <div
                   class="absolute bottom-0 w-0.5 h-8 bg-[#3533cd]"
                   style="left: 50%; top: calc(100% + 8px)"
-                ></div>
+                />
               </div>
 
               <!-- Step 5: Code reviews -->
@@ -126,7 +126,7 @@
                 <div
                   class="absolute bottom-0 w-0.5 h-8 bg-[#3533cd]"
                   style="left: 70%; top: calc(100% + 8px)"
-                ></div>
+                />
               </div>
             </div>
 
@@ -155,7 +155,7 @@
                 <div
                   class="absolute top-0 w-0.5 h-8 bg-[#3533cd]"
                   style="left: 40%; top: -24px"
-                ></div>
+                />
               </div>
 
               <!-- Step 4: Standups & weekly demos -->
@@ -181,7 +181,7 @@
                 <div
                   class="absolute top-0 w-0.5 h-8 bg-[#3533cd]"
                   style="left: 60%; top: -24px"
-                ></div>
+                />
               </div>
 
               <!-- Step 6: Iterative delivery -->
@@ -207,7 +207,7 @@
                 <div
                   class="absolute top-0 w-0.5 h-8 bg-[#3533cd]"
                   style="left: 80%; top: -24px"
-                ></div>
+                />
               </div>
             </div>
           </div>
@@ -242,7 +242,7 @@
               <!-- Vertical Connector -->
               <div
                 class="absolute left-8 top-full w-0.5 h-6 bg-[#3533cd] transform -translate-x-1/2"
-              ></div>
+              />
             </div>
 
             <!-- Step 2: Sprint planning -->
@@ -271,7 +271,7 @@
               <!-- Vertical Connector -->
               <div
                 class="absolute left-8 top-full w-0.5 h-6 bg-[#3533cd] transform -translate-x-1/2"
-              ></div>
+              />
             </div>
 
             <!-- Step 3: Tech architecture -->
@@ -300,7 +300,7 @@
               <!-- Vertical Connector -->
               <div
                 class="absolute left-8 top-full w-0.5 h-6 bg-[#3533cd] transform -translate-x-1/2"
-              ></div>
+              />
             </div>
 
             <!-- Step 4: Standups & weekly demos -->
@@ -329,7 +329,7 @@
               <!-- Vertical Connector -->
               <div
                 class="absolute left-8 top-full w-0.5 h-6 bg-[#3533cd] transform -translate-x-1/2"
-              ></div>
+              />
             </div>
 
             <!-- Step 5: Code reviews -->
@@ -358,7 +358,7 @@
               <!-- Vertical Connector -->
               <div
                 class="absolute left-8 top-full w-0.5 h-6 bg-[#3533cd] transform -translate-x-1/2"
-              ></div>
+              />
             </div>
 
             <!-- Step 6: Iterative delivery -->
@@ -393,7 +393,7 @@
                     src="/images/icons/Trophy.png"
                     alt="Trophy"
                     class="w-6 h-6 object-contain filter brightness-0 invert"
-                  />
+                  >
                 </div>
               </div>
             </div>

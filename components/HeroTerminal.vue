@@ -1,7 +1,7 @@
 <template>
   <div class="w-full relative select-none">
     <!-- Outer glow -->
-    <div class="absolute -inset-4 bg-gradient-to-r from-[#3533cd]/20 via-purple-500/10 to-[#1e1b69]/20 blur-2xl rounded-3xl pointer-events-none"></div>
+    <div class="absolute -inset-4 bg-gradient-to-r from-[#3533cd]/20 via-purple-500/10 to-[#1e1b69]/20 blur-2xl rounded-3xl pointer-events-none"/>
 
     <!-- Terminal Window -->
     <div class="relative rounded-2xl overflow-hidden border border-[#3533cd]/40 shadow-[0_0_50px_rgba(53,51,205,0.25),0_20px_60px_rgba(0,0,0,0.5)]">
@@ -10,9 +10,9 @@
       <div class="flex items-center px-4 py-3 bg-[#111127] border-b border-white/5">
         <!-- Traffic lights -->
         <div class="flex items-center space-x-2">
-          <div class="w-3 h-3 rounded-full bg-[#ff5f57] shadow-[0_0_6px_rgba(255,95,87,0.6)]"></div>
-          <div class="w-3 h-3 rounded-full bg-[#ffbd2e] shadow-[0_0_6px_rgba(255,189,46,0.5)]"></div>
-          <div class="w-3 h-3 rounded-full bg-[#28c840] shadow-[0_0_6px_rgba(40,200,64,0.5)]"></div>
+          <div class="w-3 h-3 rounded-full bg-[#ff5f57] shadow-[0_0_6px_rgba(255,95,87,0.6)]"/>
+          <div class="w-3 h-3 rounded-full bg-[#ffbd2e] shadow-[0_0_6px_rgba(255,189,46,0.5)]"/>
+          <div class="w-3 h-3 rounded-full bg-[#28c840] shadow-[0_0_6px_rgba(40,200,64,0.5)]"/>
         </div>
         <!-- Title -->
         <div class="flex-1 text-center">
@@ -20,7 +20,7 @@
         </div>
         <!-- Live indicator -->
         <div class="flex items-center gap-1.5">
-          <div class="w-1.5 h-1.5 rounded-full bg-[#28c840] animate-pulse"></div>
+          <div class="w-1.5 h-1.5 rounded-full bg-[#28c840] animate-pulse"/>
           <span class="text-[#28c840] text-xs font-mono">LIVE</span>
         </div>
       </div>
@@ -32,7 +32,7 @@
         style="height: 300px"
       >
         <!-- Scanlines overlay -->
-        <div class="absolute inset-0 pointer-events-none scanlines opacity-[0.03]"></div>
+        <div class="absolute inset-0 pointer-events-none scanlines opacity-[0.03]"/>
 
         <!-- Completed Lines -->
         <TransitionGroup name="line" tag="div">
@@ -55,9 +55,9 @@
             <div v-else-if="line.type === 'svc'" class="flex items-center gap-2 pl-5">
               <span class="text-[#3533cd]">◆</span>
               <span class="text-[#a8b4ff]">{{ line.text }}</span>
-              <div class="flex-1 border-b border-dashed border-gray-800/80 mx-1"></div>
+              <div class="flex-1 border-b border-dashed border-gray-800/80 mx-1"/>
               <div class="flex items-center gap-1">
-                <div class="w-1.5 h-1.5 rounded-full bg-[#28c840]"></div>
+                <div class="w-1.5 h-1.5 rounded-full bg-[#28c840]"/>
                 <span class="text-[#28c840] text-[11px]">ready</span>
               </div>
             </div>
@@ -75,7 +75,7 @@
             </div>
 
             <!-- Empty Line -->
-            <div v-else class="h-2"></div>
+            <div v-else class="h-2"/>
           </div>
         </TransitionGroup>
 
@@ -85,7 +85,7 @@
           <div class="flex items-center" style="padding-left: 2px">
             <span class="text-[#6675F7] font-semibold">❯</span>
             <span class="text-white ml-1.5 tracking-wide">{{ typingText }}</span>
-            <span class="inline-block w-[7px] h-[14px] bg-white/80 cursor-blink align-middle ml-px"></span>
+            <span class="inline-block w-[7px] h-[14px] bg-white/80 cursor-blink align-middle ml-px"/>
           </div>
         </div>
 
@@ -94,7 +94,7 @@
           <PromptBar :dir="currentDir" :time="bdTime" />
           <div class="flex items-center" style="padding-left: 2px">
             <span class="text-[#6675F7] font-semibold">❯</span>
-            <span class="inline-block w-[7px] h-[14px] bg-white/80 cursor-blink align-middle ml-2"></span>
+            <span class="inline-block w-[7px] h-[14px] bg-white/80 cursor-blink align-middle ml-2"/>
           </div>
         </div>
       </div>

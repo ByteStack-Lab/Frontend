@@ -7,40 +7,40 @@
         <!-- Matrix-style Grid Lines -->
         <div
           class="absolute left-32 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#6675F7]/25 to-transparent animate-pulse-slow"
-        ></div>
+        />
         <div
           class="absolute left-64 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#3533cd]/20 to-transparent animate-pulse-medium"
-        ></div>
+        />
         <div
           class="absolute right-32 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#1e1b69]/25 to-transparent animate-pulse-slow"
-        ></div>
+        />
         <div
           class="absolute right-64 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#6675F7]/20 to-transparent animate-pulse-medium"
-        ></div>
+        />
 
         <div
           class="absolute top-32 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#6675F7]/20 to-transparent animate-pulse-slow"
-        ></div>
+        />
         <div
           class="absolute top-64 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#3533cd]/25 to-transparent animate-pulse-medium"
-        ></div>
+        />
         <div
           class="absolute bottom-32 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#1e1b69]/20 to-transparent animate-pulse-slow"
-        ></div>
+        />
 
         <!-- Moving Data Points -->
         <div
           class="absolute top-48 left-36 w-1 h-1 bg-[#6675F7] rounded-full animate-data-flow-1"
-        ></div>
+        />
         <div
           class="absolute top-72 right-48 w-1 h-1 bg-[#3533cd] rounded-full animate-data-flow-2"
-        ></div>
+        />
         <div
           class="absolute bottom-48 left-72 w-1 h-1 bg-[#1e1b69] rounded-full animate-data-flow-3"
-        ></div>
+        />
         <div
           class="absolute bottom-72 right-36 w-1 h-1 bg-[#6675F7] rounded-full animate-data-flow-4"
-        ></div>
+        />
       </div>
 
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
@@ -48,7 +48,7 @@
           <!-- Decorative Line -->
           <div
             class="w-16 h-1 bg-gradient-to-r from-[#3533cd] via-[#6675F7] to-[#1e1b69] rounded-full mx-auto mb-6"
-          ></div>
+          />
 
           <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
             <span class="text-gray-900">Join Our</span>
@@ -69,8 +69,8 @@
           <!-- CTA Buttons -->
           <div class="flex flex-col sm:flex-row gap-6 justify-center mt-10">
             <button
-              @click="scrollToPositions"
               class="bg-gradient-to-r from-[#3533cd] via-[#6675F7] to-[#1e1b69] text-white px-8 py-4 rounded-lg font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center"
+              @click="scrollToPositions"
             >
               View Open Positions
               <svg
@@ -89,8 +89,8 @@
             </button>
 
             <button
-              @click="scrollToCulture"
               class="border-2 border-[#3533cd] text-[#3533cd] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#3533cd] hover:text-white transition-all duration-300 flex items-center justify-center"
+              @click="scrollToCulture"
             >
               Learn Our Culture
               <svg
@@ -166,7 +166,7 @@
                 type="text"
                 placeholder="Search jobs by title or keyword..."
                 class="w-full px-4 py-3 pl-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#3533cd] focus:border-transparent"
-              />
+              >
               <svg
                 class="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400"
                 fill="none"
@@ -188,13 +188,13 @@
             <button
               v-for="department in departments"
               :key="department.id"
-              @click="activeDepartment = department.id"
               :class="[
                 'px-6 py-3 font-medium text-sm lg:text-base transition-all duration-300 relative rounded-full',
                 activeDepartment === department.id
                   ? 'bg-gradient-to-r from-[#3533cd] via-[#6675F7] to-[#1e1b69] text-white shadow-lg'
                   : 'text-gray-600 hover:text-gray-900 bg-white hover:bg-gray-50 shadow-md hover:shadow-lg',
               ]"
+              @click="activeDepartment = department.id"
             >
               {{ department.name }}
               <span
@@ -211,7 +211,7 @@
         <div v-if="loading" class="text-center py-16">
           <div
             class="w-16 h-16 border-4 border-[#3533cd] border-t-transparent rounded-full animate-spin mx-auto mb-4"
-          ></div>
+          />
           <p class="text-gray-600">Loading amazing opportunities...</p>
         </div>
 
@@ -238,14 +238,14 @@
           </h3>
           <p class="text-gray-600 mb-4">{{ error }}</p>
           <button
-            @click="fetchJobs"
             class="bg-[#3533cd] text-white px-6 py-2 rounded-lg hover:bg-[#1e1b69] transition-colors"
+            @click="fetchJobs"
           >
             Try Again
           </button>
         </div>
 
-        <Transition name="fade" mode="out-in" v-else>
+        <Transition v-else name="fade" mode="out-in">
           <div :key="`${activeDepartment}-${searchQuery}`" class="space-y-6">
             <!-- Featured Jobs First -->
             <div
@@ -326,8 +326,8 @@
               </p>
               <button
                 v-if="searchQuery || activeDepartment !== 'all'"
-                @click="clearFilters"
                 class="mt-4 text-[#3533cd] hover:text-[#1e1b69] font-medium"
+                @click="clearFilters"
               >
                 Clear filters and show all jobs
               </button>

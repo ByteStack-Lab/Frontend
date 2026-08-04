@@ -7,40 +7,40 @@
         <!-- Matrix-style Grid Lines -->
         <div
           class="absolute left-32 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-blue-400/20 to-transparent animate-pulse-slow"
-        ></div>
+        />
         <div
           class="absolute left-64 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-purple-400/15 to-transparent animate-pulse-medium"
-        ></div>
+        />
         <div
           class="absolute right-32 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-indigo-400/20 to-transparent animate-pulse-slow"
-        ></div>
+        />
         <div
           class="absolute right-64 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-pink-400/15 to-transparent animate-pulse-medium"
-        ></div>
+        />
 
         <div
           class="absolute top-32 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-400/15 to-transparent animate-pulse-slow"
-        ></div>
+        />
         <div
           class="absolute top-64 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-400/20 to-transparent animate-pulse-medium"
-        ></div>
+        />
         <div
           class="absolute bottom-32 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-400/15 to-transparent animate-pulse-slow"
-        ></div>
+        />
 
         <!-- Moving Data Points -->
         <div
           class="absolute top-48 left-36 w-1 h-1 bg-blue-500 rounded-full animate-data-flow-1"
-        ></div>
+        />
         <div
           class="absolute top-72 right-48 w-1 h-1 bg-purple-500 rounded-full animate-data-flow-2"
-        ></div>
+        />
         <div
           class="absolute bottom-48 left-72 w-1 h-1 bg-green-500 rounded-full animate-data-flow-3"
-        ></div>
+        />
         <div
           class="absolute bottom-72 right-36 w-1 h-1 bg-indigo-500 rounded-full animate-data-flow-4"
-        ></div>
+        />
       </div>
 
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
@@ -48,7 +48,7 @@
           <!-- Decorative Line -->
           <div
             class="w-16 h-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full mx-auto mb-4"
-          ></div>
+          />
 
           <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
             <span class="text-gray-900">Our</span>
@@ -74,7 +74,7 @@
         <div v-if="pending" class="text-center py-12">
           <div
             class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-purple-600"
-          ></div>
+          />
           <p class="mt-4 text-gray-600">Loading services...</p>
         </div>
 
@@ -92,7 +92,7 @@
                 :src="service.icon"
                 :alt="service.title"
                 class="w-8 h-8 text-white"
-              />
+              >
               <svg
                 v-else
                 class="w-8 h-8 text-white"

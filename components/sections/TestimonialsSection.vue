@@ -12,7 +12,7 @@
       <div class="text-center mb-20">
         <div
           class="w-16 h-1 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full mx-auto mb-6"
-        ></div>
+        />
         <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
           <span
             class="bg-gradient-to-r from-[#3533cd] to-[#1e1b69] bg-clip-text text-transparent"
@@ -30,7 +30,7 @@
         <div v-if="pending" class="flex justify-center items-center py-12">
           <div
             class="animate-spin rounded-full h-12 w-12 border-b-2 border-[#3533cd]"
-          ></div>
+          />
         </div>
 
         <!-- Error State -->
@@ -47,8 +47,8 @@
         <div v-else-if="testimonials.length > 0">
           <!-- Navigation Arrows -->
           <button
-            @click="prevTestimonial"
             class="absolute left-[-60px] top-1/2 transform -translate-y-1/2 w-12 h-12 rounded-full border-2 border-[#3533cd] text-[#3533cd] items-center justify-center hover:bg-[#3533cd] hover:text-white transition-all duration-300 z-30 hidden lg:flex"
+            @click="prevTestimonial"
           >
             <svg
               class="w-5 h-5"
@@ -66,8 +66,8 @@
           </button>
 
           <button
-            @click="nextTestimonial"
             class="absolute right-[-60px] top-1/2 transform -translate-y-1/2 w-12 h-12 rounded-full bg-[#3533cd] text-white items-center justify-center hover:bg-[#1e1b69] transition-all duration-300 z-30 hidden lg:flex"
+            @click="nextTestimonial"
           >
             <svg
               class="w-5 h-5"
@@ -117,8 +117,8 @@
             <div
               v-for="(testimonial, index) in leftAvatars"
               :key="'left-' + index"
-              @click="goToTestimonial(getLeftIndex(index))"
               class="cursor-pointer transition-all duration-500 opacity-60 hover:opacity-80 flex items-center"
+              @click="goToTestimonial(getLeftIndex(index))"
             >
               <img
                 :src="testimonial.image"
@@ -129,7 +129,7 @@
                     : 'w-16 h-16 lg:w-18 lg:h-18',
                 ]"
                 class="rounded-full object-cover border border-gray-200"
-              />
+              >
             </div>
 
             <!-- Center Avatar -->
@@ -138,15 +138,15 @@
                 :src="testimonials[currentTestimonial].image"
                 :alt="testimonials[currentTestimonial].name"
                 class="w-20 h-20 lg:w-24 lg:h-24 rounded-full object-cover border-3 border-[#3533cd]"
-              />
+              >
             </div>
 
             <!-- Right Avatars -->
             <div
               v-for="(testimonial, index) in rightAvatars"
               :key="'right-' + index"
-              @click="goToTestimonial(getRightIndex(index))"
               class="cursor-pointer transition-all duration-500 opacity-60 hover:opacity-80 flex items-center"
+              @click="goToTestimonial(getRightIndex(index))"
             >
               <img
                 :src="testimonial.image"
@@ -157,7 +157,7 @@
                     : 'w-16 h-16 lg:w-18 lg:h-18',
                 ]"
                 class="rounded-full object-cover border border-gray-200"
-              />
+              >
             </div>
           </div>
 
@@ -206,8 +206,8 @@
             class="flex justify-center items-center space-x-4 mt-12 lg:hidden"
           >
             <button
-              @click="prevTestimonial"
               class="w-12 h-12 rounded-full border-2 border-[#3533cd] text-[#3533cd] flex items-center justify-center hover:bg-[#3533cd] hover:text-white transition-all duration-300"
+              @click="prevTestimonial"
             >
               <svg
                 class="w-5 h-5"
@@ -225,8 +225,8 @@
             </button>
 
             <button
-              @click="nextTestimonial"
               class="w-12 h-12 rounded-full bg-[#3533cd] text-white flex items-center justify-center hover:bg-[#1e1b69] transition-all duration-300"
+              @click="nextTestimonial"
             >
               <svg
                 class="w-5 h-5"
@@ -257,14 +257,14 @@
           src="/images/icons/arrow-left.svg"
           alt="Decorative Left Arrow"
           class="w-16 h-16 object-contain"
-        />
+        >
       </div>
       <div class="absolute bottom-8 right-8 opacity-80 hidden lg:block">
         <img
           src="/images/icons/arrow-right.svg"
           alt="Decorative Right Arrow"
           class="w-16 h-16 object-contain"
-        />
+        >
       </div>
     </div>
   </section>

@@ -13,7 +13,7 @@
               "
               alt="ByteStackLab"
               class="h-12 w-auto cursor-pointer hover:opacity-80 transition-opacity duration-200"
-            />
+            >
           </NuxtLink>
         </div>
 
@@ -23,34 +23,34 @@
           class="hidden md:flex items-center space-x-6 lg:space-x-8"
         >
           <a
-            @click="scrollToSection('services')"
             href="#services"
             class="text-gray-600 hover:text-[#3533cd] transition-colors duration-200 font-medium cursor-pointer text-sm lg:text-base"
+            @click="scrollToSection('services')"
             >Services</a
           >
           <a
-            @click="scrollToSection('about')"
             href="#about"
             class="text-gray-600 hover:text-[#3533cd] transition-colors duration-200 font-medium cursor-pointer text-sm lg:text-base"
+            @click="scrollToSection('about')"
             >About us</a
           >
           <a
-            @click="scrollToSection('case-studies')"
             href="#case-studies"
             class="text-gray-600 hover:text-[#3533cd] transition-colors duration-200 font-medium cursor-pointer text-sm lg:text-base"
+            @click="scrollToSection('case-studies')"
             >Case Studies</a
           >
 
           <a
-            @click="scrollToSection('how-it-works')"
             href="#how-it-works"
             class="text-gray-600 hover:text-[#3533cd] transition-colors duration-200 font-medium cursor-pointer text-sm lg:text-base"
+            @click="scrollToSection('how-it-works')"
             >How it Works</a
           >
           <a
-            @click="scrollToSection('blog')"
             href="#blog"
             class="text-gray-600 hover:text-[#3533cd] transition-colors duration-200 font-medium cursor-pointer text-sm lg:text-base"
+            @click="scrollToSection('blog')"
             >Blog</a
           >
         </div>
@@ -83,7 +83,7 @@
                   stroke-linejoin="round"
                   stroke-width="2"
                   d="M19 9l-7 7-7-7"
-                ></path>
+                />
               </svg>
             </button>
             <!-- Services Dropdown -->
@@ -195,8 +195,8 @@
         <!-- Mobile menu button -->
         <div class="md:hidden">
           <button
-            @click="isMenuOpen = !isMenuOpen"
             class="text-gray-700 hover:text-[#3533cd] focus:outline-none p-3 rounded-xl bg-gray-50 hover:bg-[#3533cd]/10 border border-gray-200 hover:border-[#3533cd]/20 transition-all duration-200 shadow-sm hover:shadow-md"
+            @click="isMenuOpen = !isMenuOpen"
           >
             <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
               <path
@@ -242,11 +242,11 @@
               "
               alt="ByteStackLab"
               class="h-10 w-auto cursor-pointer hover:opacity-80 transition-opacity duration-200"
-            />
+            >
           </NuxtLink>
           <button
-            @click="isMenuOpen = false"
             class="p-2 rounded-full hover:bg-white hover:shadow-md transition-all duration-200"
+            @click="isMenuOpen = false"
           >
             <svg
               class="h-6 w-6 text-gray-600"
@@ -268,8 +268,8 @@
         <div class="flex flex-col p-6 space-y-4">
           <NuxtLink
             to="/"
-            @click="isMenuOpen = false"
             class="menu-item flex items-center space-x-3 text-gray-700 hover:text-[#3533cd] transition-all duration-300 font-medium py-3 px-4 rounded-xl hover:bg-gradient-to-r hover:from-[#3533cd]/10 hover:to-[#1e1b69]/10 hover:shadow-sm"
+            @click="isMenuOpen = false"
           >
             <svg
               class="w-5 h-5"
@@ -289,8 +289,8 @@
 
           <NuxtLink
             to="/about"
-            @click="isMenuOpen = false"
             class="menu-item flex items-center space-x-3 text-gray-700 hover:text-[#3533cd] transition-all duration-300 font-medium py-3 px-4 rounded-xl hover:bg-gradient-to-r hover:from-[#3533cd]/10 hover:to-[#1e1b69]/10 hover:shadow-sm"
+            @click="isMenuOpen = false"
           >
             <svg
               class="w-5 h-5"
@@ -311,8 +311,8 @@
           <!-- Services with submenu -->
           <div class="menu-item">
             <button
-              @click="isServicesOpen = !isServicesOpen"
               class="w-full flex items-center justify-between space-x-3 text-gray-700 hover:text-[#3533cd] transition-all duration-300 font-medium py-3 px-4 rounded-xl hover:bg-gradient-to-r hover:from-[#3533cd]/10 hover:to-[#1e1b69]/10 hover:shadow-sm"
+              @click="isServicesOpen = !isServicesOpen"
             >
               <div class="flex items-center space-x-3">
                 <svg
@@ -342,7 +342,7 @@
                   stroke-linejoin="round"
                   stroke-width="2"
                   d="M19 9l-7 7-7-7"
-                ></path>
+                />
               </svg>
             </button>
             <!-- Services submenu -->
@@ -354,8 +354,8 @@
                 v-for="service in navbarServices"
                 :key="service.id"
                 :to="`/services/${service.slug}`"
-                @click="isMenuOpen = false"
                 class="flex items-center space-x-3 p-3 rounded-lg hover:bg-white hover:shadow-sm transition-all duration-200 group/item"
+                @click="isMenuOpen = false"
               >
                 <div
                   class="w-10 h-10 bg-gradient-to-r rounded-lg flex items-center justify-center group-hover/item:scale-110 transition-transform duration-200"
@@ -399,8 +399,8 @@
 
           <NuxtLink
             to="/case-studies"
-            @click="isMenuOpen = false"
             class="menu-item flex items-center space-x-3 text-gray-700 hover:text-[#3533cd] transition-all duration-300 font-medium py-3 px-4 rounded-xl hover:bg-gradient-to-r hover:from-[#3533cd]/10 hover:to-[#1e1b69]/10 hover:shadow-sm"
+            @click="isMenuOpen = false"
           >
             <svg
               class="w-5 h-5"
@@ -420,8 +420,8 @@
 
           <NuxtLink
             to="/products"
-            @click="isMenuOpen = false"
             class="menu-item flex items-center space-x-3 text-gray-700 hover:text-[#3533cd] transition-all duration-300 font-medium py-3 px-4 rounded-xl hover:bg-gradient-to-r hover:from-[#3533cd]/10 hover:to-[#1e1b69]/10 hover:shadow-sm"
+            @click="isMenuOpen = false"
           >
             <svg
               class="w-5 h-5"
@@ -441,8 +441,8 @@
 
           <NuxtLink
             to="/blog"
-            @click="isMenuOpen = false"
             class="menu-item flex items-center space-x-3 text-gray-700 hover:text-[#3533cd] transition-all duration-300 font-medium py-3 px-4 rounded-xl hover:bg-gradient-to-r hover:from-[#3533cd]/10 hover:to-[#1e1b69]/10 hover:shadow-sm"
+            @click="isMenuOpen = false"
           >
             <svg
               class="w-5 h-5"
@@ -462,8 +462,8 @@
 
           <NuxtLink
             to="/contact"
-            @click="isMenuOpen = false"
             class="menu-item flex items-center space-x-3 text-gray-700 hover:text-[#3533cd] transition-all duration-300 font-medium py-3 px-4 rounded-xl hover:bg-gradient-to-r hover:from-[#3533cd]/10 hover:to-[#1e1b69]/10 hover:shadow-sm"
+            @click="isMenuOpen = false"
           >
             <svg
               class="w-5 h-5"
@@ -486,8 +486,8 @@
         <div class="mt-6 mx-6 mb-4">
           <NuxtLink
             to="/contact"
-            @click="isMenuOpen = false"
             class="interactive-button w-full bg-gradient-to-r from-[#3533cd] to-[#1e1b69] text-white px-8 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-200 block text-center"
+            @click="isMenuOpen = false"
           >
             Contact Us
           </NuxtLink>
@@ -652,9 +652,9 @@
     <div class="mobile-bottom-nav md:hidden">
       <NuxtLink
         to="/"
-        @click="closeMenu"
         class="mobile-tab-item"
         :class="isRouteActive('/') ? 'mobile-tab-active' : ''"
+        @click="closeMenu"
       >
         <svg
           class="w-5 h-5"
@@ -674,9 +674,9 @@
 
       <NuxtLink
         to="/services"
-        @click="closeMenu"
         class="mobile-tab-item"
         :class="isRouteActive('/services') ? 'mobile-tab-active' : ''"
+        @click="closeMenu"
       >
         <svg
           class="w-5 h-5"
@@ -696,9 +696,9 @@
 
       <NuxtLink
         to="/products"
-        @click="closeMenu"
         class="mobile-tab-item"
         :class="isRouteActive('/products') ? 'mobile-tab-active' : ''"
+        @click="closeMenu"
       >
         <svg
           class="w-5 h-5"
@@ -718,9 +718,9 @@
 
       <NuxtLink
         to="/contact"
-        @click="closeMenu"
         class="mobile-tab-item"
         :class="isRouteActive('/contact') ? 'mobile-tab-active' : ''"
+        @click="closeMenu"
       >
         <svg
           class="w-5 h-5"

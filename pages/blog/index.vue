@@ -6,42 +6,42 @@
       <div class="absolute inset-0 overflow-hidden pointer-events-none">
         <div
           class="absolute left-32 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-blue-400/20 to-transparent animate-pulse-slow"
-        ></div>
+        />
         <div
           class="absolute left-64 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-purple-400/15 to-transparent animate-pulse-medium"
-        ></div>
+        />
         <div
           class="absolute right-32 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-indigo-400/20 to-transparent animate-pulse-slow"
-        ></div>
+        />
         <div
           class="absolute right-64 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-pink-400/15 to-transparent animate-pulse-medium"
-        ></div>
+        />
         <div
           class="absolute top-32 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-400/15 to-transparent animate-pulse-slow"
-        ></div>
+        />
         <div
           class="absolute top-64 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-400/20 to-transparent animate-pulse-medium"
-        ></div>
+        />
         <!-- Floating dots -->
         <div
           class="absolute top-48 left-36 w-2 h-2 bg-blue-500/40 rounded-full animate-float-1"
-        ></div>
+        />
         <div
           class="absolute top-72 right-48 w-2 h-2 bg-purple-500/40 rounded-full animate-float-2"
-        ></div>
+        />
         <div
           class="absolute bottom-48 left-72 w-2 h-2 bg-indigo-500/40 rounded-full animate-float-3"
-        ></div>
+        />
         <div
           class="absolute bottom-72 right-36 w-2 h-2 bg-pink-500/40 rounded-full animate-float-4"
-        ></div>
+        />
       </div>
 
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
         <div class="text-center mb-6">
           <div
             class="w-16 h-1 bg-gradient-to-r from-[#3533cd] to-[#E56F8C] rounded-full mx-auto mb-6"
-          ></div>
+          />
           <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
             <span class="text-gray-900">Our</span>
             <span
@@ -66,28 +66,28 @@
               <span
                 v-if="pending"
                 class="inline-block w-12 h-8 bg-gray-200 rounded animate-pulse"
-              ></span>
+              />
               <span v-else>{{ blogs.length }}+</span>
             </div>
             <div class="text-sm text-gray-500 mt-1">Articles</div>
           </div>
-          <div class="w-px h-12 bg-gray-200 self-center hidden sm:block"></div>
+          <div class="w-px h-12 bg-gray-200 self-center hidden sm:block"/>
           <div class="text-center">
             <div class="text-3xl font-bold text-[#3533cd]">
               <span
                 v-if="pending"
                 class="inline-block w-10 h-8 bg-gray-200 rounded animate-pulse"
-              ></span>
+              />
               <span v-else>{{ categories.length }}+</span>
             </div>
             <div class="text-sm text-gray-500 mt-1">Categories</div>
           </div>
-          <div class="w-px h-12 bg-gray-200 self-center hidden sm:block"></div>
+          <div class="w-px h-12 bg-gray-200 self-center hidden sm:block"/>
           <div class="text-center">
             <div class="text-3xl font-bold text-[#3533cd]">5K+</div>
             <div class="text-sm text-gray-500 mt-1">Monthly Readers</div>
           </div>
-          <div class="w-px h-12 bg-gray-200 self-center hidden sm:block"></div>
+          <div class="w-px h-12 bg-gray-200 self-center hidden sm:block"/>
           <div class="text-center">
             <div class="text-3xl font-bold text-[#3533cd]">Weekly</div>
             <div class="text-sm text-gray-500 mt-1">New Posts</div>
@@ -104,30 +104,30 @@
         <div v-if="pending" class="flex justify-center">
           <div
             class="animate-spin rounded-full h-6 w-6 border-b-2 border-[#3533cd]"
-          ></div>
+          />
         </div>
         <div v-else class="flex flex-wrap justify-center gap-3">
           <button
-            @click="selectedCategory = null"
             :class="[
               'px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300',
               selectedCategory === null
                 ? 'bg-gradient-to-r from-[#3533cd] to-[#1e1b69] text-white shadow-md'
                 : 'bg-gray-100 text-gray-600 hover:bg-gray-200',
             ]"
+            @click="selectedCategory = null"
           >
             All Posts
           </button>
           <button
             v-for="category in categories"
             :key="category"
-            @click="selectedCategory = category"
             :class="[
               'px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300',
               selectedCategory === category
                 ? 'bg-gradient-to-r from-[#3533cd] to-[#1e1b69] text-white shadow-md'
                 : 'bg-gray-100 text-gray-600 hover:bg-gray-200',
             ]"
+            @click="selectedCategory = category"
           >
             {{ category }}
           </button>
@@ -145,11 +145,11 @@
         >
           <div v-for="i in 6" :key="i" class="animate-pulse">
             <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
-              <div class="h-48 bg-gray-300"></div>
+              <div class="h-48 bg-gray-300"/>
               <div class="p-6">
-                <div class="h-4 bg-gray-300 rounded mb-2"></div>
-                <div class="h-4 bg-gray-300 rounded w-3/4 mb-4"></div>
-                <div class="h-3 bg-gray-300 rounded w-1/2"></div>
+                <div class="h-4 bg-gray-300 rounded mb-2"/>
+                <div class="h-4 bg-gray-300 rounded w-3/4 mb-4"/>
+                <div class="h-3 bg-gray-300 rounded w-1/2"/>
               </div>
             </div>
           </div>
@@ -159,8 +159,8 @@
         <div v-else-if="error" class="text-center py-20">
           <div class="text-red-500 text-lg mb-4">{{ error }}</div>
           <button
-            @click="refresh()"
             class="px-6 py-3 bg-[#3533cd] text-white rounded-lg hover:bg-[#1e1b69] transition-colors"
+            @click="refresh()"
           >
             Try Again
           </button>
@@ -198,18 +198,17 @@
                 :src="
                   blog.featured_image ||
                   blog.featuredImage ||
-                  'https://picsum.photos/800/400?random=' + blog.id
+                  `/images/blogs/${((blog.id ?? index + 1) % 3) + 1}.png`
                 "
                 :alt="blog.title"
                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 @error="
-                  $event.target.src =
-                    'https://picsum.photos/800/400?random=' + blog.id
+                  $event.target.src = `/images/blogs/${((blog.id ?? index + 1) % 3) + 1}.png`
                 "
-              />
+              >
               <div
                 class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              ></div>
+              />
             </div>
 
             <!-- Blog Content -->
@@ -357,7 +356,7 @@
                       stroke-linejoin="round"
                       stroke-width="2"
                       d="M9 5l7 7-7 7"
-                    ></path>
+                    />
                   </svg>
                 </div>
               </div>

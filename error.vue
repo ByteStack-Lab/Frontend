@@ -6,13 +6,13 @@
     <div class="absolute inset-0 overflow-hidden pointer-events-none">
       <div
         class="absolute left-32 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-blue-400/20 to-transparent"
-      ></div>
+      />
       <div
         class="absolute right-32 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-purple-400/15 to-transparent"
-      ></div>
+      />
       <div
         class="absolute top-32 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-400/15 to-transparent"
-      ></div>
+      />
     </div>
 
     <div class="relative text-center max-w-xl mx-auto">
@@ -22,7 +22,7 @@
           srcset="/images/bytestacklab-180x48.png 1x, /images/bytestacklab360x96.png 2x"
           alt="ByteStackLab"
           class="h-10 mx-auto"
-        />
+        >
       </NuxtLink>
 
       <div

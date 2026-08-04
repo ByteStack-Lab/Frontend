@@ -9,93 +9,93 @@
         <!-- Vertical Grid Lines -->
         <div
           class="absolute left-32 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-blue-400/30 to-transparent animate-pulse-slow"
-        ></div>
+        />
         <div
           class="absolute left-64 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-purple-400/20 to-transparent animate-pulse-medium"
-        ></div>
+        />
         <div
           class="absolute left-96 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-green-400/25 to-transparent animate-pulse-fast"
-        ></div>
+        />
         <div
           class="absolute right-32 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-indigo-400/30 to-transparent animate-pulse-slow"
-        ></div>
+        />
         <div
           class="absolute right-64 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-pink-400/20 to-transparent animate-pulse-medium"
-        ></div>
+        />
         <div
           class="absolute right-96 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-cyan-400/25 to-transparent animate-pulse-fast"
-        ></div>
+        />
 
         <!-- Horizontal Grid Lines -->
         <div
           class="absolute top-32 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-400/20 to-transparent animate-pulse-slow"
-        ></div>
+        />
         <div
           class="absolute top-64 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-400/30 to-transparent animate-pulse-medium"
-        ></div>
+        />
         <div
           class="absolute top-96 left-0 right-0 h-px bg-gradient-to-r from-transparent via-green-400/25 to-transparent animate-pulse-fast"
-        ></div>
+        />
         <div
           class="absolute bottom-32 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-400/20 to-transparent animate-pulse-slow"
-        ></div>
+        />
         <div
           class="absolute bottom-64 left-0 right-0 h-px bg-gradient-to-r from-transparent via-pink-400/30 to-transparent animate-pulse-medium"
-        ></div>
+        />
         <div
           class="absolute bottom-96 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-400/25 to-transparent animate-pulse-fast"
-        ></div>
+        />
 
         <!-- Diagonal Matrix Lines -->
         <div
           class="absolute top-20 left-20 w-64 h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent rotate-45 animate-glow-slow"
-        ></div>
+        />
         <div
           class="absolute top-40 right-20 w-48 h-px bg-gradient-to-r from-transparent via-purple-500/30 to-transparent -rotate-45 animate-glow-medium"
-        ></div>
+        />
         <div
           class="absolute bottom-20 left-40 w-56 h-px bg-gradient-to-r from-transparent via-green-500/35 to-transparent rotate-12 animate-glow-fast"
-        ></div>
+        />
         <div
           class="absolute bottom-40 right-40 w-40 h-px bg-gradient-to-r from-transparent via-indigo-500/40 to-transparent -rotate-12 animate-glow-slow"
-        ></div>
+        />
 
         <!-- Moving Data Points -->
         <div
           class="absolute top-48 left-36 w-1 h-1 bg-blue-500 rounded-full animate-data-flow-1"
-        ></div>
+        />
         <div
           class="absolute top-72 right-48 w-1 h-1 bg-purple-500 rounded-full animate-data-flow-2"
-        ></div>
+        />
         <div
           class="absolute bottom-48 left-72 w-1 h-1 bg-green-500 rounded-full animate-data-flow-3"
-        ></div>
+        />
         <div
           class="absolute bottom-72 right-36 w-1 h-1 bg-indigo-500 rounded-full animate-data-flow-4"
-        ></div>
+        />
         <div
           class="absolute top-60 left-80 w-1 h-1 bg-cyan-500 rounded-full animate-data-flow-5"
-        ></div>
+        />
         <div
           class="absolute bottom-60 right-80 w-1 h-1 bg-pink-500 rounded-full animate-data-flow-6"
-        ></div>
+        />
 
         <!-- Connection Nodes -->
         <div
           class="absolute top-36 left-68 w-2 h-2 bg-blue-400 rounded-full animate-node-pulse opacity-60"
-        ></div>
+        />
         <div
           class="absolute top-68 right-72 w-2 h-2 bg-purple-400 rounded-full animate-node-pulse opacity-50"
           style="animation-delay: 0.5s"
-        ></div>
+        />
         <div
           class="absolute bottom-36 left-88 w-2 h-2 bg-green-400 rounded-full animate-node-pulse opacity-70"
           style="animation-delay: 1s"
-        ></div>
+        />
         <div
           class="absolute bottom-68 right-56 w-2 h-2 bg-indigo-400 rounded-full animate-node-pulse opacity-55"
           style="animation-delay: 1.5s"
-        ></div>
+        />
       </div>
     </div>
 
@@ -117,7 +117,7 @@
             <h1
               class="text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-gray-900"
             >
-              <span class="text-black">Transform Business</span><br />
+              <span class="text-black">Transform Business</span><br >
               <span
                 class="bg-gradient-to-r from-purple-600 via-blue-500 to-purple-600 bg-clip-text text-transparent"
               >
@@ -154,13 +154,13 @@
                   stroke-linejoin="round"
                   stroke-width="2"
                   d="M17 8l4 4m0 0l-4 4m4-4H3"
-                ></path>
+                />
               </svg>
             </NuxtLink>
 
             <button
-              @click="openVideoModal"
               class="flex items-center justify-center text-gray-700 font-medium text-base hover:text-purple-600 transition-colors duration-300 animate-gentle-blink"
+              @click="openVideoModal"
             >
               <div
                 class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center animate-pulse-gentle"
@@ -199,8 +199,8 @@
       >
         <!-- Close Button -->
         <button
-          @click="closeVideoModal"
           class="absolute -top-4 -right-4 w-14 h-14 bg-white rounded-full shadow-2xl flex items-center justify-center text-gray-700 hover:text-red-500 hover:bg-red-50 transition-all duration-300 z-20 border-4 border-white ring-4 ring-purple-500/40 hover:ring-red-500/50"
+          @click="closeVideoModal"
         >
           <svg
             class="w-6 h-6"
@@ -237,7 +237,7 @@
                 picture-in-picture;
               "
               allowfullscreen
-            ></iframe>
+            />
           </div>
         </div>
       </div>

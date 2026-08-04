@@ -7,40 +7,40 @@
         <!-- Matrix-style Grid Lines -->
         <div
           class="absolute left-32 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-blue-400/20 to-transparent animate-pulse-slow"
-        ></div>
+        />
         <div
           class="absolute left-64 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-purple-400/15 to-transparent animate-pulse-medium"
-        ></div>
+        />
         <div
           class="absolute right-32 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-indigo-400/20 to-transparent animate-pulse-slow"
-        ></div>
+        />
         <div
           class="absolute right-64 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-pink-400/15 to-transparent animate-pulse-medium"
-        ></div>
+        />
 
         <div
           class="absolute top-32 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-400/15 to-transparent animate-pulse-slow"
-        ></div>
+        />
         <div
           class="absolute top-64 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-400/20 to-transparent animate-pulse-medium"
-        ></div>
+        />
         <div
           class="absolute bottom-32 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-400/15 to-transparent animate-pulse-slow"
-        ></div>
+        />
 
         <!-- Moving Data Points -->
         <div
           class="absolute top-48 left-36 w-1 h-1 bg-blue-500 rounded-full animate-data-flow-1"
-        ></div>
+        />
         <div
           class="absolute top-72 right-48 w-1 h-1 bg-purple-500 rounded-full animate-data-flow-2"
-        ></div>
+        />
         <div
           class="absolute bottom-48 left-72 w-1 h-1 bg-green-500 rounded-full animate-data-flow-3"
-        ></div>
+        />
         <div
           class="absolute bottom-72 right-36 w-1 h-1 bg-indigo-500 rounded-full animate-data-flow-4"
-        ></div>
+        />
       </div>
 
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
@@ -48,7 +48,7 @@
           <!-- Decorative Line -->
           <div
             class="w-16 h-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full mx-auto mb-4"
-          ></div>
+          />
 
           <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
             <span class="text-gray-900">About</span>
@@ -77,13 +77,13 @@
           <div class="space-y-6">
             <div
               class="w-16 h-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full"
-            ></div>
+            />
 
             <div class="space-y-6">
               <h2
                 class="text-3xl lg:text-4xl font-bold text-gray-900 leading-tight"
               >
-                Our Journey of <br />
+                Our Journey of <br >
                 <span
                   class="bg-gradient-to-r from-[#3533cd] via-[#6675F7] to-[#1e1b69] bg-clip-text text-transparent"
                   >Digital Excellence</span
@@ -123,10 +123,10 @@
                 src="/images/about-us.jpg"
                 alt="Our team at work"
                 class="w-full h-auto object-cover"
-              />
+              >
               <div
                 class="absolute inset-0 bg-gradient-to-tr from-purple-600/20 to-blue-600/20"
-              ></div>
+              />
             </div>
 
             <!-- Floating Stats -->
@@ -162,7 +162,7 @@
         <div class="text-center mb-10">
           <div
             class="w-16 h-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full mx-auto mb-4"
-          ></div>
+          />
           <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
             Our Mission &
             <span
@@ -255,7 +255,7 @@
         <div class="text-center mb-10">
           <div
             class="w-16 h-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full mx-auto mb-4"
-          ></div>
+          />
           <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
             Our Core
             <span
@@ -396,7 +396,7 @@
         <div class="text-center mb-12">
           <div
             class="w-16 h-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full mx-auto mb-4"
-          ></div>
+          />
           <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
             How We're
             <span
@@ -622,7 +622,7 @@
           <div>
             <div
               class="w-16 h-1 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full mb-4"
-            ></div>
+            />
             <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-1">
               <span class="text-gray-900">Meet</span>
               <span
@@ -637,8 +637,8 @@
           <!-- Right: Navigation Arrows -->
           <div class="flex space-x-4">
             <button
-              @click="prevSlide"
               class="w-12 h-12 rounded-full border-2 border-[#3533cd] text-[#3533cd] flex items-center justify-center hover:bg-[#3533cd] hover:text-white transition-all duration-300 cursor-pointer"
+              @click="prevSlide"
             >
               <svg
                 class="w-5 h-5"
@@ -656,8 +656,8 @@
             </button>
 
             <button
-              @click="nextSlide"
               class="w-12 h-12 rounded-full bg-[#3533cd] text-white flex items-center justify-center hover:bg-[#1e1b69] transition-all duration-300 cursor-pointer"
+              @click="nextSlide"
             >
               <svg
                 class="w-5 h-5"
@@ -683,7 +683,7 @@
         >
           <div
             class="animate-spin rounded-full h-12 w-12 border-b-2 border-[#3533cd]"
-          ></div>
+          />
         </div>
 
         <!-- Error State -->
@@ -692,8 +692,8 @@
             Failed to load partners. Please try again later.
           </p>
           <button
-            @click="refreshPartners()"
             class="px-4 py-2 bg-[#3533cd] text-white rounded-lg hover:bg-[#1e1b69] transition-colors"
+            @click="refreshPartners()"
           >
             Retry
           </button>
@@ -726,7 +726,7 @@
                     :src="partner.logo"
                     :alt="partner.name"
                     class="h-12 lg:h-16 object-contain filter grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100"
-                  />
+                  >
                 </a>
                 <img
                   v-else
@@ -734,7 +734,7 @@
                   :alt="partner.name"
                   :title="partner.name"
                   class="h-12 lg:h-16 object-contain filter grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100"
-                />
+                >
               </div>
             </div>
           </Transition>
@@ -754,7 +754,7 @@
         <div class="text-center mb-12">
           <div
             class="w-16 h-1 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full mx-auto mb-6"
-          ></div>
+          />
           <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             Why Customers
             <span
@@ -773,7 +773,7 @@
           >
             <div
               class="animate-spin rounded-full h-12 w-12 border-b-2 border-[#3533cd]"
-            ></div>
+            />
           </div>
 
           <!-- Error State -->
@@ -790,8 +790,8 @@
           <div v-else-if="dynamicTestimonials.length > 0">
             <!-- Navigation Arrows -->
             <button
-              @click="prevTestimonial"
               class="absolute left-[-60px] top-1/2 transform -translate-y-1/2 w-12 h-12 rounded-full border-2 border-[#3533cd] text-[#3533cd] items-center justify-center hover:bg-[#3533cd] hover:text-white transition-all duration-300 z-30 hidden lg:flex"
+              @click="prevTestimonial"
             >
               <svg
                 class="w-5 h-5"
@@ -809,8 +809,8 @@
             </button>
 
             <button
-              @click="nextTestimonial"
               class="absolute right-[-60px] top-1/2 transform -translate-y-1/2 w-12 h-12 rounded-full bg-[#3533cd] text-white items-center justify-center hover:bg-[#1e1b69] transition-all duration-300 z-30 hidden lg:flex"
+              @click="nextTestimonial"
             >
               <svg
                 class="w-5 h-5"
@@ -860,8 +860,8 @@
               <div
                 v-for="(testimonial, index) in leftAvatars"
                 :key="'left-' + index"
-                @click="goToTestimonial(getLeftIndex(index))"
                 class="cursor-pointer transition-all duration-500 opacity-60 hover:opacity-80 flex items-center"
+                @click="goToTestimonial(getLeftIndex(index))"
               >
                 <img
                   :src="testimonial.image"
@@ -872,7 +872,7 @@
                       : 'w-16 h-16 lg:w-18 lg:h-18',
                   ]"
                   class="rounded-full object-cover border border-gray-200"
-                />
+                >
               </div>
 
               <!-- Center Avatar -->
@@ -881,15 +881,15 @@
                   :src="dynamicTestimonials[currentTestimonial].image"
                   :alt="dynamicTestimonials[currentTestimonial].name"
                   class="w-20 h-20 lg:w-24 lg:h-24 rounded-full object-cover border-3 border-[#3533cd]"
-                />
+                >
               </div>
 
               <!-- Right Avatars -->
               <div
                 v-for="(testimonial, index) in rightAvatars"
                 :key="'right-' + index"
-                @click="goToTestimonial(getRightIndex(index))"
                 class="cursor-pointer transition-all duration-500 opacity-60 hover:opacity-80 flex items-center"
+                @click="goToTestimonial(getRightIndex(index))"
               >
                 <img
                   :src="testimonial.image"
@@ -900,7 +900,7 @@
                       : 'w-16 h-16 lg:w-18 lg:h-18',
                   ]"
                   class="rounded-full object-cover border border-gray-200"
-                />
+                >
               </div>
             </div>
 
@@ -939,8 +939,8 @@
             <!-- Mobile Navigation -->
             <div class="flex justify-center space-x-4 mt-12 lg:hidden">
               <button
-                @click="prevTestimonial"
                 class="w-12 h-12 rounded-full border-2 border-[#3533cd] text-[#3533cd] flex items-center justify-center hover:bg-[#3533cd] hover:text-white transition-all duration-300"
+                @click="prevTestimonial"
               >
                 <svg
                   class="w-5 h-5"
@@ -958,8 +958,8 @@
               </button>
 
               <button
-                @click="nextTestimonial"
                 class="w-12 h-12 rounded-full bg-[#3533cd] text-white flex items-center justify-center hover:bg-[#1e1b69] transition-all duration-300"
+                @click="nextTestimonial"
               >
                 <svg
                   class="w-5 h-5"
@@ -996,13 +996,13 @@
           <div class="space-y-8">
             <div
               class="w-16 h-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full"
-            ></div>
+            />
 
             <div class="space-y-6">
               <h2
                 class="text-3xl lg:text-4xl font-bold text-gray-900 leading-tight"
               >
-                Why Choose <br />
+                Why Choose <br >
                 <span
                   class="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent"
                   >ByteStackLab?</span

@@ -3,7 +3,7 @@
     <!-- Loading State -->
     <div v-if="pending" class="flex items-center justify-center min-h-screen">
       <div class="text-center">
-        <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-[#3533cd]"></div>
+        <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-[#3533cd]"/>
         <p class="mt-4 text-gray-600">Loading case study details...</p>
       </div>
     </div>
@@ -28,9 +28,9 @@
       <section class="relative pt-28 pb-20 overflow-hidden" :style="{ backgroundColor: caseStudy.bgColor || '#f7f7fa' }">
         <!-- Animated Background -->
         <div class="absolute inset-0 overflow-hidden pointer-events-none">
-          <div class="absolute left-32 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-blue-400/20 to-transparent animate-pulse-slow"></div>
-          <div class="absolute right-32 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-purple-400/15 to-transparent animate-pulse-medium"></div>
-          <div class="absolute top-32 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-400/15 to-transparent animate-pulse-slow"></div>
+          <div class="absolute left-32 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-blue-400/20 to-transparent animate-pulse-slow"/>
+          <div class="absolute right-32 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-purple-400/15 to-transparent animate-pulse-medium"/>
+          <div class="absolute top-32 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-400/15 to-transparent animate-pulse-slow"/>
         </div>
 
         <div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
@@ -121,11 +121,11 @@
                     :alt="caseStudy.title" 
                     class="w-full h-96 object-cover"
                     @error="handleImageError"
-                  />
+                  >
                 </div>
                 <!-- Decorative elements -->
-                <div class="absolute -top-6 -right-6 w-24 h-24 bg-gradient-to-r from-[#3533cd]/20 to-[#1e1b69]/20 rounded-full blur-2xl"></div>
-                <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-gradient-to-r from-purple-400/20 to-pink-400/20 rounded-full blur-2xl"></div>
+                <div class="absolute -top-6 -right-6 w-24 h-24 bg-gradient-to-r from-[#3533cd]/20 to-[#1e1b69]/20 rounded-full blur-2xl"/>
+                <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-gradient-to-r from-purple-400/20 to-pink-400/20 rounded-full blur-2xl"/>
               </div>
               
               <!-- Fallback Visual -->
@@ -145,7 +145,7 @@
       <section class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
           <div class="text-center mb-12">
-            <div class="w-16 h-1 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full mx-auto mb-6"></div>
+            <div class="w-16 h-1 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full mx-auto mb-6"/>
             <h2 class="text-3xl font-bold text-gray-900 mb-4">Project Overview</h2>
             <p class="text-gray-600">Detailed insights into the project development and implementation</p>
           </div>
@@ -153,7 +153,7 @@
           <div class="grid lg:grid-cols-2 gap-12 items-start">
             <!-- Left Column - Project Description -->
             <div class="prose prose-lg max-w-none">
-              <div class="text-gray-600 leading-relaxed text-lg" v-html="caseStudy.detailedDescription || caseStudy.description"></div>
+              <div class="text-gray-600 leading-relaxed text-lg" v-html="sanitizeHtml(caseStudy.detailedDescription || caseStudy.description)"/>
             </div>
             
             <!-- Right Column - Gallery Images Slider -->
@@ -178,7 +178,7 @@
                       :alt="`${caseStudy.title} - Gallery Image ${currentImageIndex + 1}`"
                       class="w-full h-80 object-cover transition-all duration-500 gallery-main-image"
                       @error="handleImageError"
-                    />
+                    >
                     
                     <!-- Image Counter -->
                     <div class="absolute top-4 right-4 bg-black/50 text-white px-3 py-1 rounded-full text-sm backdrop-blur-sm">
@@ -188,8 +188,8 @@
                     <!-- Navigation Arrows -->
                     <button 
                       v-if="caseStudy.galleryImages.length > 1"
-                      @click="prevImage"
                       class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
+                      @click="prevImage"
                     >
                       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
@@ -198,8 +198,8 @@
                     
                     <button 
                       v-if="caseStudy.galleryImages.length > 1"
-                      @click="nextImage"
                       class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
+                      @click="nextImage"
                     >
                       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
@@ -212,26 +212,26 @@
                     <button
                       v-for="(image, index) in caseStudy.galleryImages"
                       :key="index"
-                      @click="currentImageIndex = index"
                       class="flex-shrink-0 relative overflow-hidden rounded-lg transition-all duration-300 gallery-thumbnail"
                       :class="[
                         currentImageIndex === index 
                           ? 'ring-2 ring-[#3533cd] ring-offset-2 opacity-100 active' 
                           : 'opacity-60 hover:opacity-80'
                       ]"
+                      @click="currentImageIndex = index"
                     >
                       <img 
                         :src="image" 
                         :alt="`Thumbnail ${index + 1}`"
                         class="w-20 h-16 object-cover"
                         @error="handleImageError"
-                      />
+                      >
                       <!-- Active overlay -->
                       <div 
                         v-if="currentImageIndex === index"
                         class="absolute inset-0 bg-[#3533cd]/20 flex items-center justify-center"
                       >
-                        <div class="w-2 h-2 bg-white rounded-full"></div>
+                        <div class="w-2 h-2 bg-white rounded-full"/>
                       </div>
                     </button>
                   </div>
@@ -241,14 +241,14 @@
                     <button
                       v-for="(image, index) in caseStudy.galleryImages"
                       :key="index"
-                      @click="currentImageIndex = index"
                       class="w-2 h-2 rounded-full transition-all duration-300"
                       :class="[
                         currentImageIndex === index 
                           ? 'bg-[#3533cd]' 
                           : 'bg-gray-300 hover:bg-gray-400'
                       ]"
-                    ></button>
+                      @click="currentImageIndex = index"
+                    />
                   </div>
                 </div>
               </div>
@@ -370,7 +370,7 @@
       <section v-if="relatedCaseStudies && relatedCaseStudies.length > 0" class="py-20" style="background-color: #f7f7fa;">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
           <div class="text-center mb-16">
-            <div class="w-16 h-1 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full mx-auto mb-6"></div>
+            <div class="w-16 h-1 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full mx-auto mb-6"/>
             <h2 class="text-3xl font-bold text-gray-900 mb-4">Related Case Studies</h2>
             <p class="text-gray-600">Explore more of our successful projects</p>
           </div>
@@ -386,7 +386,7 @@
                   :src="relatedCase.image" 
                   :alt="relatedCase.title"
                   class="w-full h-40 object-cover group-hover:scale-110 transition-transform duration-300"
-                />
+                >
               </div>
               
               <div v-else class="w-12 h-12 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">

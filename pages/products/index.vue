@@ -6,42 +6,42 @@
       <div class="absolute inset-0 overflow-hidden pointer-events-none">
         <div
           class="absolute left-32 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-blue-400/20 to-transparent animate-pulse-slow"
-        ></div>
+        />
         <div
           class="absolute left-64 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-purple-400/15 to-transparent animate-pulse-medium"
-        ></div>
+        />
         <div
           class="absolute right-32 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-indigo-400/20 to-transparent animate-pulse-slow"
-        ></div>
+        />
         <div
           class="absolute right-64 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-pink-400/15 to-transparent animate-pulse-medium"
-        ></div>
+        />
         <div
           class="absolute top-32 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-400/15 to-transparent animate-pulse-slow"
-        ></div>
+        />
         <div
           class="absolute top-64 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-400/20 to-transparent animate-pulse-medium"
-        ></div>
+        />
         <!-- Floating dots -->
         <div
           class="absolute top-48 left-36 w-2 h-2 bg-blue-500/40 rounded-full animate-float-1"
-        ></div>
+        />
         <div
           class="absolute top-72 right-48 w-2 h-2 bg-purple-500/40 rounded-full animate-float-2"
-        ></div>
+        />
         <div
           class="absolute bottom-48 left-72 w-2 h-2 bg-indigo-500/40 rounded-full animate-float-3"
-        ></div>
+        />
         <div
           class="absolute bottom-72 right-36 w-2 h-2 bg-pink-500/40 rounded-full animate-float-4"
-        ></div>
+        />
       </div>
 
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
         <div class="text-center mb-6">
           <div
             class="w-16 h-1 bg-gradient-to-r from-[#3533cd] to-[#E56F8C] rounded-full mx-auto mb-6"
-          ></div>
+          />
           <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
             <span class="text-gray-900">Our</span>
             <span
@@ -65,17 +65,17 @@
             <div class="text-3xl font-bold text-[#3533cd]">6+</div>
             <div class="text-sm text-gray-500 mt-1">Products</div>
           </div>
-          <div class="w-px h-12 bg-gray-200 self-center hidden sm:block"></div>
+          <div class="w-px h-12 bg-gray-200 self-center hidden sm:block"/>
           <div class="text-center">
             <div class="text-3xl font-bold text-[#3533cd]">100+</div>
             <div class="text-sm text-gray-500 mt-1">Active Users</div>
           </div>
-          <div class="w-px h-12 bg-gray-200 self-center hidden sm:block"></div>
+          <div class="w-px h-12 bg-gray-200 self-center hidden sm:block"/>
           <div class="text-center">
             <div class="text-3xl font-bold text-[#3533cd]">5+</div>
             <div class="text-sm text-gray-500 mt-1">Years Experience</div>
           </div>
-          <div class="w-px h-12 bg-gray-200 self-center hidden sm:block"></div>
+          <div class="w-px h-12 bg-gray-200 self-center hidden sm:block"/>
           <div class="text-center">
             <div class="text-3xl font-bold text-[#3533cd]">100%</div>
             <div class="text-sm text-gray-500 mt-1">Client Focused</div>
@@ -93,13 +93,13 @@
           <button
             v-for="tab in filterTabs"
             :key="tab.id"
-            @click="activeFilter = tab.id"
             :class="[
               'px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300',
               activeFilter === tab.id
                 ? 'bg-gradient-to-r from-[#3533cd] to-[#6675F7] text-white shadow-md'
                 : 'bg-gray-100 text-gray-600 hover:bg-gray-200',
             ]"
+            @click="activeFilter = tab.id"
           >
             {{ tab.label }}
           </button>
@@ -117,17 +117,17 @@
             :key="i"
             class="bg-white rounded-2xl shadow-card overflow-hidden animate-pulse"
           >
-            <div class="h-52 bg-gray-200"></div>
+            <div class="h-52 bg-gray-200"/>
             <div class="p-6">
-              <div class="h-6 bg-gray-200 rounded mb-4"></div>
-              <div class="h-4 bg-gray-100 rounded mb-4"></div>
+              <div class="h-6 bg-gray-200 rounded mb-4"/>
+              <div class="h-4 bg-gray-100 rounded mb-4"/>
               <div class="flex gap-2 mb-6">
-                <div class="h-8 w-16 bg-gray-100 rounded-full"></div>
-                <div class="h-8 w-16 bg-gray-100 rounded-full"></div>
+                <div class="h-8 w-16 bg-gray-100 rounded-full"/>
+                <div class="h-8 w-16 bg-gray-100 rounded-full"/>
               </div>
               <div
                 class="h-10 bg-gradient-to-r from-[#3533cd] to-[#6675F7] rounded-xl mb-3"
-              ></div>
+              />
             </div>
           </div>
         </div>
@@ -136,8 +136,8 @@
         <div v-else-if="error" class="text-center py-12">
           <div class="text-red-500 text-lg font-semibold mb-4">{{ error }}</div>
           <button
-            @click="fetchProducts"
             class="bg-gradient-to-r from-[#3533cd] to-[#6675F7] text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300"
+            @click="fetchProducts"
           >
             Try Again
           </button>

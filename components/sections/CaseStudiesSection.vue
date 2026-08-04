@@ -1,7 +1,7 @@
 <template>
   <section
-    ref="elementRef"
     id="case-studies"
+    ref="elementRef"
     class="py-14 md:py-20 lg:py-16 transition-all duration-1000 ease-out"
     :class="{
       'opacity-0 translate-y-20': !isVisible,
@@ -14,7 +14,7 @@
       <div class="text-center mb-16">
         <div
           class="w-16 h-1 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full mx-auto mb-6"
-        ></div>
+        />
         <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
           Our Recent
         </h2>
@@ -34,7 +34,7 @@
       <div v-if="pending" class="flex justify-center items-center py-12">
         <div
           class="animate-spin rounded-full h-12 w-12 border-b-2 border-[#3533cd]"
-        ></div>
+        />
       </div>
 
       <!-- Error State -->
@@ -67,7 +67,7 @@
                   :src="caseStudy.image || '/images/case-study-placeholder.png'"
                   :alt="caseStudy.title"
                   class="w-full h-auto rounded-2xl shadow-lg"
-                />
+                >
               </div>
             </div>
 

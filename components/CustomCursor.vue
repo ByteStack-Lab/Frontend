@@ -4,8 +4,8 @@
     class="custom-cursor"
     :class="{ 'cursor-hover': isHovering }"
   >
-    <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
+    <div class="cursor-dot"/>
+    <div class="cursor-outline"/>
   </div>
 </template>
 

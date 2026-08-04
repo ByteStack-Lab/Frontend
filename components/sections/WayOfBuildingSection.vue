@@ -5,7 +5,7 @@
       <div class="text-center mb-20">
         <div
           class="w-16 h-1 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full mx-auto mb-6"
-        ></div>
+        />
         <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-2">
           Our Approach To Building
         </h2>
@@ -58,7 +58,7 @@
                     src="/images/leaders/SteveJobs.png"
                     alt="Steve Jobs"
                     class="w-full h-full object-cover"
-                  />
+                  >
                 </div>
                 <div>
                   <div class="font-semibold text-gray-900">Steve Jobs</div>
@@ -77,14 +77,14 @@
                 src="/images/how-to-build/1.png"
                 alt="Team collaboration in office"
                 class="w-full h-auto rounded-2xl shadow-lg"
-              />
+              >
               <!-- Decorative elements -->
               <div
                 class="absolute -top-6 -left-6 w-16 h-16 bg-yellow-400 rounded-full opacity-80"
-              ></div>
+              />
               <div
                 class="absolute -bottom-4 -right-4 w-12 h-12 bg-blue-500 rounded-full opacity-60"
-              ></div>
+              />
             </div>
           </div>
         </div>
@@ -98,14 +98,14 @@
                 src="/images/how-to-build/2.png"
                 alt="Developers working together"
                 class="w-full h-auto rounded-2xl shadow-lg"
-              />
+              >
               <!-- Decorative elements -->
               <div
                 class="absolute -top-4 -right-6 w-14 h-14 bg-[#3533cd] rounded-full opacity-70"
-              ></div>
+              />
               <div
                 class="absolute -bottom-6 -left-4 w-20 h-8 bg-yellow-300 rounded-full opacity-50"
-              ></div>
+              />
             </div>
           </div>
 
@@ -143,7 +143,7 @@
                     src="/images/leaders/Mark_Zuckerberg.jpg"
                     alt="Mark Zuckerberg"
                     class="w-full h-full object-cover"
-                  />
+                  >
                 </div>
                 <div>
                   <div class="font-semibold text-gray-900">Mark Zuckerberg</div>
@@ -193,7 +193,7 @@
                     src="/images/leaders/HalAbelson.jpg"
                     alt="Harold Abelson"
                     class="w-full h-full object-cover"
-                  />
+                  >
                 </div>
                 <div>
                   <div class="font-semibold text-gray-900">Harold Abelson</div>
@@ -212,14 +212,14 @@
                 src="/images/how-to-build/3.png"
                 alt="Team meeting and collaboration"
                 class="w-full h-auto rounded-2xl shadow-lg"
-              />
+              >
               <!-- Decorative elements -->
               <div
                 class="absolute -top-8 -right-8 w-18 h-18 bg-[#3533cd] rounded-full opacity-60"
-              ></div>
+              />
               <div
                 class="absolute -bottom-6 -left-6 w-16 h-6 bg-yellow-400 rounded-full opacity-70"
-              ></div>
+              />
             </div>
           </div>
         </div>

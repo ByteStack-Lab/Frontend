@@ -38,19 +38,19 @@
                   name="website"
                   tabindex="-1"
                   autocomplete="off"
-                />
+                >
               </div>
               <div class="flex flex-col sm:flex-row gap-4">
                 <input
+                  v-model="email"
                   type="email"
                   placeholder="Enter your email address"
-                  v-model="email"
                   class="flex-1 px-6 py-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#3533cd] focus:border-transparent text-lg bg-white"
-                />
+                >
                 <button
-                  @click="subscribe"
                   :disabled="!email || isLoading"
                   class="bg-gradient-to-r from-[#3533cd] to-[#1e1b69] hover:from-[#1e1b69] hover:to-[#0f0d3a] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+                  @click="subscribe"
                 >
                   <span v-if="!isLoading">Subscribe Now</span>
                   <span v-else class="flex items-center">
@@ -67,12 +67,12 @@
                         r="10"
                         stroke="currentColor"
                         stroke-width="4"
-                      ></circle>
+                      />
                       <path
                         class="opacity-75"
                         fill="currentColor"
                         d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                      ></path>
+                      />
                     </svg>
                     Subscribing...
                   </span>
@@ -103,9 +103,9 @@
           <!-- Right Content - CTA Button -->
           <div class="flex justify-center lg:justify-end relative">
             <button
-              @click="hireDevelopers"
               class="bg-gradient-to-r from-[#3533cd] to-[#1e1b69] hover:from-[#1e1b69] hover:to-[#0f0d3a] text-white px-12 py-6 rounded-xl font-semibold text-xl relative z-10 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg"
               style="animation: none !important"
+              @click="hireDevelopers"
             >
               <!-- Static Sun Ray Style Pipes positioned relative to button - Hidden on mobile only, visible on tablet and desktop -->
               <!-- Top 3 pipes - moved higher and mirrored opposite angles -->
@@ -114,13 +114,13 @@
               >
                 <div
                   class="sun-ray-pipe w-1.5 h-12 bg-[#3533cd] rounded-full absolute -left-8 -rotate-[30deg] opacity-90"
-                ></div>
+                />
                 <div
                   class="sun-ray-pipe w-1.5 h-14 bg-[#3533cd] rounded-full absolute left-0 -top-2 rotate-180 opacity-100"
-                ></div>
+                />
                 <div
                   class="sun-ray-pipe w-1.5 h-12 bg-[#3533cd] rounded-full absolute left-8 rotate-[30deg] opacity-90"
-                ></div>
+                />
               </div>
 
               <!-- Bottom 3 pipes starting from button center -->
@@ -129,13 +129,13 @@
               >
                 <div
                   class="sun-ray-pipe w-1.5 h-12 bg-[#3533cd] rounded-full absolute -left-8 rotate-[30deg] opacity-90"
-                ></div>
+                />
                 <div
                   class="sun-ray-pipe w-1.5 h-14 bg-[#3533cd] rounded-full absolute left-0 opacity-100"
-                ></div>
+                />
                 <div
                   class="sun-ray-pipe w-1.5 h-12 bg-[#3533cd] rounded-full absolute left-8 -rotate-[30deg] opacity-90"
-                ></div>
+                />
               </div>
 
               <!-- Button Text -->

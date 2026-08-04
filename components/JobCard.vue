@@ -71,7 +71,7 @@
       </p>
 
       <!-- Requirements -->
-      <div class="mb-4" v-if="job.requirements && job.requirements.length > 0">
+      <div v-if="job.requirements && job.requirements.length > 0" class="mb-4">
         <h4 class="text-sm font-semibold text-gray-800 mb-2">
           Key Requirements:
         </h4>

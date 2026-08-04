@@ -1,7 +1,7 @@
 <template>
   <section
-    ref="elementRef"
     id="tech-stack"
+    ref="elementRef"
     class="py-14 md:py-20 lg:py-16 bg-white transition-all duration-1000 ease-out"
     :class="{
       'opacity-0 translate-y-20': !isVisible,
@@ -13,7 +13,7 @@
       <div class="text-center mb-16">
         <div
           class="w-16 h-1 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full mx-auto mb-6"
-        ></div>
+        />
         <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-2">Our</h2>
         <h3 class="text-4xl lg:text-5xl font-bold text-gray-900">
           <span
@@ -28,19 +28,19 @@
         <button
           v-for="category in categories"
           :key="category.id"
-          @click="activeCategory = category.id"
           :class="[
             'px-6 py-3 font-medium text-lg transition-all duration-300 relative',
             activeCategory === category.id
               ? 'text-[#3533cd]'
               : 'text-gray-600 hover:text-gray-900',
           ]"
+          @click="activeCategory = category.id"
         >
           {{ category.name }}
           <div
             v-if="activeCategory === category.id"
             class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-8 h-0.5 bg-[#3533cd] transition-all duration-300"
-          ></div>
+          />
         </button>
       </div>
 
@@ -60,7 +60,7 @@
               :src="tech.logo"
               :alt="tech.name"
               class="h-16 w-auto object-contain group-hover:scale-125 transition-transform duration-500"
-            />
+            >
           </div>
         </div>
       </Transition>

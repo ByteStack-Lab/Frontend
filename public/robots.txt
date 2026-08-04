@@ -1,2 +1,4 @@
 User-Agent: *
 Disallow:
+
+Sitemap: https://bytestacklab.com/sitemap.xml

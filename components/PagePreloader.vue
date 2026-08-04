@@ -33,7 +33,7 @@
             </span>
             
             <!-- Enhanced shimmer overlay for visibility -->
-            <span class="absolute inset-0 bg-gradient-to-r from-transparent via-white/60 to-transparent transform -skew-x-12 animate-shimmer opacity-80"></span>
+            <span class="absolute inset-0 bg-gradient-to-r from-transparent via-white/60 to-transparent transform -skew-x-12 animate-shimmer opacity-80"/>
             
             <!-- Shadow/outline effect for better visibility -->
             <span class="absolute inset-0 text-[#3533cd]/30 font-extrabold transform translate-x-1 translate-y-1 animate-pulse-scale">
@@ -54,23 +54,23 @@
           
           <!-- Animated particles around text -->
           <div class="absolute inset-0 pointer-events-none">
-            <div class="absolute w-2 h-2 bg-[#3533cd] rounded-full animate-particle-1 opacity-80"></div>
-            <div class="absolute w-1.5 h-1.5 bg-[#1e1b69] rounded-full animate-particle-2 opacity-70"></div>
-            <div class="absolute w-1 h-1 bg-purple-500 rounded-full animate-particle-3 opacity-60"></div>
-            <div class="absolute w-1.5 h-1.5 bg-blue-500 rounded-full animate-particle-4 opacity-75"></div>
+            <div class="absolute w-2 h-2 bg-[#3533cd] rounded-full animate-particle-1 opacity-80"/>
+            <div class="absolute w-1.5 h-1.5 bg-[#1e1b69] rounded-full animate-particle-2 opacity-70"/>
+            <div class="absolute w-1 h-1 bg-purple-500 rounded-full animate-particle-3 opacity-60"/>
+            <div class="absolute w-1.5 h-1.5 bg-blue-500 rounded-full animate-particle-4 opacity-75"/>
           </div>
           
           <!-- Enhanced progress bar with better visibility -->
           <div class="w-full h-1 bg-gray-300 mx-auto mt-6 rounded-full overflow-hidden shadow-inner">
-            <div class="h-full bg-gradient-to-r from-[#3533cd] to-[#1e1b69] animate-progress-fill rounded-full shadow-sm"></div>
+            <div class="h-full bg-gradient-to-r from-[#3533cd] to-[#1e1b69] animate-progress-fill rounded-full shadow-sm"/>
           </div>
         </div>
         
         <!-- Loading dots -->
         <div class="flex justify-center space-x-2 mb-6">
-          <div class="w-3 h-3 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full animate-bounce-1"></div>
-          <div class="w-3 h-3 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full animate-bounce-2"></div>
-          <div class="w-3 h-3 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full animate-bounce-3"></div>
+          <div class="w-3 h-3 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full animate-bounce-1"/>
+          <div class="w-3 h-3 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full animate-bounce-2"/>
+          <div class="w-3 h-3 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full animate-bounce-3"/>
         </div>
         
         <!-- Loading text -->
@@ -85,7 +85,7 @@
             src="/images/Bytestack.svg" 
             alt="ByteStackLab Logo" 
             class="w-full h-full object-contain filter blur-[1px]"
-          />
+          >
         </div>
         
         <!-- Medium floating logo -->
@@ -94,7 +94,7 @@
             src="/images/Bytestack.svg" 
             alt="ByteStackLab Logo" 
             class="w-full h-full object-contain filter blur-[1px]"
-          />
+          >
         </div>
         
         <!-- Small floating logo -->
@@ -103,7 +103,7 @@
             src="/images/Bytestack.svg" 
             alt="ByteStackLab Logo" 
             class="w-full h-full object-contain filter blur-[0.5px]"
-          />
+          >
         </div>
         
         <!-- Extra small floating logos -->
@@ -112,7 +112,7 @@
             src="/images/Bytestack.svg" 
             alt="ByteStackLab Logo" 
             class="w-full h-full object-contain filter blur-[0.5px]"
-          />
+          >
         </div>
         
         <div class="absolute left-1/5 top-3/4 w-20 h-20 opacity-32 animate-logo-float-5">
@@ -120,7 +120,7 @@
             src="/images/Bytestack.svg" 
             alt="ByteStackLab Logo" 
             class="w-full h-full object-contain filter blur-[1px]"
-          />
+          >
         </div>
         
         <div class="absolute right-1/5 top-1/5 w-10 h-10 opacity-50 animate-logo-float-6">
@@ -128,7 +128,7 @@
             src="/images/Bytestack.svg" 
             alt="ByteStackLab Logo" 
             class="w-full h-full object-contain filter blur-[0.5px]"
-          />
+          >
         </div>
       </div>
     </div>

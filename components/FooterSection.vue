@@ -17,7 +17,7 @@
               "
               alt="ByteStackLab"
               class="h-10 w-auto"
-            />
+            >
           </div>
 
           <!-- Description -->
@@ -386,7 +386,7 @@
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"
                 class="w-full h-full"
-              ></iframe>
+              />
             </div>
           </div>
         </div>

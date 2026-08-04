@@ -5,7 +5,7 @@
       <div class="text-center">
         <div
           class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-[#3533cd]"
-        ></div>
+        />
         <p class="mt-4 text-gray-600">Loading service details...</p>
       </div>
     </div>
@@ -36,7 +36,7 @@
         <!-- Background -->
         <div
           class="absolute inset-0 bg-gradient-to-r from-[#3533cd]/10 to-[#1e1b69]/10"
-        ></div>
+        />
 
         <div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
           <!-- Breadcrumb -->
@@ -95,7 +95,7 @@
                       stroke-linejoin="round"
                       stroke-width="2"
                       d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"
-                    ></path>
+                    />
                   </svg>
                   <span class="font-semibold"
                     >Starting from {{ service.formatted_price }}</span
@@ -117,7 +117,7 @@
                       stroke-linejoin="round"
                       stroke-width="2"
                       d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                    ></path>
+                    />
                   </svg>
                   <span>{{ service.delivery_time }} days delivery</span>
                 </div>
@@ -148,10 +148,10 @@
                     :src="service.featured_image"
                     :alt="service.title"
                     class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
+                  >
                   <div
                     class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  ></div>
+                  />
                 </div>
 
                 <!-- Image Label -->
@@ -175,7 +175,7 @@
                     :src="service.icon"
                     :alt="service.title"
                     class="w-12 h-12"
-                  />
+                  >
                   <svg
                     v-else
                     class="w-12 h-12 text-white"
@@ -210,8 +210,8 @@
             <div class="lg:col-span-7">
               <div
                 class="prose prose-lg max-w-none"
-                v-html="service.description"
-              ></div>
+                v-html="sanitizeHtml(service.description)"
+              />
 
               <!-- Features -->
               <div
@@ -298,7 +298,7 @@
                           `${service.title} gallery image ${index + 1}`
                         "
                         class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-700"
-                      />
+                      >
                     </div>
 
                     <!-- Overlay -->
@@ -352,8 +352,8 @@
                   <!-- View All Button -->
                   <div v-if="service.gallery.length > 4" class="mt-6">
                     <button
-                      @click="openLightbox(0)"
                       class="w-full py-3 px-4 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] text-white rounded-lg font-medium hover:shadow-lg transition-all duration-300 text-center"
+                      @click="openLightbox(0)"
                     >
                       View All {{ service.gallery.length }} Images
                     </button>
@@ -397,8 +397,8 @@
         <div class="relative max-w-6xl max-h-full mx-4">
           <!-- Close Button -->
           <button
-            @click="closeLightbox"
             class="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors"
+            @click="closeLightbox"
           >
             <svg
               class="w-8 h-8"
@@ -418,8 +418,8 @@
           <!-- Navigation Arrows -->
           <button
             v-if="service.gallery && service.gallery.length > 1"
-            @click.stop="prevImage"
             class="absolute left-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 transition-colors"
+            @click.stop="prevImage"
           >
             <svg
               class="w-8 h-8"
@@ -438,8 +438,8 @@
 
           <button
             v-if="service.gallery && service.gallery.length > 1"
-            @click.stop="nextImage"
             class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 transition-colors"
+            @click.stop="nextImage"
           >
             <svg
               class="w-8 h-8"
@@ -465,7 +465,7 @@
             "
             class="max-w-full max-h-full object-contain rounded-lg"
             @click.stop
-          />
+          >
 
           <!-- Image Info -->
           <div
@@ -607,8 +607,8 @@
               class="border border-gray-200 rounded-lg"
             >
               <button
-                @click="toggleFaq(faq.id)"
                 class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
+                @click="toggleFaq(faq.id)"
               >
                 <span class="font-semibold text-gray-900">{{
                   faq.question
@@ -790,6 +790,14 @@ useHead(() => ({
         service.value?.short_description || "Professional digital services",
     },
   ],
+  script: service.value?.seo?.schema_markup
+    ? [
+        {
+          type: "application/ld+json",
+          innerHTML: JSON.stringify(service.value.seo.schema_markup),
+        },
+      ]
+    : [],
 }));
 </script>
 

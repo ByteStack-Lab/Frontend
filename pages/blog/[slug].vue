@@ -4,7 +4,7 @@
     <div v-if="pending" class="flex justify-center items-center min-h-screen">
       <div
         class="animate-spin rounded-full h-12 w-12 border-b-2 border-[#3533cd]"
-      ></div>
+      />
     </div>
 
     <!-- Error State -->
@@ -35,7 +35,7 @@
         <div
           class="h-full bg-gradient-to-r from-[#3533cd] via-[#6675F7] to-[#E56F8C] transition-all duration-150"
           :style="{ width: `${readingProgress}%` }"
-        ></div>
+        />
       </div>
 
       <!-- Hero Section -->
@@ -44,10 +44,10 @@
       >
         <div
           class="pointer-events-none absolute -top-24 -left-24 h-64 w-64 rounded-full bg-[#3533cd]/10 blur-3xl"
-        ></div>
+        />
         <div
           class="pointer-events-none absolute -bottom-24 right-0 h-72 w-72 rounded-full bg-[#E56F8C]/10 blur-3xl"
-        ></div>
+        />
         <div class="max-w-4xl mx-auto px-6 lg:px-8">
           <NuxtLink
             to="/blog"
@@ -310,7 +310,7 @@
               :src="blog.authorImage || '/images/leaders/leader1.jpg'"
               :alt="blog.authorName"
               class="h-12 w-12 rounded-full object-cover ring-2 ring-[#eeeeff]"
-            />
+            >
             <div class="ml-4">
               <p class="text-xs uppercase tracking-wide text-gray-500">
                 Written by
@@ -332,7 +332,7 @@
               :src="blog.featuredImage || '/images/blogs/1.png'"
               :alt="blog.title"
               class="w-full h-64 md:h-96 object-cover"
-            />
+            >
             <div
               class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent p-6 text-white"
             >
@@ -352,8 +352,8 @@
             <!-- Content -->
             <div
               class="prose prose-lg max-w-none mb-12"
-              v-html="blog.content"
-            ></div>
+              v-html="sanitizeHtml(blog.content)"
+            />
 
             <!-- Gallery Images -->
             <div
@@ -372,10 +372,10 @@
                     :src="image"
                     :alt="`Gallery image ${index + 1} for ${blog.title}`"
                     class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
+                  >
                   <div
                     class="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                  ></div>
+                  />
                 </div>
               </div>
             </div>
@@ -403,7 +403,7 @@
                 Share this article:
               </h4>
               <div class="flex flex-wrap items-center gap-3">
-                <button @click="shareToTwitter" class="share-action-btn">
+                <button class="share-action-btn" @click="shareToTwitter">
                   <svg
                     class="mr-2 h-4 w-4"
                     fill="currentColor"
@@ -416,7 +416,7 @@
                   Twitter
                 </button>
 
-                <button @click="shareToFacebook" class="share-action-btn">
+                <button class="share-action-btn" @click="shareToFacebook">
                   <svg
                     class="mr-2 h-4 w-4"
                     fill="currentColor"
@@ -429,7 +429,7 @@
                   Facebook
                 </button>
 
-                <button @click="shareToLinkedIn" class="share-action-btn">
+                <button class="share-action-btn" @click="shareToLinkedIn">
                   <svg
                     class="mr-2 h-4 w-4"
                     fill="currentColor"
@@ -442,7 +442,7 @@
                   LinkedIn
                 </button>
 
-                <button @click="copyArticleLink" class="share-action-btn">
+                <button class="share-action-btn" @click="copyArticleLink">
                   <svg
                     class="mr-2 h-4 w-4"
                     fill="none"
@@ -517,7 +517,7 @@
                   :src="relatedPost.featuredImage || '/images/blogs/1.png'"
                   :alt="relatedPost.title"
                   class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
+                >
               </div>
 
               <div class="p-6">
@@ -572,9 +572,9 @@
       <div class="relative max-w-4xl max-h-full p-4">
         <!-- Close Button -->
         <button
-          @click="closeLightbox"
           class="absolute right-4 top-4 z-10 rounded-full bg-black/35 p-2 text-white transition-colors hover:bg-black/60"
           aria-label="Close lightbox"
+          @click="closeLightbox"
         >
           <svg
             class="w-8 h-8"
@@ -594,9 +594,9 @@
         <!-- Previous Button -->
         <button
           v-if="currentImageIndex > 0"
-          @click.stop="previousImage"
           class="absolute left-4 top-1/2 z-10 -translate-y-1/2 transform rounded-full bg-black/35 p-2 text-white transition-colors hover:bg-black/60"
           aria-label="Previous image"
+          @click.stop="previousImage"
         >
           <svg
             class="w-8 h-8"
@@ -616,9 +616,9 @@
         <!-- Next Button -->
         <button
           v-if="currentImageIndex < blog.galleryImages.length - 1"
-          @click.stop="nextImage"
           class="absolute right-4 top-1/2 z-10 -translate-y-1/2 transform rounded-full bg-black/35 p-2 text-white transition-colors hover:bg-black/60"
           aria-label="Next image"
+          @click.stop="nextImage"
         >
           <svg
             class="w-8 h-8"
@@ -641,7 +641,7 @@
           :alt="`Gallery image ${currentImageIndex + 1} for ${blog.title}`"
           class="max-w-full max-h-full object-contain rounded-lg"
           @click.stop
-        />
+        >
 
         <!-- Image Counter -->
         <div
@@ -710,6 +710,14 @@ useHead(() => ({
     { property: "og:image", content: blog.value?.featuredImage || "" },
     { property: "og:type", content: "article" },
   ],
+  script: blog.value?.schemaMarkup
+    ? [
+        {
+          type: "application/ld+json",
+          innerHTML: JSON.stringify(blog.value.schemaMarkup),
+        },
+      ]
+    : [],
 }));
 
 const updateReadingProgress = () => {
