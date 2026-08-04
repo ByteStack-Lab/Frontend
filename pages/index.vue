@@ -73,6 +73,25 @@ import NewsletterSection from '~/components/sections/NewsletterSection.vue'
 definePageMeta({
   title: 'Home'
 })
+
+// SEO
+useHead({
+  title: 'ByteStackLab | AI-Powered Software Development Company',
+  meta: [
+    {
+      name: 'description',
+      content: 'ByteStackLab builds AI-powered, scalable software — intelligent automation systems, SaaS platforms, and complex enterprise web and mobile applications for businesses worldwide.'
+    },
+    { property: 'og:title', content: 'ByteStackLab | AI-Powered Software Development Company' },
+    {
+      property: 'og:description',
+      content: 'AI automation, SaaS products, and enterprise web/mobile apps built by ByteStackLab.'
+    },
+    { property: 'og:image', content: 'https://bytestacklab.com/images/hero-image.png' },
+    { property: 'og:type', content: 'website' },
+    { name: 'twitter:card', content: 'summary_large_image' }
+  ]
+})
 </script>
 
 <style scoped>

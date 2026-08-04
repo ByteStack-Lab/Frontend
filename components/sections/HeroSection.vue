@@ -102,10 +102,10 @@
     <!-- Container Div -->
     <div class="max-w-7xl mx-auto px-6 lg:px-8 py-5 md:py-12 lg:py-10">
       <div
-        class="grid md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12 items-center"
+        class="grid md:grid-cols-2 gap-8 lg:gap-10 items-center"
       >
-        <!-- Left Content - Takes 3 columns (60%) -->
-        <div class="md:col-span-1 lg:col-span-3 space-y-8 pr-4 lg:pr-8">
+        <!-- Left Content - 50% -->
+        <div class="space-y-8">
           <!-- Small Text Above -->
           <div class="space-y-6">
             <p
@@ -177,18 +177,10 @@
           </div>
         </div>
 
-        <!-- Right Content - Hero Animation - Takes 2 columns (40%) -->
-        <div class="hidden md:block md:col-span-1 lg:col-span-2 relative">
-          <div class="relative z-10">
-            <!-- Simple Tech Stack Animation -->
-            <div class="w-full max-w-lg mx-auto">
-              <img
-                src="/images/hero-animation.gif"
-                alt="Tech Stack Animation"
-                class="w-full h-auto object-contain"
-                loading="eager"
-              />
-            </div>
+        <!-- Right Content - Hero Terminal - 50% -->
+        <div class="hidden md:flex items-center justify-stretch relative">
+          <div class="relative z-10 w-[calc(100%-10px)] ml-auto">
+            <HeroTerminal />
           </div>
         </div>
       </div>
@@ -255,6 +247,7 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
+import HeroTerminal from '~/components/HeroTerminal.vue';
 
 // Video modal state
 const showVideoModal = ref(false);

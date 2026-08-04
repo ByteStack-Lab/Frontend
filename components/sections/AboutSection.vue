@@ -268,9 +268,7 @@ onUnmounted(() => {
 });
 
 // Image load handling
-const handleImageLoad = () => {
-  console.log("Video thumbnail image loaded successfully");
-};
+const handleImageLoad = () => {};
 
 // Image error handling
 const handleImageError = (event) => {

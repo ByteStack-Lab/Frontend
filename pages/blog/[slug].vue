@@ -118,8 +118,8 @@
           <div class="mb-6 flex flex-wrap items-center gap-3">
             <!-- Categories -->
             <div class="flex flex-wrap gap-2">
+              <template v-if="blog.categories && blog.categories.length">
               <span
-                v-if="blog.categories && blog.categories.length"
                 v-for="category in blog.categories"
                 :key="category.id || category"
                 class="flex items-center gap-1.5 rounded-full border border-[#d9d9ff] bg-[#eeeeff] px-3 py-1 text-sm font-semibold text-[#3533cd]"
@@ -204,6 +204,7 @@
                 </svg>
                 {{ category.name || category }}
               </span>
+              </template>
               <!-- Fallback to single category if categories array is not available -->
               <span
                 v-else-if="blog.category"
@@ -657,20 +658,59 @@
 const route = useRoute();
 const slug = route.params.slug;
 
-// Reactive data
-const blog = ref(null);
-const relatedBlogs = ref([]);
-const pending = ref(true);
-const error = ref(null);
-
 // Lightbox state
 const showLightbox = ref(false);
 const currentImageIndex = ref(0);
 const readingProgress = ref(0);
 const copyLinkLabel = ref("Copy Link");
 
-// Get API composable
-const { getBlog, getRelatedBlogs } = useApi();
+// Server-side data fetching for SSR/SEO
+const {
+  data: blog,
+  pending,
+  error,
+} = await useLazyAsyncData(`blog-${slug}`, () => {
+  const { getBlog } = useApi();
+  return getBlog(slug);
+});
+
+// Correct HTTP status for crawlers/SEO, while keeping this page's own
+// "Blog Post Not Found" UI (below) instead of redirecting to a generic error page
+if (import.meta.server && (!blog.value || error.value)) {
+  setResponseStatus(404);
+}
+
+// Related posts — fetched separately so a failure here doesn't break the page
+const { data: relatedBlogs } = await useLazyAsyncData(
+  `blog-${slug}-related`,
+  async () => {
+    const { getRelatedBlogs } = useApi();
+    try {
+      return await getRelatedBlogs(slug);
+    } catch (relatedError) {
+      console.warn("Failed to fetch related blogs:", relatedError);
+      return [];
+    }
+  },
+  { default: () => [] },
+);
+
+// Dynamic SEO meta tags
+useHead(() => ({
+  title: blog.value
+    ? `${blog.value.title} | ByteStackLab Blog`
+    : "Blog | ByteStackLab",
+  meta: [
+    {
+      name: "description",
+      content: blog.value?.metaDescription || blog.value?.excerpt || "",
+    },
+    { property: "og:title", content: blog.value?.title || "" },
+    { property: "og:description", content: blog.value?.excerpt || "" },
+    { property: "og:image", content: blog.value?.featuredImage || "" },
+    { property: "og:type", content: "article" },
+  ],
+}));
 
 const updateReadingProgress = () => {
   const doc = document.documentElement;
@@ -679,44 +719,8 @@ const updateReadingProgress = () => {
   readingProgress.value = Math.min(100, Math.max(0, progress));
 };
 
-// Fetch blog data on component mount
-onMounted(async () => {
-  try {
-    // Fetch blog data
-    const blogData = await getBlog(slug);
-    blog.value = blogData;
-
-    // Set SEO meta tags
-    useHead({
-      title: `${blog.value.title} | ByteStackLab Blog`,
-      meta: [
-        {
-          name: "description",
-          content: blog.value.metaDescription || blog.value.excerpt,
-        },
-        { property: "og:title", content: blog.value.title },
-        { property: "og:description", content: blog.value.excerpt },
-        { property: "og:image", content: blog.value.featuredImage || "" },
-        { property: "og:type", content: "article" },
-      ],
-    });
-
-    // Fetch related posts (don't fail if this fails)
-    try {
-      const relatedData = await getRelatedBlogs(slug);
-      relatedBlogs.value = relatedData;
-    } catch (relatedError) {
-      console.warn("Failed to fetch related blogs:", relatedError);
-    }
-
-    pending.value = false;
-  } catch (err) {
-    console.error("Error fetching blog:", err);
-    error.value = err;
-    pending.value = false;
-  }
-
-  // Add keyboard listeners for lightbox
+// Add keyboard/scroll listeners for lightbox + reading progress (client-only)
+onMounted(() => {
   document.addEventListener("keydown", handleKeydown);
   window.addEventListener("scroll", updateReadingProgress, { passive: true });
   updateReadingProgress();

@@ -1334,7 +1334,7 @@ const {
   pending: partnersPending,
   error: partnersError,
   refresh: refreshPartners,
-} = await useLazyAsyncData("partners", () => {
+} = await useLazyAsyncData("about-partners", () => {
   const { getPartners } = useApi();
   return getPartners();
 });
@@ -1405,7 +1405,7 @@ const dynamicTestimonials = computed(() => {
 const currentSlide = ref(0);
 
 const itemsPerPage = computed(() => {
-  if (process.client) {
+  if (import.meta.client) {
     if (window.innerWidth >= 1024) return 6;
     if (window.innerWidth >= 768) return 4;
     return 2;

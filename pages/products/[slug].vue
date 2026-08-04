@@ -1156,10 +1156,8 @@
 <script setup>
 const route = useRoute();
 const config = useRuntimeConfig();
-const product = ref(null);
-const loading = ref(true);
-const error = ref(null);
-const relatedProducts = ref([]);
+const slug = computed(() => route.params.slug);
+
 const activeTab = ref("overview");
 const validTabs = ["overview", "pricing", "reviews"];
 
@@ -1207,64 +1205,73 @@ const setActiveTab = (tabId) => {
   activeTab.value = validTabs.includes(tabId) ? tabId : "overview";
 };
 
-// Fetch product from API
-const fetchProduct = async () => {
-  try {
-    loading.value = true;
-    error.value = null;
+// Server-side data fetching for SSR/SEO — refetches when the route slug changes
+const { data: pageData, pending: loading } = await useLazyAsyncData(
+  () => `product-${slug.value}`,
+  async () => {
+    try {
+      const response = await $fetch(
+        `${config.public.apiBase}/products/${slug.value}`,
+        { method: "GET" },
+      );
 
-    const response = await $fetch(
-      `${config.public.apiBase}/products/${route.params.slug}`,
-      {
-        method: "GET",
-      },
-    );
+      if (!response.success || !response.data) {
+        return {
+          product: null,
+          relatedProducts: [],
+          error: "Product not found",
+        };
+      }
 
-    if (response.success && response.data) {
-      product.value = normalizeProduct(response.data);
-      galleryIndex.value = 0;
-      fetchRelatedProducts();
-    } else {
-      error.value = "Product not found";
+      const normalized = normalizeProduct(response.data);
+
+      // Related products — fetched together so a failure here doesn't break the page
+      let relatedProducts = [];
+      try {
+        const relatedResponse = await $fetch(
+          `${config.public.apiBase}/products/${normalized.slug}/related`,
+          { method: "GET" },
+        );
+        if (relatedResponse.success && relatedResponse.data) {
+          relatedProducts = relatedResponse.data;
+        }
+      } catch (relatedErr) {
+        console.error("Error fetching related products:", relatedErr);
+      }
+
+      return { product: normalized, relatedProducts, error: null };
+    } catch (err) {
+      console.error("Error fetching product:", err);
+      return {
+        product: null,
+        relatedProducts: [],
+        error: "Failed to load product. Please try again later.",
+      };
     }
-  } catch (err) {
-    console.error("Error fetching product:", err);
-    error.value = "Failed to load product. Please try again later.";
-  } finally {
-    loading.value = false;
-  }
-};
-
-// Fetch related products
-const fetchRelatedProducts = async () => {
-  if (!product.value?.slug) return;
-
-  try {
-    const response = await $fetch(
-      `${config.public.apiBase}/products/${product.value.slug}/related`,
-      {
-        method: "GET",
-      },
-    );
-
-    if (response.success && response.data) {
-      relatedProducts.value = response.data;
-    }
-  } catch (err) {
-    console.error("Error fetching related products:", err);
-  }
-};
-
-// Fetch on component mount and route changes
-const slug = computed(() => route.params.slug);
-watch(
-  slug,
-  () => {
-    activeTab.value = "overview";
-    fetchProduct();
   },
-  { immediate: true },
+  {
+    watch: [slug],
+    default: () => ({ product: null, relatedProducts: [], error: null }),
+  },
 );
+
+const product = computed(() => pageData.value?.product || null);
+const relatedProducts = computed(() => pageData.value?.relatedProducts || []);
+const error = computed(() => pageData.value?.error || null);
+
+// Correct HTTP status for crawlers/SEO, while keeping this page's own
+// "Product Not Found" UI (below) instead of redirecting to a generic error page
+if (import.meta.server && !product.value) {
+  setResponseStatus(404);
+}
+
+// Reset UI state when navigating between product slugs client-side
+watch(slug, () => {
+  activeTab.value = "overview";
+});
+watch(product, () => {
+  galleryIndex.value = 0;
+});
 
 // ── Gallery slider ──────────────────────────────────────────
 const galleryIndex = ref(0);
@@ -1306,7 +1313,13 @@ const handleTouchStart = (e) => {
 };
 const handleTouchEnd = (e) => {
   const diff = touchStartX - e.changedTouches[0].screenX;
-  if (Math.abs(diff) > 50) diff > 0 ? galleryNext() : galleryPrev();
+  if (Math.abs(diff) > 50) {
+    if (diff > 0) {
+      galleryNext();
+    } else {
+      galleryPrev();
+    }
+  }
 };
 
 // ── Lightbox ────────────────────────────────────────────────
@@ -1360,7 +1373,7 @@ onMounted(() => {
   });
 });
 
-useHead({
+useHead(() => ({
   title: product.value
     ? `${product.value.name} - ByteStackLab Products`
     : "Product Not Found - ByteStackLab",
@@ -1370,5 +1383,5 @@ useHead({
       content: product.value?.description || "Product not found.",
     },
   ],
-});
+}));
 </script>

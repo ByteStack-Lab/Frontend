@@ -675,13 +675,15 @@ const {
   const config = useRuntimeConfig();
   const baseURL = config.public.apiBase || "http://127.0.0.1:8000/api";
 
-  try {
-    const response = await $fetch(`${baseURL}/services/${slug}`);
-    return response.data;
-  } catch (err) {
-    throw err;
-  }
+  const response = await $fetch(`${baseURL}/services/${slug}`);
+  return response.data;
 });
+
+// Correct HTTP status for crawlers/SEO, while keeping this page's own
+// "Service Not Found" UI (below) instead of redirecting to a generic error page
+if (import.meta.server && (!service.value || error.value)) {
+  setResponseStatus(404);
+}
 
 // FAQ toggle functionality
 const openFaqs = ref([]);

@@ -320,7 +320,7 @@ const fetchTestimonials = async () => {
           name: "Sarah Johnson",
           position: "CEO",
           company: "Digital Ventures",
-          image: "/images/testimonials/sarah.svg",
+          image: "/images/testimonials/romeena-2.svg",
         },
         {
           quote:
@@ -328,7 +328,7 @@ const fetchTestimonials = async () => {
           name: "Michael Chen",
           position: "Product Manager",
           company: "InnovateTech",
-          image: "/images/testimonials/michael.svg",
+          image: "/images/testimonials/romeena-3.svg",
         },
         {
           quote:
@@ -336,7 +336,7 @@ const fetchTestimonials = async () => {
           name: "Emily Rodriguez",
           position: "Founder",
           company: "StartupVision",
-          image: "/images/testimonials/emily.svg",
+          image: "/images/testimonials/romeena-4.svg",
         },
       ];
     }

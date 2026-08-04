@@ -25,6 +25,21 @@
 
             <!-- Newsletter Form -->
             <div class="space-y-6">
+              <!-- Honeypot field — hidden from real users, catches bots that auto-fill every input -->
+              <div
+                class="absolute -left-[9999px] top-0 h-px w-px overflow-hidden"
+                aria-hidden="true"
+              >
+                <label for="newsletter-website">Leave this field empty</label>
+                <input
+                  id="newsletter-website"
+                  v-model="website"
+                  type="text"
+                  name="website"
+                  tabindex="-1"
+                  autocomplete="off"
+                />
+              </div>
               <div class="flex flex-col sm:flex-row gap-4">
                 <input
                   type="email"
@@ -157,6 +172,7 @@
 import { ref } from "vue";
 
 const email = ref("");
+const website = ref(""); // honeypot — must stay empty
 const isLoading = ref(false);
 const message = ref("");
 const messageType = ref("");
@@ -169,7 +185,7 @@ const subscribe = async () => {
 
   try {
     const api = useApi();
-    const response = await api.subscribeNewsletter(email.value);
+    const response = await api.subscribeNewsletter(email.value, null, website.value);
 
     if (response.success) {
       message.value =

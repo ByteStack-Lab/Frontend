@@ -740,7 +740,6 @@ useHead({
 // Reactive data
 const activeDepartment = ref("all");
 const searchQuery = ref("");
-const { $api } = useApi();
 
 const departments = [
   { id: "all", name: "All Departments" },
@@ -749,41 +748,6 @@ const departments = [
   { id: "marketing", name: "Marketing" },
   { id: "sales", name: "Sales" },
 ];
-
-// Job listings data
-const jobListings = ref([]);
-const loading = ref(true);
-const error = ref(null);
-
-// Fetch jobs from API
-const fetchJobs = async () => {
-  try {
-    loading.value = true;
-    error.value = null;
-    const response = await $api.get("/career-jobs");
-    jobListings.value = response.data.map((job) => ({
-      id: job.id,
-      title: job.title,
-      department: job.department,
-      departmentClass: getDepartmentClass(job.department),
-      location: job.location,
-      type: job.type,
-      salary: job.salary_range,
-      salaryPeriod:
-        job.salary_period === "per_month" ? "per month" : "per year",
-      description: stripHtmlTags(job.description),
-      requirements: job.requirements,
-      slug: job.slug,
-      is_featured: job.is_featured,
-      experience_level: job.experience_level,
-    }));
-  } catch (err) {
-    error.value = err.message || "Failed to load jobs";
-    console.error("Error fetching jobs:", err);
-  } finally {
-    loading.value = false;
-  }
-};
 
 // Helper functions
 const stripHtmlTags = (html) => {
@@ -808,6 +772,45 @@ const getDepartmentClass = (department) => {
   };
   return classes[department] || "bg-gray-100 text-gray-800";
 };
+
+// Server-side data fetching for SSR/SEO
+const {
+  data: pageData,
+  pending: loading,
+  refresh: fetchJobs,
+} = await useLazyAsyncData(
+  "career-jobs-index",
+  async () => {
+    const { $api } = useApi();
+    try {
+      const response = await $api.get("/career-jobs");
+      const jobListings = response.data.map((job) => ({
+        id: job.id,
+        title: job.title,
+        department: job.department,
+        departmentClass: getDepartmentClass(job.department),
+        location: job.location,
+        type: job.type,
+        salary: job.salary_range,
+        salaryPeriod:
+          job.salary_period === "per_month" ? "per month" : "per year",
+        description: stripHtmlTags(job.description),
+        requirements: job.requirements,
+        slug: job.slug,
+        is_featured: job.is_featured,
+        experience_level: job.experience_level,
+      }));
+      return { jobListings, error: null };
+    } catch (err) {
+      console.error("Error fetching jobs:", err);
+      return { jobListings: [], error: err.message || "Failed to load jobs" };
+    }
+  },
+  { default: () => ({ jobListings: [], error: null }) },
+);
+
+const jobListings = computed(() => pageData.value?.jobListings || []);
+const error = computed(() => pageData.value?.error || null);
 
 // Computed properties
 const filteredJobs = computed(() => {
@@ -878,10 +881,6 @@ const scrollToCulture = () => {
   }
 };
 
-// Lifecycle
-onMounted(() => {
-  fetchJobs();
-});
 </script>
 
 <style scoped>

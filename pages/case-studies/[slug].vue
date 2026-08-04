@@ -454,12 +454,58 @@
 const route = useRoute()
 const slug = route.params.slug
 
-// Reactive data
-const caseStudy = ref(null)
-const relatedCaseStudies = ref([])
-const pending = ref(true)
-const error = ref(false)
 const currentImageIndex = ref(0)
+
+// Server-side data fetching for SSR/SEO
+const {
+  data: caseStudy,
+  pending,
+  error,
+} = await useLazyAsyncData(`case-study-${slug}`, () => {
+  const { getCaseStudy } = useApi()
+  return getCaseStudy(slug)
+})
+
+// Correct HTTP status for crawlers/SEO, while keeping this page's own
+// "Case Study Not Found" UI (below) instead of redirecting to a generic error page
+if (import.meta.server && (!caseStudy.value || error.value)) {
+  setResponseStatus(404)
+}
+
+// Related case studies (exclude current), fetched separately
+const { data: relatedCaseStudies } = await useLazyAsyncData(
+  `case-study-${slug}-related`,
+  async () => {
+    const { getCaseStudies } = useApi()
+    try {
+      const allCaseStudies = await getCaseStudies()
+      return allCaseStudies.filter((cs) => cs.slug !== slug)
+    } catch (relatedError) {
+      console.warn('Failed to fetch related case studies:', relatedError)
+      return []
+    }
+  },
+  { default: () => [] },
+)
+
+// Dynamic SEO meta tags
+useHead(() => ({
+  title: caseStudy.value
+    ? `${caseStudy.value.title} - Case Study | ByteStackLab`
+    : 'Case Study | ByteStackLab',
+  meta: [
+    { name: 'description', content: caseStudy.value?.description || '' },
+    {
+      property: 'og:title',
+      content: caseStudy.value
+        ? `${caseStudy.value.title} - Case Study | ByteStackLab`
+        : 'Case Study | ByteStackLab',
+    },
+    { property: 'og:description', content: caseStudy.value?.description || '' },
+    { property: 'og:image', content: caseStudy.value?.image || '' },
+    { property: 'og:type', content: 'article' },
+  ],
+}))
 
 // Gallery navigation functions
 const nextImage = () => {
@@ -541,65 +587,13 @@ const handleImageError = (event) => {
   // event.target.src = '/images/placeholder.png'
 }
 
-// Fetch case study data
-onMounted(async () => {
-  try {
-    const { getCaseStudy, getCaseStudies } = useApi()
-    
-    // Fetch main case study
-    const caseStudyData = await getCaseStudy(slug)
-    caseStudy.value = caseStudyData
-    
-    // Reset gallery index
-    currentImageIndex.value = 0
-    
-    // Fetch related case studies (exclude current one)
-    const allCaseStudies = await getCaseStudies()
-    relatedCaseStudies.value = allCaseStudies.filter(cs => cs.slug !== slug)
-    
-    // Set page meta dynamically
-    useHead({
-      title: `${caseStudy.value.title} - Case Study | ByteStackLab`,
-      meta: [
-        {
-          name: 'description',
-          content: caseStudy.value.description
-        },
-        {
-          property: 'og:title',
-          content: `${caseStudy.value.title} - Case Study | ByteStackLab`
-        },
-        {
-          property: 'og:description',
-          content: caseStudy.value.description
-        },
-        {
-          property: 'og:image',
-          content: caseStudy.value.image || ''
-        },
-        {
-          property: 'og:type',
-          content: 'article'
-        }
-      ]
-    })
-    
-    console.log('Case study loaded:', caseStudy.value)
-    
-    // Start auto-play after loading
-    setTimeout(() => {
-      startAutoPlay()
-    }, 2000)
-    
-    // Add keyboard event listener
-    window.addEventListener('keydown', handleKeydown)
-    
-  } catch (err) {
-    console.error('Error loading case study:', err)
-    error.value = true
-  } finally {
-    pending.value = false
-  }
+// Start gallery auto-play + keyboard navigation (client-only)
+onMounted(() => {
+  setTimeout(() => {
+    startAutoPlay()
+  }, 2000)
+
+  window.addEventListener('keydown', handleKeydown)
 })
 
 // Cleanup on unmount

@@ -879,7 +879,7 @@ const getServiceColor = (category) => {
 
 // Watch for menu state changes to toggle body scroll
 watch(isMenuOpen, (newValue) => {
-  if (process.client) {
+  if (import.meta.client) {
     if (newValue) {
       document.body.style.overflow = "hidden";
       document.body.classList.add("menu-open");
@@ -912,7 +912,7 @@ watch(isMenuOpen, (newValue) => {
 
 // Clean up on component unmount
 onUnmounted(() => {
-  if (process.client) {
+  if (import.meta.client) {
     document.body.style.overflow = "";
     document.body.classList.remove("menu-open");
   }

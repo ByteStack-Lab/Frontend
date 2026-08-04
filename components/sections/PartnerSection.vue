@@ -147,7 +147,7 @@ const currentSlide = ref(0);
 
 // Responsive items per page
 const itemsPerPage = computed(() => {
-  if (process.client) {
+  if (import.meta.client) {
     if (window.innerWidth >= 1024) return 6; // lg: 6 logos
     if (window.innerWidth >= 768) return 4; // md: 4 logos
     return 2; // sm: 2 logos

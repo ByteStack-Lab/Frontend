@@ -345,7 +345,7 @@ const goToBlog = async (event) => {
   } catch (error) {
     console.error("Navigation error:", error);
     // Fallback to window location
-    if (process.client) {
+    if (import.meta.client) {
       window.location.href = "/blog";
     }
   }
@@ -420,7 +420,7 @@ const fetchFeaturedBlogs = async () => {
 
 // Set responsive slide width based on screen size
 const updateSlideWidth = () => {
-  if (process.client) {
+  if (import.meta.client) {
     const width = window.innerWidth;
     if (width >= 1536) {
       // 2xl
@@ -504,14 +504,14 @@ onMounted(() => {
   updateSlideWidth();
   fetchFeaturedBlogs(); // This will start auto-slide after loading
 
-  if (process.client) {
+  if (import.meta.client) {
     window.addEventListener("resize", updateSlideWidth);
   }
 });
 
 onUnmounted(() => {
   stopAutoSlide();
-  if (process.client) {
+  if (import.meta.client) {
     window.removeEventListener("resize", updateSlideWidth);
   }
 });

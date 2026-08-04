@@ -340,9 +340,6 @@ useHead({
 });
 
 const activeFilter = ref("all");
-const products = ref([]);
-const loading = ref(true);
-const error = ref(null);
 
 const filterTabs = [
   { id: "all", label: "All Products" },
@@ -352,39 +349,43 @@ const filterTabs = [
   { id: "security", label: "Security" },
 ];
 
-// Fetch products from API
 const config = useRuntimeConfig();
-const fetchProducts = async () => {
-  try {
-    loading.value = true;
-    error.value = null;
 
-    const response = await $fetch(`${config.public.apiBase}/products`, {
-      method: "GET",
-    });
+// Server-side data fetching for SSR/SEO
+const {
+  data: pageData,
+  pending: loading,
+  refresh: fetchProducts,
+} = await useLazyAsyncData(
+  "products-index",
+  async () => {
+    try {
+      const response = await $fetch(`${config.public.apiBase}/products`, {
+        method: "GET",
+      });
 
-    if (response.success && response.data) {
-      products.value = response.data;
-    } else {
-      error.value = "Failed to fetch products";
+      if (response.success && response.data) {
+        return { products: response.data, error: null };
+      }
+      return { products: [], error: "Failed to fetch products" };
+    } catch (err) {
+      console.error("Error fetching products:", err);
+      return {
+        products: [],
+        error: "Failed to load products. Please try again later.",
+      };
     }
-  } catch (err) {
-    console.error("Error fetching products:", err);
-    error.value = "Failed to load products. Please try again later.";
-  } finally {
-    loading.value = false;
-  }
-};
+  },
+  { default: () => ({ products: [], error: null }) },
+);
+
+const products = computed(() => pageData.value?.products || []);
+const error = computed(() => pageData.value?.error || null);
 
 // Computed property for filtered products
 const filteredProducts = computed(() => {
   if (activeFilter.value === "all") return products.value;
   return products.value.filter((p) => p.categoryId === activeFilter.value);
-});
-
-// Fetch products on component mount
-onMounted(() => {
-  fetchProducts();
 });
 </script>
 

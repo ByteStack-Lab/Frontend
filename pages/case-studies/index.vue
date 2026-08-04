@@ -295,10 +295,28 @@ useHead({
 
 // Reactive data
 const selectedFilter = ref('')
-const caseStudies = ref([])
-const filters = ref([])
-const pending = ref(true)
-const error = ref(null)
+
+// Server-side data fetching for SSR/SEO — case studies + filters fetched together
+const {
+  data: pageData,
+  pending,
+  error,
+  refresh: retryLoading,
+} = await useLazyAsyncData(
+  'case-studies-page',
+  async () => {
+    const { getCaseStudies, getCaseStudyFilters } = useApi()
+    const [caseStudies, filters] = await Promise.all([
+      getCaseStudies(),
+      getCaseStudyFilters(),
+    ])
+    return { caseStudies, filters }
+  },
+  { default: () => ({ caseStudies: [], filters: [] }) },
+)
+
+const caseStudies = computed(() => pageData.value?.caseStudies || [])
+const filters = computed(() => pageData.value?.filters || [])
 
 // Computed property for filtered case studies
 const filteredCaseStudies = computed(() => {
@@ -306,31 +324,6 @@ const filteredCaseStudies = computed(() => {
     return caseStudies.value
   }
   return caseStudies.value.filter(caseStudy => caseStudy.category === selectedFilter.value)
-})
-
-// Fetch data on mount
-onMounted(async () => {
-  try {
-    // Get API functions inside the lifecycle hook
-    const { getCaseStudies, getCaseStudyFilters } = useApi()
-    
-    // Fetch case studies and filters in parallel
-    const [caseStudiesData, filtersData] = await Promise.all([
-      getCaseStudies(),
-      getCaseStudyFilters()
-    ])
-    
-    caseStudies.value = caseStudiesData
-    filters.value = filtersData
-    
-    console.log('Case studies loaded:', caseStudiesData.length)
-    console.log('Sample case study:', caseStudiesData[0])
-  } catch (err) {
-    console.error('Error loading case studies:', err)
-    error.value = err
-  } finally {
-    pending.value = false
-  }
 })
 
 // Helper function to get category count
@@ -382,29 +375,6 @@ const handleImageError = (event) => {
   if (fallback && fallback.classList.contains('hidden')) {
     fallback.classList.remove('hidden')
     fallback.classList.add('flex')
-  }
-}
-
-// Retry loading function
-const retryLoading = async () => {
-  pending.value = true
-  error.value = null
-  
-  try {
-    const { getCaseStudies, getCaseStudyFilters } = useApi()
-    
-    const [caseStudiesData, filtersData] = await Promise.all([
-      getCaseStudies(),
-      getCaseStudyFilters()
-    ])
-    
-    caseStudies.value = caseStudiesData
-    filters.value = filtersData
-  } catch (err) {
-    console.error('Error loading case studies:', err)
-    error.value = err
-  } finally {
-    pending.value = false
   }
 }
 

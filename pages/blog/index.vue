@@ -423,15 +423,61 @@ useSeoMeta({
   twitterCard: "summary_large_image",
 });
 
-// Reactive data
-const blogs = ref([]);
-const categories = ref([]);
+// Reactive filter state
 const selectedCategory = ref(null);
-const pending = ref(true);
-const error = ref(null);
 
-// API composable
-const { getBlogs, getBlogCategories } = useApi();
+// Server-side data fetching for SSR/SEO — blogs + categories fetched together
+const {
+  data: pageData,
+  pending,
+  refresh,
+} = await useLazyAsyncData(
+  "blog-index",
+  async () => {
+    const { getBlogs, getBlogCategories } = useApi();
+
+    try {
+      const blogsData = await getBlogs();
+
+      let categoriesData = [];
+      try {
+        const catData = await getBlogCategories();
+        // Filter categories that have at least one blog
+        categoriesData = catData
+          .filter((cat) => cat.count > 0)
+          .map((cat) => cat.name);
+      } catch (catErr) {
+        console.error("Error fetching categories:", catErr);
+        // Fallback to extracting categories from blogs
+        categoriesData = [
+          ...new Set(
+            blogsData.flatMap((blog) =>
+              blog.categories && Array.isArray(blog.categories)
+                ? blog.categories.map((cat) => cat.name || cat)
+                : blog.category
+                  ? [blog.category]
+                  : [],
+            ),
+          ),
+        ].filter(Boolean);
+      }
+
+      return { blogs: blogsData, categories: categoriesData, error: null };
+    } catch (err) {
+      console.error("Error fetching blogs:", err);
+      return {
+        blogs: [],
+        categories: [],
+        error: "Failed to load blog posts. Please try again.",
+      };
+    }
+  },
+  { default: () => ({ blogs: [], categories: [], error: null }) },
+);
+
+const blogs = computed(() => pageData.value?.blogs || []);
+const categories = computed(() => pageData.value?.categories || []);
+const error = computed(() => pageData.value?.error || null);
 
 // Computed property for filtered blogs
 const filteredBlogs = computed(() => {
@@ -455,49 +501,6 @@ const filteredBlogs = computed(() => {
   });
 });
 
-// Fetch blogs data
-const fetchBlogs = async () => {
-  try {
-    pending.value = true;
-    error.value = null;
-
-    const data = await getBlogs();
-    blogs.value = data;
-  } catch (err) {
-    error.value = "Failed to load blog posts. Please try again.";
-    console.error("Error fetching blogs:", err);
-  } finally {
-    pending.value = false;
-  }
-};
-
-// Fetch categories data
-const fetchCategories = async () => {
-  try {
-    const data = await getBlogCategories();
-    // Filter categories that have at least one blog
-    const categoriesWithBlogs = data.filter((cat) => cat.count > 0);
-    categories.value = categoriesWithBlogs.map((cat) => cat.name);
-  } catch (err) {
-    console.error("Error fetching categories:", err);
-    // Fallback to extracting categories from blogs
-    if (blogs.value.length > 0) {
-      const uniqueCategories = [
-        ...new Set(
-          blogs.value.flatMap((blog) =>
-            blog.categories && Array.isArray(blog.categories)
-              ? blog.categories.map((cat) => cat.name || cat)
-              : blog.category
-                ? [blog.category]
-                : [],
-          ),
-        ),
-      ].filter(Boolean);
-      categories.value = uniqueCategories;
-    }
-  }
-};
-
 // Format date helper
 const formatDate = (dateString) => {
   if (!dateString) return "";
@@ -513,16 +516,6 @@ const formatDate = (dateString) => {
     return dateString;
   }
 };
-
-// Refresh function
-const refresh = async () => {
-  await fetchBlogs();
-};
-
-// Initialize data on mount
-onMounted(async () => {
-  await Promise.all([fetchBlogs(), fetchCategories()]);
-});
 </script>
 
 <style scoped>

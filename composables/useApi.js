@@ -396,11 +396,11 @@ export const useApi = () => {
     // ===== NEWSLETTER API METHODS =====
 
     // Subscribe to newsletter
-    async subscribeNewsletter(email, name = null) {
+    async subscribeNewsletter(email, name = null, website = '') {
       try {
         const response = await $fetch(`${baseURL}/newsletter/subscribe`, {
           method: 'POST',
-          body: { email, name }
+          body: { email, name, website }
         })
         return response
       } catch (error) {

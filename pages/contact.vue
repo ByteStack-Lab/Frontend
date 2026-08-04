@@ -213,6 +213,22 @@
               </div>
             </div>
 
+            <!-- Honeypot field — hidden from real users, catches bots that auto-fill every input -->
+            <div
+              class="absolute -left-[9999px] top-0 h-px w-px overflow-hidden"
+              aria-hidden="true"
+            >
+              <label for="website">Leave this field empty</label>
+              <input
+                id="website"
+                v-model="form.website"
+                type="text"
+                name="website"
+                tabindex="-1"
+                autocomplete="off"
+              />
+            </div>
+
             <!-- Submit Button -->
             <button
               type="submit"
@@ -609,6 +625,7 @@ const form = ref({
   service: "",
   message: "",
   subscribeNewsletter: false,
+  website: "", // honeypot — must stay empty
 });
 
 const isSubmitting = ref(false);
@@ -691,6 +708,7 @@ const submitForm = async () => {
       service: form.value.service || null,
       message: form.value.message,
       subscribe_newsletter: form.value.subscribeNewsletter,
+      website: form.value.website,
     };
 
     // Send form data to backend API
@@ -719,6 +737,7 @@ const submitForm = async () => {
       service: "",
       message: "",
       subscribeNewsletter: false,
+      website: "",
     };
   } catch (error) {
     console.error("Error submitting form:", error);

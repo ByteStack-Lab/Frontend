@@ -237,9 +237,16 @@ useHead({
 
 // Reactive data
 const selectedCategory = ref("");
-const services = ref([]);
-const categories = ref([]);
-const pending = ref(true);
+
+// Server-side data fetching for SSR/SEO
+const { data: services, pending } = await useLazyAsyncData(
+  "services-page",
+  () => {
+    const { getServices } = useApi();
+    return getServices();
+  },
+  { default: () => [] },
+);
 
 // Computed property for filtered services
 const filteredServices = computed(() => {
@@ -249,27 +256,6 @@ const filteredServices = computed(() => {
   return services.value.filter(
     (service) => service.category === selectedCategory.value,
   );
-});
-
-// Fetch data on mount
-onMounted(async () => {
-  try {
-    // Get API functions inside the lifecycle hook
-    const { getServices, getServiceCategories } = useApi();
-
-    // Fetch services and categories in parallel
-    const [servicesData, categoriesData] = await Promise.all([
-      getServices(),
-      getServiceCategories(),
-    ]);
-
-    services.value = servicesData;
-    categories.value = categoriesData;
-  } catch (error) {
-    console.error("Error loading services:", error);
-  } finally {
-    pending.value = false;
-  }
 });
 </script>
 

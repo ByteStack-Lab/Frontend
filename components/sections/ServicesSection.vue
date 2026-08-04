@@ -450,6 +450,31 @@ const stopAutoSlide = () => {
   }
 };
 
+// Handle window resize
+const handleResize = () => {
+  windowWidth.value = window.innerWidth;
+
+  // Reset slide position if current slide exceeds new max
+  if (currentSlide.value > maxSlides.value) {
+    currentSlide.value = Math.max(0, maxSlides.value);
+  }
+
+  // Restart auto-slide with new dimensions
+  if (canSlide.value) {
+    stopAutoSlide();
+    setTimeout(startAutoSlide, 500);
+  }
+};
+
+// Watch for changes in cardsPerView to ensure responsive behavior
+watch(cardsPerView, () => {
+  currentSlide.value = 0; // Reset to first slide
+  if (canSlide.value) {
+    stopAutoSlide();
+    setTimeout(startAutoSlide, 500);
+  }
+});
+
 // Fetch featured services
 const fetchServices = async () => {
   try {
@@ -482,7 +507,7 @@ onMounted(async () => {
   await fetchServices();
 
   // Set initial window width
-  if (process.client) {
+  if (import.meta.client) {
     windowWidth.value = window.innerWidth;
   }
 
@@ -497,42 +522,16 @@ onMounted(async () => {
   }, 1500);
 
   // Handle window resize
-  if (process.client) {
-    const handleResize = () => {
-      windowWidth.value = window.innerWidth;
-
-      // Reset slide position if current slide exceeds new max
-      if (currentSlide.value > maxSlides.value) {
-        currentSlide.value = Math.max(0, maxSlides.value);
-      }
-
-      // Restart auto-slide with new dimensions
-      if (canSlide.value) {
-        stopAutoSlide();
-        setTimeout(startAutoSlide, 500);
-      }
-    };
-
+  if (import.meta.client) {
     window.addEventListener("resize", handleResize);
-
-    // Watch for changes in cardsPerView to ensure responsive behavior
-    watch(cardsPerView, (newVal, oldVal) => {
-      currentSlide.value = 0; // Reset to first slide
-      if (canSlide.value) {
-        stopAutoSlide();
-        setTimeout(startAutoSlide, 500);
-      }
-    });
-
-    // Cleanup resize listener
-    onUnmounted(() => {
-      window.removeEventListener("resize", handleResize);
-    });
   }
 });
 
 onUnmounted(() => {
   stopAutoSlide();
+  if (import.meta.client) {
+    window.removeEventListener("resize", handleResize);
+  }
 });
 
 // Pause auto-slide on hover

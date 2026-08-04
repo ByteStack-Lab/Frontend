@@ -623,6 +623,21 @@
           </h2>
 
           <form @submit.prevent="submitApplication" class="space-y-6">
+            <!-- Honeypot field — hidden from real users, catches bots that auto-fill every input -->
+            <div
+              class="absolute -left-[9999px] top-0 h-px w-px overflow-hidden"
+              aria-hidden="true"
+            >
+              <label for="job-apply-website">Leave this field empty</label>
+              <input
+                id="job-apply-website"
+                v-model="applicationForm.website"
+                type="text"
+                name="website"
+                tabindex="-1"
+                autocomplete="off"
+              />
+            </div>
             <div class="grid md:grid-cols-2 gap-6">
               <div>
                 <label class="block text-sm font-medium text-gray-700 mb-2"
@@ -809,12 +824,8 @@
 <script setup>
 const route = useRoute();
 const router = useRouter();
-const { $api } = useApi();
 
 // Reactive data
-const job = ref(null);
-const loading = ref(true);
-const error = ref(null);
 const submitting = ref(false);
 
 // Notification system
@@ -838,34 +849,50 @@ const applicationForm = ref({
   github_url: "",
   additional_info: "",
   terms: false,
+  website: "", // honeypot — must stay empty
 });
 
-// Fetch job details
-const fetchJob = async () => {
-  try {
-    loading.value = true;
-    error.value = null;
-    const response = await $api.get(`/career-jobs/${route.params.slug}`);
-    job.value = response.data;
-
-    // Update meta tags
-    if (job.value.meta_title) {
-      useHead({
-        title: job.value.meta_title,
-        meta: [
-          {
-            name: "description",
-            content: job.value.meta_description || job.value.description,
-          },
-        ],
-      });
+// Server-side data fetching for SSR/SEO
+const { data: pageData, pending: loading } = await useLazyAsyncData(
+  `career-job-${route.params.slug}`,
+  async () => {
+    const { $api } = useApi();
+    try {
+      const response = await $api.get(`/career-jobs/${route.params.slug}`);
+      return { job: response.data, error: null };
+    } catch (err) {
+      return {
+        job: null,
+        error:
+          err.response?.data?.message || err.data?.message || "Job not found",
+      };
     }
-  } catch (err) {
-    error.value = err.response?.data?.message || "Job not found";
-  } finally {
-    loading.value = false;
-  }
-};
+  },
+  { default: () => ({ job: null, error: null }) },
+);
+
+const job = computed(() => pageData.value?.job || null);
+const error = computed(() => pageData.value?.error || null);
+
+// Correct HTTP status for crawlers/SEO, while keeping this page's own
+// "Job Not Found" UI (below) instead of redirecting to a generic error page
+if (import.meta.server && !job.value) {
+  setResponseStatus(404);
+}
+
+// Dynamic SEO meta tags
+useHead(() => {
+  if (!job.value?.meta_title) return {};
+  return {
+    title: job.value.meta_title,
+    meta: [
+      {
+        name: "description",
+        content: job.value.meta_description || job.value.description,
+      },
+    ],
+  };
+});
 
 // Get department class for styling
 const getDepartmentClass = (department) => {
@@ -977,10 +1004,12 @@ const submitApplication = async () => {
   try {
     submitting.value = true;
 
+    const { $api } = useApi();
     const formData = new FormData();
     formData.append("first_name", applicationForm.value.first_name);
     formData.append("last_name", applicationForm.value.last_name);
     formData.append("email", applicationForm.value.email);
+    formData.append("website", applicationForm.value.website || "");
     formData.append("phone", applicationForm.value.phone || "");
     formData.append("cover_letter", applicationForm.value.cover_letter || "");
     formData.append("portfolio_url", applicationForm.value.portfolio_url || "");
@@ -1020,6 +1049,7 @@ const submitApplication = async () => {
       github_url: "",
       additional_info: "",
       terms: false,
+      website: "",
     };
 
     // Reset file input
@@ -1119,10 +1149,6 @@ const hideNotification = () => {
   notification.value.show = false;
 };
 
-// Fetch job on mount
-onMounted(() => {
-  fetchJob();
-});
 </script>
 
 <style scoped>

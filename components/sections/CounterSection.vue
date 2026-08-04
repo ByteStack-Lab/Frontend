@@ -212,8 +212,6 @@ const startCounterAnimations = () => {
 
 // Setup intersection observer
 onMounted(() => {
-  console.log("CounterSection mounted, sectionRef:", sectionRef.value);
-
   if (!sectionRef.value) {
     console.error("CounterSection: sectionRef is null!");
     return;
@@ -222,13 +220,7 @@ onMounted(() => {
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        console.log(
-          "CounterSection intersection:",
-          entry.isIntersecting,
-          animationStarted.value,
-        );
         if (entry.isIntersecting && !animationStarted.value) {
-          console.log("Starting counter animations...");
           startCounterAnimations();
           observer.unobserve(entry.target);
         }
@@ -241,7 +233,6 @@ onMounted(() => {
   );
 
   observer.observe(sectionRef.value);
-  console.log("CounterSection observer set up");
 });
 </script>
 
