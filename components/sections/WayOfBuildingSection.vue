@@ -55,7 +55,7 @@
               <div class="flex items-center mt-4">
                 <div class="w-12 h-12 rounded-full mr-4 overflow-hidden">
                   <img
-                    src="/images/leaders/SteveJobs.png"
+                    src="/images/leaders/SteveJobs.webp"
                     alt="Steve Jobs"
                     class="w-full h-full object-cover"
                   >
@@ -74,7 +74,7 @@
           <div class="order-first lg:order-last">
             <div class="relative">
               <img
-                src="/images/how-to-build/1.png"
+                src="/images/how-to-build/1.webp"
                 alt="Team collaboration in office"
                 class="w-full h-auto rounded-2xl shadow-lg"
               >
@@ -95,7 +95,7 @@
           <div>
             <div class="relative">
               <img
-                src="/images/how-to-build/2.png"
+                src="/images/how-to-build/2.webp"
                 alt="Developers working together"
                 class="w-full h-auto rounded-2xl shadow-lg"
               >
@@ -209,7 +209,7 @@
           <div class="order-first lg:order-last">
             <div class="relative">
               <img
-                src="/images/how-to-build/3.png"
+                src="/images/how-to-build/3.webp"
                 alt="Team meeting and collaboration"
                 class="w-full h-auto rounded-2xl shadow-lg"
               >

@@ -781,10 +781,10 @@ const {
 } = await useLazyAsyncData(
   "career-jobs-index",
   async () => {
-    const { $api } = useApi();
+    const { getCareerJobs } = useApi();
     try {
-      const response = await $api.get("/career-jobs");
-      const jobListings = response.data.map((job) => ({
+      const jobs = await getCareerJobs();
+      const jobListings = jobs.map((job) => ({
         id: job.id,
         title: job.title,
         department: job.department,

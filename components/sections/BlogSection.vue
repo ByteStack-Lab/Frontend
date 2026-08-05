@@ -322,7 +322,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref, computed, onMounted, onUnmounted } from "vue";
 import { useScrollAnimation } from "~/composables/useScrollAnimation";
 import { useApi } from "~/composables/useApi";
 
@@ -356,67 +356,62 @@ const slideWidth = ref(20); // 20% for 5 slides visible (1/5 = 20%)
 const sliderContainer = ref(null);
 const autoSlideInterval = ref(null);
 
-// Dynamic blog data
-const blogs = ref([]);
-const isLoading = ref(true);
-const { getFeaturedBlogs } = useApi();
+// Fallback data if the API fails
+const FALLBACK_BLOGS = [
+  {
+    id: 1,
+    title: "How to Build a Scalable Application up to 1 Million Users on AWS",
+    featuredImage: "/images/blogs/1.webp",
+    slug: "scalable-application-aws",
+    excerpt:
+      "Learn how to build and scale applications to handle millions of users.",
+    category: "Web Development",
+  },
+  {
+    id: 2,
+    title: "Modern React Development Best Practices",
+    featuredImage: "/images/blogs/2.webp",
+    slug: "react-best-practices",
+    excerpt: "Discover the latest React patterns and best practices.",
+    category: "Web Development",
+  },
+  {
+    id: 3,
+    title: "Building Responsive Web Applications",
+    featuredImage: "/images/blogs/3.webp",
+    slug: "responsive-web-apps",
+    excerpt: "Master the art of creating responsive web applications.",
+    category: "Design",
+  },
+];
 
-// Fetch featured blogs
-const fetchFeaturedBlogs = async () => {
-  try {
-    isLoading.value = true;
-    const featuredBlogs = await getFeaturedBlogs();
-    blogs.value = featuredBlogs.map((blog) => ({
-      id: blog.id,
-      title: blog.title,
-      featuredImage: blog.featuredImage,
-      slug: blog.slug,
-      excerpt: blog.excerpt,
-      publishedAt: blog.formattedPublishedDate,
-      readTime: blog.readTimeText,
-      category: blog.category, // Single category for backward compatibility
-      categories: blog.categories, // Array of category objects
-    }));
-  } catch (error) {
-    console.error("Error fetching featured blogs:", error);
-    // Fallback to static data if API fails
-    blogs.value = [
-      {
-        id: 1,
-        title:
-          "How to Build a Scalable Application up to 1 Million Users on AWS",
-        featuredImage: "/images/blogs/1.png",
-        slug: "scalable-application-aws",
-        excerpt:
-          "Learn how to build and scale applications to handle millions of users.",
-        category: "Web Development",
-      },
-      {
-        id: 2,
-        title: "Modern React Development Best Practices",
-        featuredImage: "/images/blogs/2.png",
-        slug: "react-best-practices",
-        excerpt: "Discover the latest React patterns and best practices.",
-        category: "Web Development",
-      },
-      {
-        id: 3,
-        title: "Building Responsive Web Applications",
-        featuredImage: "/images/blogs/3.png",
-        slug: "responsive-web-apps",
-        excerpt: "Master the art of creating responsive web applications.",
-        category: "Design",
-      },
-    ];
-  } finally {
-    isLoading.value = false;
-
-    // Disable auto-slide to test button functionality
-    // setTimeout(() => {
-    //   startAutoSlide()
-    // }, 500)
-  }
-};
+// Dynamic blog data — fetched during SSR so this section isn't an empty
+// shell for crawlers.
+const { data: blogsData, pending: isLoading } = await useLazyAsyncData(
+  "home-featured-blogs",
+  async () => {
+    try {
+      const { getFeaturedBlogs } = useApi();
+      const featuredBlogs = await getFeaturedBlogs();
+      return featuredBlogs.map((blog) => ({
+        id: blog.id,
+        title: blog.title,
+        featuredImage: blog.featuredImage,
+        slug: blog.slug,
+        excerpt: blog.excerpt,
+        publishedAt: blog.formattedPublishedDate,
+        readTime: blog.readTimeText,
+        category: blog.category, // Single category for backward compatibility
+        categories: blog.categories, // Array of category objects
+      }));
+    } catch (error) {
+      console.error("Error fetching featured blogs:", error);
+      return FALLBACK_BLOGS;
+    }
+  },
+  { default: () => [] },
+);
+const blogs = computed(() => blogsData.value || []);
 
 // Set responsive slide width based on screen size
 const updateSlideWidth = () => {
@@ -489,7 +484,6 @@ const nextSlide = () => {
 
 onMounted(() => {
   updateSlideWidth();
-  fetchFeaturedBlogs(); // This will start auto-slide after loading
 
   if (import.meta.client) {
     window.addEventListener("resize", updateSlideWidth);

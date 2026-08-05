@@ -145,11 +145,8 @@ import { ref, onMounted } from "vue";
 const { data: counters } = await useLazyAsyncData(
   "homepage-counters",
   async () => {
-    const config = useRuntimeConfig();
-    const response = await $fetch(
-      `${config.public.apiBase}/settings?group=homepage_counters`,
-    );
-    return response?.data ?? {};
+    const { getSettings } = useApi();
+    return (await getSettings("homepage_counters")) ?? {};
   },
   { default: () => ({}) },
 );

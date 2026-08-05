@@ -633,9 +633,6 @@ const isSubmitting = ref(false);
 // Import the notification composable
 const { showNotification } = useNotification();
 
-// Get runtime config for API base URL
-const config = useRuntimeConfig();
-
 // FAQ data and functionality
 const faqs = ref([
   {
@@ -712,14 +709,8 @@ const submitForm = async () => {
     };
 
     // Send form data to backend API
-    await $fetch(`${config.public.apiBase}/contact/submit`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: formData,
-    });
+    const { submitContact } = useApi();
+    await submitContact(formData);
 
     // Show success notification
     showNotification(

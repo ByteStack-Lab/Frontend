@@ -329,7 +329,7 @@
         <div class="max-w-4xl mx-auto px-6 lg:px-8">
           <div class="relative overflow-hidden rounded-2xl shadow-2xl">
             <img
-              :src="blog.featuredImage || '/images/blogs/1.png'"
+              :src="blog.featuredImage || '/images/blogs/1.webp'"
               :alt="blog.title"
               class="w-full h-64 md:h-96 object-cover"
             >
@@ -516,7 +516,7 @@
             >
               <div class="aspect-video overflow-hidden">
                 <img
-                  :src="relatedPost.featuredImage || '/images/blogs/1.png'"
+                  :src="relatedPost.featuredImage || '/images/blogs/1.webp'"
                   :alt="relatedPost.title"
                   class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 >
@@ -698,6 +698,8 @@ const { data: relatedBlogs } = await useLazyAsyncData(
 );
 
 // Dynamic SEO meta tags
+const breadcrumbSchema = useBreadcrumbSchema();
+
 useHead(() => ({
   title: blog.value
     ? `${blog.value.title} | ByteStackLab Blog`
@@ -712,14 +714,21 @@ useHead(() => ({
     { property: "og:image", content: blog.value?.featuredImage || "" },
     { property: "og:type", content: "article" },
   ],
-  script: blog.value?.schemaMarkup
-    ? [
-        {
-          type: "application/ld+json",
-          innerHTML: JSON.stringify(blog.value.schemaMarkup),
-        },
-      ]
-    : [],
+  script: [
+    ...(blog.value?.schemaMarkup
+      ? [
+          {
+            type: "application/ld+json",
+            innerHTML: JSON.stringify(blog.value.schemaMarkup),
+          },
+        ]
+      : []),
+    breadcrumbSchema([
+      { name: "Home", path: "/" },
+      { name: "Blog", path: "/blog" },
+      { name: blog.value?.title || "Blog Post", path: `/blog/${slug}` },
+    ]),
+  ],
 }));
 
 const updateReadingProgress = () => {

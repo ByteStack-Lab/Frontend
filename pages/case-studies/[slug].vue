@@ -491,6 +491,8 @@ const { data: relatedCaseStudies } = await useLazyAsyncData(
 )
 
 // Dynamic SEO meta tags
+const breadcrumbSchema = useBreadcrumbSchema()
+
 useHead(() => ({
   title: caseStudy.value
     ? `${caseStudy.value.title} - Case Study | ByteStackLab`
@@ -506,6 +508,49 @@ useHead(() => ({
     { property: 'og:description', content: caseStudy.value?.description || '' },
     { property: 'og:image', content: caseStudy.value?.image || '' },
     { property: 'og:type', content: 'article' },
+  ],
+  // There's no schema_markup column on case_studies (unlike blogs/services/
+  // products/career_jobs), so this is built from the fields already in the
+  // API response rather than sourced from the backend.
+  script: [
+    ...(caseStudy.value
+      ? [
+          {
+            type: 'application/ld+json',
+            innerHTML: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Article',
+              headline: caseStudy.value.title,
+              description: caseStudy.value.description || caseStudy.value.summary || '',
+              image: caseStudy.value.image ? [caseStudy.value.image] : undefined,
+              datePublished: caseStudy.value.projectStartDate || caseStudy.value.createdAt || undefined,
+              dateModified: caseStudy.value.createdAt || undefined,
+              author: {
+                '@type': 'Organization',
+                name: 'ByteStackLab',
+                url: 'https://bytestacklab.com',
+              },
+              publisher: {
+                '@type': 'Organization',
+                name: 'ByteStackLab',
+                logo: {
+                  '@type': 'ImageObject',
+                  url: 'https://bytestacklab.com/images/bytestacklab360x96.png',
+                },
+              },
+              mainEntityOfPage: {
+                '@type': 'WebPage',
+                '@id': `https://bytestacklab.com/case-studies/${slug}`,
+              },
+            }),
+          },
+        ]
+      : []),
+    breadcrumbSchema([
+      { name: 'Home', path: '/' },
+      { name: 'Case Studies', path: '/case-studies' },
+      { name: caseStudy.value?.title || 'Case Study', path: `/case-studies/${slug}` },
+    ]),
   ],
 }))
 

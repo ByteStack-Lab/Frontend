@@ -298,9 +298,22 @@ import { ref, computed, onMounted, onUnmounted, nextTick, watch } from "vue";
 import { useScrollAnimation } from "~/composables/useScrollAnimation";
 import { useStaggeredAnimation } from "~/composables/useStaggeredAnimation";
 
-// Reactive data
-const featuredServices = ref([]);
-const loading = ref(true);
+// Reactive data — fetched during SSR so the homepage carousel isn't an
+// empty shell for crawlers (see notes near fetchServices removal below).
+const { data: featuredServicesData, pending: loading } = await useLazyAsyncData(
+  "home-featured-services",
+  async () => {
+    const { getFeaturedServices } = useApi();
+    try {
+      return await getFeaturedServices();
+    } catch (error) {
+      console.error("Error loading featured services:", error);
+      return [];
+    }
+  },
+  { default: () => [] },
+);
+const featuredServices = computed(() => featuredServicesData.value || []);
 
 // Scroll animation for main section
 const { isVisible, elementRef } = useScrollAnimation();
@@ -474,20 +487,6 @@ watch(cardsPerView, () => {
   }
 });
 
-// Fetch featured services
-const fetchServices = async () => {
-  try {
-    const { getFeaturedServices } = useApi();
-    const services = await getFeaturedServices();
-    featuredServices.value = services || [];
-  } catch (error) {
-    console.error("Error loading featured services:", error);
-    featuredServices.value = [];
-  } finally {
-    loading.value = false;
-  }
-};
-
 // Service icon color generator
 const getServiceIconColor = (serviceId) => {
   const colors = [
@@ -502,14 +501,7 @@ const getServiceIconColor = (serviceId) => {
 };
 
 // Lifecycle
-onMounted(async () => {
-  await fetchServices();
-
-  // Set initial window width
-  if (import.meta.client) {
-    windowWidth.value = window.innerWidth;
-  }
-
+const beginAutoSlideWhenReady = async () => {
   // Wait for DOM to be fully ready
   await nextTick();
 
@@ -519,10 +511,26 @@ onMounted(async () => {
       startAutoSlide();
     }
   }, 1500);
+};
 
-  // Handle window resize
+onMounted(() => {
+  // Set initial window width
   if (import.meta.client) {
+    windowWidth.value = window.innerWidth;
     window.addEventListener("resize", handleResize);
+  }
+
+  // Data may already be resolved from the SSR payload — otherwise wait for
+  // the in-flight fetch to settle before starting the carousel.
+  if (loading.value) {
+    const stopWatchingLoading = watch(loading, (isLoading) => {
+      if (!isLoading) {
+        stopWatchingLoading();
+        beginAutoSlideWhenReady();
+      }
+    });
+  } else {
+    beginAutoSlideWhenReady();
   }
 });
 

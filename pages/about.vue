@@ -120,7 +120,7 @@
           <div class="relative">
             <div class="relative rounded-xl overflow-hidden shadow-xl">
               <img
-                src="/images/about-us.jpg"
+                src="/images/about-us.webp"
                 alt="Our team at work"
                 class="w-full h-auto object-cover"
               >
@@ -607,6 +607,98 @@
                 class="text-xs bg-pink-50 text-pink-700 font-medium px-2.5 py-1 rounded-full"
                 >Support</span
               >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Team Section -->
+    <section v-if="teamPending || teamError || (team && team.length > 0)" class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <div
+            class="w-16 h-1 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full mx-auto mb-4"
+          />
+          <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+            The People
+            <span
+              class="bg-gradient-to-r from-[#3533cd] via-[#6675F7] to-[#1e1b69] bg-clip-text text-transparent"
+              >Behind ByteStackLab</span
+            >
+          </h2>
+          <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            A small, focused team that owns every project end to end — from
+            first call to production support.
+          </p>
+        </div>
+
+        <!-- Loading State -->
+        <div v-if="teamPending" class="flex justify-center items-center py-12">
+          <div
+            class="animate-spin rounded-full h-12 w-12 border-b-2 border-[#3533cd]"
+          />
+        </div>
+
+        <!-- Error State -->
+        <div v-else-if="teamError" class="text-center py-12">
+          <p class="text-red-600">
+            Failed to load our team. Please try again later.
+          </p>
+        </div>
+
+        <!-- Team Grid -->
+        <div v-else class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div
+            v-for="member in team"
+            :key="member.id"
+            class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center border border-gray-100"
+          >
+            <img
+              v-if="member.avatar_url"
+              :src="member.avatar_url"
+              :alt="member.name"
+              class="w-24 h-24 rounded-full object-cover mb-4 shadow-md"
+              loading="lazy"
+            >
+            <div
+              v-else
+              class="w-24 h-24 rounded-full mb-4 shadow-md bg-gradient-to-br from-[#3533cd] to-[#1e1b69] flex items-center justify-center text-white text-2xl font-bold"
+            >
+              {{ member.name.charAt(0) }}
+            </div>
+
+            <h3 class="text-lg font-bold text-gray-900 mb-1">
+              {{ member.name }}
+            </h3>
+            <p class="text-[#3533cd] text-sm font-semibold mb-3">
+              {{ member.position }}
+            </p>
+            <p
+              v-if="member.bio"
+              class="text-gray-500 text-sm leading-relaxed line-clamp-3 flex-1"
+            >
+              {{ member.bio }}
+            </p>
+
+            <div
+              v-if="member.socials && Object.keys(member.socials).length > 0"
+              class="flex flex-wrap justify-center gap-2 mt-5"
+            >
+              <a
+                v-for="(url, platform) in member.socials"
+                :key="platform"
+                :href="url"
+                target="_blank"
+                rel="noopener noreferrer"
+                :title="platform"
+                :class="getSocialIconStyle(platform).bg"
+                class="w-9 h-9 rounded-lg flex items-center justify-center transition-colors duration-300"
+              >
+                <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path :d="getSocialIconStyle(platform).path" />
+                </svg>
+              </a>
             </div>
           </div>
         </div>
@@ -1327,6 +1419,33 @@ useHead({
     },
   ],
 });
+
+// Fetch team members from API
+const {
+  data: team,
+  pending: teamPending,
+  error: teamError,
+} = await useLazyAsyncData("about-team", () => {
+  const { getTeam } = useApi();
+  return getTeam();
+});
+
+// Brand-colored icon background per social platform; unrecognized keys
+// (e.g. a personal site) fall back to a neutral generic-link icon.
+const SOCIAL_ICON_STYLES = {
+  linkedin: { bg: "bg-[#0077B5] hover:bg-[#006BA1]", path: "M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" },
+  facebook: { bg: "bg-[#1877F2] hover:bg-[#166FE5]", path: "M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" },
+  twitter: { bg: "bg-black hover:bg-gray-800", path: "M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.637l-5.1-6.658-5.848 6.658H2.117l7.645-8.746L2.82 2.25h6.8l4.759 6.284L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z" },
+  x: { bg: "bg-black hover:bg-gray-800", path: "M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.637l-5.1-6.658-5.848 6.658H2.117l7.645-8.746L2.82 2.25h6.8l4.759 6.284L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z" },
+  github: { bg: "bg-gray-800 hover:bg-gray-900", path: "M12 0C5.37 0 0 5.373 0 12c0 5.303 3.438 9.8 8.207 11.387.6.113.793-.26.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.605-2.665-.303-5.467-1.334-5.467-5.93 0-1.31.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.5 11.5 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .32.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" },
+  instagram: { bg: "bg-gradient-to-r from-[#F56040] to-[#C13584] hover:from-[#E55A36] hover:to-[#B12A78]", path: "M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" },
+};
+const DEFAULT_SOCIAL_ICON = {
+  bg: "bg-[#3533cd] hover:bg-[#1e1b69]",
+  path: "M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1",
+};
+const getSocialIconStyle = (platform) =>
+  SOCIAL_ICON_STYLES[platform?.toLowerCase()] || DEFAULT_SOCIAL_ICON;
 
 // Fetch partners data from API
 const {

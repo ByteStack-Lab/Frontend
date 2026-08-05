@@ -5,21 +5,24 @@ import type {
   BlogCategoryWithCount,
   BlogDetail,
   BlogFeatured,
-  BlogFilters,
-  BlogPopular,
+  CareerJobCard,
+  CareerJobDetail,
   CaseStudy,
   CaseStudyCard,
   CaseStudyDetail,
   CaseStudyFilters,
+  ContactSubmitPayload,
+  ContactSubmitResponse,
   NewsletterResponse,
-  NewsletterStats,
   Partner,
+  Product,
+  ProductCategory,
+  ProductDetail,
   Service,
-  ServiceCategory,
   ServiceFeatured,
   ServiceNavbar,
+  Team,
   Testimonial,
-  TestimonialStats,
 } from '~/types/api'
 
 // Loosely-typed pass-through options bag for the generic $api client and the
@@ -149,12 +152,6 @@ export const useApi = () => {
       return data
     },
 
-    // Get service categories
-    async getServiceCategories(): Promise<ServiceCategory[]> {
-      const { data } = await request<ApiResponse<ServiceCategory[]>>('/services/categories', {}, 'Error fetching categories:')
-      return data
-    },
-
     // ==== CASE STUDIES API METHODS ====
 
     // Get all case studies
@@ -202,24 +199,6 @@ export const useApi = () => {
       return data
     },
 
-    // Get recent blogs
-    async getRecentBlogs(limit = 5): Promise<BlogCard[]> {
-      const { data } = await request<ApiResponse<BlogCard[]>>('/blogs/recent', { params: { limit } }, 'Error fetching recent blogs:')
-      return data
-    },
-
-    // Get popular blogs
-    async getPopularBlogs(limit = 5): Promise<BlogPopular[]> {
-      const { data } = await request<ApiResponse<BlogPopular[]>>('/blogs/popular', { params: { limit } }, 'Error fetching popular blogs:')
-      return data
-    },
-
-    // Get blog filters
-    async getBlogFilters(): Promise<BlogFilters> {
-      const { data } = await request<ApiResponse<BlogFilters>>('/blogs/filters', {}, 'Error fetching blog filters:')
-      return data
-    },
-
     // Get related blogs
     async getRelatedBlogs(slug: string): Promise<BlogCard[]> {
       const { data } = await request<ApiResponse<BlogCard[]>>(`/blogs/${slug}/related`, {}, 'Error fetching related blogs:')
@@ -232,6 +211,38 @@ export const useApi = () => {
       return data
     },
 
+    // ===== PRODUCT API METHODS =====
+
+    // Get all products
+    async getProducts(params: Record<string, unknown> = {}): Promise<Product[]> {
+      const { data } = await request<ApiResponse<Product[]>>('/products', { params }, 'Error fetching products:')
+      return data
+    },
+
+    // Get single product by slug
+    async getProduct(slug: string): Promise<ProductDetail> {
+      const { data } = await request<ApiResponse<ProductDetail>>(`/products/${slug}`, {}, 'Error fetching product:')
+      return data
+    },
+
+    // Get featured products
+    async getFeaturedProducts(): Promise<Product[]> {
+      const { data } = await request<ApiResponse<Product[]>>('/products/featured', {}, 'Error fetching featured products:')
+      return data
+    },
+
+    // Get product categories
+    async getProductCategories(): Promise<ProductCategory[]> {
+      const { data } = await request<ApiResponse<ProductCategory[]>>('/products/categories', {}, 'Error fetching product categories:')
+      return data
+    },
+
+    // Get related products
+    async getRelatedProducts(slug: string): Promise<Product[]> {
+      const { data } = await request<ApiResponse<Product[]>>(`/products/${slug}/related`, {}, 'Error fetching related products:')
+      return data
+    },
+
     // ===== PARTNER API METHODS =====
 
     // Get all partners
@@ -240,29 +251,7 @@ export const useApi = () => {
       return data
     },
 
-    // Get featured partners
-    async getFeaturedPartners(): Promise<Partner[]> {
-      const { data } = await request<ApiResponse<Partner[]>>('/partners/featured', {}, 'Error fetching featured partners:')
-      return data
-    },
-
-    // Get partners by type
-    async getPartnersByType(type: string): Promise<Partner[]> {
-      const { data } = await request<ApiResponse<Partner[]>>(`/partners/type/${type}`, {}, 'Error fetching partners by type:')
-      return data
-    },
-
-    // Get partner types
-    async getPartnerTypes(): Promise<Record<string, string>> {
-      const { data } = await request<ApiResponse<Record<string, string>>>('/partners/types', {}, 'Error fetching partner types:')
-      return data
-    },
-
-    // Get all testimonials
-    async getTestimonials(params: Record<string, unknown> = {}): Promise<Testimonial[]> {
-      const { data } = await request<ApiResponse<Testimonial[]>>('/testimonials', { params }, 'Error fetching testimonials:')
-      return data
-    },
+    // ===== TESTIMONIAL API METHODS =====
 
     // Get all active testimonials for frontend display
     async getAllTestimonials(): Promise<Testimonial[]> {
@@ -270,22 +259,54 @@ export const useApi = () => {
       return data
     },
 
-    // Get featured testimonials
-    async getFeaturedTestimonials(): Promise<Testimonial[]> {
-      const { data } = await request<ApiResponse<Testimonial[]>>('/testimonials/featured', {}, 'Error fetching featured testimonials:')
+    // ===== CAREER JOB API METHODS =====
+
+    // Get all career jobs
+    async getCareerJobs(params: Record<string, unknown> = {}): Promise<CareerJobCard[]> {
+      const { data } = await request<ApiResponse<CareerJobCard[]>>('/career-jobs', { params }, 'Error fetching career jobs:')
       return data
     },
 
-    // Get testimonials by rating
-    async getTestimonialsByRating(rating: number): Promise<Testimonial[]> {
-      const { data } = await request<ApiResponse<Testimonial[]>>(`/testimonials/rating/${rating}`, {}, 'Error fetching testimonials by rating:')
+    // Get single career job by slug
+    async getCareerJob(slug: string): Promise<CareerJobDetail> {
+      const { data } = await request<ApiResponse<CareerJobDetail>>(`/career-jobs/${slug}`, {}, 'Error fetching career job:')
       return data
     },
 
-    // Get testimonial statistics
-    async getTestimonialStats(): Promise<TestimonialStats> {
-      const { data } = await request<ApiResponse<TestimonialStats>>('/testimonials/stats', {}, 'Error fetching testimonial stats:')
+    // Submit a job application (multipart form data — includes the resume file)
+    async applyToJob(slug: string, formData: FormData): Promise<{ success: boolean; message: string }> {
+      return request(`/career-jobs/${slug}/apply`, { method: 'POST', body: formData }, 'Error applying to job:')
+    },
+
+    // ===== SETTINGS API METHODS =====
+
+    // Get admin-editable settings, optionally scoped to a group
+    // (e.g. "homepage_counters")
+    async getSettings(group?: string): Promise<Record<string, string | number | boolean>> {
+      const { data } = await request<ApiResponse<Record<string, string | number | boolean>>>(
+        '/settings',
+        { params: group ? { group } : {} },
+        'Error fetching settings:',
+      )
       return data
+    },
+
+    // ===== TEAM API METHODS =====
+
+    // Get all active team members
+    async getTeam(): Promise<Team[]> {
+      const { data } = await request<ApiResponse<Team[]>>('/team', {}, 'Error fetching team:')
+      return data
+    },
+
+    // ===== CONTACT API METHODS =====
+
+    // Submit the contact form
+    async submitContact(payload: ContactSubmitPayload): Promise<ContactSubmitResponse> {
+      return request<ContactSubmitResponse>('/contact/submit', {
+        method: 'POST',
+        body: payload,
+      }, 'Error submitting contact form:')
     },
 
     // ===== NEWSLETTER API METHODS =====
@@ -296,19 +317,6 @@ export const useApi = () => {
         method: 'POST',
         body: { email, name, website }
       }, 'Error subscribing to newsletter:')
-    },
-
-    // Unsubscribe from newsletter
-    async unsubscribeNewsletter(email: string): Promise<NewsletterResponse> {
-      return request<NewsletterResponse>('/newsletter/unsubscribe', {
-        method: 'POST',
-        body: { email }
-      }, 'Error unsubscribing from newsletter:')
-    },
-
-    // Get newsletter statistics
-    async getNewsletterStats(): Promise<ApiResponse<NewsletterStats>> {
-      return request<ApiResponse<NewsletterStats>>('/newsletter/stats', {}, 'Error fetching newsletter stats:')
     },
 
   }

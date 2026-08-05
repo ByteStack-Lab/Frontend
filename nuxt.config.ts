@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-05-15',
   devtools: { enabled: process.env.NODE_ENV !== 'production' },
   css: ['~/assets/css/main.css'],
-  modules: ['@nuxtjs/google-fonts', '@nuxtjs/tailwindcss', '@nuxt/eslint', '@nuxtjs/sitemap'],
+  modules: ['@nuxtjs/google-fonts', '@nuxtjs/tailwindcss', '@nuxt/eslint', '@nuxtjs/sitemap', '@nuxt/image'],
   googleFonts: {
     families: {
       Inter: [400, 500, 600, 700, 800],

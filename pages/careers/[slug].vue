@@ -857,10 +857,10 @@ const applicationForm = ref({
 const { data: pageData, pending: loading } = await useLazyAsyncData(
   `career-job-${route.params.slug}`,
   async () => {
-    const { $api } = useApi();
+    const { getCareerJob } = useApi();
     try {
-      const response = await $api.get(`/career-jobs/${route.params.slug}`);
-      return { job: response.data, error: null };
+      const job = await getCareerJob(route.params.slug);
+      return { job, error: null };
     } catch (err) {
       return {
         job: null,
@@ -882,6 +882,8 @@ if (import.meta.server && !job.value) {
 }
 
 // Dynamic SEO meta tags
+const breadcrumbSchema = useBreadcrumbSchema();
+
 useHead(() => {
   const head = {};
 
@@ -895,14 +897,24 @@ useHead(() => {
     ];
   }
 
-  if (job.value?.schemaMarkup) {
-    head.script = [
+  head.script = [
+    ...(job.value?.schemaMarkup
+      ? [
+          {
+            type: "application/ld+json",
+            innerHTML: JSON.stringify(job.value.schemaMarkup),
+          },
+        ]
+      : []),
+    breadcrumbSchema([
+      { name: "Home", path: "/" },
+      { name: "Careers", path: "/careers" },
       {
-        type: "application/ld+json",
-        innerHTML: JSON.stringify(job.value.schemaMarkup),
+        name: job.value?.title || "Job Opening",
+        path: `/careers/${route.params.slug}`,
       },
-    ];
-  }
+    ]),
+  ];
 
   return head;
 });
@@ -1017,7 +1029,7 @@ const submitApplication = async () => {
   try {
     submitting.value = true;
 
-    const { $api } = useApi();
+    const { applyToJob } = useApi();
     const formData = new FormData();
     formData.append("first_name", applicationForm.value.first_name);
     formData.append("last_name", applicationForm.value.last_name);
@@ -1037,10 +1049,7 @@ const submitApplication = async () => {
       formData.append("resume", applicationForm.value.resume);
     }
 
-    await $api.post(
-      `/career-jobs/${route.params.slug}/apply`,
-      formData,
-    );
+    await applyToJob(route.params.slug, formData);
 
     // Show success notification
     showNotification(

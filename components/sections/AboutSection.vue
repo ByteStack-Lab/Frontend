@@ -97,7 +97,7 @@
               <!-- Background Image -->
               <img
                 ref="mainImage"
-                src="/images/about-us.jpg"
+                src="/images/about-us.webp"
                 alt="About us video thumbnail"
                 class="absolute inset-0 w-full h-full object-cover"
                 @load="handleImageLoad"

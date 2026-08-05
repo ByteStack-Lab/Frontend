@@ -766,6 +766,8 @@ onMounted(() => {
 });
 
 // Dynamic SEO meta tags
+const breadcrumbSchema = useBreadcrumbSchema();
+
 useHead(() => ({
   title: service.value
     ? `${service.value.title} - ByteStack Lab`
@@ -792,14 +794,21 @@ useHead(() => ({
         service.value?.short_description || "Professional digital services",
     },
   ],
-  script: service.value?.seo?.schema_markup
-    ? [
-        {
-          type: "application/ld+json",
-          innerHTML: JSON.stringify(service.value.seo.schema_markup),
-        },
-      ]
-    : [],
+  script: [
+    ...(service.value?.seo?.schema_markup
+      ? [
+          {
+            type: "application/ld+json",
+            innerHTML: JSON.stringify(service.value.seo.schema_markup),
+          },
+        ]
+      : []),
+    breadcrumbSchema([
+      { name: "Home", path: "/" },
+      { name: "Services", path: "/services" },
+      { name: service.value?.title || "Service", path: `/services/${slug}` },
+    ]),
+  ],
 }));
 </script>
 

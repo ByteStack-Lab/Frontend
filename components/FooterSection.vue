@@ -32,7 +32,7 @@
             <div class="flex space-x-3">
               <!-- Facebook -->
               <a
-                href="https://facebook.com/bytestacklab"
+                :href="contact.social_facebook"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="w-10 h-10 bg-[#1877F2] hover:bg-[#166FE5] rounded-lg flex items-center justify-center transition-colors duration-300"
@@ -50,7 +50,7 @@
 
               <!-- X (Twitter) -->
               <a
-                href="https://x.com/bytestacklab"
+                :href="contact.social_twitter"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="w-10 h-10 bg-black hover:bg-gray-800 rounded-lg flex items-center justify-center transition-colors duration-300"
@@ -68,7 +68,7 @@
 
               <!-- LinkedIn -->
               <a
-                href="https://linkedin.com/company/bytestacklab"
+                :href="contact.social_linkedin"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="w-10 h-10 bg-[#0077B5] hover:bg-[#006BA1] rounded-lg flex items-center justify-center transition-colors duration-300"
@@ -86,7 +86,7 @@
 
               <!-- Instagram -->
               <a
-                href="https://instagram.com/bytestacklab"
+                :href="contact.social_instagram"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="w-10 h-10 bg-gradient-to-r from-[#F56040] to-[#C13584] hover:from-[#E55A36] hover:to-[#B12A78] rounded-lg flex items-center justify-center transition-all duration-300"
@@ -104,7 +104,7 @@
 
               <!-- YouTube -->
               <a
-                href="https://youtube.com/@bytestacklab"
+                :href="contact.social_youtube"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="w-10 h-10 bg-[#FF0000] hover:bg-[#E60000] rounded-lg flex items-center justify-center transition-colors duration-300"
@@ -245,10 +245,10 @@
                 </div>
                 <div>
                   <a
-                    href="tel:+8801812209019"
+                    :href="'tel:' + contact.contact_phone_link"
                     class="text-gray-900 font-medium hover:text-blue-600 transition-colors duration-300"
                   >
-                    +880-1812-209019
+                    {{ contact.contact_phone_display }}
                   </a>
                 </div>
               </div>
@@ -274,10 +274,10 @@
                 </div>
                 <div>
                   <a
-                    href="mailto:hello@bytestacklab.com"
+                    :href="'mailto:' + contact.contact_email"
                     class="text-gray-900 font-medium hover:text-green-600 transition-colors duration-300"
                   >
-                    hello@bytestacklab.com
+                    {{ contact.contact_email }}
                   </a>
                 </div>
               </div>
@@ -299,7 +299,7 @@
                 </div>
                 <div>
                   <a
-                    href="https://wa.me/8801812209019"
+                    :href="'https://wa.me/' + whatsappNumber"
                     target="_blank"
                     rel="noopener noreferrer"
                     class="text-gray-900 font-medium hover:text-[#25D366] transition-colors duration-300"
@@ -326,7 +326,7 @@
                 </div>
                 <div>
                   <a
-                    href="https://t.me/+8801812209019"
+                    :href="'https://t.me/+' + whatsappNumber"
                     target="_blank"
                     rel="noopener noreferrer"
                     class="text-gray-900 font-medium hover:text-[#0088CC] transition-colors duration-300"
@@ -369,7 +369,7 @@
                     d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                   />
                 </svg>
-                <span>Dhaka, Bangladesh</span>
+                <span>{{ contact.contact_address }}</span>
               </div>
             </div>
 
@@ -378,7 +378,7 @@
               class="w-full h-32 rounded-lg overflow-hidden border border-gray-200"
             >
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d116833.83187767277!2d90.34132765820314!3d23.780753!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8b087026b81%3A0x8fa563bbdd5904c2!2sDhaka%2C%20Bangladesh!5e0!3m2!1sen!2s!4v1704634800000!5m2!1sen!2s"
+                :src="contact.google_maps_embed_url"
                 width="100%"
                 height="100%"
                 style="border: 0"
@@ -408,6 +408,47 @@
 
 <script setup>
 const currentYear = new Date().getFullYear();
+
+// Contact/social info is admin-editable via Filament Settings (group:
+// site_contact). Defaults below match what was previously hardcoded here,
+// so nothing changes visually if the API is unreachable or a key is unset.
+const DEFAULT_CONTACT_SETTINGS = {
+  contact_phone_display: "+880-1812-209019",
+  contact_phone_link: "+8801812209019",
+  contact_email: "hello@bytestacklab.com",
+  contact_address: "Dhaka, Bangladesh",
+  social_facebook: "https://facebook.com/bytestacklab",
+  social_twitter: "https://x.com/bytestacklab",
+  social_linkedin: "https://linkedin.com/company/bytestacklab",
+  social_instagram: "https://instagram.com/bytestacklab",
+  social_youtube: "https://youtube.com/@bytestacklab",
+  google_maps_embed_url:
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d116833.83187767277!2d90.34132765820314!3d23.780753!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8b087026b81%3A0x8fa563bbdd5904c2!2sDhaka%2C%20Bangladesh!5e0!3m2!1sen!2s!4v1704634800000!5m2!1sen!2s",
+};
+
+const { data: contactSettingsData } = await useLazyAsyncData(
+  "footer-contact-settings",
+  async () => {
+    try {
+      const { getSettings } = useApi();
+      return await getSettings("site_contact");
+    } catch (error) {
+      console.error("Error fetching footer contact settings:", error);
+      return null;
+    }
+  },
+  { default: () => null },
+);
+
+const contact = computed(() => ({
+  ...DEFAULT_CONTACT_SETTINGS,
+  ...(contactSettingsData.value || {}),
+}));
+
+// wa.me and t.me links need the number without a leading "+"
+const whatsappNumber = computed(() =>
+  contact.value.contact_phone_link.replace(/^\+/, ""),
+);
 </script>
 
 <style scoped>

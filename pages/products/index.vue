@@ -349,8 +349,6 @@ const filterTabs = [
   { id: "security", label: "Security" },
 ];
 
-const config = useRuntimeConfig();
-
 // Server-side data fetching for SSR/SEO
 const {
   data: pageData,
@@ -360,14 +358,9 @@ const {
   "products-index",
   async () => {
     try {
-      const response = await $fetch(`${config.public.apiBase}/products`, {
-        method: "GET",
-      });
-
-      if (response.success && response.data) {
-        return { products: response.data, error: null };
-      }
-      return { products: [], error: "Failed to fetch products" };
+      const { getProducts } = useApi();
+      const products = await getProducts();
+      return { products: products || [], error: null };
     } catch (err) {
       console.error("Error fetching products:", err);
       return {

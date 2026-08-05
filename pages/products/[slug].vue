@@ -1163,7 +1163,6 @@
 
 <script setup>
 const route = useRoute();
-const config = useRuntimeConfig();
 const slug = computed(() => route.params.slug);
 
 const activeTab = ref("overview");
@@ -1208,31 +1207,14 @@ const { data: pageData, pending: loading } = await useLazyAsyncData(
   () => `product-${slug.value}`,
   async () => {
     try {
-      const response = await $fetch(
-        `${config.public.apiBase}/products/${slug.value}`,
-        { method: "GET" },
-      );
-
-      if (!response.success || !response.data) {
-        return {
-          product: null,
-          relatedProducts: [],
-          error: "Product not found",
-        };
-      }
-
-      const normalized = normalizeProduct(response.data);
+      const { getProduct, getRelatedProducts } = useApi();
+      const rawProduct = await getProduct(slug.value);
+      const normalized = normalizeProduct(rawProduct);
 
       // Related products — fetched together so a failure here doesn't break the page
       let relatedProducts = [];
       try {
-        const relatedResponse = await $fetch(
-          `${config.public.apiBase}/products/${normalized.slug}/related`,
-          { method: "GET" },
-        );
-        if (relatedResponse.success && relatedResponse.data) {
-          relatedProducts = relatedResponse.data;
-        }
+        relatedProducts = (await getRelatedProducts(normalized.slug)) || [];
       } catch (relatedErr) {
         console.error("Error fetching related products:", relatedErr);
       }
@@ -1371,6 +1353,8 @@ onMounted(() => {
   });
 });
 
+const breadcrumbSchema = useBreadcrumbSchema();
+
 useHead(() => ({
   title: product.value
     ? `${product.value.name} - ByteStackLab Products`
@@ -1381,13 +1365,20 @@ useHead(() => ({
       content: product.value?.description || "Product not found.",
     },
   ],
-  script: product.value?.seo?.schema_markup
-    ? [
-        {
-          type: "application/ld+json",
-          innerHTML: JSON.stringify(product.value.seo.schema_markup),
-        },
-      ]
-    : [],
+  script: [
+    ...(product.value?.seo?.schema_markup
+      ? [
+          {
+            type: "application/ld+json",
+            innerHTML: JSON.stringify(product.value.seo.schema_markup),
+          },
+        ]
+      : []),
+    breadcrumbSchema([
+      { name: "Home", path: "/" },
+      { name: "Products", path: "/products" },
+      { name: product.value?.name || "Product", path: `/products/${slug.value}` },
+    ]),
+  ],
 }));
 </script>

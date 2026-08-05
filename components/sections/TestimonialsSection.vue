@@ -271,7 +271,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from "vue";
+import { ref, computed, onMounted, onUnmounted, watch } from "vue";
 import { useScrollAnimation } from "~/composables/useScrollAnimation";
 
 // Scroll animation
@@ -280,92 +280,91 @@ const { isVisible, elementRef } = useScrollAnimation();
 // Current testimonial index
 const currentTestimonial = ref(0);
 
-// Data state
-const testimonials = ref([]);
-const pending = ref(false);
-const error = ref(null);
+// Fallback data if the API returns nothing
+const FULL_FALLBACK_TESTIMONIALS = [
+  {
+    quote:
+      "Without any doubt I recommend ByteStackLab as one of the best web design and digital marketing agencies. One of the best agencies I've come across so far. Wouldn't be hesitated to introduce their work to someone else.",
+    name: "Romeena De Silva",
+    position: "Marketing Director",
+    company: "Janet Cosmetics",
+    image: "/images/testimonials/romeena-1.svg",
+  },
+  {
+    quote:
+      "Professional team with exceptional skills in software development. They delivered our project on time and exceeded our expectations. Highly recommended!",
+    name: "Imran Khan",
+    position: "Software Engineer",
+    company: "TechCorp Solutions",
+    image: "/images/testimonials/imran.svg",
+  },
+  {
+    quote:
+      "Amazing experience working with this team. Their technical expertise and attention to detail is outstanding. Would definitely work with them again.",
+    name: "Sarah Johnson",
+    position: "CEO",
+    company: "Digital Ventures",
+    image: "/images/testimonials/romeena-2.svg",
+  },
+  {
+    quote:
+      "Excellent service and support throughout the entire project lifecycle. The team was responsive and delivered high-quality solutions.",
+    name: "Michael Chen",
+    position: "Product Manager",
+    company: "InnovateTech",
+    image: "/images/testimonials/romeena-3.svg",
+  },
+  {
+    quote:
+      "Outstanding web development services. The team understood our requirements perfectly and created exactly what we envisioned.",
+    name: "Emily Rodriguez",
+    position: "Founder",
+    company: "StartupVision",
+    image: "/images/testimonials/romeena-4.svg",
+  },
+];
 
-// Fetch testimonials from API
-const fetchTestimonials = async () => {
-  try {
-    pending.value = true;
-    error.value = null;
-    const api = useApi();
-    const data = await api.getAllTestimonials();
+// Fallback data on a hard fetch error
+const ERROR_FALLBACK_TESTIMONIALS = [
+  {
+    quote:
+      "Without any doubt I recommend ByteStackLab as one of the best web design and digital marketing agencies. One of the best agencies I've come across so far. Wouldn't be hesitated to introduce their work to someone else.",
+    name: "Romeena De Silva",
+    position: "Marketing Director",
+    company: "Janet Cosmetics",
+    image: "/images/testimonials/romeena-1.svg",
+  },
+  {
+    quote:
+      "Professional team with exceptional skills in software development. They delivered our project on time and exceeded our expectations. Highly recommended!",
+    name: "Imran Khan",
+    position: "Software Engineer",
+    company: "TechCorp Solutions",
+    image: "/images/testimonials/imran.svg",
+  },
+];
 
-    if (data && data.length > 0) {
-      testimonials.value = data;
-    } else {
-      // Fallback data if API fails or returns no data
-      testimonials.value = [
-        {
-          quote:
-            "Without any doubt I recommend ByteStackLab as one of the best web design and digital marketing agencies. One of the best agencies I've come across so far. Wouldn't be hesitated to introduce their work to someone else.",
-          name: "Romeena De Silva",
-          position: "Marketing Director",
-          company: "Janet Cosmetics",
-          image: "/images/testimonials/romeena-1.svg",
-        },
-        {
-          quote:
-            "Professional team with exceptional skills in software development. They delivered our project on time and exceeded our expectations. Highly recommended!",
-          name: "Imran Khan",
-          position: "Software Engineer",
-          company: "TechCorp Solutions",
-          image: "/images/testimonials/imran.svg",
-        },
-        {
-          quote:
-            "Amazing experience working with this team. Their technical expertise and attention to detail is outstanding. Would definitely work with them again.",
-          name: "Sarah Johnson",
-          position: "CEO",
-          company: "Digital Ventures",
-          image: "/images/testimonials/romeena-2.svg",
-        },
-        {
-          quote:
-            "Excellent service and support throughout the entire project lifecycle. The team was responsive and delivered high-quality solutions.",
-          name: "Michael Chen",
-          position: "Product Manager",
-          company: "InnovateTech",
-          image: "/images/testimonials/romeena-3.svg",
-        },
-        {
-          quote:
-            "Outstanding web development services. The team understood our requirements perfectly and created exactly what we envisioned.",
-          name: "Emily Rodriguez",
-          position: "Founder",
-          company: "StartupVision",
-          image: "/images/testimonials/romeena-4.svg",
-        },
-      ];
+// Data state — fetched during SSR so testimonials aren't an empty shell
+// for crawlers.
+const {
+  data: testimonialsData,
+  pending,
+  error,
+} = await useLazyAsyncData(
+  "home-testimonials",
+  async () => {
+    try {
+      const api = useApi();
+      const data = await api.getAllTestimonials();
+      return data && data.length > 0 ? data : FULL_FALLBACK_TESTIMONIALS;
+    } catch (err) {
+      console.error("Error fetching testimonials:", err);
+      return ERROR_FALLBACK_TESTIMONIALS;
     }
-  } catch (err) {
-    console.error("Error fetching testimonials:", err);
-    error.value = err;
-    // Use fallback data on error
-    testimonials.value = [
-      {
-        quote:
-          "Without any doubt I recommend ByteStackLab as one of the best web design and digital marketing agencies. One of the best agencies I've come across so far. Wouldn't be hesitated to introduce their work to someone else.",
-        name: "Romeena De Silva",
-        position: "Marketing Director",
-        company: "Janet Cosmetics",
-        image: "/images/testimonials/romeena-1.svg",
-      },
-      {
-        quote:
-          "Professional team with exceptional skills in software development. They delivered our project on time and exceeded our expectations. Highly recommended!",
-        name: "Imran Khan",
-        position: "Software Engineer",
-        company: "TechCorp Solutions",
-        image: "/images/testimonials/imran.svg",
-      },
-    ];
-  } finally {
-    pending.value = false;
-  }
-};
+  },
+  { default: () => [] },
+);
+const testimonials = computed(() => testimonialsData.value || []);
 
 // Computed properties for avatar arrangement
 const leftAvatars = computed(() => {
@@ -436,9 +435,19 @@ const stopAutoSlide = () => {
 };
 
 // Lifecycle hooks
-onMounted(async () => {
-  await fetchTestimonials();
-  startAutoSlide();
+onMounted(() => {
+  // Data may already be resolved from the SSR payload — otherwise wait for
+  // the in-flight fetch to settle before starting the carousel.
+  if (pending.value) {
+    const stopWatchingPending = watch(pending, (isPending) => {
+      if (!isPending) {
+        stopWatchingPending();
+        startAutoSlide();
+      }
+    });
+  } else {
+    startAutoSlide();
+  }
 });
 
 onUnmounted(() => {

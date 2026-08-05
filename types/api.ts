@@ -398,6 +398,28 @@ export interface NewsletterResponse {
   message: string
 }
 
+// ===== CONTACT =====
+
+export interface ContactSubmitPayload {
+  first_name: string
+  last_name: string
+  email: string
+  phone: string | null
+  company: string | null
+  service: string | null
+  message: string
+  subscribe_newsletter: boolean
+  website: string // honeypot — must stay empty
+}
+
+export interface ContactSubmitResponse {
+  success: boolean
+  message: string
+  data?: {
+    submission_id: number
+  }
+}
+
 export interface NewsletterStats {
   total_subscribers: number
   active_subscribers: number
