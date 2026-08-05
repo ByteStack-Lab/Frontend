@@ -39,12 +39,6 @@
           >
             Start a Project
           </NuxtLink>
-          <NuxtLink
-            to="/pricing"
-            class="border-2 border-violet-600 text-violet-700 px-8 py-4 rounded-xl font-semibold hover:bg-violet-600 hover:text-white transition-all duration-300"
-          >
-            See Pricing
-          </NuxtLink>
         </div>
       </div>
     </section>

@@ -101,12 +101,6 @@
                 d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </NuxtLink>
-          <NuxtLink
-            to="/pricing"
-            class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-[#3533cd] transition-all duration-300 flex items-center justify-center"
-          >
-            View Pricing
-          </NuxtLink>
         </div>
       </div>
     </section>

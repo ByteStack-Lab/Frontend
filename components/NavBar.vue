@@ -216,11 +216,6 @@
             class="text-gray-600 hover:text-[#3533cd] transition-colors duration-200 font-medium text-sm lg:text-base"
             >Blogs</NuxtLink
           >
-          <NuxtLink
-            to="/pricing"
-            class="text-gray-600 hover:text-[#3533cd] transition-colors duration-200 font-medium text-sm lg:text-base"
-            >Pricing</NuxtLink
-          >
         </div>
 
         <!-- CTA Button -->
@@ -529,27 +524,6 @@
               />
             </svg>
             <span>Blogs</span>
-          </NuxtLink>
-
-          <NuxtLink
-            to="/pricing"
-            class="menu-item flex items-center space-x-3 text-gray-700 hover:text-[#3533cd] transition-all duration-300 font-medium py-3 px-4 rounded-xl hover:bg-gradient-to-r hover:from-[#3533cd]/10 hover:to-[#1e1b69]/10 hover:shadow-sm"
-            @click="isMenuOpen = false"
-          >
-            <svg
-              class="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M9 7h6m0 10v-3m-3 3v-3m-3 3v-3m9-10H6a2 2 0 00-2 2v9a2 2 0 002 2h12a2 2 0 002-2V9a2 2 0 00-2-2z"
-              />
-            </svg>
-            <span>Pricing</span>
           </NuxtLink>
 
           <NuxtLink

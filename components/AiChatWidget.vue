@@ -157,7 +157,7 @@ const getReply = (text) => {
   const lower = text.toLowerCase();
 
   if (lower.includes("price") || lower.includes("cost") || lower.includes("much")) {
-    return "Pricing depends on scope, but MVPs typically start around $3,000 and full products around $8,000. Check out our Pricing page for an interactive estimate, or book a free discovery call for an exact quote.";
+    return "Pricing depends on scope, but MVPs typically start around $3,000 and full products around $8,000. Book a free discovery call and we'll put together an exact quote for your project.";
   }
   if (lower.includes("service") || lower.includes("offer") || lower.includes("do you")) {
     return "We build web apps, mobile apps, SaaS products, and AI/automation solutions — from MVPs to full production systems. Which of those is closest to what you're planning?";
