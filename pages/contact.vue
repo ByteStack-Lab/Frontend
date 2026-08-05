@@ -213,17 +213,20 @@
               </div>
             </div>
 
-            <!-- Honeypot field — hidden from real users, catches bots that auto-fill every input -->
+            <!-- Honeypot field — hidden from real users, catches bots that auto-fill every input.
+                 Field name is deliberately non-descriptive: browser autofill (saved address/
+                 business profiles) has been known to populate honeypots named "website" for
+                 real visitors, silently swallowing genuine submissions. -->
             <div
               class="absolute -left-[9999px] top-0 h-px w-px overflow-hidden"
               aria-hidden="true"
             >
-              <label for="website">Leave this field empty</label>
+              <label for="bsl_hp">Leave this field empty</label>
               <input
-                id="website"
-                v-model="form.website"
+                id="bsl_hp"
+                v-model="form.bslHp"
                 type="text"
-                name="website"
+                name="bsl_hp"
                 tabindex="-1"
                 autocomplete="off"
               >
@@ -625,7 +628,7 @@ const form = ref({
   service: "",
   message: "",
   subscribeNewsletter: false,
-  website: "", // honeypot — must stay empty
+  bslHp: "", // honeypot — must stay empty
 });
 
 const isSubmitting = ref(false);
@@ -705,7 +708,7 @@ const submitForm = async () => {
       service: form.value.service || null,
       message: form.value.message,
       subscribe_newsletter: form.value.subscribeNewsletter,
-      website: form.value.website,
+      bsl_hp: form.value.bslHp,
     };
 
     // Send form data to backend API
@@ -728,7 +731,7 @@ const submitForm = async () => {
       service: "",
       message: "",
       subscribeNewsletter: false,
-      website: "",
+      bslHp: "",
     };
   } catch (error) {
     console.error("Error submitting form:", error);

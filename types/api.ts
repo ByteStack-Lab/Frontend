@@ -409,7 +409,7 @@ export interface ContactSubmitPayload {
   service: string | null
   message: string
   subscribe_newsletter: boolean
-  website: string // honeypot — must stay empty
+  bsl_hp: string // honeypot — must stay empty
 }
 
 export interface ContactSubmitResponse {

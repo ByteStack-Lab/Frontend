@@ -312,10 +312,10 @@ export const useApi = () => {
     // ===== NEWSLETTER API METHODS =====
 
     // Subscribe to newsletter
-    async subscribeNewsletter(email: string, name: string | null = null, website = ''): Promise<NewsletterResponse> {
+    async subscribeNewsletter(email: string, name: string | null = null, bslHp = ''): Promise<NewsletterResponse> {
       return request<NewsletterResponse>('/newsletter/subscribe', {
         method: 'POST',
-        body: { email, name, website }
+        body: { email, name, bsl_hp: bslHp }
       }, 'Error subscribing to newsletter:')
     },
 

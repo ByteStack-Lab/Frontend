@@ -625,17 +625,20 @@
           </h2>
 
           <form class="space-y-6" @submit.prevent="submitApplication">
-            <!-- Honeypot field — hidden from real users, catches bots that auto-fill every input -->
+            <!-- Honeypot field — hidden from real users, catches bots that auto-fill every input.
+                 Field name is deliberately non-descriptive: browser autofill (saved address/
+                 business profiles) has been known to populate honeypots named "website" for
+                 real visitors, silently swallowing genuine submissions. -->
             <div
               class="absolute -left-[9999px] top-0 h-px w-px overflow-hidden"
               aria-hidden="true"
             >
-              <label for="job-apply-website">Leave this field empty</label>
+              <label for="job-apply-bsl-hp">Leave this field empty</label>
               <input
-                id="job-apply-website"
-                v-model="applicationForm.website"
+                id="job-apply-bsl-hp"
+                v-model="applicationForm.bslHp"
                 type="text"
-                name="website"
+                name="bsl_hp"
                 tabindex="-1"
                 autocomplete="off"
               >
@@ -850,7 +853,7 @@ const applicationForm = ref({
   github_url: "",
   additional_info: "",
   terms: false,
-  website: "", // honeypot — must stay empty
+  bslHp: "", // honeypot — must stay empty
 });
 
 // Server-side data fetching for SSR/SEO
@@ -1034,7 +1037,7 @@ const submitApplication = async () => {
     formData.append("first_name", applicationForm.value.first_name);
     formData.append("last_name", applicationForm.value.last_name);
     formData.append("email", applicationForm.value.email);
-    formData.append("website", applicationForm.value.website || "");
+    formData.append("bsl_hp", applicationForm.value.bslHp || "");
     formData.append("phone", applicationForm.value.phone || "");
     formData.append("cover_letter", applicationForm.value.cover_letter || "");
     formData.append("portfolio_url", applicationForm.value.portfolio_url || "");
@@ -1071,7 +1074,7 @@ const submitApplication = async () => {
       github_url: "",
       additional_info: "",
       terms: false,
-      website: "",
+      bslHp: "",
     };
 
     // Reset file input
