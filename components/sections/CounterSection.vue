@@ -140,11 +140,30 @@
 <script setup>
 import { ref, onMounted } from "vue";
 
-// Counter values (target numbers)
-const targetExperience = 5;
-const targetProjects = 100;
-const targetTeam = 15;
-const targetClients = 100;
+// Counter target values — admin-editable via Filament Settings, with the
+// previous hardcoded numbers as a fallback if the API is unreachable.
+const { data: counters } = await useLazyAsyncData(
+  "homepage-counters",
+  async () => {
+    const config = useRuntimeConfig();
+    const response = await $fetch(
+      `${config.public.apiBase}/settings?group=homepage_counters`,
+    );
+    return response?.data ?? {};
+  },
+  { default: () => ({}) },
+);
+
+const targetExperience = computed(
+  () => counters.value?.counter_years_experience ?? 5,
+);
+const targetProjects = computed(
+  () => counters.value?.counter_projects_completed ?? 100,
+);
+const targetTeam = computed(() => counters.value?.counter_team_members ?? 15);
+const targetClients = computed(
+  () => counters.value?.counter_happy_clients ?? 100,
+);
 
 // Display values (animated numbers)
 const displayExperience = ref(0);
@@ -186,25 +205,25 @@ const startCounterAnimations = () => {
 
   // Start all counters with staggered delays
   setTimeout(() => {
-    animateCounter(0, targetExperience, 2000, (value) => {
+    animateCounter(0, targetExperience.value, 2000, (value) => {
       displayExperience.value = value;
     });
   }, 300);
 
   setTimeout(() => {
-    animateCounter(0, targetProjects, 2500, (value) => {
+    animateCounter(0, targetProjects.value, 2500, (value) => {
       displayProjects.value = value;
     });
   }, 600);
 
   setTimeout(() => {
-    animateCounter(0, targetTeam, 1800, (value) => {
+    animateCounter(0, targetTeam.value, 1800, (value) => {
       displayTeam.value = value;
     });
   }, 900);
 
   setTimeout(() => {
-    animateCounter(0, targetClients, 2200, (value) => {
+    animateCounter(0, targetClients.value, 2200, (value) => {
       displayClients.value = value;
     });
   }, 1200);

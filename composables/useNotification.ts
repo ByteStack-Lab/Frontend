@@ -1,17 +1,28 @@
-import { ref } from 'vue'
+import { ref, readonly } from 'vue'
 
-const notification = ref({
+export type NotificationType = 'success' | 'error' | 'warning' | 'info'
+
+interface NotificationState {
+  show: boolean
+  type: NotificationType
+  title: string
+  message: string
+  duration: number
+  autoHide?: boolean
+}
+
+const notification = ref<NotificationState>({
   show: false,
-  type: 'success', // 'success' | 'error' | 'warning' | 'info'
+  type: 'success',
   title: '',
   message: '',
   duration: 5000
 })
 
-let timeoutId = null
+let timeoutId: ReturnType<typeof setTimeout> | null = null
 
 export const useNotification = () => {
-  const showNotification = (message, type = 'success', title = '', duration = 5000) => {
+  const showNotification = (message: string, type: NotificationType = 'success', title = '', duration = 5000) => {
     // Clear any existing timeout
     if (timeoutId) {
       clearTimeout(timeoutId)
@@ -63,19 +74,19 @@ export const useNotification = () => {
     }
   }
 
-  const showSuccess = (message, title = '🎉 Success!', duration = 5000) => {
+  const showSuccess = (message: string, title = '🎉 Success!', duration = 5000) => {
     showNotification(message, 'success', title, duration)
   }
 
-  const showError = (message, title = '❌ Error!', duration = 5000) => {
+  const showError = (message: string, title = '❌ Error!', duration = 5000) => {
     showNotification(message, 'error', title, duration)
   }
 
-  const showWarning = (message, title = '⚠️ Warning!', duration = 5000) => {
+  const showWarning = (message: string, title = '⚠️ Warning!', duration = 5000) => {
     showNotification(message, 'warning', title, duration)
   }
 
-  const showInfo = (message, title = 'ℹ️ Info', duration = 5000) => {
+  const showInfo = (message: string, title = 'ℹ️ Info', duration = 5000) => {
     showNotification(message, 'info', title, duration)
   }
 

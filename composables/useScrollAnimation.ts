@@ -1,9 +1,9 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 
-export const useScrollAnimation = (options = {}) => {
+export const useScrollAnimation = (options: IntersectionObserverInit = {}) => {
   const isVisible = ref(false)
-  const elementRef = ref(null)
-  let observer = null
+  const elementRef = ref<Element | null>(null)
+  let observer: IntersectionObserver | null = null
 
   const defaultOptions = {
     threshold: 0.1, // Trigger when 10% of element is visible
@@ -19,7 +19,7 @@ export const useScrollAnimation = (options = {}) => {
         if (entry.isIntersecting) {
           isVisible.value = true
           // Once animated, stop observing to prevent re-animation
-          observer.unobserve(entry.target)
+          observer!.unobserve(entry.target)
         }
       })
     }, defaultOptions)

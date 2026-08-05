@@ -10,6 +10,9 @@
     "smoke": "node scripts/smoke-check.mjs",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "vue-tsc --noEmit",
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
@@ -21,13 +24,18 @@
   },
   "devDependencies": {
     "@nuxt/eslint": "^1.16.0",
+    "@nuxt/test-utils": "^4.1.0",
     "@nuxtjs/google-fonts": "^3.2.0",
     "@nuxtjs/tailwindcss": "^7.0.0-beta.0",
     "@tailwindcss/postcss": "^4.1.10",
     "@tailwindcss/typography": "^0.5.16",
+    "@vue/test-utils": "^2.4.11",
     "autoprefixer": "^10.4.21",
     "eslint": "^10.7.0",
+    "happy-dom": "^20.11.1",
     "postcss": "^8.5.6",
-    "tailwindcss": "^4.1.10"
+    "tailwindcss": "^4.1.10",
+    "vitest": "^4.1.10",
+    "vue-tsc": "^2.2.12"
   }
 }

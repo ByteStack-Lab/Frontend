@@ -1,7 +1,7 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 
 export const useInteractiveAnimation = () => {
-  const elementRef = ref(null)
+  const elementRef = ref<HTMLElement | null>(null)
   
   // Mouse position tracking
   const mouseX = ref(0)
@@ -12,7 +12,7 @@ export const useInteractiveAnimation = () => {
   
   // Tilt effect for cards
   const useTiltEffect = (intensity = 15) => {
-    const handleMouseMove = (e) => {
+    const handleMouseMove = (e: MouseEvent) => {
       if (!elementRef.value) return
       
       const rect = elementRef.value.getBoundingClientRect()
@@ -67,7 +67,7 @@ export const useInteractiveAnimation = () => {
     const handleScroll = () => {
       if (!elementRef.value) return
       
-      const rect = elementRef.value.getBoundingClientRect()
+      const _rect = elementRef.value.getBoundingClientRect()
       const scrolled = window.pageYOffset
       const parallax = scrolled * speed
       
@@ -85,7 +85,7 @@ export const useInteractiveAnimation = () => {
   
   // Magnetic effect for buttons
   const useMagneticEffect = (strength = 0.3) => {
-    const handleMouseMove = (e) => {
+    const handleMouseMove = (e: MouseEvent) => {
       if (!elementRef.value) return
       
       const rect = elementRef.value.getBoundingClientRect()
