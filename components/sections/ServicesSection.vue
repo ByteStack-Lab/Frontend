@@ -323,7 +323,6 @@ const totalCards = computed(() => featuredServices.value.length);
 const isDragging = ref(false);
 const startX = ref(0);
 const scrollLeft = ref(0);
-const dragThreshold = 50;
 
 // Responsive cards per view
 const cardsPerView = computed(() => {
@@ -534,17 +533,6 @@ onUnmounted(() => {
   }
 });
 
-// Pause auto-slide on hover
-const handleMouseEnter = () => {
-  stopAutoSlide();
-};
-
-const handleMouseLeave = () => {
-  if (canSlide.value && !isDragging.value) {
-    setTimeout(startAutoSlide, 500);
-  }
-};
-
 // Helper function to start auto slide with delay (for card hover)
 const startAutoSlideDelayed = () => {
   if (canSlide.value && !isDragging.value) {
@@ -552,12 +540,6 @@ const startAutoSlideDelayed = () => {
       startAutoSlide();
     }, 1000); // 1 second delay after mouse leaves card
   }
-};
-
-// Helper function to get service for a specific slide and card position
-const getServiceForSlide = (slideIndex, cardIndex) => {
-  const serviceIndex = slideIndex * cardsPerView.value + cardIndex;
-  return featuredServices.value[serviceIndex] || null;
 };
 
 // Helper function to get all services for a specific slide

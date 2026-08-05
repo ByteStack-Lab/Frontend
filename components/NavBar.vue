@@ -918,18 +918,6 @@ onUnmounted(() => {
   }
 });
 
-// Smooth scroll to top (home) function
-const scrollToTop = () => {
-  // Close mobile menu if open
-  isMenuOpen.value = false;
-
-  // Smooth scroll to top of page
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
-};
-
 // Smooth scroll to section function
 const scrollToSection = (sectionId) => {
   // Close mobile menu if open

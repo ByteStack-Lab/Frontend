@@ -153,7 +153,9 @@
           <div class="grid lg:grid-cols-2 gap-12 items-start">
             <!-- Left Column - Project Description -->
             <div class="prose prose-lg max-w-none">
+              <!-- eslint-disable vue/no-v-html -- sanitized via sanitizeHtml() below, which strips <script> tags, inline event handlers, and javascript: URLs -->
               <div class="text-gray-600 leading-relaxed text-lg" v-html="sanitizeHtml(caseStudy.detailedDescription || caseStudy.description)"/>
+              <!-- eslint-enable vue/no-v-html -->
             </div>
             
             <!-- Right Column - Gallery Images Slider -->

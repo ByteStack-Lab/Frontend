@@ -712,7 +712,7 @@ const submitForm = async () => {
     };
 
     // Send form data to backend API
-    const response = await $fetch(`${config.public.apiBase}/contact/submit`, {
+    await $fetch(`${config.public.apiBase}/contact/submit`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -168,22 +168,6 @@ import { computed } from 'vue'
 
 const { notification, hideNotification } = useNotification()
 
-// Icon components for different notification types
-const iconComponent = computed(() => {
-  switch (notification.value.type) {
-    case 'success':
-      return 'svg' // Success checkmark
-    case 'error':
-      return 'svg' // Error X
-    case 'warning':
-      return 'svg' // Warning triangle
-    case 'info':
-      return 'svg' // Info circle
-    default:
-      return 'svg'
-  }
-})
-
 // Dynamic classes based on notification type
 const notificationClasses = computed(() => {
   switch (notification.value.type) {

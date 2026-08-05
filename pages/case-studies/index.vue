@@ -326,11 +326,6 @@ const filteredCaseStudies = computed(() => {
   return caseStudies.value.filter(caseStudy => caseStudy.category === selectedFilter.value)
 })
 
-// Helper function to get category count
-const getCategoryCount = (category) => {
-  return caseStudies.value.filter(cs => cs.category === category).length
-}
-
 // Helper function to get background color for case studies
 const getCaseStudyBgColor = (index) => {
   const colors = [

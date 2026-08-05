@@ -208,10 +208,12 @@
           <div class="grid lg:grid-cols-12 gap-12">
             <!-- Left Column - Description and Details -->
             <div class="lg:col-span-7">
+              <!-- eslint-disable vue/no-v-html -- sanitized via sanitizeHtml() below, which strips <script> tags, inline event handlers, and javascript: URLs -->
               <div
                 class="prose prose-lg max-w-none"
                 v-html="sanitizeHtml(service.description)"
               />
+              <!-- eslint-enable vue/no-v-html -->
 
               <!-- Features -->
               <div

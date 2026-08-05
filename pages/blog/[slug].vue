@@ -350,10 +350,12 @@
             class="rounded-3xl border border-gray-100 bg-white p-6 shadow-lg shadow-[#3533cd]/5 md:p-10"
           >
             <!-- Content -->
+            <!-- eslint-disable vue/no-v-html -- sanitized via sanitizeHtml() below, which strips <script> tags, inline event handlers, and javascript: URLs -->
             <div
               class="prose prose-lg max-w-none mb-12"
               v-html="sanitizeHtml(blog.content)"
             />
+            <!-- eslint-enable vue/no-v-html -->
 
             <!-- Gallery Images -->
             <div

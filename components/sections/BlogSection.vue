@@ -487,19 +487,6 @@ const nextSlide = () => {
     currentSlide.value >= maxSlides ? 0 : currentSlide.value + 1;
 };
 
-const prevSlide = () => {
-  const slidesPerView = Math.floor(100 / slideWidth.value);
-  const maxSlides = Math.max(0, blogs.value.length - slidesPerView);
-
-  if (blogs.value.length <= slidesPerView) {
-    currentSlide.value = 0;
-    return;
-  }
-
-  currentSlide.value =
-    currentSlide.value <= 0 ? maxSlides : currentSlide.value - 1;
-};
-
 onMounted(() => {
   updateSlideWidth();
   fetchFeaturedBlogs(); // This will start auto-slide after loading

@@ -309,10 +309,12 @@
               <h2 class="text-2xl font-bold text-gray-900 mb-6">
                 Job Description
               </h2>
+              <!-- eslint-disable vue/no-v-html -- sanitized via sanitizeHtml() below, which strips <script> tags, inline event handlers, and javascript: URLs -->
               <div
                 class="prose prose-lg max-w-none text-gray-600"
                 v-html="sanitizeHtml(job.description)"
               />
+              <!-- eslint-enable vue/no-v-html -->
             </div>
 
             <!-- Responsibilities -->
@@ -823,7 +825,6 @@
 
 <script setup>
 const route = useRoute();
-const router = useRouter();
 
 // Reactive data
 const submitting = ref(false);
@@ -1036,7 +1037,7 @@ const submitApplication = async () => {
       formData.append("resume", applicationForm.value.resume);
     }
 
-    const response = await $api.post(
+    await $api.post(
       `/career-jobs/${route.params.slug}/apply`,
       formData,
     );
@@ -1108,9 +1109,6 @@ const submitApplication = async () => {
 const shareJob = (platform) => {
   const url = encodeURIComponent(window.location.href);
   const title = encodeURIComponent(`${job.value.title} - ByteStackLab`);
-  const description = encodeURIComponent(
-    `Join our team as a ${job.value.title} at ByteStackLab. ${job.value.department} department, ${job.value.location}. Apply now!`,
-  );
 
   const shareUrls = {
     twitter: `https://twitter.com/intent/tweet?url=${url}&text=${title}`,
@@ -1133,7 +1131,7 @@ const copyJobLink = async () => {
       "Link Copied! 📋",
       "Job link has been copied to your clipboard.",
     );
-  } catch (err) {
+  } catch {
     showNotification(
       "error",
       "Copy Failed ❌",

@@ -511,7 +511,7 @@ const formatDate = (dateString) => {
       month: "long",
       day: "numeric",
     });
-  } catch (error) {
+  } catch {
     return dateString;
   }
 };

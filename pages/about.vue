@@ -710,7 +710,7 @@
               class="flex justify-center items-center space-x-12 lg:space-x-16"
             >
               <div
-                v-for="(partner, index) in visiblePartners"
+                v-for="partner in visiblePartners"
                 :key="partner.id"
                 class="flex items-center justify-center transition-all duration-300 hover:scale-105"
               >
@@ -1344,7 +1344,6 @@ const {
   data: testimonialsData,
   pending: testimonialsPending,
   error: testimonialsError,
-  refresh: refreshTestimonials,
 } = await useLazyAsyncData("testimonials", () => {
   const { getAllTestimonials } = useApi();
   return getAllTestimonials();

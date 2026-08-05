@@ -105,10 +105,12 @@
                 >
               </div>
 
+              <!-- eslint-disable vue/no-v-html -- sanitized via sanitizeHtml() below, which strips <script> tags, inline event handlers, and javascript: URLs -->
               <div
                 class="text-lg text-gray-600 leading-relaxed mb-8 prose prose-sm max-w-none"
                 v-html="sanitizeHtml(product.description)"
               />
+              <!-- eslint-enable vue/no-v-html -->
 
               <!-- Key Features -->
               <div class="grid grid-cols-2 gap-3 mb-10">
@@ -150,10 +152,12 @@
                     product.price_period
                   }}</span>
                 </div>
+                <!-- eslint-disable vue/no-v-html -- sanitized via sanitizeHtml() below, which strips <script> tags, inline event handlers, and javascript: URLs -->
                 <p
                   class="text-gray-500 text-sm mb-6"
                   v-html="sanitizeHtml(product.pricing_note)"
                 />
+                <!-- eslint-enable vue/no-v-html -->
 
                 <div class="flex flex-col sm:flex-row gap-3">
                   <button
@@ -392,10 +396,12 @@
                   <h4 class="text-lg font-bold text-gray-900 mb-2">
                     {{ highlight.title }}
                   </h4>
+                  <!-- eslint-disable vue/no-v-html -- sanitized via sanitizeHtml() below, which strips <script> tags, inline event handlers, and javascript: URLs -->
                   <p
                     class="text-gray-600 text-sm leading-relaxed"
                     v-html="sanitizeHtml(highlight.description)"
                   />
+                  <!-- eslint-enable vue/no-v-html -->
                 </div>
               </div>
               <div
@@ -537,10 +543,12 @@
                           </svg>
                         </div>
                       </div>
+                      <!-- eslint-disable vue/no-v-html -- sanitized via sanitizeHtml() below, which strips <script> tags, inline event handlers, and javascript: URLs -->
                       <p
                         class="text-gray-600 text-sm leading-relaxed"
                         v-html="sanitizeHtml(review.text)"
                       />
+                      <!-- eslint-enable vue/no-v-html -->
                     </div>
                   </div>
                 </div>

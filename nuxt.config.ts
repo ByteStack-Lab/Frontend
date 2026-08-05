@@ -29,9 +29,9 @@ export default defineNuxtConfig({
     // Static pages (/, /about, /services, etc.) are picked up automatically
     // from pages/. Only the API-driven detail pages need to be supplied here.
     urls: async () => {
-      const fetchSlugs = async (endpoint) => {
+      const fetchSlugs = async (endpoint: string): Promise<{ slug: string }[]> => {
         try {
-          const response = await $fetch(`${apiBase}${endpoint}`)
+          const response = await $fetch<{ data?: { slug: string }[] }>(`${apiBase}${endpoint}`)
           return response?.data ?? []
         } catch {
           // Sitemap generation shouldn't fail the whole request if the API
@@ -49,11 +49,11 @@ export default defineNuxtConfig({
       ])
 
       return [
-        ...services.map((item) => ({ loc: `/services/${item.slug}`, changefreq: 'weekly', priority: 0.8 })),
-        ...blogs.map((item) => ({ loc: `/blog/${item.slug}`, changefreq: 'monthly', priority: 0.7 })),
-        ...caseStudies.map((item) => ({ loc: `/case-studies/${item.slug}`, changefreq: 'monthly', priority: 0.7 })),
-        ...products.map((item) => ({ loc: `/products/${item.slug}`, changefreq: 'weekly', priority: 0.7 })),
-        ...careerJobs.map((item) => ({ loc: `/careers/${item.slug}`, changefreq: 'weekly', priority: 0.6 }))
+        ...services.map((item: { slug: string }) => ({ loc: `/services/${item.slug}`, changefreq: 'weekly', priority: 0.8 }) as const),
+        ...blogs.map((item: { slug: string }) => ({ loc: `/blog/${item.slug}`, changefreq: 'monthly', priority: 0.7 }) as const),
+        ...caseStudies.map((item: { slug: string }) => ({ loc: `/case-studies/${item.slug}`, changefreq: 'monthly', priority: 0.7 }) as const),
+        ...products.map((item: { slug: string }) => ({ loc: `/products/${item.slug}`, changefreq: 'weekly', priority: 0.7 }) as const),
+        ...careerJobs.map((item: { slug: string }) => ({ loc: `/careers/${item.slug}`, changefreq: 'weekly', priority: 0.6 }) as const)
       ]
     }
   },
