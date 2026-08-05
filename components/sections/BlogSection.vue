@@ -110,12 +110,12 @@
                   <img
                     :src="
                       blog.featuredImage ||
-                      `/images/blogs/${((blog.id || index + 1) % 3) + 1}.png`
+                      `/images/blogs/${((blog.id || index + 1) % 3) + 1}.webp`
                     "
                     :alt="blog.title"
                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     @error="
-                      $event.target.src = `/images/blogs/${((blog.id || index + 1) % 3) + 1}.png`
+                      $event.target.src = `/images/blogs/${((blog.id || index + 1) % 3) + 1}.webp`
                     "
                   >
                 </div>
