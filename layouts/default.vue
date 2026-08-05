@@ -16,6 +16,9 @@
 
     <!-- AI Assistant -->
     <AiChatWidget />
+
+    <!-- Cookie Consent -->
+    <CookieConsentBanner />
   </div>
 </template>
 
@@ -28,6 +31,7 @@ import NavBar from '~/components/NavBar.vue'
 import FooterSection from '~/components/FooterSection.vue'
 import PagePreloader from '~/components/PagePreloader.vue'
 import AiChatWidget from '~/components/AiChatWidget.vue'
+import CookieConsentBanner from '~/components/CookieConsentBanner.vue'
 
 const route = useRoute()
 const router = useRouter()

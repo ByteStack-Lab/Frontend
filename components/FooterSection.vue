@@ -197,6 +197,13 @@
               >
             </li>
             <li>
+              <NuxtLink
+                to="/faq"
+                class="text-gray-600 hover:text-gray-900 transition-colors duration-300"
+                >FAQ</NuxtLink
+              >
+            </li>
+            <li>
               <a
                 href="/terms-conditions"
                 class="text-gray-600 hover:text-gray-900 transition-colors duration-300"

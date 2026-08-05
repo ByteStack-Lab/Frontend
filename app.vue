@@ -26,7 +26,18 @@ useHead({
 useHead({
       titleTemplate: '%s - ByteStackLab',
   meta: [
-    { name: 'description', content: 'Professional software development services for modern businesses' }
+    { name: 'description', content: 'Professional software development services for modern businesses' },
+    // Site-wide OG/Twitter fallbacks — any page-level useHead()/useSeoMeta()
+    // that sets the same property (e.g. blog/case-study detail pages using
+    // the article's own image) overrides these automatically.
+    { property: 'og:site_name', content: 'ByteStackLab' },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:image', content: 'https://bytestacklab.com/images/hero-image.png' },
+    { property: 'og:image:width', content: '1000' },
+    { property: 'og:image:height', content: '720' },
+    { property: 'og:locale', content: 'en_US' },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:image', content: 'https://bytestacklab.com/images/hero-image.png' }
   ],
   script: [
     {
