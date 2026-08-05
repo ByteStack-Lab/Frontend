@@ -13,6 +13,9 @@
 
     <!-- Footer -->
     <FooterSection />
+
+    <!-- AI Assistant -->
+    <AiChatWidget />
   </div>
 </template>
 
@@ -24,6 +27,7 @@ import { useRoute, useRouter } from 'vue-router'
 import NavBar from '~/components/NavBar.vue'
 import FooterSection from '~/components/FooterSection.vue'
 import PagePreloader from '~/components/PagePreloader.vue'
+import AiChatWidget from '~/components/AiChatWidget.vue'
 
 const route = useRoute()
 const router = useRouter()

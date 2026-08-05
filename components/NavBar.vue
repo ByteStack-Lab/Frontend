@@ -138,6 +138,42 @@
                       </h3>
                     </div>
                   </NuxtLink>
+
+                  <!-- AI-first 2026 offerings — dedicated static pages, not backend-driven -->
+                  <NuxtLink
+                    to="/services/ai-automation"
+                    class="flex items-center space-x-3 p-4 rounded-xl transition-all duration-200 group/item hover:bg-gradient-to-r hover:from-violet-50 hover:to-violet-100"
+                  >
+                    <div
+                      class="w-12 h-12 bg-gradient-to-r from-violet-500 to-violet-600 rounded-xl flex items-center justify-center group-hover/item:scale-110 transition-transform duration-200"
+                    >
+                      <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 class="font-semibold text-gray-900 transition-colors duration-200 group-hover/item:text-violet-600">
+                        AI &amp; Automation
+                      </h3>
+                    </div>
+                  </NuxtLink>
+                  <NuxtLink
+                    to="/services/saas-development"
+                    class="flex items-center space-x-3 p-4 rounded-xl transition-all duration-200 group/item hover:bg-gradient-to-r hover:from-cyan-50 hover:to-cyan-100"
+                  >
+                    <div
+                      class="w-12 h-12 bg-gradient-to-r from-cyan-500 to-cyan-600 rounded-xl flex items-center justify-center group-hover/item:scale-110 transition-transform duration-200"
+                    >
+                      <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 001.6-9.75 6 6 0 00-11.3-2.6A4.5 4.5 0 003 15z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 class="font-semibold text-gray-900 transition-colors duration-200 group-hover/item:text-cyan-600">
+                        SaaS Development
+                      </h3>
+                    </div>
+                  </NuxtLink>
                 </div>
 
                 <!-- View All Services Link -->
@@ -179,6 +215,11 @@
             to="/blog"
             class="text-gray-600 hover:text-[#3533cd] transition-colors duration-200 font-medium text-sm lg:text-base"
             >Blogs</NuxtLink
+          >
+          <NuxtLink
+            to="/pricing"
+            class="text-gray-600 hover:text-[#3533cd] transition-colors duration-200 font-medium text-sm lg:text-base"
+            >Pricing</NuxtLink
           >
         </div>
 
@@ -394,6 +435,36 @@
                   </p>
                 </div>
               </NuxtLink>
+
+              <!-- AI-first 2026 offerings — dedicated static pages, not backend-driven -->
+              <NuxtLink
+                to="/services/ai-automation"
+                class="flex items-center space-x-3 p-3 rounded-lg hover:bg-white hover:shadow-sm transition-all duration-200 group/item"
+                @click="isMenuOpen = false"
+              >
+                <div class="w-10 h-10 bg-gradient-to-r from-violet-500 to-violet-600 rounded-lg flex items-center justify-center group-hover/item:scale-110 transition-transform duration-200">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+                <p class="font-medium text-gray-900 transition-colors duration-200 group-hover/item:text-violet-600">
+                  AI &amp; Automation
+                </p>
+              </NuxtLink>
+              <NuxtLink
+                to="/services/saas-development"
+                class="flex items-center space-x-3 p-3 rounded-lg hover:bg-white hover:shadow-sm transition-all duration-200 group/item"
+                @click="isMenuOpen = false"
+              >
+                <div class="w-10 h-10 bg-gradient-to-r from-cyan-500 to-cyan-600 rounded-lg flex items-center justify-center group-hover/item:scale-110 transition-transform duration-200">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 001.6-9.75 6 6 0 00-11.3-2.6A4.5 4.5 0 003 15z" />
+                  </svg>
+                </div>
+                <p class="font-medium text-gray-900 transition-colors duration-200 group-hover/item:text-cyan-600">
+                  SaaS Development
+                </p>
+              </NuxtLink>
             </div>
           </div>
 
@@ -458,6 +529,27 @@
               />
             </svg>
             <span>Blogs</span>
+          </NuxtLink>
+
+          <NuxtLink
+            to="/pricing"
+            class="menu-item flex items-center space-x-3 text-gray-700 hover:text-[#3533cd] transition-all duration-300 font-medium py-3 px-4 rounded-xl hover:bg-gradient-to-r hover:from-[#3533cd]/10 hover:to-[#1e1b69]/10 hover:shadow-sm"
+            @click="isMenuOpen = false"
+          >
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 7h6m0 10v-3m-3 3v-3m-3 3v-3m9-10H6a2 2 0 00-2 2v9a2 2 0 002 2h12a2 2 0 002-2V9a2 2 0 00-2-2z"
+              />
+            </svg>
+            <span>Pricing</span>
           </NuxtLink>
 
           <NuxtLink
@@ -828,6 +920,10 @@ const getServiceIcon = (category, icon) => {
       "M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
     maintenance:
       "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z",
+    "ai-automation":
+      "M13 10V3L4 14h7v7l9-11h-7z",
+    "saas-development":
+      "M3 15a4 4 0 004 4h9a5 5 0 001.6-9.75 6 6 0 00-11.3-2.6A4.5 4.5 0 003 15z",
   };
 
   return icons[category] || icons["web-development"];
@@ -871,6 +967,18 @@ const getServiceColor = (category) => {
       to: "to-gray-600",
       hover: "hover:from-gray-50 hover:to-gray-100",
       text: "group-hover/item:text-gray-600",
+    },
+    "ai-automation": {
+      from: "from-violet-500",
+      to: "to-violet-600",
+      hover: "hover:from-violet-50 hover:to-violet-100",
+      text: "group-hover/item:text-violet-600",
+    },
+    "saas-development": {
+      from: "from-cyan-500",
+      to: "to-cyan-600",
+      hover: "hover:from-cyan-50 hover:to-cyan-100",
+      text: "group-hover/item:text-cyan-600",
     },
   };
 
