@@ -187,7 +187,7 @@
                       stroke-linecap="round"
                       stroke-linejoin="round"
                       stroke-width="2"
-                      d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                      :d="getServiceIconPath(service.category)"
                     />
                   </svg>
                 </div>
@@ -726,6 +726,8 @@
 </template>
 
 <script setup>
+import { getServiceIconPath } from "~/utils/serviceIcons";
+
 // Get route parameter
 const route = useRoute();
 const slug = route.params.slug;
@@ -857,8 +859,8 @@ const breadcrumbSchema = useBreadcrumbSchema();
 
 useHead(() => ({
   title: service.value
-    ? `${service.value.title} - ByteStack Lab`
-    : "Service Details - ByteStack Lab",
+    ? `${service.value.title} - ByteStackLab`
+    : "Service Details - ByteStackLab",
   meta: [
     {
       name: "description",
@@ -872,8 +874,8 @@ useHead(() => ({
     {
       property: "og:title",
       content: service.value
-        ? `${service.value.title} - ByteStack Lab`
-        : "Service Details - ByteStack Lab",
+        ? `${service.value.title} - ByteStackLab`
+        : "Service Details - ByteStackLab",
     },
     {
       property: "og:description",

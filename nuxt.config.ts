@@ -72,9 +72,17 @@ export default defineNuxtConfig({
       ]
     }
   },
+  routeRules: {
+    // Old service slugs, renamed/merged 2026-08-09 — see
+    // ByteStackLab-Backend/database/seeders/ServiceSeeder.php and
+    // SERVICES-CONTENT-STRATEGY.md §3.5 for the rationale.
+    '/services/web-design-development': { redirect: { to: '/services/web-application-development', statusCode: 301 } },
+    '/services/ecommerce-development': { redirect: { to: '/services/web-application-development', statusCode: 301 } },
+    '/services/software-testing-service': { redirect: { to: '/services/qa-test-automation', statusCode: 301 } }
+  },
   app: {
     head: {
-      title: 'ByteStack Lab - Software Development Company',
+      title: 'ByteStackLab - Software Development Company',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },

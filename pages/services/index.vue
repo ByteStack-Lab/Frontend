@@ -104,7 +104,7 @@
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   stroke-width="2"
-                  d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                  :d="getServiceIconPath(service.category)"
                 />
               </svg>
             </div>
@@ -196,41 +196,43 @@
 </template>
 
 <script setup>
+import { getServiceIconPath } from "~/utils/serviceIcons";
+
 // Page meta for SEO
 useHead({
-  title: "Our Services - Professional Development Solutions | ByteStack Lab",
+  title: "Our Services - AI Automation, SaaS & Software Development | ByteStackLab",
   meta: [
     {
       name: "description",
       content:
-        "Explore our comprehensive range of digital services including web development, mobile apps, UI/UX design, and digital marketing solutions.",
+        "AI automation, SaaS product development, custom web & mobile apps, UI/UX design, QA, DevOps, and cybersecurity — explore ByteStackLab's full range of software services.",
     },
     {
       name: "keywords",
       content:
-        "web development, mobile app development, UI/UX design, digital marketing, software development services",
+        "ai automation, saas development, web application development, mobile app development, ui ux design, qa testing, devops, cybersecurity",
     },
     {
       property: "og:title",
       content:
-        "Our Services - Professional Development Solutions | ByteStack Lab",
+        "Our Services - AI Automation, SaaS & Software Development | ByteStackLab",
     },
     {
       property: "og:description",
       content:
-        "Explore our comprehensive range of digital services including web development, mobile apps, UI/UX design, and digital marketing solutions.",
+        "AI automation, SaaS product development, custom web & mobile apps, UI/UX design, QA, DevOps, and cybersecurity — explore ByteStackLab's full range of software services.",
     },
     { property: "og:type", content: "website" },
     { name: "twitter:card", content: "summary_large_image" },
     {
       name: "twitter:title",
       content:
-        "Our Services - Professional Development Solutions | ByteStack Lab",
+        "Our Services - AI Automation, SaaS & Software Development | ByteStackLab",
     },
     {
       name: "twitter:description",
       content:
-        "Explore our comprehensive range of digital services including web development, mobile apps, UI/UX design, and digital marketing solutions.",
+        "AI automation, SaaS product development, custom web & mobile apps, UI/UX design, QA, DevOps, and cybersecurity — explore ByteStackLab's full range of software services.",
     },
   ],
 });

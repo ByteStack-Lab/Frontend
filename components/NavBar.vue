@@ -98,42 +98,6 @@
                       </h3>
                     </div>
                   </NuxtLink>
-
-                  <!-- AI-first 2026 offerings — dedicated static pages, not backend-driven -->
-                  <NuxtLink
-                    to="/services/ai-automation"
-                    class="flex items-center space-x-3 p-4 rounded-xl transition-all duration-200 group/item hover:bg-gradient-to-r hover:from-violet-50 hover:to-violet-100"
-                  >
-                    <div
-                      class="w-12 h-12 bg-gradient-to-r from-violet-500 to-violet-600 rounded-xl flex items-center justify-center group-hover/item:scale-110 transition-transform duration-200"
-                    >
-                      <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h3 class="font-semibold text-gray-900 transition-colors duration-200 group-hover/item:text-violet-600">
-                        AI &amp; Automation
-                      </h3>
-                    </div>
-                  </NuxtLink>
-                  <NuxtLink
-                    to="/services/saas-development"
-                    class="flex items-center space-x-3 p-4 rounded-xl transition-all duration-200 group/item hover:bg-gradient-to-r hover:from-cyan-50 hover:to-cyan-100"
-                  >
-                    <div
-                      class="w-12 h-12 bg-gradient-to-r from-cyan-500 to-cyan-600 rounded-xl flex items-center justify-center group-hover/item:scale-110 transition-transform duration-200"
-                    >
-                      <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 001.6-9.75 6 6 0 00-11.3-2.6A4.5 4.5 0 003 15z" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h3 class="font-semibold text-gray-900 transition-colors duration-200 group-hover/item:text-cyan-600">
-                        SaaS Development
-                      </h3>
-                    </div>
-                  </NuxtLink>
                 </div>
 
                 <!-- View All Services Link -->
@@ -268,42 +232,6 @@
                         :class="getServiceColor(service.category).text"
                       >
                         {{ service.title }}
-                      </h3>
-                    </div>
-                  </NuxtLink>
-
-                  <!-- AI-first 2026 offerings — dedicated static pages, not backend-driven -->
-                  <NuxtLink
-                    to="/services/ai-automation"
-                    class="flex items-center space-x-3 p-4 rounded-xl transition-all duration-200 group/item hover:bg-gradient-to-r hover:from-violet-50 hover:to-violet-100"
-                  >
-                    <div
-                      class="w-12 h-12 bg-gradient-to-r from-violet-500 to-violet-600 rounded-xl flex items-center justify-center group-hover/item:scale-110 transition-transform duration-200"
-                    >
-                      <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h3 class="font-semibold text-gray-900 transition-colors duration-200 group-hover/item:text-violet-600">
-                        AI &amp; Automation
-                      </h3>
-                    </div>
-                  </NuxtLink>
-                  <NuxtLink
-                    to="/services/saas-development"
-                    class="flex items-center space-x-3 p-4 rounded-xl transition-all duration-200 group/item hover:bg-gradient-to-r hover:from-cyan-50 hover:to-cyan-100"
-                  >
-                    <div
-                      class="w-12 h-12 bg-gradient-to-r from-cyan-500 to-cyan-600 rounded-xl flex items-center justify-center group-hover/item:scale-110 transition-transform duration-200"
-                    >
-                      <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 001.6-9.75 6 6 0 00-11.3-2.6A4.5 4.5 0 003 15z" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h3 class="font-semibold text-gray-900 transition-colors duration-200 group-hover/item:text-cyan-600">
-                        SaaS Development
                       </h3>
                     </div>
                   </NuxtLink>
@@ -562,36 +490,6 @@
                     {{ service.title }}
                   </p>
                 </div>
-              </NuxtLink>
-
-              <!-- AI-first 2026 offerings — dedicated static pages, not backend-driven -->
-              <NuxtLink
-                to="/services/ai-automation"
-                class="flex items-center space-x-3 p-3 rounded-lg hover:bg-white hover:shadow-sm transition-all duration-200 group/item"
-                @click="isMenuOpen = false"
-              >
-                <div class="w-10 h-10 bg-gradient-to-r from-violet-500 to-violet-600 rounded-lg flex items-center justify-center group-hover/item:scale-110 transition-transform duration-200">
-                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
-                </div>
-                <p class="font-medium text-gray-900 transition-colors duration-200 group-hover/item:text-violet-600">
-                  AI &amp; Automation
-                </p>
-              </NuxtLink>
-              <NuxtLink
-                to="/services/saas-development"
-                class="flex items-center space-x-3 p-3 rounded-lg hover:bg-white hover:shadow-sm transition-all duration-200 group/item"
-                @click="isMenuOpen = false"
-              >
-                <div class="w-10 h-10 bg-gradient-to-r from-cyan-500 to-cyan-600 rounded-lg flex items-center justify-center group-hover/item:scale-110 transition-transform duration-200">
-                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 001.6-9.75 6 6 0 00-11.3-2.6A4.5 4.5 0 003 15z" />
-                  </svg>
-                </div>
-                <p class="font-medium text-gray-900 transition-colors duration-200 group-hover/item:text-cyan-600">
-                  SaaS Development
-                </p>
               </NuxtLink>
             </div>
           </div>
@@ -943,6 +841,7 @@
 <script setup>
 import { ref, watch, onMounted, onUnmounted, nextTick, computed } from "vue";
 import { useRoute } from "vue-router";
+import { getServiceIconPath } from "~/utils/serviceIcons";
 
 const route = useRoute();
 const isMenuOpen = ref(false);
@@ -977,14 +876,30 @@ onMounted(async () => {
     navbarServices.value = [
       {
         id: 1,
-        title: "Web Design & Development",
-        slug: "web-design-development",
-        short_description: "Modern websites & web applications",
-        category: "web-development",
+        title: "AI Automation & Integration",
+        slug: "ai-automation",
+        short_description: "AI chatbots, workflows & LLM integrations",
+        category: "ai-automation",
         icon: null,
       },
       {
         id: 2,
+        title: "SaaS Product Development",
+        slug: "saas-development",
+        short_description: "Multi-tenant SaaS products, built to scale",
+        category: "saas-development",
+        icon: null,
+      },
+      {
+        id: 3,
+        title: "Custom Web & E-commerce Development",
+        slug: "web-application-development",
+        short_description: "Business sites & online stores that convert",
+        category: "web-development",
+        icon: null,
+      },
+      {
+        id: 4,
         title: "Mobile App Development",
         slug: "mobile-app-development",
         short_description: "iOS & Android applications",
@@ -992,35 +907,35 @@ onMounted(async () => {
         icon: null,
       },
       {
-        id: 3,
-        title: "UI/UX Design",
+        id: 5,
+        title: "UI/UX & Product Design",
         slug: "ui-ux-design",
         short_description: "User-centered design solutions",
         category: "ui-ux-design",
         icon: null,
       },
       {
-        id: 4,
-        title: "Software Testing Service",
-        slug: "software-testing-service",
+        id: 6,
+        title: "QA & Test Automation",
+        slug: "qa-test-automation",
         short_description: "Manual & automated QA testing",
         category: "software-testing",
         icon: null,
       },
       {
-        id: 5,
-        title: "E-commerce Development",
-        slug: "ecommerce-development",
-        short_description: "Online stores that convert",
-        category: "ecommerce-development",
-        icon: null,
-      },
-      {
-        id: 6,
-        title: "DevOps & Cloud Services",
+        id: 7,
+        title: "Cloud, DevOps & Infrastructure",
         slug: "devops-cloud-services",
         short_description: "CI/CD, infrastructure & cloud ops",
         category: "devops-cloud",
+        icon: null,
+      },
+      {
+        id: 8,
+        title: "Cybersecurity & Application Security",
+        slug: "cybersecurity-services",
+        short_description: "Security audits & application hardening",
+        category: "cybersecurity",
         icon: null,
       },
     ];
@@ -1030,32 +945,7 @@ onMounted(async () => {
 // Helper function to get service icon based on category
 const getServiceIcon = (category, icon) => {
   if (icon) return icon;
-
-  const icons = {
-    "web-development": "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4",
-    "mobile-development":
-      "M12 18h.01M8 21h8a1 1 0 001-1V4a1 1 0 00-1-1H8a1 1 0 00-1 1v16a1 1 0 001 1z",
-    "ui-ux-design":
-      "M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01",
-    "digital-marketing":
-      "M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z",
-    consulting:
-      "M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
-    maintenance:
-      "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z",
-    "ai-automation":
-      "M13 10V3L4 14h7v7l9-11h-7z",
-    "saas-development":
-      "M3 15a4 4 0 004 4h9a5 5 0 001.6-9.75 6 6 0 00-11.3-2.6A4.5 4.5 0 003 15z",
-    "software-testing":
-      "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7l2 2 4-4",
-    "ecommerce-development":
-      "M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z",
-    "devops-cloud":
-      "M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-14 5h.01M19 17h.01M9 7h.01M9 17h.01",
-  };
-
-  return icons[category] || icons["web-development"];
+  return getServiceIconPath(category);
 };
 
 // Helper function to get service color based on category
@@ -1126,6 +1016,12 @@ const getServiceColor = (category) => {
       to: "to-teal-600",
       hover: "hover:from-teal-50 hover:to-teal-100",
       text: "group-hover/item:text-teal-600",
+    },
+    cybersecurity: {
+      from: "from-red-500",
+      to: "to-red-600",
+      hover: "hover:from-red-50 hover:to-red-100",
+      text: "group-hover/item:text-red-600",
     },
   };
 
