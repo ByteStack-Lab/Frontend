@@ -156,11 +156,14 @@
                 class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#3533cd] focus:border-transparent transition-all duration-200 form-input"
               >
                 <option value="">Select a service</option>
-                <option value="web-development">Web Development</option>
-                <option value="mobile-development">Mobile Development</option>
-                <option value="cloud-solutions">Cloud Solutions</option>
-                <option value="devops">DevOps & Infrastructure</option>
-                <option value="consulting">Technical Consulting</option>
+                <option value="ai-automation">AI Automation & Integration</option>
+                <option value="saas-development">SaaS Product Development</option>
+                <option value="web-application-development">Custom Web & E-commerce Development</option>
+                <option value="mobile-app-development">Mobile App Development</option>
+                <option value="ui-ux-design">UI/UX & Product Design</option>
+                <option value="qa-test-automation">QA & Test Automation</option>
+                <option value="devops-cloud-services">Cloud, DevOps & Infrastructure</option>
+                <option value="cybersecurity-services">Cybersecurity & Application Security</option>
                 <option value="other">Other</option>
               </select>
             </div>
