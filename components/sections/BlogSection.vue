@@ -26,18 +26,16 @@
         <div
           class="w-16 h-1 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full mx-auto mb-6"
         />
-        <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-2">
-          Featured
-        </h2>
-        <h3 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+        <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+          From Our
           <span
-            class="bg-gradient-to-r from-[#3533cd] to-[#1e1b69] bg-clip-text text-transparent"
-            >News & Blogs</span
+            class="block bg-gradient-to-r from-[#3533cd] to-[#1e1b69] bg-clip-text text-transparent"
+            >Engineering Blog</span
           >
-        </h3>
+        </h2>
         <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-          Stay updated with our latest insights, tutorials, and industry best
-          practices
+          How we build, what we learned, and the trade-offs behind the
+          decisions — written by the engineers doing the work.
         </p>
       </div>
 
@@ -107,17 +105,18 @@
 
                 <!-- Blog Image -->
                 <div class="aspect-video overflow-hidden">
-                  <img
+                  <NuxtImg
                     :src="
                       blog.featuredImage ||
                       `/images/blogs/${((blog.id || index + 1) % 3) + 1}.webp`
                     "
                     :alt="blog.title"
                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    sizes="100vw md:50vw lg:33vw"
                     @error="
                       $event.target.src = `/images/blogs/${((blog.id || index + 1) % 3) + 1}.webp`
                     "
-                  >
+                  />
                 </div>
 
                 <!-- Blog Content -->

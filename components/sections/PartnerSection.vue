@@ -11,10 +11,12 @@
           <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-1">
             <span
               class="bg-gradient-to-r from-[#3533cd] to-[#1e1b69] bg-clip-text text-transparent"
-              >Meet The People</span
+              >Trusted By</span
             >
           </h2>
-          <p class="text-xl text-gray-700 font-medium">We Are Working With</p>
+          <p class="text-xl text-gray-700 font-medium">
+            Teams we build and ship with
+          </p>
         </div>
 
         <!-- Right: Navigation Arrows -->
@@ -102,19 +104,19 @@
                 :title="partner.name"
                 class="block"
               >
-                <img
+                <NuxtImg
                   :src="partner.logo"
                   :alt="partner.name"
                   class="h-12 lg:h-16 object-contain filter grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100"
-                >
+                />
               </a>
-              <img
+              <NuxtImg
                 v-else
                 :src="partner.logo"
                 :alt="partner.name"
                 :title="partner.name"
                 class="h-12 lg:h-16 object-contain filter grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100"
-              >
+              />
             </div>
           </div>
         </Transition>

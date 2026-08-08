@@ -28,11 +28,11 @@
           </div>
           <div class="space-y-2">
             <div class="text-4xl lg:text-5xl font-bold text-gray-900">
-              <span>{{ displayExperience }}</span>
-              <span class="text-[#3533cd]">+</span>
+              <span>{{ displayWeeksToRelease }}</span>
+              <span class="text-[#3533cd] text-2xl lg:text-3xl">wk</span>
             </div>
             <p class="text-sm lg:text-base text-gray-600 font-medium">
-              Years in Business
+              Average time to first release
             </p>
           </div>
         </div>
@@ -60,11 +60,11 @@
           </div>
           <div class="space-y-2">
             <div class="text-4xl lg:text-5xl font-bold text-gray-900">
-              <span>{{ displayProjects }}</span>
+              <span>{{ displayProductsShipped }}</span>
               <span class="text-emerald-600">+</span>
             </div>
             <p class="text-sm lg:text-base text-gray-600 font-medium">
-              Projects Completed
+              Products shipped to production
             </p>
           </div>
         </div>
@@ -92,11 +92,11 @@
           </div>
           <div class="space-y-2">
             <div class="text-4xl lg:text-5xl font-bold text-gray-900">
-              <span>{{ displayTeam }}</span>
+              <span>{{ displayClientsServed }}</span>
               <span class="text-[#1e1b69]">+</span>
             </div>
             <p class="text-sm lg:text-base text-gray-600 font-medium">
-              Team Members
+              Clients served since 2020
             </p>
           </div>
         </div>
@@ -124,11 +124,11 @@
           </div>
           <div class="space-y-2">
             <div class="text-4xl lg:text-5xl font-bold text-gray-900">
-              <span>{{ displayClients }}</span>
-              <span class="text-red-600">+</span>
+              <span>{{ displayRepeatRate }}</span>
+              <span class="text-red-600">%</span>
             </div>
             <p class="text-sm lg:text-base text-gray-600 font-medium">
-              Satisfied Clients
+              Return for a second project
             </p>
           </div>
         </div>
@@ -151,22 +151,39 @@ const { data: counters } = await useLazyAsyncData(
   { default: () => ({}) },
 );
 
-const targetExperience = computed(
-  () => counters.value?.counter_years_experience ?? 5,
+// ⚠️ PLACEHOLDER FIGURES — replace with audited numbers in Filament before
+// treating these as public claims. They were chosen to be realistic and, more
+// importantly, internally consistent: 50 clients / 100 products / 70% repeat
+// rate only adds up if repeat clients run more than one project. Changing one
+// without the others makes the set contradict itself.
+//
+// The old metrics (years in business, projects completed, team members,
+// satisfied clients) were the four numbers every agency publishes. These four
+// answer questions a buyer actually has: how fast, how much have you shipped,
+// how many trusted you, and did they come back.
+const targetWeeksToRelease = computed(
+  () => counters.value?.counter_weeks_to_release ?? 12,
 );
-const targetProjects = computed(
-  () => counters.value?.counter_projects_completed ?? 100,
+const targetProductsShipped = computed(
+  () => counters.value?.counter_products_shipped ?? 100,
 );
-const targetTeam = computed(() => counters.value?.counter_team_members ?? 15);
-const targetClients = computed(
-  () => counters.value?.counter_happy_clients ?? 100,
+const targetClientsServed = computed(
+  () => counters.value?.counter_clients_served ?? 50,
+);
+const targetRepeatRate = computed(
+  () => counters.value?.counter_repeat_client_rate ?? 70,
 );
 
-// Display values (animated numbers)
-const displayExperience = ref(0);
-const displayProjects = ref(0);
-const displayTeam = ref(0);
-const displayClients = ref(0);
+// Display values (animated numbers) — initialised to the real target, not 0.
+// counters.value is already resolved at this point (the useLazyAsyncData
+// above is awaited), so this renders the correct final numbers on the
+// server. Search crawlers, JS-disabled visitors, and the pre-hydration first
+// paint all see "12wk / 100+ / 50+ / 70%" — not the "0wk / 0+ / 0+ / 0%" a
+// plain ref(0) would render, which is not a value anyone should be quoting.
+const displayWeeksToRelease = ref(targetWeeksToRelease.value);
+const displayProductsShipped = ref(targetProductsShipped.value);
+const displayClientsServed = ref(targetClientsServed.value);
+const displayRepeatRate = ref(targetRepeatRate.value);
 
 // Animation status
 const animationStarted = ref(false);
@@ -202,26 +219,26 @@ const startCounterAnimations = () => {
 
   // Start all counters with staggered delays
   setTimeout(() => {
-    animateCounter(0, targetExperience.value, 2000, (value) => {
-      displayExperience.value = value;
+    animateCounter(0, targetWeeksToRelease.value, 2000, (value) => {
+      displayWeeksToRelease.value = value;
     });
   }, 300);
 
   setTimeout(() => {
-    animateCounter(0, targetProjects.value, 2500, (value) => {
-      displayProjects.value = value;
+    animateCounter(0, targetProductsShipped.value, 2500, (value) => {
+      displayProductsShipped.value = value;
     });
   }, 600);
 
   setTimeout(() => {
-    animateCounter(0, targetTeam.value, 1800, (value) => {
-      displayTeam.value = value;
+    animateCounter(0, targetClientsServed.value, 1800, (value) => {
+      displayClientsServed.value = value;
     });
   }, 900);
 
   setTimeout(() => {
-    animateCounter(0, targetClients.value, 2200, (value) => {
-      displayClients.value = value;
+    animateCounter(0, targetRepeatRate.value, 2200, (value) => {
+      displayRepeatRate.value = value;
     });
   }, 1200);
 };
@@ -232,6 +249,19 @@ onMounted(() => {
     console.error("CounterSection: sectionRef is null!");
     return;
   }
+
+  // Reduced-motion visitors keep the real numbers set above and never see
+  // the count-up — the animation is decorative, not the content.
+  if (prefersReducedMotion()) return;
+
+  // Drop to 0 now, synchronously before this frame paints, so the count-up
+  // below has something to animate from. This runs after hydration, so it
+  // never touches what SSR/no-JS visitors see — only JS-enabled browsers
+  // reach this line at all.
+  displayWeeksToRelease.value = 0;
+  displayProductsShipped.value = 0;
+  displayClientsServed.value = 0;
+  displayRepeatRate.value = 0;
 
   const observer = new IntersectionObserver(
     (entries) => {

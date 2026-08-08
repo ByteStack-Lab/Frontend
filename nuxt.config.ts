@@ -19,11 +19,26 @@ export default defineNuxtConfig({
       apiBase,
       // Optional — GA4 measurement ID (e.g. G-XXXXXXX). When unset, no
       // analytics script is injected at all (see plugins/analytics.client.js).
-      gaId: process.env.NUXT_PUBLIC_GA_ID || ''
+      gaId: process.env.NUXT_PUBLIC_GA_ID || '',
+      // Optional — YouTube ID of the company intro video. When unset, the hero
+      // simply does not render a play button (rather than shipping a
+      // placeholder video). See components/sections/HeroSection.vue.
+      introVideoId: process.env.NUXT_PUBLIC_INTRO_VIDEO_ID || ''
     }
   },
   site: {
     url: process.env.NUXT_PUBLIC_SITE_URL || 'https://bytestacklab.com'
+  },
+  image: {
+    // Admin-uploaded media (service icons, blog covers, testimonial photos,
+    // partner logos, etc.) is served from these two hosts — the backend's
+    // `media_url()` helper resolves every stored file through Storage::url()
+    // on whichever disk is active (see ByteStackLab-Backend/app/Support/
+    // helpers.php), which today means the R2 CDN, with the API's own
+    // /storage path as a fallback for anything still on local disk. IPX
+    // (the default @nuxt/image provider) refuses to optimize a remote image
+    // unless its host is listed here.
+    domains: ['cdn.bytestacklab.com', 'api.bytestacklab.com']
   },
   sitemap: {
     // Static pages (/, /about, /services, etc.) are picked up automatically

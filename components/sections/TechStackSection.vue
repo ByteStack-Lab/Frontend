@@ -14,13 +14,17 @@
         <div
           class="w-16 h-1 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full mx-auto mb-6"
         />
-        <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-2">Our</h2>
-        <h3 class="text-4xl lg:text-5xl font-bold text-gray-900">
+        <h2 class="text-4xl lg:text-5xl font-bold text-gray-900">
+          The Tools We
           <span
-            class="bg-gradient-to-r from-[#3533cd] to-[#1e1b69] bg-clip-text text-transparent"
-            >Tech Stack</span
+            class="block bg-gradient-to-r from-[#3533cd] to-[#1e1b69] bg-clip-text text-transparent"
+            >Build Production Software With</span
           >
-        </h3>
+        </h2>
+        <p class="mt-6 text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+          Chosen for long-term maintainability, not novelty — every stack here
+          is one we run in production and support after launch.
+        </p>
       </div>
 
       <!-- Tech Categories -->

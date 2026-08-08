@@ -17,16 +17,14 @@
         />
         <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
           Our Recent
-        </h2>
-        <h3 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
           <span
-            class="bg-gradient-to-r from-[#3533cd] to-[#1e1b69] bg-clip-text text-transparent"
+            class="block bg-gradient-to-r from-[#3533cd] to-[#1e1b69] bg-clip-text text-transparent"
             >Case Studies</span
           >
-        </h3>
+        </h2>
         <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-          We solve problems in different industry verticals and have deep
-          expertise in some of them.
+          Real builds, real constraints, real numbers — what we shipped and
+          what changed for the client.
         </p>
       </div>
 
@@ -63,11 +61,12 @@
               "
             >
               <div class="relative">
-                <img
+                <NuxtImg
                   :src="caseStudy.image || '/images/case-study-placeholder.png'"
                   :alt="caseStudy.title"
                   class="w-full h-auto rounded-2xl shadow-lg"
-                >
+                  sizes="100vw lg:50vw"
+                />
               </div>
             </div>
 

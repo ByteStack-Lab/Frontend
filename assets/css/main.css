@@ -565,3 +565,47 @@ html, body {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+/* ---------------------------------------------------------------------------
+   Reduced motion (WCAG 2.3.3)
+
+   The site runs a lot of decorative motion — the hero alone has an animated
+   gradient background, six drifting data points, four pulsing nodes and twelve
+   pulsing grid lines, all on infinite loops. For a visitor with a vestibular
+   disorder that is genuinely unpleasant, and on a mid-range phone it is a
+   constant compositor and battery cost.
+
+   This block only applies to people whose OS is set to "reduce motion", so it
+   changes nothing for everyone else.
+
+   Why near-zero durations instead of `animation: none`:
+   several reveal animations here (.animate-fade-in-up and friends) start at
+   opacity 0 and use `forwards`. Killing the animation outright would strand
+   those elements invisible. Collapsing the duration instead lets each one jump
+   straight to its finished state, so content is shown immediately rather than
+   animated into view.
+   --------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Purely decorative motion has no end state worth showing — hide it rather
+     than freezing it mid-drift. These are the hero's background particles. */
+  [class*='animate-data-flow'],
+  [class*='animate-particle'],
+  [class*='animate-logo-float'] {
+    display: none !important;
+  }
+}

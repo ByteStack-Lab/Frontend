@@ -119,11 +119,12 @@
           <!-- Image -->
           <div class="relative">
             <div class="relative rounded-xl overflow-hidden shadow-xl">
-              <img
+              <NuxtImg
                 src="/images/about-us.webp"
                 alt="Our team at work"
                 class="w-full h-auto object-cover"
-              >
+                sizes="100vw lg:50vw"
+              />
               <div
                 class="absolute inset-0 bg-gradient-to-tr from-purple-600/20 to-blue-600/20"
               />
@@ -654,13 +655,15 @@
             :key="member.id"
             class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center border border-gray-100"
           >
-            <img
+            <NuxtImg
               v-if="member.avatar_url"
               :src="member.avatar_url"
               :alt="member.name"
               class="w-24 h-24 rounded-full object-cover mb-4 shadow-md"
               loading="lazy"
-            >
+              width="96"
+              height="96"
+            />
             <div
               v-else
               class="w-24 h-24 rounded-full mb-4 shadow-md bg-gradient-to-br from-[#3533cd] to-[#1e1b69] flex items-center justify-center text-white text-2xl font-bold"
@@ -814,19 +817,19 @@
                   :title="partner.name"
                   class="block"
                 >
-                  <img
+                  <NuxtImg
                     :src="partner.logo"
                     :alt="partner.name"
                     class="h-12 lg:h-16 object-contain filter grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100"
-                  >
+                  />
                 </a>
-                <img
+                <NuxtImg
                   v-else
                   :src="partner.logo"
                   :alt="partner.name"
                   :title="partner.name"
                   class="h-12 lg:h-16 object-contain filter grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100"
-                >
+                />
               </div>
             </div>
           </Transition>
@@ -955,7 +958,7 @@
                 class="cursor-pointer transition-all duration-500 opacity-60 hover:opacity-80 flex items-center"
                 @click="goToTestimonial(getLeftIndex(index))"
               >
-                <img
+                <NuxtImg
                   :src="testimonial.image"
                   :alt="testimonial.name"
                   :class="[
@@ -964,16 +967,16 @@
                       : 'w-16 h-16 lg:w-18 lg:h-18',
                   ]"
                   class="rounded-full object-cover border border-gray-200"
-                >
+                />
               </div>
 
               <!-- Center Avatar -->
               <div class="flex items-center justify-center">
-                <img
+                <NuxtImg
                   :src="dynamicTestimonials[currentTestimonial].image"
                   :alt="dynamicTestimonials[currentTestimonial].name"
                   class="w-20 h-20 lg:w-24 lg:h-24 rounded-full object-cover border-3 border-[#3533cd]"
-                >
+                />
               </div>
 
               <!-- Right Avatars -->
@@ -983,7 +986,7 @@
                 class="cursor-pointer transition-all duration-500 opacity-60 hover:opacity-80 flex items-center"
                 @click="goToTestimonial(getRightIndex(index))"
               >
-                <img
+                <NuxtImg
                   :src="testimonial.image"
                   :alt="testimonial.name"
                   :class="[
@@ -992,7 +995,7 @@
                       : 'w-16 h-16 lg:w-18 lg:h-18',
                   ]"
                   class="rounded-full object-cover border border-gray-200"
-                >
+                />
               </div>
             </div>
 

@@ -16,11 +16,11 @@
         <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
           <span
             class="bg-gradient-to-r from-[#3533cd] to-[#1e1b69] bg-clip-text text-transparent"
-            >Why Customers Love</span
+            >What Our Clients Say</span
           >
         </h2>
         <p class="text-4xl lg:text-5xl font-bold text-gray-900">
-          Working With Us
+          After Launch
         </p>
       </div>
 
@@ -120,7 +120,7 @@
               class="cursor-pointer transition-all duration-500 opacity-60 hover:opacity-80 flex items-center"
               @click="goToTestimonial(getLeftIndex(index))"
             >
-              <img
+              <NuxtImg
                 :src="testimonial.image"
                 :alt="testimonial.name"
                 :class="[
@@ -129,16 +129,16 @@
                     : 'w-16 h-16 lg:w-18 lg:h-18',
                 ]"
                 class="rounded-full object-cover border border-gray-200"
-              >
+              />
             </div>
 
             <!-- Center Avatar -->
             <div class="flex items-center justify-center">
-              <img
+              <NuxtImg
                 :src="testimonials[currentTestimonial].image"
                 :alt="testimonials[currentTestimonial].name"
                 class="w-20 h-20 lg:w-24 lg:h-24 rounded-full object-cover border-3 border-[#3533cd]"
-              >
+              />
             </div>
 
             <!-- Right Avatars -->
@@ -148,7 +148,7 @@
               class="cursor-pointer transition-all duration-500 opacity-60 hover:opacity-80 flex items-center"
               @click="goToTestimonial(getRightIndex(index))"
             >
-              <img
+              <NuxtImg
                 :src="testimonial.image"
                 :alt="testimonial.name"
                 :class="[
@@ -157,7 +157,7 @@
                     : 'w-16 h-16 lg:w-18 lg:h-18',
                 ]"
                 class="rounded-full object-cover border border-gray-200"
-              >
+              />
             </div>
           </div>
 

@@ -142,11 +142,13 @@
               <!-- Featured Image Display -->
               <div v-if="service.featured_image" class="relative group">
                 <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
-                  <img
+                  <NuxtImg
                     :src="service.featured_image"
                     :alt="service.title"
                     class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500"
-                  >
+                    loading="eager"
+                    sizes="100vw lg:50vw"
+                  />
                   <div
                     class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   />
@@ -168,12 +170,12 @@
                 <div
                   class="w-24 h-24 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full flex items-center justify-center mx-auto mb-6"
                 >
-                  <img
+                  <NuxtImg
                     v-if="service.icon"
                     :src="service.icon"
                     :alt="service.title"
                     class="w-12 h-12"
-                  >
+                  />
                   <svg
                     v-else
                     class="w-12 h-12 text-white"
@@ -291,14 +293,14 @@
                     @click="openLightbox(index)"
                   >
                     <div class="aspect-w-16 aspect-h-10 overflow-hidden">
-                      <img
+                      <NuxtImg
                         :src="image.url || image"
                         :alt="
                           image.alt ||
                           `${service.title} gallery image ${index + 1}`
                         "
                         class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-700"
-                      >
+                      />
                     </div>
 
                     <!-- Overlay -->
@@ -457,15 +459,16 @@
           </button>
 
           <!-- Current Image -->
-          <img
+          <NuxtImg
             :src="currentLightboxImage.url || currentLightboxImage"
             :alt="
               currentLightboxImage.alt ||
               `Gallery image ${currentImageIndex + 1}`
             "
             class="max-w-full max-h-full object-contain rounded-lg"
+            loading="eager"
             @click.stop
-          >
+          />
 
           <!-- Image Info -->
           <div

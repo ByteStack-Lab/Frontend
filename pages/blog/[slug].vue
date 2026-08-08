@@ -306,11 +306,11 @@
           <div
             class="inline-flex items-center rounded-2xl border border-gray-100 bg-white/90 px-4 py-3 shadow-sm"
           >
-            <img
+            <NuxtImg
               :src="blog.authorImage || '/images/leaders/leader1.jpg'"
               :alt="blog.authorName"
               class="h-12 w-12 rounded-full object-cover ring-2 ring-[#eeeeff]"
-            >
+            />
             <div class="ml-4">
               <p class="text-xs uppercase tracking-wide text-gray-500">
                 Written by
@@ -328,11 +328,13 @@
       <section class="py-8">
         <div class="max-w-4xl mx-auto px-6 lg:px-8">
           <div class="relative overflow-hidden rounded-2xl shadow-2xl">
-            <img
+            <NuxtImg
               :src="blog.featuredImage || '/images/blogs/1.webp'"
               :alt="blog.title"
               class="w-full h-64 md:h-96 object-cover"
-            >
+              loading="eager"
+              sizes="100vw lg:896px"
+            />
             <div
               class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent p-6 text-white"
             >
@@ -370,11 +372,12 @@
                   class="group relative aspect-square cursor-pointer overflow-hidden rounded-2xl"
                   @click="openLightbox(index)"
                 >
-                  <img
+                  <NuxtImg
                     :src="image"
                     :alt="`Gallery image ${index + 1} for ${blog.title}`"
                     class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  >
+                    sizes="100vw md:50vw lg:33vw"
+                  />
                   <div
                     class="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                   />
@@ -515,11 +518,12 @@
               class="group overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
             >
               <div class="aspect-video overflow-hidden">
-                <img
+                <NuxtImg
                   :src="relatedPost.featuredImage || '/images/blogs/1.webp'"
                   :alt="relatedPost.title"
                   class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                >
+                  sizes="100vw md:50vw lg:33vw"
+                />
               </div>
 
               <div class="p-6">
@@ -638,12 +642,13 @@
         </button>
 
         <!-- Image -->
-        <img
+        <NuxtImg
           :src="blog.galleryImages[currentImageIndex]"
           :alt="`Gallery image ${currentImageIndex + 1} for ${blog.title}`"
           class="max-w-full max-h-full object-contain rounded-lg"
+          loading="eager"
           @click.stop
-        >
+        />
 
         <!-- Image Counter -->
         <div

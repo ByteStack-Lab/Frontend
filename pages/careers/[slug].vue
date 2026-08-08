@@ -949,7 +949,7 @@ const formatDate = (date) => {
 const scrollToApplication = () => {
   const element = document.getElementById("application-form");
   if (element) {
-    element.scrollIntoView({ behavior: "smooth" });
+    element.scrollIntoView({ behavior: scrollBehavior() });
   }
 };
 
@@ -1082,7 +1082,7 @@ const submitApplication = async () => {
     if (fileInput) fileInput.value = "";
 
     // Scroll to top to show notification
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, behavior: scrollBehavior() });
   } catch (err) {
     console.error("Application submission error:", err);
 

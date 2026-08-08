@@ -23,9 +23,6 @@
 </template>
 
 <script setup>
-import { watch, onMounted } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
-
 // Explicit component imports
 import NavBar from '~/components/NavBar.vue'
 import FooterSection from '~/components/FooterSection.vue'
@@ -33,38 +30,24 @@ import PagePreloader from '~/components/PagePreloader.vue'
 import AiChatWidget from '~/components/AiChatWidget.vue'
 import CookieConsentBanner from '~/components/CookieConsentBanner.vue'
 
-const route = useRoute()
-const router = useRouter()
-const { isPageLoading, startLoading, stopLoading } = usePageLoader()
+const nuxtApp = useNuxtApp()
+const { isPageLoading, startLoading, stopLoading, resetLoading } = usePageLoader()
 
-// Handle route changes
-watch(() => route.path, (newPath, oldPath) => {
-  if (oldPath && newPath !== oldPath) {
-    startLoading()
-    
-    // Stop loading after a minimum duration
-    setTimeout(() => {
-      stopLoading()
-    }, 800)
-  }
-})
-
-// Handle router navigation start/finish
-onMounted(() => {
-  // Show preloader on route start
-  router.beforeEach((to, from) => {
-    if (from.path && to.path !== from.path) {
-      startLoading()
-    }
-  })
-  
-  // Hide preloader on route complete
-  router.afterEach(() => {
-    setTimeout(() => {
-      stopLoading()
-    }, 500)
-  })
-})
+// Drive the preloader off Nuxt's real navigation lifecycle.
+//
+// This previously combined a route watcher, a router.beforeEach and a
+// router.afterEach — each starting/stopping the loader on its own timer, which
+// added ~1.1s of artificial delay to every single in-app navigation. Nuxt's
+// client-side routing is already instant; the loader now only appears while a
+// page genuinely has work outstanding (an unresolved useAsyncData, a lazy
+// chunk), which on a normal connection means it never flashes at all.
+//
+// Registering the guards inside onMounted also re-registered them on every
+// layout mount, so they stacked up. App-level hooks do not have that problem.
+nuxtApp.hook('page:start', startLoading)
+nuxtApp.hook('page:finish', stopLoading)
+// Safety net: a cancelled or errored navigation never fires page:finish.
+nuxtApp.hook('page:loading:end', resetLoading)
 </script>
 
 <style scoped>

@@ -870,14 +870,14 @@ const clearFilters = () => {
 const scrollToPositions = () => {
   const element = document.getElementById("open-positions");
   if (element) {
-    element.scrollIntoView({ behavior: "smooth" });
+    element.scrollIntoView({ behavior: scrollBehavior() });
   }
 };
 
 const scrollToCulture = () => {
   const element = document.getElementById("why-join-us");
   if (element) {
-    element.scrollIntoView({ behavior: "smooth" });
+    element.scrollIntoView({ behavior: scrollBehavior() });
   }
 };
 

@@ -25,8 +25,8 @@
         </h2>
 
         <p class="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-          Comprehensive digital solutions to transform your business ideas into
-          powerful, scalable applications.
+          From AI automation that removes manual work to SaaS platforms built
+          for scale — pick the problem, we will scope the build.
         </p>
 
         <!-- Subtitle -->
@@ -134,12 +134,12 @@
                                 background: getServiceIconColor(service.id),
                               }"
                             >
-                              <img
+                              <NuxtImg
                                 v-if="service.icon"
                                 :src="service.icon"
                                 :alt="service.title || service.name"
                                 class="w-10 h-10 object-contain"
-                              >
+                              />
                               <span
                                 v-else
                                 class="text-white text-3xl font-bold transition-all duration-300"
@@ -259,34 +259,6 @@
           <p class="text-gray-600">
             No featured services available at the moment.
           </p>
-        </div>
-      </div>
-
-      <!-- Call to Action -->
-      <div class="text-center">
-        <div class="inline-flex flex-col items-center">
-          <p class="text-gray-600 mb-4 max-w-md">
-            Ready to transform your business with our professional services?
-          </p>
-          <NuxtLink
-            to="/services"
-            class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] text-white font-semibold rounded-xl hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:scale-105 group"
-          >
-            <span>View All Services</span>
-            <svg
-              class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              stroke-width="2"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
-          </NuxtLink>
         </div>
       </div>
     </div>

@@ -116,12 +116,14 @@
             <div class="relative">
               <div v-if="caseStudy.image" class="relative group">
                 <div class="bg-white rounded-2xl shadow-2xl overflow-hidden transform group-hover:scale-105 transition-transform duration-500">
-                  <img 
-                    :src="caseStudy.image" 
-                    :alt="caseStudy.title" 
+                  <NuxtImg
+                    :src="caseStudy.image"
+                    :alt="caseStudy.title"
                     class="w-full h-96 object-cover"
+                    loading="eager"
+                    sizes="100vw lg:50vw"
                     @error="handleImageError"
-                  >
+                  />
                 </div>
                 <!-- Decorative elements -->
                 <div class="absolute -top-6 -right-6 w-24 h-24 bg-gradient-to-r from-[#3533cd]/20 to-[#1e1b69]/20 rounded-full blur-2xl"/>
@@ -175,12 +177,12 @@
                     @mouseenter="stopAutoPlay"
                     @mouseleave="startAutoPlay"
                   >
-                    <img 
-                      :src="caseStudy.galleryImages[currentImageIndex]" 
+                    <NuxtImg
+                      :src="caseStudy.galleryImages[currentImageIndex]"
                       :alt="`${caseStudy.title} - Gallery Image ${currentImageIndex + 1}`"
                       class="w-full h-80 object-cover transition-all duration-500 gallery-main-image"
                       @error="handleImageError"
-                    >
+                    />
                     
                     <!-- Image Counter -->
                     <div class="absolute top-4 right-4 bg-black/50 text-white px-3 py-1 rounded-full text-sm backdrop-blur-sm">
@@ -222,12 +224,14 @@
                       ]"
                       @click="currentImageIndex = index"
                     >
-                      <img 
-                        :src="image" 
+                      <NuxtImg
+                        :src="image"
                         :alt="`Thumbnail ${index + 1}`"
                         class="w-20 h-16 object-cover"
+                        width="80"
+                        height="64"
                         @error="handleImageError"
-                      >
+                      />
                       <!-- Active overlay -->
                       <div 
                         v-if="currentImageIndex === index"
@@ -384,11 +388,12 @@
               class="group bg-white rounded-xl shadow-sm p-6 hover:shadow-lg transition-all duration-300 hover:transform hover:scale-105"
             >
               <div v-if="relatedCase.image" class="mb-4 overflow-hidden rounded-lg">
-                <img 
-                  :src="relatedCase.image" 
+                <NuxtImg
+                  :src="relatedCase.image"
                   :alt="relatedCase.title"
                   class="w-full h-40 object-cover group-hover:scale-110 transition-transform duration-300"
-                >
+                  sizes="100vw md:50vw lg:33vw"
+                />
               </div>
               
               <div v-else class="w-12 h-12 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">

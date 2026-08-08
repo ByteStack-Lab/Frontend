@@ -53,9 +53,9 @@
             <p
               class="text-base lg:text-lg text-gray-600 leading-relaxed max-w-2xl"
             >
-              We're a focused team that takes quality seriously. Every product
-              we ship is built with clean architecture, thoughtful UI/UX, and
-              the kind of attention to detail that keeps clients coming back.
+              One team handles design, development, deployment and maintenance
+              — so nothing gets lost in a handoff. Most of our clients come
+              back for a second project.
             </p>
           </div>
 

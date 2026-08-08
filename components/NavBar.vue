@@ -1195,7 +1195,7 @@ const scrollToSection = (sectionId) => {
     // Smooth scroll to the section
     window.scrollTo({
       top: offsetPosition,
-      behavior: "smooth",
+      behavior: scrollBehavior(),
     });
   }
 };

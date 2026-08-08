@@ -15,15 +15,17 @@
         <div
           class="w-16 h-1 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full mx-auto mb-6"
         />
-        <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-2">
-          How Development
-        </h2>
-        <h3 class="text-4xl lg:text-5xl font-bold text-gray-900">
+        <h2 class="text-4xl lg:text-5xl font-bold text-gray-900">
+          How We Work —
           <span
-            class="bg-gradient-to-r from-[#3533cd] to-[#1e1b69] bg-clip-text text-transparent"
-            >Process Works At ByteStackLab</span
+            class="block bg-gradient-to-r from-[#3533cd] to-[#1e1b69] bg-clip-text text-transparent"
+            >From Kickoff To Launch</span
           >
-        </h3>
+        </h2>
+        <p class="mt-6 text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+          Six steps, two-week sprints, and a demo you can click at the end of
+          every one. You always know what is being built and what it costs.
+        </p>
       </div>
 
       <!-- Development Process Timeline -->
@@ -39,11 +41,13 @@
           <div
             class="absolute top-1/2 right-0 w-12 h-12 flex items-center justify-center transform -translate-y-1/2 z-20"
           >
-            <img
+            <NuxtImg
               src="/images/icons/Trophy.png"
               alt="Trophy"
               class="w-10 h-10 object-contain"
-            >
+              width="40"
+              height="40"
+            />
           </div>
 
           <!-- Process Steps -->

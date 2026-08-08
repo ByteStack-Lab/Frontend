@@ -194,7 +194,7 @@
 
             <!-- Blog Image -->
             <div class="relative h-48 overflow-hidden">
-              <img
+              <NuxtImg
                 :src="
                   blog.featured_image ||
                   blog.featuredImage ||
@@ -202,10 +202,11 @@
                 "
                 :alt="blog.title"
                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                sizes="100vw md:50vw lg:33vw"
                 @error="
                   $event.target.src = `/images/blogs/${((blog.id ?? index + 1) % 3) + 1}.webp`
                 "
-              >
+              />
               <div
                 class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
               />

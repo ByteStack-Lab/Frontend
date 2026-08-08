@@ -10,15 +10,17 @@
         <div
           class="w-16 h-1 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full mx-auto mb-6"
         />
-        <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-2">
-          Our Software Development
-        </h2>
-        <h3 class="text-4xl lg:text-5xl font-bold text-gray-900">
+        <h2 class="text-4xl lg:text-5xl font-bold text-gray-900">
+          What You Get When You
           <span
-            class="bg-gradient-to-r from-[#3533cd] to-[#1e1b69] bg-clip-text text-transparent"
-            >Process & Methodology</span
+            class="block bg-gradient-to-r from-[#3533cd] to-[#1e1b69] bg-clip-text text-transparent"
+            >Build With ByteStackLab</span
           >
-        </h3>
+        </h2>
+        <p class="mt-6 text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+          Six standards we hold on every engagement — no matter the size of the
+          build or the length of the contract.
+        </p>
       </div>
 
       <!-- Features Grid -->

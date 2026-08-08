@@ -111,38 +111,49 @@
             <p
               class="text-sm lg:text-base text-gray-500 uppercase tracking-wider font-medium"
             >
-              INTELLIGENT SOFTWARE SOLUTIONS FOR MODERN ENTERPRISES
+              AI-FIRST SOFTWARE DEVELOPMENT COMPANY
             </p>
 
             <h1
               class="text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-gray-900"
             >
-              <span class="text-black">Transform Business</span><br >
+              <span class="text-black">Software That Runs</span><br >
               <span
-                class="bg-gradient-to-r from-purple-600 via-blue-500 to-purple-600 bg-clip-text text-transparent"
+                class="bg-gradient-to-r from-[#3533cd] via-[#5450e0] to-[#1e1b69] bg-clip-text text-transparent"
               >
-                Through Innovation</span
+                Your Business For You</span
               >
             </h1>
 
             <p
               class="text-base lg:text-lg text-gray-600 leading-relaxed max-w-xl"
             >
-              ByteStackLab is your trusted partner for comprehensive software
-              development. From custom web applications and native mobile apps
-              to enterprise SaaS platforms, ERP systems, and AI-powered
-              solutions—we build technology that drives real business results.
-              Let's turn your vision into scalable, intelligent software.
+              We design, build and maintain AI automation, SaaS platforms and
+              enterprise applications — shipped in two-week sprints, owned by
+              you from day one.
             </p>
+
+            <!-- Specialty chips: tells a first-time visitor what we actually
+                 do before they scroll, and gives mobile a visual anchor since
+                 HeroTerminal is desktop-only. -->
+            <ul class="flex flex-wrap gap-2 pt-1">
+              <li
+                v-for="specialty in specialties"
+                :key="specialty"
+                class="text-xs sm:text-sm font-medium text-[#1e1b69] bg-white/70 border border-[#3533cd]/20 rounded-full px-3 py-1.5"
+              >
+                {{ specialty }}
+              </li>
+            </ul>
           </div>
 
           <!-- CTA Buttons -->
           <div class="flex flex-row items-center gap-3 sm:gap-4 pt-4">
             <NuxtLink
-              to="/services"
+              to="/contact"
               class="interactive-button flex-1 sm:flex-none bg-gradient-to-r from-[#3533cd] to-[#1e1b69] text-white px-6 sm:px-8 py-3 rounded-lg font-semibold text-base shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center"
             >
-              OUR SERVICES
+              Book a Free Consultation
               <svg
                 class="ml-2 w-5 h-5"
                 fill="none"
@@ -158,12 +169,37 @@
               </svg>
             </NuxtLink>
 
+            <NuxtLink
+              to="/services"
+              class="flex items-center justify-center whitespace-nowrap text-gray-700 font-semibold text-base px-2 hover:text-[#3533cd] transition-colors duration-300"
+            >
+              Explore Services
+              <svg
+                class="ml-1.5 w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </NuxtLink>
+
+            <!-- Only rendered once a real intro video is configured — see
+                 NUXT_PUBLIC_INTRO_VIDEO_ID in .env.example. -->
             <button
-              class="flex items-center justify-center text-gray-700 font-medium text-base hover:text-purple-600 transition-colors duration-300 animate-gentle-blink"
+              v-if="introVideoId"
+              type="button"
+              aria-label="Play the ByteStackLab intro video"
+              class="hidden sm:flex items-center justify-center text-gray-700 font-medium text-base hover:text-[#3533cd] transition-colors duration-300"
               @click="openVideoModal"
             >
-              <div
-                class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center animate-pulse-gentle"
+              <span
+                class="w-11 h-11 bg-[#3533cd] rounded-full flex items-center justify-center"
               >
                 <svg
                   class="w-5 h-5 text-white"
@@ -172,13 +208,21 @@
                 >
                   <path d="M8 5v14l11-7z" />
                 </svg>
-              </div>
+              </span>
+              <span class="ml-3 whitespace-nowrap">Watch our story</span>
             </button>
           </div>
         </div>
 
-        <!-- Right Content - Hero Terminal - 50% -->
-        <div class="hidden md:flex items-center justify-stretch relative">
+        <!--
+          Hero Terminal — was `hidden md:flex`, meaning mobile visitors (the
+          majority of BD traffic) got a text-only hero with nothing below the
+          CTAs. HeroTerminal is already `w-full` with no desktop-only sizing,
+          and the grid above collapses to a single stacked column below `md`,
+          so dropping `hidden` is enough: it now falls in after the CTA row
+          instead of competing with it for the first screen.
+        -->
+        <div class="flex items-center justify-stretch relative">
           <div class="relative z-10 w-[calc(100%-10px)] ml-auto">
             <HeroTerminal />
           </div>
@@ -246,13 +290,22 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref, computed, onMounted, onUnmounted } from "vue";
 import HeroTerminal from '~/components/HeroTerminal.vue';
+
+const specialties = ["AI Automation", "SaaS Platforms", "Enterprise Apps", "Mobile Apps"];
+
+// The hero used to hard-code the YouTube ID `ScMzIvxBSi4` — a tutorial
+// placeholder, not a ByteStackLab video. Shipping that live is a credibility
+// risk, so the play button now only renders when a real ID is configured via
+// NUXT_PUBLIC_INTRO_VIDEO_ID. Set it and the button comes back.
+const introVideoId = computed(() => useRuntimeConfig().public.introVideoId || "");
 
 // Video modal state
 const showVideoModal = ref(false);
-const videoUrl = ref(
-  "https://www.youtube.com/embed/ScMzIvxBSi4?autoplay=1&rel=0&modestbranding=1&controls=1",
+const videoUrl = computed(
+  () =>
+    `https://www.youtube-nocookie.com/embed/${introVideoId.value}?autoplay=1&rel=0&modestbranding=1&controls=1`,
 );
 
 // Video modal functions
@@ -507,37 +560,6 @@ onUnmounted(() => {
 
 .animate-node-pulse {
   animation: node-pulse 2s ease-in-out infinite;
-}
-
-/* Gentle blinking animations for hero button */
-@keyframes gentle-blink {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.7;
-  }
-}
-
-@keyframes pulse-gentle {
-  0%,
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
-  }
-  50% {
-    transform: scale(1.05);
-    box-shadow: 0 0 0 8px rgba(59, 130, 246, 0);
-  }
-}
-
-.animate-gentle-blink {
-  animation: gentle-blink 3s ease-in-out infinite;
-}
-
-.animate-pulse-gentle {
-  animation: pulse-gentle 2s ease-in-out infinite;
 }
 
 /* Background gradient animation */

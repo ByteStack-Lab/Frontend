@@ -137,13 +137,14 @@
                 <div class="relative">
                   <!-- Dynamic Image with Fallback -->
                   <div v-if="getImageUrl(caseStudy)" class="relative group">
-                    <img 
-                      :src="getImageUrl(caseStudy)" 
+                    <NuxtImg
+                      :src="getImageUrl(caseStudy)"
                       :alt="caseStudy.title || 'Case Study'"
                       class="w-full h-auto rounded-2xl shadow-lg hover:scale-105 transition-transform duration-300"
                       loading="lazy"
+                      sizes="100vw lg:50vw"
                       @error="handleImageError"
-                    >
+                    />
                     <!-- Hidden fallback that shows on error -->
                     <div class="absolute inset-0 w-full h-64 bg-gradient-to-br from-[#3533cd]/10 to-[#1e1b69]/10 rounded-2xl shadow-lg items-center justify-center border border-gray-200 hidden">
                       <div class="text-center">

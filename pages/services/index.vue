@@ -87,12 +87,12 @@
             <div
               class="w-16 h-16 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
             >
-              <img
+              <NuxtImg
                 v-if="service.icon"
                 :src="service.icon"
                 :alt="service.title"
                 class="w-8 h-8 text-white"
-              >
+              />
               <svg
                 v-else
                 class="w-8 h-8 text-white"

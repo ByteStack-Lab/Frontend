@@ -12,10 +12,11 @@ export const usePageLoader = () => {
   const stopLoading = () => {
     loadingQueue.value = Math.max(0, loadingQueue.value - 1)
     if (loadingQueue.value === 0) {
-      // Add small delay for smooth transition
-      setTimeout(() => {
-        isPageLoading.value = false
-      }, 300)
+      // Hide immediately — PagePreloader already wraps itself in a <Transition>
+      // with a 500ms leave animation, so the fade-out is handled there. The
+      // extra timer that used to live here just held an opaque overlay over
+      // content that was already rendered underneath it.
+      isPageLoading.value = false
     }
   }
 
