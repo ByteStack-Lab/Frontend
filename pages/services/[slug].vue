@@ -94,12 +94,10 @@
                       stroke-linecap="round"
                       stroke-linejoin="round"
                       stroke-width="2"
-                      d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"
+                      d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                     />
                   </svg>
-                  <span class="font-semibold"
-                    >Starting from {{ service.formatted_price }}</span
-                  >
+                  <span class="font-semibold">Free project consultation</span>
                 </div>
 
                 <div
@@ -128,13 +126,13 @@
                   to="/contact"
                   class="bg-gradient-to-r from-[#3533cd] to-[#1e1b69] text-white px-8 py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 text-center"
                 >
-                  Get Started
+                  Get a Free Quote
                 </NuxtLink>
                 <NuxtLink
-                  to="/contact"
+                  to="/case-studies"
                   class="border-2 border-[#3533cd] text-[#3533cd] px-8 py-3 rounded-lg font-semibold hover:bg-[#3533cd] hover:text-white transition-all duration-300 text-center"
                 >
-                  Request Quote
+                  See Our Work
                 </NuxtLink>
               </div>
             </div>
@@ -337,7 +335,7 @@
                               stroke-linecap="round"
                               stroke-linejoin="round"
                               stroke-width="2"
-                              d="M15 12a3 3 0 11-6 0 3 3 0 616 0z"
+                              d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
                             />
                             <path
                               stroke-linecap="round"
@@ -497,90 +495,152 @@
         </div>
       </div>
 
-      <!-- Packages Section -->
-      <section
-        v-if="service.packages && service.packages.length > 0"
-        class="py-24 bg-gray-50"
-      >
+      <!-- Pricing Philosophy Section -->
+      <section class="py-24 bg-gray-50">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
           <div class="text-center mb-16">
+            <div
+              class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-[#3533cd]/10 text-[#1e1b69] mb-4"
+            >
+              PRICING
+            </div>
             <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Choose Your Package
+              Pricing Built Around Your Project
             </h2>
-            <p class="text-xl text-gray-600">
-              Select the perfect plan for your needs
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+              No two projects are the same, so we don't sell fixed packages.
+              We scope every {{ service.title.toLowerCase() }} engagement
+              around your goals, timeline, and budget in a free consultation.
             </p>
           </div>
 
-          <div class="grid md:grid-cols-3 gap-8">
-            <div
-              v-for="pkg in service.packages"
-              :key="pkg.id"
-              :class="[
-                'bg-white rounded-xl shadow-lg p-8 relative',
-                pkg.is_popular
-                  ? 'ring-2 ring-[#3533cd] transform scale-105'
-                  : '',
-              ]"
-            >
+          <!-- Why Custom Pricing -->
+          <div class="grid md:grid-cols-3 gap-8 mb-20">
+            <div class="bg-white rounded-xl shadow-lg p-8">
               <div
-                v-if="pkg.is_popular"
-                class="absolute -top-4 left-1/2 transform -translate-x-1/2"
+                class="w-14 h-14 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full flex items-center justify-center mb-6"
               >
-                <span
-                  class="bg-[#3533cd] text-white px-4 py-2 rounded-full text-sm font-semibold"
-                  >Most Popular</span
+                <svg
+                  class="w-7 h-7 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
                 >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 21v-7m0-4V3m8 18v-9m0-4V3m8 18v-5m0-4V3M1 14h6M9 8h6M17 16h6"
+                  />
+                </svg>
               </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3">
+                Scoped to Your Needs
+              </h3>
+              <p class="text-gray-600 leading-relaxed">
+                Your quote reflects the exact features, integrations, and
+                complexity your project needs — nothing bundled in that you
+                won't use.
+              </p>
+            </div>
 
-              <div class="text-center mb-8">
-                <h3 class="text-2xl font-bold text-gray-900 mb-2">
-                  {{ pkg.name }}
-                </h3>
-                <p class="text-gray-600 mb-4">{{ pkg.description }}</p>
-                <div class="text-4xl font-bold text-[#3533cd] mb-2">
-                  {{ pkg.formatted_price }}
-                </div>
-                <div class="text-sm text-gray-500">
-                  {{ pkg.formatted_delivery_time }} •
-                  {{ pkg.formatted_revisions }}
-                </div>
-              </div>
-
-              <ul class="space-y-3 mb-8">
-                <li
-                  v-for="feature in pkg.features"
-                  :key="feature"
-                  class="flex items-center space-x-3"
+            <div class="bg-white rounded-xl shadow-lg p-8">
+              <div
+                class="w-14 h-14 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full flex items-center justify-center mb-6"
+              >
+                <svg
+                  class="w-7 h-7 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
                 >
-                  <svg
-                    class="w-5 h-5 text-[#3533cd]"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                  <span class="text-gray-700">{{ feature }}</span>
-                </li>
-              </ul>
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3">
+                Flexible Engagement
+              </h3>
+              <p class="text-gray-600 leading-relaxed">
+                Fixed-price for a well-defined scope, or a dedicated team for
+                ongoing work — we structure the engagement around how you
+                want to build.
+              </p>
+            </div>
 
+            <div class="bg-white rounded-xl shadow-lg p-8">
+              <div
+                class="w-14 h-14 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full flex items-center justify-center mb-6"
+              >
+                <svg
+                  class="w-7 h-7 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                  />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3">
+                No-Surprise Estimates
+              </h3>
+              <p class="text-gray-600 leading-relaxed">
+                You'll get a detailed proposal with milestones and cost
+                breakdown before any work begins — no hidden fees, no scope
+                creep.
+              </p>
+            </div>
+          </div>
+
+          <!-- How We Quote -->
+          <div class="bg-white rounded-2xl shadow-lg p-8 md:p-12">
+            <h3 class="text-2xl font-bold text-gray-900 text-center mb-10">
+              How We Quote Your Project
+            </h3>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div
+                v-for="(step, index) in pricingSteps"
+                :key="step.title"
+                class="relative text-center"
+              >
+                <div
+                  class="w-12 h-12 mx-auto mb-4 rounded-full bg-gradient-to-r from-[#3533cd] to-[#1e1b69] text-white font-bold flex items-center justify-center"
+                >
+                  {{ index + 1 }}
+                </div>
+                <h4 class="font-semibold text-gray-900 mb-2">
+                  {{ step.title }}
+                </h4>
+                <p class="text-sm text-gray-600 leading-relaxed">
+                  {{ step.description }}
+                </p>
+              </div>
+            </div>
+
+            <div class="text-center mt-12">
               <NuxtLink
                 to="/contact"
-                :class="[
-                  'w-full py-3 px-6 rounded-lg font-semibold transition-all duration-300 text-center block',
-                  pkg.is_popular
-                    ? 'bg-[#3533cd] text-white hover:bg-[#1e1b69]'
-                    : 'border-2 border-[#3533cd] text-[#3533cd] hover:bg-[#3533cd] hover:text-white',
-                ]"
+                class="inline-block bg-gradient-to-r from-[#3533cd] to-[#1e1b69] text-white px-8 py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300"
               >
-                Get Started
+                Book a Free Consultation
               </NuxtLink>
+              <p class="text-sm text-gray-500 mt-4">
+                Prefer email? Reach us at
+                <a
+                  href="mailto:hello@bytestacklab.com"
+                  class="text-[#3533cd] font-medium hover:underline"
+                  >hello@bytestacklab.com</a
+                >
+              </p>
             </div>
           </div>
         </div>
@@ -686,6 +746,30 @@ const {
 if (import.meta.server && (!service.value || error.value)) {
   setResponseStatus(404);
 }
+
+// Steps shown in the "How We Quote Your Project" section
+const pricingSteps = [
+  {
+    title: "Discovery Call",
+    description:
+      "We learn about your business, goals, and requirements in a free, no-obligation call.",
+  },
+  {
+    title: "Scope & Proposal",
+    description:
+      "We put together a detailed proposal with deliverables, timeline, and a clear cost estimate.",
+  },
+  {
+    title: "Approval & Kickoff",
+    description:
+      "Once you approve the proposal, we agree on milestones and get your project moving.",
+  },
+  {
+    title: "Delivery & Support",
+    description:
+      "We build, test, and ship in stages, with support to keep things running after launch.",
+  },
+];
 
 // FAQ toggle functionality
 const openFaqs = ref([]);
