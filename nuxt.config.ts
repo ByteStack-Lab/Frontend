@@ -2,6 +2,7 @@
 import { $fetch } from 'ofetch'
 
 const apiBase = process.env.NUXT_PUBLIC_API_BASE || 'https://api.bytestacklab.com/api'
+const apiOrigin = new URL(apiBase).origin
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-05-15',
@@ -38,7 +39,10 @@ export default defineNuxtConfig({
     // /storage path as a fallback for anything still on local disk. IPX
     // (the default @nuxt/image provider) refuses to optimize a remote image
     // unless its host is listed here.
-    domains: ['cdn.bytestacklab.com', 'api.bytestacklab.com']
+    domains: ['cdn.bytestacklab.com', 'api.bytestacklab.com'],
+    ipx: {
+      modifiers: { format: 'webp' }
+    }
   },
   sitemap: {
     // Static pages (/, /about, /services, etc.) are picked up automatically
@@ -122,6 +126,12 @@ export default defineNuxtConfig({
         { name: 'description', content: 'Professional software development services for modern businesses' }
       ],
       link: [
+        // Opens the connection (DNS + TCP + TLS) to the API and CDN origins
+        // before the page's own fetches need them, so the first client-side
+        // request (AI chat widget, job search, admin-uploaded images) skips
+        // that handshake cost instead of paying it inline.
+        { rel: 'preconnect', href: apiOrigin },
+        { rel: 'preconnect', href: 'https://cdn.bytestacklab.com' },
         { rel: 'icon', type: 'image/x-icon', href: '/images/favicons/favicon.ico' },
         { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/images/favicons/favicon-32x32.png' },
         { rel: 'icon', type: 'image/png', sizes: '96x96', href: '/images/favicons/favicon-96x96.png' },
