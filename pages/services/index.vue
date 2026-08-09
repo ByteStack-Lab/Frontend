@@ -91,10 +91,14 @@
                 v-if="service.icon"
                 :src="service.icon"
                 :alt="service.title"
+                loading="lazy"
+                width="32"
+                height="32"
                 class="w-8 h-8 text-white"
               />
               <svg
                 v-else
+                aria-hidden="true"
                 class="w-8 h-8 text-white"
                 fill="none"
                 stroke="currentColor"
@@ -128,7 +132,7 @@
                 :key="feature"
                 class="flex items-center text-sm text-gray-600"
               >
-                <svg
+                <svg aria-hidden="true"
                   class="w-4 h-4 text-[#3533cd] mr-2"
                   fill="none"
                   stroke="currentColor"

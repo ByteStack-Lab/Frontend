@@ -184,6 +184,7 @@
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
+                    aria-hidden="true"
                   >
                     <path
                       stroke-linecap="round"
@@ -196,7 +197,7 @@
               </div>
               <!-- Bottom Wave -->
               <div class="absolute bottom-0 left-0 right-0">
-                <svg
+                <svg aria-hidden="true"
                   viewBox="0 0 400 40"
                   preserveAspectRatio="none"
                   class="w-full h-8 fill-white"
@@ -243,6 +244,7 @@
                     <svg
                       v-for="i in 5"
                       :key="i"
+                      aria-hidden="true"
                       class="w-4 h-4"
                       :class="
                         i <= product.rating
@@ -274,7 +276,7 @@
                 <button
                   class="flex-1 border-2 border-[#3533cd] text-[#3533cd] py-3 px-4 rounded-xl font-semibold text-sm hover:bg-[#3533cd] hover:text-white transition-all duration-300 flex items-center justify-center gap-2"
                 >
-                  <svg
+                  <svg aria-hidden="true"
                     class="w-4 h-4"
                     fill="none"
                     stroke="currentColor"

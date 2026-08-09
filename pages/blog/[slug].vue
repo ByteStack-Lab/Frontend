@@ -53,7 +53,7 @@
             to="/blog"
             class="mb-6 inline-flex items-center gap-2 text-sm font-medium text-[#3533cd] hover:text-[#1e1b69] transition-colors"
           >
-            <svg
+            <svg aria-hidden="true"
               class="h-4 w-4"
               fill="none"
               stroke="currentColor"
@@ -78,7 +78,7 @@
               class="hover:text-[#3533cd] transition-colors duration-200"
               >Home</NuxtLink
             >
-            <svg
+            <svg aria-hidden="true"
               class="w-4 h-4"
               fill="none"
               stroke="currentColor"
@@ -96,7 +96,7 @@
               class="hover:text-[#3533cd] transition-colors duration-200"
               >Blog</NuxtLink
             >
-            <svg
+            <svg aria-hidden="true"
               class="w-4 h-4"
               fill="none"
               stroke="currentColor"
@@ -132,6 +132,7 @@
                 <!-- Category Icon -->
                 <svg
                   v-if="category.icon"
+                  aria-hidden="true"
                   class="w-3.5 h-3.5"
                   fill="none"
                   stroke="currentColor"
@@ -210,7 +211,7 @@
                 v-else-if="blog.category"
                 class="flex items-center gap-1.5 rounded-full border border-[#d9d9ff] bg-[#eeeeff] px-3 py-1 text-sm font-semibold text-[#3533cd]"
               >
-                <svg
+                <svg aria-hidden="true"
                   class="w-3.5 h-3.5"
                   fill="none"
                   stroke="currentColor"
@@ -229,7 +230,7 @@
             <div
               class="flex items-center rounded-full bg-white/90 px-3 py-1.5 text-sm text-gray-600 shadow-sm ring-1 ring-gray-100"
             >
-              <svg
+              <svg aria-hidden="true"
                 class="w-4 h-4 mr-2"
                 fill="none"
                 stroke="currentColor"
@@ -247,7 +248,7 @@
             <div
               class="flex items-center rounded-full bg-white/90 px-3 py-1.5 text-sm text-gray-600 shadow-sm ring-1 ring-gray-100"
             >
-              <svg
+              <svg aria-hidden="true"
                 class="w-4 h-4 mr-2"
                 fill="none"
                 stroke="currentColor"
@@ -265,7 +266,7 @@
             <div
               class="flex items-center rounded-full bg-white/90 px-3 py-1.5 text-sm text-gray-600 shadow-sm ring-1 ring-gray-100"
             >
-              <svg
+              <svg aria-hidden="true"
                 class="w-4 h-4 mr-2"
                 fill="none"
                 stroke="currentColor"
@@ -309,6 +310,9 @@
             <NuxtImg
               :src="blog.authorImage || '/images/favicons/android-icon-192x192.png'"
               :alt="blog.authorName"
+              loading="eager"
+              width="48"
+              height="48"
               class="h-12 w-12 rounded-full object-cover ring-2 ring-[#eeeeff]"
             />
             <div class="ml-4">
@@ -333,6 +337,9 @@
               :alt="blog.title"
               class="w-full h-64 md:h-96 object-cover"
               loading="eager"
+              fetchpriority="high"
+              width="896"
+              height="384"
               sizes="100vw lg:896px"
             />
             <div
@@ -375,6 +382,7 @@
                   <NuxtImg
                     :src="image"
                     :alt="`Gallery image ${index + 1} for ${blog.title}`"
+                    loading="lazy"
                     class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                     sizes="100vw md:50vw lg:33vw"
                   />
@@ -409,7 +417,7 @@
               </h4>
               <div class="flex flex-wrap items-center gap-3">
                 <button class="share-action-btn" @click="shareToX">
-                  <svg
+                  <svg aria-hidden="true"
                     class="mr-2 h-4 w-4"
                     fill="currentColor"
                     viewBox="0 0 24 24"
@@ -422,7 +430,7 @@
                 </button>
 
                 <button class="share-action-btn" @click="shareToFacebook">
-                  <svg
+                  <svg aria-hidden="true"
                     class="mr-2 h-4 w-4"
                     fill="currentColor"
                     viewBox="0 0 24 24"
@@ -435,7 +443,7 @@
                 </button>
 
                 <button class="share-action-btn" @click="shareToLinkedIn">
-                  <svg
+                  <svg aria-hidden="true"
                     class="mr-2 h-4 w-4"
                     fill="currentColor"
                     viewBox="0 0 24 24"
@@ -448,7 +456,7 @@
                 </button>
 
                 <button class="share-action-btn" @click="copyArticleLink">
-                  <svg
+                  <svg aria-hidden="true"
                     class="mr-2 h-4 w-4"
                     fill="none"
                     stroke="currentColor"
@@ -521,6 +529,7 @@
                 <NuxtImg
                   :src="relatedPost.featuredImage || '/images/blogs/1.webp'"
                   :alt="relatedPost.title"
+                  loading="lazy"
                   class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   sizes="100vw md:50vw lg:33vw"
                 />
@@ -548,7 +557,7 @@
                   class="inline-flex items-center text-[#3533cd] hover:text-[#1e1b69] font-medium text-sm group"
                 >
                   Read More
-                  <svg
+                  <svg aria-hidden="true"
                     class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"
                     fill="none"
                     stroke="currentColor"
@@ -582,7 +591,7 @@
           aria-label="Close lightbox"
           @click="closeLightbox"
         >
-          <svg
+          <svg aria-hidden="true"
             class="w-8 h-8"
             fill="none"
             stroke="currentColor"
@@ -604,7 +613,7 @@
           aria-label="Previous image"
           @click.stop="previousImage"
         >
-          <svg
+          <svg aria-hidden="true"
             class="w-8 h-8"
             fill="none"
             stroke="currentColor"
@@ -626,7 +635,7 @@
           aria-label="Next image"
           @click.stop="nextImage"
         >
-          <svg
+          <svg aria-hidden="true"
             class="w-8 h-8"
             fill="none"
             stroke="currentColor"

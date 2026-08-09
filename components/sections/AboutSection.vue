@@ -65,7 +65,7 @@
               <span class="text-purple-600 font-medium"
                 >Learn More About Us</span
               >
-              <svg
+              <svg aria-hidden="true"
                 class="w-5 h-5 text-purple-600 transform group-hover:translate-x-1 transition-transform duration-300"
                 fill="none"
                 stroke="currentColor"
@@ -135,6 +135,7 @@
 
                   <!-- Main Play Button -->
                   <button
+                    aria-label="Play company video"
                     class="interactive-button pulse-on-hover relative w-16 h-16 bg-white rounded-full shadow-lg flex items-center justify-center group hover:scale-110 transition-all duration-300 hover:shadow-xl"
                     @click="openVideoModal"
                   >
@@ -143,6 +144,7 @@
                       class="w-6 h-6 text-purple-600 ml-1 group-hover:text-purple-700 transition-colors duration-300"
                       fill="currentColor"
                       viewBox="0 0 24 24"
+                      aria-hidden="true"
                     >
                       <path d="M8 5v14l11-7z" />
                     </svg>
@@ -176,6 +178,7 @@
       >
         <!-- Close Button -->
         <button
+          aria-label="Close video"
           class="absolute -top-4 -right-4 w-14 h-14 bg-white rounded-full shadow-2xl flex items-center justify-center text-gray-700 hover:text-red-500 hover:bg-red-50 transition-all duration-300 z-20 border-4 border-white ring-4 ring-purple-500/40 hover:ring-red-500/50"
           @click="closeVideoModal"
         >
@@ -184,6 +187,7 @@
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
+            aria-hidden="true"
           >
             <path
               stroke-linecap="round"

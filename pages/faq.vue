@@ -45,7 +45,7 @@
               <h2 class="font-semibold text-gray-900">
                 {{ faq.question }}
               </h2>
-              <svg
+              <svg aria-hidden="true"
                 class="w-5 h-5 text-[#3533cd] transform transition-transform duration-200 flex-shrink-0"
                 :class="{ 'rotate-180': faq.isOpen }"
                 fill="none"
@@ -95,7 +95,7 @@
             class="bg-white text-[#3533cd] px-8 py-4 rounded-lg font-semibold text-lg shadow-lg hover:shadow-xl hover:bg-gray-50 transition-all duration-300 flex items-center justify-center"
           >
             Contact Our Team
-            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg aria-hidden="true" class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path
                 stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M17 8l4 4m0 0l-4 4m4-4H3" />

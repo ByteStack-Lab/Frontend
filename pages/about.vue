@@ -122,6 +122,10 @@
               <NuxtImg
                 src="/images/about-us.webp"
                 alt="Our team at work"
+                loading="eager"
+                fetchpriority="high"
+                width="800"
+                height="600"
                 class="w-full h-auto object-cover"
                 sizes="100vw lg:50vw"
               />
@@ -186,7 +190,7 @@
             <div
               class="w-16 h-16 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg flex items-center justify-center mb-6"
             >
-              <svg
+              <svg aria-hidden="true"
                 class="w-8 h-8 text-white"
                 fill="none"
                 stroke="currentColor"
@@ -217,7 +221,7 @@
             <div
               class="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center mb-6"
             >
-              <svg
+              <svg aria-hidden="true"
                 class="w-8 h-8 text-white"
                 fill="none"
                 stroke="currentColor"
@@ -278,7 +282,7 @@
             <div
               class="w-20 h-20 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:shadow-lg transition-shadow duration-300"
             >
-              <svg
+              <svg aria-hidden="true"
                 class="w-10 h-10 text-white"
                 fill="none"
                 stroke="currentColor"
@@ -308,7 +312,7 @@
             <div
               class="w-20 h-20 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:shadow-lg transition-shadow duration-300"
             >
-              <svg
+              <svg aria-hidden="true"
                 class="w-10 h-10 text-white"
                 fill="none"
                 stroke="currentColor"
@@ -337,7 +341,7 @@
             <div
               class="w-20 h-20 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:shadow-lg transition-shadow duration-300"
             >
-              <svg
+              <svg aria-hidden="true"
                 class="w-10 h-10 text-white"
                 fill="none"
                 stroke="currentColor"
@@ -366,7 +370,7 @@
             <div
               class="w-20 h-20 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:shadow-lg transition-shadow duration-300"
             >
-              <svg
+              <svg aria-hidden="true"
                 class="w-10 h-10 text-white"
                 fill="none"
                 stroke="currentColor"
@@ -420,7 +424,7 @@
             <div
               class="w-16 h-16 bg-gradient-to-br from-purple-600 to-blue-600 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg"
             >
-              <svg
+              <svg aria-hidden="true"
                 class="w-8 h-8 text-white"
                 fill="none"
                 stroke="currentColor"
@@ -472,7 +476,7 @@
             <div
               class="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg"
             >
-              <svg
+              <svg aria-hidden="true"
                 class="w-8 h-8 text-white"
                 fill="none"
                 stroke="currentColor"
@@ -518,7 +522,7 @@
             <div
               class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg"
             >
-              <svg
+              <svg aria-hidden="true"
                 class="w-8 h-8 text-white"
                 fill="none"
                 stroke="currentColor"
@@ -566,7 +570,7 @@
             <div
               class="w-16 h-16 bg-gradient-to-br from-purple-600 to-pink-600 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg"
             >
-              <svg
+              <svg aria-hidden="true"
                 class="w-8 h-8 text-white"
                 fill="none"
                 stroke="currentColor"
@@ -698,7 +702,7 @@
                 :class="getSocialIconStyle(platform).bg"
                 class="w-9 h-9 rounded-lg flex items-center justify-center transition-colors duration-300"
               >
-                <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <svg aria-hidden="true" class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
                   <path :d="getSocialIconStyle(platform).path" />
                 </svg>
               </a>
@@ -732,6 +736,7 @@
           <!-- Right: Navigation Arrows -->
           <div class="flex space-x-4">
             <button
+              aria-label="Previous partners"
               class="w-12 h-12 rounded-full border-2 border-[#3533cd] text-[#3533cd] flex items-center justify-center hover:bg-[#3533cd] hover:text-white transition-all duration-300 cursor-pointer"
               @click="prevSlide"
             >
@@ -740,6 +745,7 @@
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
+                aria-hidden="true"
               >
                 <path
                   stroke-linecap="round"
@@ -751,6 +757,7 @@
             </button>
 
             <button
+              aria-label="Next partners"
               class="w-12 h-12 rounded-full bg-[#3533cd] text-white flex items-center justify-center hover:bg-[#1e1b69] transition-all duration-300 cursor-pointer"
               @click="nextSlide"
             >
@@ -759,6 +766,7 @@
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
+                aria-hidden="true"
               >
                 <path
                   stroke-linecap="round"
@@ -820,6 +828,9 @@
                   <NuxtImg
                     :src="partner.logo"
                     :alt="partner.name"
+                    loading="lazy"
+                    width="160"
+                    height="64"
                     class="h-12 lg:h-16 object-contain filter grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100"
                   />
                 </a>
@@ -828,6 +839,9 @@
                   :src="partner.logo"
                   :alt="partner.name"
                   :title="partner.name"
+                  loading="lazy"
+                  width="160"
+                  height="64"
                   class="h-12 lg:h-16 object-contain filter grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100"
                 />
               </div>
@@ -885,6 +899,7 @@
           <div v-else-if="dynamicTestimonials.length > 0">
             <!-- Navigation Arrows -->
             <button
+              aria-label="Previous testimonial"
               class="absolute left-[-60px] top-1/2 transform -translate-y-1/2 w-12 h-12 rounded-full border-2 border-[#3533cd] text-[#3533cd] items-center justify-center hover:bg-[#3533cd] hover:text-white transition-all duration-300 z-30 hidden lg:flex"
               @click="prevTestimonial"
             >
@@ -893,6 +908,7 @@
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
+                aria-hidden="true"
               >
                 <path
                   stroke-linecap="round"
@@ -904,6 +920,7 @@
             </button>
 
             <button
+              aria-label="Next testimonial"
               class="absolute right-[-60px] top-1/2 transform -translate-y-1/2 w-12 h-12 rounded-full bg-[#3533cd] text-white items-center justify-center hover:bg-[#1e1b69] transition-all duration-300 z-30 hidden lg:flex"
               @click="nextTestimonial"
             >
@@ -912,6 +929,7 @@
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
+                aria-hidden="true"
               >
                 <path
                   stroke-linecap="round"
@@ -924,7 +942,7 @@
 
             <!-- Quote Mark -->
             <div class="flex justify-center mb-8">
-              <svg
+              <svg aria-hidden="true"
                 class="w-16 h-16 text-[#3533cd]"
                 fill="currentColor"
                 viewBox="0 0 24 24"
@@ -961,6 +979,9 @@
                 <NuxtImg
                   :src="testimonial.image"
                   :alt="testimonial.name"
+                  loading="lazy"
+                  width="64"
+                  height="64"
                   :class="[
                     index === 0
                       ? 'w-12 h-12 lg:w-14 lg:h-14'
@@ -975,6 +996,9 @@
                 <NuxtImg
                   :src="dynamicTestimonials[currentTestimonial].image"
                   :alt="dynamicTestimonials[currentTestimonial].name"
+                  loading="lazy"
+                  width="96"
+                  height="96"
                   class="w-20 h-20 lg:w-24 lg:h-24 rounded-full object-cover border-3 border-[#3533cd]"
                 />
               </div>
@@ -989,6 +1013,9 @@
                 <NuxtImg
                   :src="testimonial.image"
                   :alt="testimonial.name"
+                  loading="lazy"
+                  width="64"
+                  height="64"
                   :class="[
                     index === 1
                       ? 'w-12 h-12 lg:w-14 lg:h-14'
@@ -1006,6 +1033,7 @@
                 <svg
                   v-for="i in 5"
                   :key="i"
+                  aria-hidden="true"
                   class="w-5 h-5 text-yellow-400"
                   fill="currentColor"
                   viewBox="0 0 20 20"
@@ -1034,6 +1062,7 @@
             <!-- Mobile Navigation -->
             <div class="flex justify-center space-x-4 mt-12 lg:hidden">
               <button
+                aria-label="Previous testimonial"
                 class="w-12 h-12 rounded-full border-2 border-[#3533cd] text-[#3533cd] flex items-center justify-center hover:bg-[#3533cd] hover:text-white transition-all duration-300"
                 @click="prevTestimonial"
               >
@@ -1042,6 +1071,7 @@
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
+                  aria-hidden="true"
                 >
                   <path
                     stroke-linecap="round"
@@ -1053,6 +1083,7 @@
               </button>
 
               <button
+                aria-label="Next testimonial"
                 class="w-12 h-12 rounded-full bg-[#3533cd] text-white flex items-center justify-center hover:bg-[#1e1b69] transition-all duration-300"
                 @click="nextTestimonial"
               >
@@ -1061,6 +1092,7 @@
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
+                  aria-hidden="true"
                 >
                   <path
                     stroke-linecap="round"
@@ -1118,7 +1150,7 @@
                 <div
                   class="w-8 h-8 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1"
                 >
-                  <svg
+                  <svg aria-hidden="true"
                     class="w-4 h-4 text-white"
                     fill="none"
                     stroke="currentColor"
@@ -1149,7 +1181,7 @@
                 <div
                   class="w-8 h-8 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1"
                 >
-                  <svg
+                  <svg aria-hidden="true"
                     class="w-4 h-4 text-white"
                     fill="none"
                     stroke="currentColor"
@@ -1180,7 +1212,7 @@
                 <div
                   class="w-8 h-8 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1"
                 >
-                  <svg
+                  <svg aria-hidden="true"
                     class="w-4 h-4 text-white"
                     fill="none"
                     stroke="currentColor"
@@ -1216,7 +1248,7 @@
                 <div
                   class="w-16 h-16 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300"
                 >
-                  <svg
+                  <svg aria-hidden="true"
                     class="w-8 h-8 text-white"
                     fill="none"
                     stroke="currentColor"
@@ -1248,7 +1280,7 @@
                 <div
                   class="w-16 h-16 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300"
                 >
-                  <svg
+                  <svg aria-hidden="true"
                     class="w-8 h-8 text-white"
                     fill="none"
                     stroke="currentColor"
@@ -1278,7 +1310,7 @@
                 <div
                   class="w-16 h-16 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300"
                 >
-                  <svg
+                  <svg aria-hidden="true"
                     class="w-8 h-8 text-white"
                     fill="none"
                     stroke="currentColor"
@@ -1310,7 +1342,7 @@
                 <div
                   class="w-16 h-16 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300"
                 >
-                  <svg
+                  <svg aria-hidden="true"
                     class="w-8 h-8 text-white"
                     fill="none"
                     stroke="currentColor"
@@ -1360,7 +1392,7 @@
             class="bg-white text-[#3533cd] px-8 py-4 rounded-lg font-semibold text-lg shadow-lg hover:shadow-xl hover:bg-gray-50 transition-all duration-300 flex items-center justify-center"
           >
             Get Started Today
-            <svg
+            <svg aria-hidden="true"
               class="ml-2 w-5 h-5"
               fill="none"
               stroke="currentColor"

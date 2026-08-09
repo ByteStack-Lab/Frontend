@@ -56,6 +56,7 @@
             <!-- Left Arrow -->
             <button
               v-if="canSlide"
+              aria-label="Previous services"
               class="flex-shrink-0 flex items-center justify-center w-11 h-11 rounded-full border-2 border-[#3533cd] text-[#3533cd] hover:bg-[#3533cd] hover:text-white transition-all duration-300 mr-4 z-10"
               :class="
                 currentSlide === 0
@@ -69,6 +70,7 @@
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
+                aria-hidden="true"
               >
                 <path
                   stroke-linecap="round"
@@ -138,6 +140,9 @@
                                 v-if="service.icon"
                                 :src="service.icon"
                                 :alt="service.title || service.name"
+                                loading="lazy"
+                                width="40"
+                                height="40"
                                 class="w-10 h-10 object-contain"
                               />
                               <span
@@ -187,7 +192,7 @@
                                 class="inline-flex items-center text-[#3533cd] font-semibold text-sm group-hover:text-[#1e1b69] transition-all duration-300 group-hover:translate-x-2"
                               >
                                 Learn More
-                                <svg
+                                <svg aria-hidden="true"
                                   class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-500"
                                   fill="none"
                                   stroke="currentColor"
@@ -214,6 +219,7 @@
             <!-- Right Arrow -->
             <button
               v-if="canSlide"
+              aria-label="Next services"
               class="flex-shrink-0 flex items-center justify-center w-11 h-11 rounded-full bg-[#3533cd] text-white hover:bg-[#1e1b69] transition-all duration-300 ml-4 z-10"
               :class="
                 currentSlide === maxSlides
@@ -227,6 +233,7 @@
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
+                aria-hidden="true"
               >
                 <path
                   stroke-linecap="round"
@@ -243,6 +250,8 @@
             <button
               v-for="(dot, index) in totalSlidePositions"
               :key="index"
+              :aria-label="`Go to slide ${index + 1}`"
+              :aria-current="currentSlide === index ? 'true' : undefined"
               class="w-3 h-3 rounded-full transition-all duration-300 hover:scale-125"
               :class="
                 currentSlide === index

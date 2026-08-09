@@ -22,6 +22,7 @@
         <!-- Right: Navigation Arrows -->
         <div class="flex space-x-4">
           <button
+            aria-label="Previous partners"
             class="w-12 h-12 rounded-full border-2 border-[#3533cd] text-[#3533cd] flex items-center justify-center hover:bg-[#3533cd] hover:text-white transition-all duration-300 cursor-pointer"
             @click="prevSlide"
           >
@@ -30,6 +31,7 @@
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
+              aria-hidden="true"
             >
               <path
                 stroke-linecap="round"
@@ -41,6 +43,7 @@
           </button>
 
           <button
+            aria-label="Next partners"
             class="w-12 h-12 rounded-full bg-[#3533cd] text-white flex items-center justify-center hover:bg-[#1e1b69] transition-all duration-300 cursor-pointer"
             @click="nextSlide"
           >
@@ -49,6 +52,7 @@
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
+              aria-hidden="true"
             >
               <path
                 stroke-linecap="round"
@@ -107,6 +111,9 @@
                 <NuxtImg
                   :src="partner.logo"
                   :alt="partner.name"
+                  loading="lazy"
+                  width="160"
+                  height="64"
                   class="h-12 lg:h-16 object-contain filter grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100"
                 />
               </a>
@@ -115,6 +122,9 @@
                 :src="partner.logo"
                 :alt="partner.name"
                 :title="partner.name"
+                loading="lazy"
+                width="160"
+                height="64"
                 class="h-12 lg:h-16 object-contain filter grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100"
               />
             </div>

@@ -19,6 +19,7 @@
               <!-- Success Icon -->
               <svg
                 v-if="notification.type === 'success'"
+                aria-hidden="true"
                 class="w-6 h-6 text-green-600"
                 fill="none"
                 stroke="currentColor"
@@ -34,6 +35,7 @@
               <!-- Error Icon -->
               <svg
                 v-else
+                aria-hidden="true"
                 class="w-6 h-6 text-red-600"
                 fill="none"
                 stroke="currentColor"
@@ -71,6 +73,7 @@
             </div>
             <div class="ml-4 flex-shrink-0">
               <button
+                aria-label="Dismiss notification"
                 :class="[
                   'inline-flex rounded-md p-1.5 focus:outline-none focus:ring-2 focus:ring-offset-2',
                   notification.type === 'success'
@@ -84,6 +87,7 @@
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
+                  aria-hidden="true"
                 >
                   <path
                     stroke-linecap="round"
@@ -117,7 +121,7 @@
         <div
           class="w-24 h-24 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6"
         >
-          <svg
+          <svg aria-hidden="true"
             class="w-12 h-12 text-red-400"
             fill="none"
             stroke="currentColor"
@@ -150,7 +154,7 @@
           to="/careers"
           class="inline-flex items-center text-[#3533cd] hover:text-[#1e1b69] transition-colors mb-8"
         >
-          <svg
+          <svg aria-hidden="true"
             class="w-5 h-5 mr-2"
             fill="none"
             stroke="currentColor"
@@ -188,7 +192,7 @@
                   ⭐ Featured
                 </span>
                 <span class="text-sm text-gray-500 flex items-center">
-                  <svg
+                  <svg aria-hidden="true"
                     class="w-4 h-4 mr-1"
                     fill="none"
                     stroke="currentColor"
@@ -211,7 +215,7 @@
                 </span>
                 <span class="mx-2 text-gray-300">•</span>
                 <span class="text-sm text-gray-500 flex items-center">
-                  <svg
+                  <svg aria-hidden="true"
                     class="w-4 h-4 mr-1"
                     fill="none"
                     stroke="currentColor"
@@ -239,7 +243,7 @@
                 class="flex items-center space-x-6 text-sm text-gray-500 mb-6 flex-wrap gap-y-2"
               >
                 <div class="flex items-center">
-                  <svg
+                  <svg aria-hidden="true"
                     class="w-5 h-5 mr-2"
                     fill="none"
                     stroke="currentColor"
@@ -255,7 +259,7 @@
                   <span class="font-semibold">{{ job.salary_range }}</span>
                 </div>
                 <div v-if="job.application_deadline" class="flex items-center">
-                  <svg
+                  <svg aria-hidden="true"
                     class="w-5 h-5 mr-2"
                     fill="none"
                     stroke="currentColor"
@@ -281,7 +285,7 @@
                 @click="scrollToApplication"
               >
                 Apply Now
-                <svg
+                <svg aria-hidden="true"
                   class="ml-2 w-5 h-5"
                   fill="none"
                   stroke="currentColor"
@@ -331,7 +335,7 @@
                   :key="responsibility"
                   class="flex items-start"
                 >
-                  <svg
+                  <svg aria-hidden="true"
                     class="w-5 h-5 text-[#6675F7] mr-3 mt-0.5 flex-shrink-0"
                     fill="none"
                     stroke="currentColor"
@@ -363,7 +367,7 @@
                   :key="requirement"
                   class="flex items-start"
                 >
-                  <svg
+                  <svg aria-hidden="true"
                     class="w-5 h-5 text-[#3533cd] mr-3 mt-0.5 flex-shrink-0"
                     fill="none"
                     stroke="currentColor"
@@ -395,7 +399,7 @@
                   :key="benefit"
                   class="flex items-start"
                 >
-                  <svg
+                  <svg aria-hidden="true"
                     class="w-5 h-5 text-[#1e1b69] mr-3 mt-0.5 flex-shrink-0"
                     fill="none"
                     stroke="currentColor"
@@ -424,7 +428,7 @@
                 <div
                   class="w-16 h-16 bg-gradient-to-r from-[#3533cd] via-[#6675F7] to-[#1e1b69] rounded-full flex items-center justify-center mx-auto mb-4"
                 >
-                  <svg
+                  <svg aria-hidden="true"
                     class="w-8 h-8 text-white"
                     fill="none"
                     stroke="currentColor"
@@ -449,7 +453,7 @@
                   class="w-full bg-gradient-to-r from-[#3533cd] via-[#6675F7] to-[#1e1b69] text-white px-6 py-4 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2"
                   @click="scrollToApplication"
                 >
-                  <svg
+                  <svg aria-hidden="true"
                     class="w-5 h-5"
                     fill="none"
                     stroke="currentColor"
@@ -536,7 +540,7 @@
                   title="Share on X"
                   @click="shareJob('twitter')"
                 >
-                  <svg
+                  <svg aria-hidden="true"
                     class="w-5 h-5 group-hover:scale-110 transition-transform"
                     fill="currentColor"
                     viewBox="0 0 24 24"
@@ -551,7 +555,7 @@
                   title="Share on LinkedIn"
                   @click="shareJob('linkedin')"
                 >
-                  <svg
+                  <svg aria-hidden="true"
                     class="w-5 h-5 group-hover:scale-110 transition-transform"
                     fill="currentColor"
                     viewBox="0 0 24 24"
@@ -566,7 +570,7 @@
                   title="Share on Facebook"
                   @click="shareJob('facebook')"
                 >
-                  <svg
+                  <svg aria-hidden="true"
                     class="w-5 h-5 group-hover:scale-110 transition-transform"
                     fill="currentColor"
                     viewBox="0 0 24 24"
@@ -581,7 +585,7 @@
                   title="Share on WhatsApp"
                   @click="shareJob('whatsapp')"
                 >
-                  <svg
+                  <svg aria-hidden="true"
                     class="w-5 h-5 group-hover:scale-110 transition-transform"
                     fill="currentColor"
                     viewBox="0 0 24 24"
@@ -596,7 +600,7 @@
                   title="Copy Job Link"
                   @click="copyJobLink"
                 >
-                  <svg
+                  <svg aria-hidden="true"
                     class="w-5 h-5 group-hover:scale-110 transition-transform"
                     fill="none"
                     stroke="currentColor"
@@ -645,10 +649,11 @@
             </div>
             <div class="grid md:grid-cols-2 gap-6">
               <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2"
+                <label for="apply-first-name" class="block text-sm font-medium text-gray-700 mb-2"
                   >First Name *</label
                 >
                 <input
+                  id="apply-first-name"
                   v-model="applicationForm.first_name"
                   type="text"
                   required
@@ -657,10 +662,11 @@
                 >
               </div>
               <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2"
+                <label for="apply-last-name" class="block text-sm font-medium text-gray-700 mb-2"
                   >Last Name *</label
                 >
                 <input
+                  id="apply-last-name"
                   v-model="applicationForm.last_name"
                   type="text"
                   required
@@ -672,10 +678,11 @@
 
             <div class="grid md:grid-cols-2 gap-6">
               <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2"
+                <label for="apply-email" class="block text-sm font-medium text-gray-700 mb-2"
                   >Email Address *</label
                 >
                 <input
+                  id="apply-email"
                   v-model="applicationForm.email"
                   type="email"
                   required
@@ -684,10 +691,11 @@
                 >
               </div>
               <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2"
+                <label for="apply-phone" class="block text-sm font-medium text-gray-700 mb-2"
                   >Phone Number</label
                 >
                 <input
+                  id="apply-phone"
                   v-model="applicationForm.phone"
                   type="tel"
                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#3533cd] focus:border-transparent"
@@ -697,10 +705,11 @@
             </div>
 
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2"
+              <label for="apply-resume" class="block text-sm font-medium text-gray-700 mb-2"
                 >Resume/CV *</label
               >
               <input
+                id="apply-resume"
                 type="file"
                 accept=".pdf,.doc,.docx"
                 required
@@ -714,10 +723,11 @@
 
             <div class="grid md:grid-cols-2 gap-6">
               <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2"
+                <label for="apply-portfolio" class="block text-sm font-medium text-gray-700 mb-2"
                   >Portfolio URL</label
                 >
                 <input
+                  id="apply-portfolio"
                   v-model="applicationForm.portfolio_url"
                   type="url"
                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#3533cd] focus:border-transparent"
@@ -725,10 +735,11 @@
                 >
               </div>
               <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2"
+                <label for="apply-linkedin" class="block text-sm font-medium text-gray-700 mb-2"
                   >LinkedIn Profile</label
                 >
                 <input
+                  id="apply-linkedin"
                   v-model="applicationForm.linkedin_url"
                   type="url"
                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#3533cd] focus:border-transparent"
@@ -738,10 +749,11 @@
             </div>
 
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2"
+              <label for="apply-github" class="block text-sm font-medium text-gray-700 mb-2"
                 >GitHub Profile</label
               >
               <input
+                id="apply-github"
                 v-model="applicationForm.github_url"
                 type="url"
                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#3533cd] focus:border-transparent"
@@ -750,10 +762,11 @@
             </div>
 
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2"
+              <label for="apply-cover-letter" class="block text-sm font-medium text-gray-700 mb-2"
                 >Cover Letter</label
               >
               <textarea
+                id="apply-cover-letter"
                 v-model="applicationForm.cover_letter"
                 rows="6"
                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#3533cd] focus:border-transparent"
@@ -762,10 +775,11 @@
             </div>
 
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2"
+              <label for="apply-additional-info" class="block text-sm font-medium text-gray-700 mb-2"
                 >Additional Information</label
               >
               <textarea
+                id="apply-additional-info"
                 v-model="applicationForm.additional_info"
                 rows="4"
                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#3533cd] focus:border-transparent"
@@ -798,6 +812,7 @@
             >
               <svg
                 v-if="submitting"
+                aria-hidden="true"
                 class="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"

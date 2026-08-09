@@ -84,7 +84,7 @@
 
               <div class="flex flex-wrap gap-4 mb-8">
                 <div class="flex items-center text-[#3533cd]">
-                  <svg
+                  <svg aria-hidden="true"
                     class="w-5 h-5 mr-2"
                     fill="none"
                     stroke="currentColor"
@@ -104,7 +104,7 @@
                   v-if="service.delivery_time"
                   class="flex items-center text-gray-600"
                 >
-                  <svg
+                  <svg aria-hidden="true"
                     class="w-5 h-5 mr-2"
                     fill="none"
                     stroke="currentColor"
@@ -147,6 +147,9 @@
                     :alt="service.title"
                     class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500"
                     loading="eager"
+                    fetchpriority="high"
+                    width="640"
+                    height="320"
                     sizes="100vw lg:50vw"
                   />
                   <div
@@ -174,10 +177,14 @@
                     v-if="service.icon"
                     :src="service.icon"
                     :alt="service.title"
+                    loading="eager"
+                    width="48"
+                    height="48"
                     class="w-12 h-12"
                   />
                   <svg
                     v-else
+                    aria-hidden="true"
                     class="w-12 h-12 text-white"
                     fill="none"
                     stroke="currentColor"
@@ -229,7 +236,7 @@
                     :key="feature"
                     class="flex items-center space-x-3"
                   >
-                    <svg
+                    <svg aria-hidden="true"
                       class="w-5 h-5 text-[#3533cd] flex-shrink-0"
                       fill="none"
                       stroke="currentColor"
@@ -299,6 +306,7 @@
                           image.alt ||
                           `${service.title} gallery image ${index + 1}`
                         "
+                        loading="lazy"
                         class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-700"
                       />
                     </div>
@@ -327,7 +335,7 @@
                         <div
                           class="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center"
                         >
-                          <svg
+                          <svg aria-hidden="true"
                             class="w-4 h-4 text-white"
                             fill="none"
                             stroke="currentColor"
@@ -365,7 +373,7 @@
 
               <!-- Fallback when no gallery images -->
               <div v-else class="bg-gray-50 rounded-xl p-8 text-center">
-                <svg
+                <svg aria-hidden="true"
                   class="w-16 h-16 text-gray-400 mx-auto mb-4"
                   fill="none"
                   stroke="currentColor"
@@ -399,6 +407,7 @@
         <div class="relative max-w-6xl max-h-full mx-4">
           <!-- Close Button -->
           <button
+            aria-label="Close image"
             class="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors"
             @click="closeLightbox"
           >
@@ -407,6 +416,7 @@
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
+              aria-hidden="true"
             >
               <path
                 stroke-linecap="round"
@@ -423,7 +433,7 @@
             class="absolute left-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 transition-colors"
             @click.stop="prevImage"
           >
-            <svg
+            <svg aria-hidden="true"
               class="w-8 h-8"
               fill="none"
               stroke="currentColor"
@@ -443,7 +453,7 @@
             class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 transition-colors"
             @click.stop="nextImage"
           >
-            <svg
+            <svg aria-hidden="true"
               class="w-8 h-8"
               fill="none"
               stroke="currentColor"
@@ -523,7 +533,7 @@
               <div
                 class="w-14 h-14 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full flex items-center justify-center mb-6"
               >
-                <svg
+                <svg aria-hidden="true"
                   class="w-7 h-7 text-white"
                   fill="none"
                   stroke="currentColor"
@@ -551,7 +561,7 @@
               <div
                 class="w-14 h-14 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full flex items-center justify-center mb-6"
               >
-                <svg
+                <svg aria-hidden="true"
                   class="w-7 h-7 text-white"
                   fill="none"
                   stroke="currentColor"
@@ -579,7 +589,7 @@
               <div
                 class="w-14 h-14 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full flex items-center justify-center mb-6"
               >
-                <svg
+                <svg aria-hidden="true"
                   class="w-7 h-7 text-white"
                   fill="none"
                   stroke="currentColor"
@@ -678,7 +688,7 @@
                 <span class="font-semibold text-gray-900">{{
                   faq.question
                 }}</span>
-                <svg
+                <svg aria-hidden="true"
                   :class="[
                     'w-5 h-5 text-gray-500 transition-transform',
                     openFaqs.includes(faq.id) ? 'rotate-180' : '',

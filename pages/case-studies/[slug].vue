@@ -99,7 +99,7 @@
                   class="bg-gradient-to-r from-[#3533cd] to-[#1e1b69] text-white px-8 py-4 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 text-center group"
                 >
                   Start Similar Project
-                  <svg class="w-5 h-5 ml-2 inline transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg aria-hidden="true" class="w-5 h-5 ml-2 inline transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </NuxtLink>
@@ -133,7 +133,7 @@
               <!-- Fallback Visual -->
               <div v-else class="bg-white rounded-2xl shadow-2xl p-12">
                 <div class="w-32 h-32 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full flex items-center justify-center mx-auto">
-                  <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg aria-hidden="true" class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
                   </svg>
                 </div>
@@ -180,6 +180,7 @@
                     <NuxtImg
                       :src="caseStudy.galleryImages[currentImageIndex]"
                       :alt="`${caseStudy.title} - Gallery Image ${currentImageIndex + 1}`"
+                      loading="lazy"
                       class="w-full h-80 object-cover transition-all duration-500 gallery-main-image"
                       @error="handleImageError"
                     />
@@ -195,7 +196,7 @@
                       class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
                       @click="prevImage"
                     >
-                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
                       </svg>
                     </button>
@@ -205,7 +206,7 @@
                       class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
                       @click="nextImage"
                     >
-                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                       </svg>
                     </button>
@@ -227,6 +228,7 @@
                       <NuxtImg
                         :src="image"
                         :alt="`Thumbnail ${index + 1}`"
+                        loading="lazy"
                         class="w-20 h-16 object-cover"
                         width="80"
                         height="64"
@@ -247,10 +249,12 @@
                     <button
                       v-for="(image, index) in caseStudy.galleryImages"
                       :key="index"
+                      :aria-label="`Go to image ${index + 1}`"
+                      :aria-current="currentImageIndex === index ? 'true' : undefined"
                       class="w-2 h-2 rounded-full transition-all duration-300"
                       :class="[
-                        currentImageIndex === index 
-                          ? 'bg-[#3533cd]' 
+                        currentImageIndex === index
+                          ? 'bg-[#3533cd]'
                           : 'bg-gray-300 hover:bg-gray-400'
                       ]"
                       @click="currentImageIndex = index"
@@ -264,7 +268,7 @@
                 <h3 class="text-2xl font-bold text-gray-900 mb-6">Project Highlights</h3>
                 <div class="bg-gradient-to-br from-[#3533cd]/5 to-[#1e1b69]/5 rounded-xl p-8 border border-[#3533cd]/10">
                   <div class="w-16 h-16 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full flex items-center justify-center mx-auto lg:mx-0 mb-4">
-                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg aria-hidden="true" class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                     </svg>
                   </div>
@@ -304,7 +308,7 @@
             <div v-if="caseStudy.challenges && caseStudy.challenges.length > 0" class="space-y-6">
               <div class="text-center">
                 <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg aria-hidden="true" class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"/>
                   </svg>
                 </div>
@@ -327,7 +331,7 @@
             <div v-if="caseStudy.solutions && caseStudy.solutions.length > 0" class="space-y-6">
               <div class="text-center">
                 <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg aria-hidden="true" class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
                   </svg>
                 </div>
@@ -350,7 +354,7 @@
             <div v-if="caseStudy.results && caseStudy.results.length > 0" class="space-y-6">
               <div class="text-center">
                 <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg aria-hidden="true" class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                   </svg>
                 </div>
@@ -391,13 +395,14 @@
                 <NuxtImg
                   :src="relatedCase.image"
                   :alt="relatedCase.title"
+                  loading="lazy"
                   class="w-full h-40 object-cover group-hover:scale-110 transition-transform duration-300"
                   sizes="100vw md:50vw lg:33vw"
                 />
               </div>
               
               <div v-else class="w-12 h-12 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg aria-hidden="true" class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
                 </svg>
               </div>
@@ -418,7 +423,7 @@
                 class="inline-flex items-center text-[#3533cd] hover:text-[#1e1b69] font-semibold text-sm group"
               >
                 Read Case Study
-                <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg aria-hidden="true" class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </NuxtLink>

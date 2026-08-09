@@ -138,7 +138,7 @@ const PromptBar = (props) =>
         [
           h(
             'svg',
-            { width: '9', height: '9', viewBox: '0 0 14 14', fill: 'currentColor' },
+            { width: '9', height: '9', viewBox: '0 0 14 14', fill: 'currentColor', 'aria-hidden': 'true' },
             [h('path', { d: 'M2 4a1 1 0 011-1h3.3l1 1H11a1 1 0 011 1v6a1 1 0 01-1 1H3a1 1 0 01-1-1V4z' })]
           ),
           h('span', props.dir),
@@ -154,7 +154,7 @@ const PromptBar = (props) =>
         [
           h(
             'svg',
-            { width: '9', height: '9', viewBox: '0 0 12 12', fill: 'none', stroke: '#fff', 'stroke-width': '2', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' },
+            { width: '9', height: '9', viewBox: '0 0 12 12', fill: 'none', stroke: '#fff', 'stroke-width': '2', 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'aria-hidden': 'true' },
             [h('path', { d: 'M2 6.5l2.5 2.5L10 3' })]
           ),
         ]
@@ -169,7 +169,7 @@ const PromptBar = (props) =>
         [
           h(
             'svg',
-            { width: '9', height: '9', viewBox: '0 0 12 12', fill: 'none', stroke: 'currentColor', 'stroke-width': '1.2' },
+            { width: '9', height: '9', viewBox: '0 0 12 12', fill: 'none', stroke: 'currentColor', 'stroke-width': '1.2', 'aria-hidden': 'true' },
             [
               h('circle', { cx: '6', cy: '6', r: '5' }),
               h('path', { d: 'M6 3.2v3l2 1', 'stroke-linecap': 'round' }),

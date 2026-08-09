@@ -17,7 +17,7 @@
               v-if="notification.type === 'success'" 
               class="w-10 h-10 rounded-full bg-gradient-to-r from-green-400 to-green-500 flex items-center justify-center shadow-lg animate-pulse-success"
             >
-              <svg 
+              <svg aria-hidden="true" 
                 class="w-6 h-6 text-white" 
                 fill="none" 
                 stroke="currentColor" 
@@ -37,7 +37,7 @@
               v-else-if="notification.type === 'error'" 
               class="w-10 h-10 rounded-full bg-gradient-to-r from-red-400 to-red-500 flex items-center justify-center shadow-lg animate-pulse-error"
             >
-              <svg 
+              <svg aria-hidden="true" 
                 class="w-6 h-6 text-white" 
                 fill="none" 
                 stroke="currentColor" 
@@ -57,7 +57,7 @@
               v-else-if="notification.type === 'warning'" 
               class="w-10 h-10 rounded-full bg-gradient-to-r from-yellow-400 to-yellow-500 flex items-center justify-center shadow-lg animate-pulse-warning"
             >
-              <svg 
+              <svg aria-hidden="true" 
                 class="w-6 h-6 text-white" 
                 fill="none" 
                 stroke="currentColor" 
@@ -77,7 +77,7 @@
               v-else-if="notification.type === 'info'" 
               class="w-10 h-10 rounded-full bg-gradient-to-r from-blue-400 to-blue-500 flex items-center justify-center shadow-lg animate-pulse-info"
             >
-              <svg 
+              <svg aria-hidden="true" 
                 class="w-6 h-6 text-white" 
                 fill="none" 
                 stroke="currentColor" 
@@ -97,7 +97,7 @@
               v-else 
               class="w-10 h-10 rounded-full bg-gradient-to-r from-gray-400 to-gray-500 flex items-center justify-center shadow-lg animate-pulse-default"
             >
-              <svg 
+              <svg aria-hidden="true" 
                 class="w-6 h-6 text-white" 
                 fill="none" 
                 stroke="currentColor" 
@@ -122,14 +122,15 @@
               >
                 {{ notification.title }}
               </h3>
-              <button 
+              <button
+                aria-label="Dismiss notification"
                 :class="[
                   'ml-3 inline-flex rounded-full p-1.5 focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all duration-200 hover:scale-110',
                   closeButtonClasses
                 ]"
                 @click="hideNotification"
               >
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>

@@ -47,6 +47,7 @@
         <div v-else-if="testimonials.length > 0">
           <!-- Navigation Arrows -->
           <button
+            aria-label="Previous testimonial"
             class="absolute left-[-60px] top-1/2 transform -translate-y-1/2 w-12 h-12 rounded-full border-2 border-[#3533cd] text-[#3533cd] items-center justify-center hover:bg-[#3533cd] hover:text-white transition-all duration-300 z-30 hidden lg:flex"
             @click="prevTestimonial"
           >
@@ -55,6 +56,7 @@
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
+              aria-hidden="true"
             >
               <path
                 stroke-linecap="round"
@@ -66,6 +68,7 @@
           </button>
 
           <button
+            aria-label="Next testimonial"
             class="absolute right-[-60px] top-1/2 transform -translate-y-1/2 w-12 h-12 rounded-full bg-[#3533cd] text-white items-center justify-center hover:bg-[#1e1b69] transition-all duration-300 z-30 hidden lg:flex"
             @click="nextTestimonial"
           >
@@ -74,6 +77,7 @@
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
+              aria-hidden="true"
             >
               <path
                 stroke-linecap="round"
@@ -86,7 +90,7 @@
 
           <!-- Quote Mark -->
           <div class="flex justify-center mb-12">
-            <svg
+            <svg aria-hidden="true"
               class="w-16 h-16 text-[#3533cd]"
               fill="currentColor"
               viewBox="0 0 24 24"
@@ -123,6 +127,9 @@
               <NuxtImg
                 :src="testimonial.image"
                 :alt="testimonial.name"
+                loading="lazy"
+                width="64"
+                height="64"
                 :class="[
                   index === 0
                     ? 'w-12 h-12 lg:w-14 lg:h-14'
@@ -137,6 +144,9 @@
               <NuxtImg
                 :src="testimonials[currentTestimonial].image"
                 :alt="testimonials[currentTestimonial].name"
+                loading="lazy"
+                width="96"
+                height="96"
                 class="w-20 h-20 lg:w-24 lg:h-24 rounded-full object-cover border-3 border-[#3533cd]"
               />
             </div>
@@ -151,6 +161,9 @@
               <NuxtImg
                 :src="testimonial.image"
                 :alt="testimonial.name"
+                loading="lazy"
+                width="64"
+                height="64"
                 :class="[
                   index === 1
                     ? 'w-12 h-12 lg:w-14 lg:h-14'
@@ -168,6 +181,7 @@
               <svg
                 v-for="i in 5"
                 :key="i"
+                aria-hidden="true"
                 class="w-5 h-5 text-yellow-400"
                 fill="currentColor"
                 viewBox="0 0 20 20"
@@ -180,12 +194,12 @@
 
             <!-- User Name -->
             <Transition name="fade" mode="out-in">
-              <h4
+              <h3
                 :key="currentTestimonial"
                 class="text-lg font-bold text-[#3533cd] mb-2"
               >
                 {{ testimonials[currentTestimonial].name }}
-              </h4>
+              </h3>
             </Transition>
 
             <!-- Designation and Company -->
@@ -206,6 +220,7 @@
             class="flex justify-center items-center space-x-4 mt-12 lg:hidden"
           >
             <button
+              aria-label="Previous testimonial"
               class="w-12 h-12 rounded-full border-2 border-[#3533cd] text-[#3533cd] flex items-center justify-center hover:bg-[#3533cd] hover:text-white transition-all duration-300"
               @click="prevTestimonial"
             >
@@ -214,6 +229,7 @@
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
+                aria-hidden="true"
               >
                 <path
                   stroke-linecap="round"
@@ -225,6 +241,7 @@
             </button>
 
             <button
+              aria-label="Next testimonial"
               class="w-12 h-12 rounded-full bg-[#3533cd] text-white flex items-center justify-center hover:bg-[#1e1b69] transition-all duration-300"
               @click="nextTestimonial"
             >
@@ -233,6 +250,7 @@
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
+                aria-hidden="true"
               >
                 <path
                   stroke-linecap="round"

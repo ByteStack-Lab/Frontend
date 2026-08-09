@@ -35,7 +35,7 @@
             class="w-full sm:w-auto bg-white text-[#3533cd] px-10 py-4 rounded-lg font-semibold text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 group inline-block"
           >
             Book a Free Consultation
-            <svg
+            <svg aria-hidden="true"
               class="w-5 h-5 ml-2 inline group-hover:translate-x-1 transition-transform duration-300"
               fill="none"
               stroke="currentColor"
@@ -54,7 +54,7 @@
             href="tel:+8801812209019"
             class="w-full sm:w-auto border-2 border-white text-white px-10 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-[#3533cd] transition-all duration-300 group inline-block"
           >
-            <svg
+            <svg aria-hidden="true"
               class="w-5 h-5 mr-2 inline group-hover:scale-110 transition-transform duration-300"
               fill="none"
               stroke="currentColor"
@@ -76,7 +76,7 @@
           <div class="grid md:grid-cols-3 gap-6 md:gap-8 text-white/80">
             <!-- Response time -->
             <div class="flex items-center justify-center space-x-3">
-              <svg
+              <svg aria-hidden="true"
                 class="w-6 h-6 text-white flex-shrink-0"
                 fill="none"
                 stroke="currentColor"
@@ -94,7 +94,7 @@
 
             <!-- NDA -->
             <div class="flex items-center justify-center space-x-3">
-              <svg
+              <svg aria-hidden="true"
                 class="w-6 h-6 text-white flex-shrink-0"
                 fill="none"
                 stroke="currentColor"
@@ -112,7 +112,7 @@
 
             <!-- No obligation -->
             <div class="flex items-center justify-center space-x-3">
-              <svg
+              <svg aria-hidden="true"
                 class="w-6 h-6 text-white flex-shrink-0"
                 fill="none"
                 stroke="currentColor"

@@ -17,7 +17,7 @@
         <div class="bg-gradient-to-r from-[#3533cd] to-[#1e1b69] px-5 py-4 flex items-center justify-between flex-shrink-0">
           <div class="flex items-center gap-3">
             <div class="w-9 h-9 rounded-full bg-white/15 flex items-center justify-center">
-              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg aria-hidden="true" class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
             </div>
@@ -32,7 +32,7 @@
             class="text-white/80 hover:text-white transition-colors"
             @click="isOpen = false"
           >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
@@ -93,6 +93,7 @@
               <input
                 v-model="leadForm.name"
                 type="text"
+                aria-label="Your name"
                 placeholder="Your name"
                 required
                 class="w-full text-sm px-3 py-2 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#3533cd]/30 focus:border-[#3533cd]"
@@ -100,6 +101,7 @@
               <input
                 v-model="leadForm.email"
                 type="email"
+                aria-label="Your email"
                 placeholder="Your email"
                 required
                 class="w-full text-sm px-3 py-2 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#3533cd]/30 focus:border-[#3533cd]"
@@ -145,6 +147,7 @@
             ref="inputEl"
             v-model="draft"
             type="text"
+            aria-label="Ask about services, pricing, careers"
             placeholder="Ask about services, pricing, careers..."
             :disabled="isSending"
             class="flex-1 text-sm px-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#3533cd]/30 focus:border-[#3533cd] disabled:opacity-60"
@@ -155,7 +158,7 @@
             class="w-10 h-10 flex-shrink-0 rounded-xl bg-[#3533cd] text-white flex items-center justify-center hover:bg-[#1e1b69] transition-colors disabled:opacity-40 disabled:hover:bg-[#3533cd]"
             aria-label="Send message"
           >
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg aria-hidden="true" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
           </button>
@@ -170,10 +173,10 @@
       class="w-14 h-14 rounded-full bg-gradient-to-r from-[#3533cd] to-[#1e1b69] text-white shadow-lg hover:shadow-xl flex items-center justify-center transition-all duration-300 hover:scale-105"
       @click="isOpen = !isOpen"
     >
-      <svg v-if="!isOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg v-if="!isOpen" aria-hidden="true" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
       </svg>
-      <svg v-else class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg v-else aria-hidden="true" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
       </svg>
     </button>

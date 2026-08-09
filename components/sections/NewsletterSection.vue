@@ -47,6 +47,7 @@
                 <input
                   v-model="email"
                   type="email"
+                  aria-label="Email address"
                   placeholder="Enter your email address"
                   class="flex-1 px-6 py-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#3533cd] focus:border-transparent text-lg bg-white"
                 >
@@ -57,7 +58,7 @@
                 >
                   <span v-if="!isLoading">Subscribe Now</span>
                   <span v-else class="flex items-center">
-                    <svg
+                    <svg aria-hidden="true"
                       class="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -145,7 +146,7 @@
               <span>Start a Project</span>
 
               <!-- Button Arrow -->
-              <svg
+              <svg aria-hidden="true"
                 class="w-6 h-6 ml-3 inline"
                 fill="none"
                 stroke="currentColor"

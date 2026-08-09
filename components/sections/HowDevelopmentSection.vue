@@ -44,6 +44,7 @@
             <NuxtImg
               src="/images/icons/Trophy.png"
               alt="Trophy"
+              loading="lazy"
               class="w-10 h-10 object-contain"
               width="40"
               height="40"

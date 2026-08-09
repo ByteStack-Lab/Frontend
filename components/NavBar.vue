@@ -32,7 +32,7 @@
               class="text-gray-600 hover:text-[#3533cd] transition-colors duration-200 font-medium text-sm lg:text-base flex items-center space-x-1"
             >
               <span>Services</span>
-              <svg
+              <svg aria-hidden="true"
                 class="w-4 h-4 transition-transform duration-200 group-hover:rotate-180"
                 fill="none"
                 stroke="currentColor"
@@ -67,6 +67,7 @@
                     >
                       <svg
                         v-if="service.icon"
+                        aria-hidden="true"
                         class="w-6 h-6 text-white"
                         fill="none"
                         stroke="currentColor"
@@ -76,6 +77,7 @@
                       </svg>
                       <svg
                         v-else
+                        aria-hidden="true"
                         class="w-6 h-6 text-white"
                         fill="none"
                         stroke="currentColor"
@@ -107,7 +109,7 @@
                     class="flex items-center justify-center space-x-2 text-[#3533cd] hover:text-white hover:bg-gradient-to-r hover:from-[#3533cd] hover:to-[#1e1b69] font-medium py-3 px-6 rounded-xl transition-all duration-300 group border border-[#3533cd] hover:border-transparent"
                   >
                     <span>View all services</span>
-                    <svg
+                    <svg aria-hidden="true"
                       class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1"
                       fill="none"
                       stroke="currentColor"
@@ -169,7 +171,7 @@
               class="text-gray-600 hover:text-[#3533cd] transition-colors duration-200 font-medium text-sm lg:text-base flex items-center space-x-1"
             >
               <span>Services</span>
-              <svg
+              <svg aria-hidden="true"
                 class="w-4 h-4 transition-transform duration-200 group-hover:rotate-180"
                 fill="none"
                 stroke="currentColor"
@@ -204,6 +206,7 @@
                     >
                       <svg
                         v-if="service.icon"
+                        aria-hidden="true"
                         class="w-6 h-6 text-white"
                         fill="none"
                         stroke="currentColor"
@@ -213,6 +216,7 @@
                       </svg>
                       <svg
                         v-else
+                        aria-hidden="true"
                         class="w-6 h-6 text-white"
                         fill="none"
                         stroke="currentColor"
@@ -244,7 +248,7 @@
                     class="flex items-center justify-center space-x-2 text-[#3533cd] hover:text-white hover:bg-gradient-to-r hover:from-[#3533cd] hover:to-[#1e1b69] font-medium py-3 px-6 rounded-xl transition-all duration-300 group border border-[#3533cd] hover:border-transparent"
                   >
                     <span>View all services</span>
-                    <svg
+                    <svg aria-hidden="true"
                       class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1"
                       fill="none"
                       stroke="currentColor"
@@ -292,10 +296,12 @@
         <!-- Mobile menu button -->
         <div class="md:hidden">
           <button
-            class="text-gray-700 hover:text-[#3533cd] focus:outline-none p-3 rounded-xl bg-gray-50 hover:bg-[#3533cd]/10 border border-gray-200 hover:border-[#3533cd]/20 transition-all duration-200 shadow-sm hover:shadow-md"
+            :aria-label="isMenuOpen ? 'Close menu' : 'Open menu'"
+            :aria-expanded="isMenuOpen"
+            class="text-gray-700 hover:text-[#3533cd] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3533cd] focus-visible:ring-offset-2 p-3 rounded-xl bg-gray-50 hover:bg-[#3533cd]/10 border border-gray-200 hover:border-[#3533cd]/20 transition-all duration-200 shadow-sm hover:shadow-md"
             @click="isMenuOpen = !isMenuOpen"
           >
-            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path
                 v-if="!isMenuOpen"
                 d="M4 5a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM10 5a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1h-2a1 1 0 01-1-1V5zM16 5a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1h-2a1 1 0 01-1-1V5zM4 11a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1v-2zM10 11a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1h-2a1 1 0 01-1-1v-2zM16 11a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1h-2a1 1 0 01-1-1v-2zM4 17a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1v-2zM10 17a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1h-2a1 1 0 01-1-1v-2zM16 17a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1h-2a1 1 0 01-1-1v-2z"
@@ -342,7 +348,8 @@
             >
           </NuxtLink>
           <button
-            class="p-2 rounded-full hover:bg-white hover:shadow-md transition-all duration-200"
+            aria-label="Close menu"
+            class="p-2 rounded-full hover:bg-white hover:shadow-md transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3533cd] focus-visible:ring-offset-2"
             @click="isMenuOpen = false"
           >
             <svg
@@ -350,6 +357,7 @@
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
+              aria-hidden="true"
             >
               <path
                 stroke-linecap="round"
@@ -368,7 +376,7 @@
             class="menu-item flex items-center space-x-3 text-gray-700 hover:text-[#3533cd] transition-all duration-300 font-medium py-3 px-4 rounded-xl hover:bg-gradient-to-r hover:from-[#3533cd]/10 hover:to-[#1e1b69]/10 hover:shadow-sm"
             @click="isMenuOpen = false"
           >
-            <svg
+            <svg aria-hidden="true"
               class="w-5 h-5"
               fill="none"
               stroke="currentColor"
@@ -389,7 +397,7 @@
             class="menu-item flex items-center space-x-3 text-gray-700 hover:text-[#3533cd] transition-all duration-300 font-medium py-3 px-4 rounded-xl hover:bg-gradient-to-r hover:from-[#3533cd]/10 hover:to-[#1e1b69]/10 hover:shadow-sm"
             @click="isMenuOpen = false"
           >
-            <svg
+            <svg aria-hidden="true"
               class="w-5 h-5"
               fill="none"
               stroke="currentColor"
@@ -412,7 +420,7 @@
               @click="isServicesOpen = !isServicesOpen"
             >
               <div class="flex items-center space-x-3">
-                <svg
+                <svg aria-hidden="true"
                   class="w-5 h-5"
                   fill="none"
                   stroke="currentColor"
@@ -427,7 +435,7 @@
                 </svg>
                 <span>Services</span>
               </div>
-              <svg
+              <svg aria-hidden="true"
                 class="w-4 h-4 transition-transform duration-200"
                 :class="isServicesOpen ? 'rotate-180' : ''"
                 fill="none"
@@ -460,6 +468,7 @@
                 >
                   <svg
                     v-if="service.icon"
+                    aria-hidden="true"
                     class="w-5 h-5 text-white"
                     fill="none"
                     stroke="currentColor"
@@ -469,6 +478,7 @@
                   </svg>
                   <svg
                     v-else
+                    aria-hidden="true"
                     class="w-5 h-5 text-white"
                     fill="none"
                     stroke="currentColor"
@@ -499,7 +509,7 @@
             class="menu-item flex items-center space-x-3 text-gray-700 hover:text-[#3533cd] transition-all duration-300 font-medium py-3 px-4 rounded-xl hover:bg-gradient-to-r hover:from-[#3533cd]/10 hover:to-[#1e1b69]/10 hover:shadow-sm"
             @click="isMenuOpen = false"
           >
-            <svg
+            <svg aria-hidden="true"
               class="w-5 h-5"
               fill="none"
               stroke="currentColor"
@@ -520,7 +530,7 @@
             class="menu-item flex items-center space-x-3 text-gray-700 hover:text-[#3533cd] transition-all duration-300 font-medium py-3 px-4 rounded-xl hover:bg-gradient-to-r hover:from-[#3533cd]/10 hover:to-[#1e1b69]/10 hover:shadow-sm"
             @click="isMenuOpen = false"
           >
-            <svg
+            <svg aria-hidden="true"
               class="w-5 h-5"
               fill="none"
               stroke="currentColor"
@@ -541,7 +551,7 @@
             class="menu-item flex items-center space-x-3 text-gray-700 hover:text-[#3533cd] transition-all duration-300 font-medium py-3 px-4 rounded-xl hover:bg-gradient-to-r hover:from-[#3533cd]/10 hover:to-[#1e1b69]/10 hover:shadow-sm"
             @click="isMenuOpen = false"
           >
-            <svg
+            <svg aria-hidden="true"
               class="w-5 h-5"
               fill="none"
               stroke="currentColor"
@@ -562,7 +572,7 @@
             class="menu-item flex items-center space-x-3 text-gray-700 hover:text-[#3533cd] transition-all duration-300 font-medium py-3 px-4 rounded-xl hover:bg-gradient-to-r hover:from-[#3533cd]/10 hover:to-[#1e1b69]/10 hover:shadow-sm"
             @click="isMenuOpen = false"
           >
-            <svg
+            <svg aria-hidden="true"
               class="w-5 h-5"
               fill="none"
               stroke="currentColor"
@@ -609,7 +619,7 @@
               <div
                 class="w-8 h-8 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full flex items-center justify-center"
               >
-                <svg
+                <svg aria-hidden="true"
                   class="w-4 h-4 text-white"
                   fill="none"
                   stroke="currentColor"
@@ -637,7 +647,7 @@
               <div
                 class="w-8 h-8 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full flex items-center justify-center"
               >
-                <svg
+                <svg aria-hidden="true"
                   class="w-4 h-4 text-white"
                   fill="none"
                   stroke="currentColor"
@@ -672,7 +682,7 @@
                 class="social-icon w-10 h-10 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full flex items-center justify-center shadow-md"
                 title="Facebook"
               >
-                <svg
+                <svg aria-hidden="true"
                   class="w-5 h-5 text-white"
                   fill="currentColor"
                   viewBox="0 0 24 24"
@@ -691,7 +701,7 @@
                 class="social-icon w-10 h-10 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full flex items-center justify-center shadow-md"
                 title="LinkedIn"
               >
-                <svg
+                <svg aria-hidden="true"
                   class="w-5 h-5 text-white"
                   fill="currentColor"
                   viewBox="0 0 24 24"
@@ -710,7 +720,7 @@
                 class="social-icon w-10 h-10 bg-gradient-to-r from-slate-800 to-black rounded-full flex items-center justify-center shadow-md"
                 title="Twitter/X"
               >
-                <svg
+                <svg aria-hidden="true"
                   class="w-5 h-5 text-white"
                   fill="currentColor"
                   viewBox="0 0 24 24"
@@ -729,7 +739,7 @@
                 class="social-icon w-10 h-10 bg-gradient-to-r from-red-600 to-red-700 rounded-full flex items-center justify-center shadow-md"
                 title="YouTube"
               >
-                <svg
+                <svg aria-hidden="true"
                   class="w-5 h-5 text-white"
                   fill="currentColor"
                   viewBox="0 0 24 24"
@@ -753,7 +763,7 @@
         :class="isRouteActive('/') ? 'mobile-tab-active' : ''"
         @click="closeMenu"
       >
-        <svg
+        <svg aria-hidden="true"
           class="w-5 h-5"
           fill="none"
           stroke="currentColor"
@@ -775,7 +785,7 @@
         :class="isRouteActive('/services') ? 'mobile-tab-active' : ''"
         @click="closeMenu"
       >
-        <svg
+        <svg aria-hidden="true"
           class="w-5 h-5"
           fill="none"
           stroke="currentColor"
@@ -797,7 +807,7 @@
         :class="isRouteActive('/products') ? 'mobile-tab-active' : ''"
         @click="closeMenu"
       >
-        <svg
+        <svg aria-hidden="true"
           class="w-5 h-5"
           fill="none"
           stroke="currentColor"
@@ -819,7 +829,7 @@
         :class="isRouteActive('/contact') ? 'mobile-tab-active' : ''"
         @click="closeMenu"
       >
-        <svg
+        <svg aria-hidden="true"
           class="w-5 h-5"
           fill="none"
           stroke="currentColor"

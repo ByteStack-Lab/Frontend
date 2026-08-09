@@ -64,6 +64,9 @@
                 <NuxtImg
                   :src="caseStudy.image || '/images/case-study-placeholder.png'"
                   :alt="caseStudy.title"
+                  loading="lazy"
+                  width="800"
+                  height="450"
                   class="w-full h-auto rounded-2xl shadow-lg"
                   sizes="100vw lg:50vw"
                 />
@@ -146,7 +149,7 @@
                   class="inline-flex items-center px-6 py-3 font-medium transition-colors group read-more-btn"
                 >
                   Read More
-                  <svg
+                  <svg aria-hidden="true"
                     class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform"
                     fill="none"
                     stroke="currentColor"
@@ -180,7 +183,7 @@
           class="inline-flex items-center px-6 py-3 text-[#3533cd] font-medium hover:text-[#1e1b69] transition-colors group"
         >
           Read More Case Studies
-          <svg
+          <svg aria-hidden="true"
             class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform"
             fill="none"
             stroke="currentColor"

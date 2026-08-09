@@ -78,10 +78,43 @@ export default defineNuxtConfig({
     // SERVICES-CONTENT-STRATEGY.md §3.5 for the rationale.
     '/services/web-design-development': { redirect: { to: '/services/web-application-development', statusCode: 301 } },
     '/services/ecommerce-development': { redirect: { to: '/services/web-application-development', statusCode: 301 } },
-    '/services/software-testing-service': { redirect: { to: '/services/qa-test-automation', statusCode: 301 } }
+    '/services/software-testing-service': { redirect: { to: '/services/qa-test-automation', statusCode: 301 } },
+
+    // Edge/CDN caching — previously every route rendered fresh on every
+    // request (Vercel `x-vercel-cache: MISS` on every hit, ~0.5-1.5s TTFB,
+    // 4-6 uncached API calls per homepage render even with the backend's own
+    // Redis cache in play, since that only saves DB round-trips, not the
+    // Vercel serverless cold-start + network hop). `swr` sets a
+    // stale-while-revalidate Cache-Control header that Vercel's CDN honors,
+    // so repeat visits within the window are served from the edge with no
+    // function invocation at all. Forms on /contact and /careers/[slug]
+    // submit client-side straight to the Laravel API (see useApi.ts) — they
+    // don't route through the cached Nuxt page handler, so caching the page
+    // shell doesn't affect form submission.
+    '/': { swr: 300 },
+    '/about': { swr: 600 },
+    '/services': { swr: 300 },
+    '/services/**': { swr: 300 },
+    '/blog': { swr: 300 },
+    '/blog/**': { swr: 300 },
+    '/case-studies': { swr: 300 },
+    '/case-studies/**': { swr: 300 },
+    '/products': { swr: 300 },
+    '/products/**': { swr: 300 },
+    '/careers': { swr: 120 },
+    '/careers/**': { swr: 300 },
+    '/contact': { swr: 600 },
+
+    // Fully static content, zero API dependency — prerendered once at build
+    // time and served as static files (fastest possible response, no SSR
+    // invocation at all).
+    '/privacy-policy': { prerender: true },
+    '/terms-conditions': { prerender: true },
+    '/faq': { prerender: true }
   },
   app: {
     head: {
+      htmlAttrs: { lang: 'en' },
       title: 'ByteStackLab - Software Development Company',
       meta: [
         { charset: 'utf-8' },

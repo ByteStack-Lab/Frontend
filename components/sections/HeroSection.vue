@@ -154,7 +154,7 @@
               class="interactive-button flex-1 sm:flex-none bg-gradient-to-r from-[#3533cd] to-[#1e1b69] text-white px-6 sm:px-8 py-3 rounded-lg font-semibold text-base shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center"
             >
               Book a Free Consultation
-              <svg
+              <svg aria-hidden="true"
                 class="ml-2 w-5 h-5"
                 fill="none"
                 stroke="currentColor"
@@ -174,7 +174,7 @@
               class="flex items-center justify-center whitespace-nowrap text-gray-700 font-semibold text-base px-2 hover:text-[#3533cd] transition-colors duration-300"
             >
               Explore Services
-              <svg
+              <svg aria-hidden="true"
                 class="ml-1.5 w-4 h-4"
                 fill="none"
                 stroke="currentColor"
@@ -201,7 +201,7 @@
               <span
                 class="w-11 h-11 bg-[#3533cd] rounded-full flex items-center justify-center"
               >
-                <svg
+                <svg aria-hidden="true"
                   class="w-5 h-5 text-white"
                   fill="currentColor"
                   viewBox="0 0 24 24"
@@ -243,6 +243,7 @@
       >
         <!-- Close Button -->
         <button
+          aria-label="Close video"
           class="absolute -top-4 -right-4 w-14 h-14 bg-white rounded-full shadow-2xl flex items-center justify-center text-gray-700 hover:text-red-500 hover:bg-red-50 transition-all duration-300 z-20 border-4 border-white ring-4 ring-purple-500/40 hover:ring-red-500/50"
           @click="closeVideoModal"
         >
@@ -251,6 +252,7 @@
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
+            aria-hidden="true"
           >
             <path
               stroke-linecap="round"

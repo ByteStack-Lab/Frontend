@@ -201,6 +201,7 @@
                   `/images/blogs/${((blog.id ?? index + 1) % 3) + 1}.webp`
                 "
                 :alt="blog.title"
+                loading="lazy"
                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 sizes="100vw md:50vw lg:33vw"
                 @error="
@@ -226,6 +227,7 @@
                       blog.categories[0] &&
                       blog.categories[0].icon
                     "
+                    aria-hidden="true"
                     class="w-3 h-3"
                     fill="none"
                     stroke="currentColor"
@@ -285,6 +287,7 @@
                   <!-- Default icon if no category icon -->
                   <svg
                     v-else
+                    aria-hidden="true"
                     class="w-3 h-3"
                     fill="none"
                     stroke="currentColor"
@@ -346,7 +349,7 @@
                   class="flex items-center text-[#3533cd] font-semibold text-sm group"
                 >
                   Read More
-                  <svg
+                  <svg aria-hidden="true"
                     class="w-4 h-4 ml-1 transition-transform duration-300 group-hover:translate-x-1"
                     fill="none"
                     stroke="currentColor"

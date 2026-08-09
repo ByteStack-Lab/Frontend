@@ -21,6 +21,9 @@
             :src="partner.logo"
             :alt="partner.name"
             :title="partner.name"
+            loading="eager"
+            width="120"
+            height="28"
             class="h-6 md:h-7 object-contain grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
           />
         </div>
