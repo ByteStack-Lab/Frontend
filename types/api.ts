@@ -427,3 +427,38 @@ export interface NewsletterStats {
   this_month_subscribers: number
   this_week_subscribers: number
 }
+
+// ===== AI ASSISTANT (Phase 0 — deterministic keyword/FAQ matching against
+// the existing services/jobs/blog/case-study data. No external AI API call
+// — see ByteStackLab-Backend/app/Services/AssistantIntentResolver.php) =====
+
+export type AssistantIntent = 'web' | 'mobile' | 'saas' | 'ai' | 'career' | 'contact'
+
+export type AssistantResponseType =
+  | 'services'
+  | 'packages'
+  | 'faq'
+  | 'jobs'
+  | 'content'
+  | 'fallback'
+  | 'lead_prompt'
+
+export interface AssistantItem {
+  title: string
+  url: string
+  meta: string
+}
+
+export interface AssistantResolveData {
+  type: AssistantResponseType
+  text: string
+  items: AssistantItem[]
+  quick_replies: string[]
+}
+
+export interface AssistantResolvePayload {
+  message?: string
+  intent?: AssistantIntent
+  conversation_id?: string // groups messages in AssistantConversation for Filament visibility
+  bsl_hp?: string // honeypot — must stay empty
+}

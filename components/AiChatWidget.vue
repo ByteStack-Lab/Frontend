@@ -11,7 +11,7 @@
     >
       <div
         v-if="isOpen"
-        class="mb-4 w-[calc(100vw-3rem)] max-w-sm h-[28rem] bg-white rounded-2xl shadow-2xl border border-gray-100 flex flex-col overflow-hidden"
+        class="mb-4 w-[calc(100vw-3rem)] max-w-sm h-[30rem] bg-white rounded-2xl shadow-2xl border border-gray-100 flex flex-col overflow-hidden"
       >
         <!-- Header -->
         <div class="bg-gradient-to-r from-[#3533cd] to-[#1e1b69] px-5 py-4 flex items-center justify-between flex-shrink-0">
@@ -23,7 +23,7 @@
             </div>
             <div>
               <p class="text-white font-semibold text-sm">ByteStackLab Assistant</p>
-              <p class="text-violet-200 text-xs">Usually replies in a few minutes</p>
+              <p class="text-violet-200 text-xs">Instant answers — no waiting</p>
             </div>
           </div>
           <button
@@ -47,50 +47,111 @@
             :class="message.from === 'user' ? 'justify-end' : 'justify-start'"
           >
             <div
-              class="max-w-[80%] px-4 py-2.5 rounded-2xl text-sm leading-relaxed"
+              class="max-w-[85%] px-4 py-2.5 rounded-2xl text-sm leading-relaxed"
               :class="
                 message.from === 'user'
                   ? 'bg-[#3533cd] text-white rounded-br-sm'
                   : 'bg-white text-gray-700 border border-gray-100 rounded-bl-sm'
               "
             >
-              {{ message.text }}
+              <!-- Every response.text here is a hand-written PHP string literal
+                   (see AssistantIntentResolver) — never model output or
+                   admin rich-text — so plain interpolation is intentionally
+                   used instead of v-html + sanitizeHtml. -->
+              <p>{{ message.text }}</p>
+
+              <div v-if="message.items && message.items.length" class="mt-2 space-y-1.5">
+                <NuxtLink
+                  v-for="item in message.items"
+                  :key="item.url + item.title"
+                  :to="item.url"
+                  class="flex items-center justify-between gap-2 rounded-lg border border-gray-100 bg-gray-50 px-3 py-2 text-xs hover:border-[#3533cd] transition-colors"
+                  @click="isOpen = false"
+                >
+                  <span class="font-medium text-gray-800">{{ item.title }}</span>
+                  <span v-if="item.meta" class="text-[#3533cd] whitespace-nowrap">{{ item.meta }}</span>
+                </NuxtLink>
+              </div>
             </div>
           </div>
 
-          <div v-if="isTyping" class="flex justify-start">
+          <div v-if="isSending" class="flex justify-start">
             <div class="bg-white border border-gray-100 rounded-2xl rounded-bl-sm px-4 py-3 flex gap-1">
               <span class="w-1.5 h-1.5 rounded-full bg-gray-400 animate-bounce [animation-delay:-0.3s]" />
               <span class="w-1.5 h-1.5 rounded-full bg-gray-400 animate-bounce [animation-delay:-0.15s]" />
               <span class="w-1.5 h-1.5 rounded-full bg-gray-400 animate-bounce" />
             </div>
           </div>
+
+          <!-- Inline lead capture — posts to the existing, unmodified
+               /contact/submit endpoint. No new backend surface. -->
+          <div v-if="leadFormVisible" class="flex justify-start">
+            <form
+              class="max-w-[90%] w-full bg-white border border-gray-100 rounded-2xl rounded-bl-sm p-3 space-y-2"
+              @submit.prevent="submitLead"
+            >
+              <input
+                v-model="leadForm.name"
+                type="text"
+                placeholder="Your name"
+                required
+                class="w-full text-sm px-3 py-2 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#3533cd]/30 focus:border-[#3533cd]"
+              >
+              <input
+                v-model="leadForm.email"
+                type="email"
+                placeholder="Your email"
+                required
+                class="w-full text-sm px-3 py-2 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#3533cd]/30 focus:border-[#3533cd]"
+              >
+              <!-- Honeypot — same field name the rest of the API expects
+                   (ContactSubmitRequest), so the existing server-side
+                   handling covers this form too. Hidden from real visitors. -->
+              <input
+                v-model="leadForm.bslHp"
+                type="text"
+                tabindex="-1"
+                autocomplete="off"
+                aria-hidden="true"
+                class="hidden"
+              >
+              <button
+                type="submit"
+                :disabled="leadSubmitting"
+                class="w-full text-sm font-medium px-3 py-2 rounded-lg bg-[#3533cd] text-white hover:bg-[#1e1b69] transition-colors disabled:opacity-40"
+              >
+                {{ leadSubmitting ? 'Sending…' : 'Send' }}
+              </button>
+            </form>
+          </div>
         </div>
 
-        <!-- Quick prompts -->
-        <div v-if="messages.length <= 1" class="px-4 pb-2 flex flex-wrap gap-2 flex-shrink-0">
+        <!-- Quick reply / intent chips -->
+        <div v-if="currentChips.length" class="px-4 pb-2 flex flex-wrap gap-2 flex-shrink-0">
           <button
-            v-for="prompt in quickPrompts"
-            :key="prompt"
+            v-for="chip in currentChips"
+            :key="chip.label"
             type="button"
             class="text-xs px-3 py-1.5 rounded-full border border-gray-200 text-gray-600 hover:border-[#3533cd] hover:text-[#3533cd] transition-colors"
-            @click="send(prompt)"
+            @click="handleChipTap(chip)"
           >
-            {{ prompt }}
+            {{ chip.label }}
           </button>
         </div>
 
         <!-- Input -->
-        <form class="border-t border-gray-100 p-3 flex items-center gap-2 flex-shrink-0" @submit.prevent="send()">
+        <form class="border-t border-gray-100 p-3 flex items-center gap-2 flex-shrink-0" @submit.prevent="handleSend">
           <input
+            ref="inputEl"
             v-model="draft"
             type="text"
-            placeholder="Ask about services, pricing, timelines..."
-            class="flex-1 text-sm px-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#3533cd]/30 focus:border-[#3533cd]"
+            placeholder="Ask about services, pricing, careers..."
+            :disabled="isSending"
+            class="flex-1 text-sm px-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#3533cd]/30 focus:border-[#3533cd] disabled:opacity-60"
           >
           <button
             type="submit"
-            :disabled="!draft.trim()"
+            :disabled="!draft.trim() || isSending"
             class="w-10 h-10 flex-shrink-0 rounded-xl bg-[#3533cd] text-white flex items-center justify-center hover:bg-[#1e1b69] transition-colors disabled:opacity-40 disabled:hover:bg-[#3533cd]"
             aria-label="Send message"
           >
@@ -120,74 +181,183 @@
 </template>
 
 <script setup>
-// NOTE: replies are canned/rule-based placeholders, not a real AI backend.
-// To wire up a real assistant, replace getReply() below with a call to a
-// new backend endpoint (e.g. POST /api/assistant) that proxies to an LLM.
+// Deterministic assistant — every reply comes from
+// POST /api/assistant/resolve (App\Services\AssistantIntentResolver on the
+// backend), matched against real services/FAQs/jobs/content. No external AI
+// API call, no cost. See AI-ASSISTANT-IMPLEMENTATION.md Phase 0.
 
-import { ref, nextTick } from "vue";
+import { ref, nextTick } from 'vue'
 
-const isOpen = ref(false);
-const draft = ref("");
-const isTyping = ref(false);
-const messagesEl = ref(null);
+const { resolveAssistant, submitContact } = useApi()
+
+const isOpen = ref(false)
+const draft = ref('')
+const isSending = ref(false)
+const messagesEl = ref(null)
+const inputEl = ref(null)
 
 const messages = ref([
   {
-    from: "bot",
-    text: "Hi! I'm the ByteStackLab assistant. Ask me about our services, pricing, or how we work — I'll do my best to help.",
+    from: 'bot',
+    text: "Hi! I'm the ByteStackLab assistant. Ask me about our services, pricing, or open roles — I answer instantly from our real data.",
+    items: [],
   },
-]);
+])
 
-const quickPrompts = [
-  "What services do you offer?",
-  "How much does a project cost?",
-  "How do I get started?",
-];
+const INTRO_CHIPS = [
+  { label: 'Web App', intent: 'web' },
+  { label: 'Mobile App', intent: 'mobile' },
+  { label: 'SaaS', intent: 'saas' },
+  { label: 'AI Automation', intent: 'ai' },
+  { label: 'Careers', intent: 'career' },
+  { label: 'Something else', intent: null },
+]
+
+const currentChips = ref(INTRO_CHIPS)
+
+// A per-tab conversation id, generated once and reused for every message so
+// the backend can group them into one AssistantConversation for Filament
+// visibility (see AssistantController::logConversation). sessionStorage, not
+// localStorage — a chat thread shouldn't outlive the tab.
+const CONVERSATION_STORAGE_KEY = 'bsl_assistant_conversation_id'
+const conversationId = ref(null)
+if (import.meta.client) {
+  const stored = sessionStorage.getItem(CONVERSATION_STORAGE_KEY)
+  conversationId.value = stored || crypto.randomUUID()
+  if (!stored) sessionStorage.setItem(CONVERSATION_STORAGE_KEY, conversationId.value)
+}
+
+// This is a separate, purely client-side convenience — unrelated to logging
+// above: it lets a follow-up quick reply like "What's the price?" carry the
+// previously-discussed service's name along, since the resolver only sees
+// one message at a time and has no memory of its own between requests.
+const lastServiceTitle = ref(null)
+
+const leadFormVisible = ref(false)
+const leadForm = ref({ name: '', email: '', bslHp: '' })
+const leadSubmitting = ref(false)
 
 const scrollToBottom = async () => {
-  await nextTick();
+  await nextTick()
   if (messagesEl.value) {
-    messagesEl.value.scrollTop = messagesEl.value.scrollHeight;
+    messagesEl.value.scrollTop = messagesEl.value.scrollHeight
   }
-};
+}
 
-// Simple keyword-matched canned responses so the widget is useful out of the
-// box even before a real AI backend is wired up.
-const getReply = (text) => {
-  const lower = text.toLowerCase();
+const applyResult = (result) => {
+  messages.value.push({ from: 'bot', text: result.text, items: result.items || [] })
 
-  if (lower.includes("price") || lower.includes("cost") || lower.includes("much")) {
-    return "Pricing depends on scope, but MVPs typically start around $3,000 and full products around $8,000. Book a free discovery call and we'll put together an exact quote for your project.";
-  }
-  if (lower.includes("service") || lower.includes("offer") || lower.includes("do you")) {
-    return "We build web apps, mobile apps, SaaS products, and AI/automation solutions — from MVPs to full production systems. Which of those is closest to what you're planning?";
-  }
-  if (lower.includes("start") || lower.includes("begin") || lower.includes("contact")) {
-    return "The best first step is a free discovery call — just head to our Contact page and send a message. We usually reply within 24 hours.";
-  }
-  if (lower.includes("ai") || lower.includes("automation") || lower.includes("chatbot")) {
-    return "We build AI chatbots, workflow automation, and LLM integrations. Take a look at our AI & Automation page for details, or ask me anything specific.";
-  }
-  if (lower.includes("time") || lower.includes("long") || lower.includes("timeline")) {
-    return "Most MVPs take 4–6 weeks; full products are typically 2–4 months depending on scope. We'll give you a real timeline after a quick discovery call.";
+  if ((result.type === 'services' || result.type === 'quote') && result.items?.length === 1) {
+    lastServiceTitle.value = result.items[0].title
+  } else if (result.type !== 'faq') {
+    // Leave lastServiceTitle alone on an FAQ answer — it's often a tangent
+    // on the same service, not a topic change. Any other type (a multi-item
+    // list, jobs, content, fallback, lead prompt) clears it: showing several
+    // services or switching topics makes "the current service" ambiguous.
+    lastServiceTitle.value = null
   }
 
-  return "Thanks for the message! For anything specific to your project, the fastest way to get a real answer is through our Contact page — our team replies within 24 hours.";
-};
+  leadFormVisible.value = result.type === 'lead_prompt'
+  currentChips.value = (result.quick_replies || []).map((label) => ({ label, intent: null }))
+}
 
-const send = (text) => {
-  const value = (text ?? draft.value).trim();
-  if (!value) return;
+const resolve = async (payload, displayText) => {
+  messages.value.push({ from: 'user', text: displayText })
+  currentChips.value = []
+  scrollToBottom()
 
-  messages.value.push({ from: "user", text: value });
-  draft.value = "";
-  scrollToBottom();
+  isSending.value = true
+  try {
+    const result = await resolveAssistant({ ...payload, conversation_id: conversationId.value })
+    applyResult(result)
+  } catch (error) {
+    console.error('Error resolving assistant message:', error)
+    messages.value.push({
+      from: 'bot',
+      text: 'Something went wrong on my end. You can reach the team directly instead.',
+      items: [{ title: 'Contact us', url: '/contact', meta: '' }],
+    })
+    currentChips.value = INTRO_CHIPS
+  } finally {
+    isSending.value = false
+    scrollToBottom()
+  }
+}
 
-  isTyping.value = true;
-  setTimeout(() => {
-    messages.value.push({ from: "bot", text: getReply(value) });
-    isTyping.value = false;
-    scrollToBottom();
-  }, 700);
-};
+const handleSend = () => {
+  const text = draft.value.trim()
+  if (!text || isSending.value) return
+
+  draft.value = ''
+  resolve({ message: text }, text)
+}
+
+const handleChipTap = (chip) => {
+  if (isSending.value) return
+
+  if (chip.label === 'Something else' && !chip.intent) {
+    messages.value.push({ from: 'bot', text: "Sure — what's on your mind?", items: [] })
+    currentChips.value = []
+    scrollToBottom()
+    nextTick(() => inputEl.value?.focus())
+    return
+  }
+
+  if (chip.intent) {
+    resolve({ intent: chip.intent }, chip.label)
+    return
+  }
+
+  // A quick-reply chip from a previous response — send as free text,
+  // carrying the last-discussed service forward so context isn't lost.
+  const composed = lastServiceTitle.value ? `${chip.label} ${lastServiceTitle.value}` : chip.label
+  resolve({ message: composed }, chip.label)
+}
+
+const submitLead = async () => {
+  if (!leadForm.value.name.trim() || !leadForm.value.email.trim()) return
+
+  leadSubmitting.value = true
+  try {
+    const nameParts = leadForm.value.name.trim().split(/\s+/)
+    const recentUserText = messages.value
+      .filter((message) => message.from === 'user')
+      .slice(-3)
+      .map((message) => message.text)
+      .join(' | ')
+
+    await submitContact({
+      first_name: nameParts[0],
+      last_name: nameParts.slice(1).join(' ') || '-',
+      email: leadForm.value.email.trim(),
+      phone: null,
+      company: null,
+      service: lastServiceTitle.value,
+      message: lastServiceTitle.value
+        ? `[From AI assistant] Asked about: ${lastServiceTitle.value}. ${recentUserText}`
+        : `[From AI assistant] ${recentUserText || 'Visitor requested contact via the chat widget.'}`,
+      subscribe_newsletter: false,
+      bsl_hp: leadForm.value.bslHp,
+    })
+
+    leadFormVisible.value = false
+    messages.value.push({
+      from: 'bot',
+      text: 'Thanks! The team has your details and will follow up by email.',
+      items: [],
+    })
+    leadForm.value = { name: '', email: '', bslHp: '' }
+    currentChips.value = INTRO_CHIPS
+  } catch (error) {
+    console.error('Error submitting assistant lead form:', error)
+    messages.value.push({
+      from: 'bot',
+      text: "That didn't go through. You can also reach us directly at /contact.",
+      items: [{ title: 'Contact us', url: '/contact', meta: '' }],
+    })
+  } finally {
+    leadSubmitting.value = false
+    scrollToBottom()
+  }
+}
 </script>

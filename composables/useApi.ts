@@ -1,5 +1,7 @@
 import type {
   ApiResponse,
+  AssistantResolveData,
+  AssistantResolvePayload,
   Blog,
   BlogCard,
   BlogCategoryWithCount,
@@ -317,6 +319,18 @@ export const useApi = () => {
         method: 'POST',
         body: { email, name, bsl_hp: bslHp }
       }, 'Error subscribing to newsletter:')
+    },
+
+    // ===== AI ASSISTANT API METHODS =====
+
+    // Deterministic assistant reply — no external AI API call, see
+    // AssistantIntentResolver on the backend.
+    async resolveAssistant(payload: AssistantResolvePayload): Promise<AssistantResolveData> {
+      const { data } = await request<ApiResponse<AssistantResolveData>>('/assistant/resolve', {
+        method: 'POST',
+        body: payload,
+      }, 'Error resolving assistant message:')
+      return data
     },
 
   }
