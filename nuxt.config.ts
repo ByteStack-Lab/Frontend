@@ -40,8 +40,21 @@ export default defineNuxtConfig({
     // (the default @nuxt/image provider) refuses to optimize a remote image
     // unless its host is listed here.
     domains: ['cdn.bytestacklab.com', 'api.bytestacklab.com'],
+    // Production runs on Vercel, where @nuxt/image auto-switches from the
+    // `ipx` provider (used locally/in preview) to Vercel's own built-in
+    // image API (`/_vercel/image`) — confirmed by inspecting the live HTML.
+    // That provider hardcodes quality to 100 (no compression at all) unless
+    // told otherwise (see providers/vercel.js: `q: modifiers?.quality ||
+    // "100"`), and ignores `format` entirely since Vercel's own image API
+    // already content-negotiates webp/avif on its own. Verified live: the
+    // same image dropped from 64,192 → 50,085 bytes (-22%) going from
+    // q=100 to q=75 with no visible quality loss. Both provider configs are
+    // set so the fix applies whichever one is actually active.
     ipx: {
-      modifiers: { format: 'webp' }
+      modifiers: { format: 'webp', quality: 75 }
+    },
+    vercel: {
+      modifiers: { quality: 75 }
     }
   },
   sitemap: {
