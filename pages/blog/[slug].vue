@@ -307,7 +307,7 @@
             class="inline-flex items-center rounded-2xl border border-gray-100 bg-white/90 px-4 py-3 shadow-sm"
           >
             <NuxtImg
-              :src="blog.authorImage || '/images/leaders/leader1.jpg'"
+              :src="blog.authorImage || '/images/favicons/android-icon-192x192.png'"
               :alt="blog.authorName"
               class="h-12 w-12 rounded-full object-cover ring-2 ring-[#eeeeff]"
             />
@@ -408,17 +408,17 @@
                 Share this article:
               </h4>
               <div class="flex flex-wrap items-center gap-3">
-                <button class="share-action-btn" @click="shareToTwitter">
+                <button class="share-action-btn" @click="shareToX">
                   <svg
                     class="mr-2 h-4 w-4"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                   >
                     <path
-                      d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"
+                      d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.637l-5.1-6.658-5.848 6.658H2.117l7.645-8.746L2.82 2.25h6.8l4.759 6.284L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"
                     />
                   </svg>
-                  Twitter
+                  X
                 </button>
 
                 <button class="share-action-btn" @click="shareToFacebook">
@@ -797,8 +797,8 @@ onUnmounted(() => {
 });
 
 // Social sharing functions
-const shareToTwitter = () => {
-  const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(blog.value.title)}&url=${encodeURIComponent(window.location.href)}`;
+const shareToX = () => {
+  const url = `https://x.com/intent/tweet?text=${encodeURIComponent(blog.value.title)}&url=${encodeURIComponent(window.location.href)}`;
   window.open(url, "_blank", "width=600,height=400");
 };
 
