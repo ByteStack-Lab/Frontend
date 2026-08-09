@@ -160,7 +160,11 @@
                 <!-- eslint-enable vue/no-v-html -->
 
                 <div class="flex flex-col sm:flex-row gap-3">
-                  <button
+                  <a
+                    v-if="product.purchase_link"
+                    :href="product.purchase_link"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     class="flex-1 bg-gradient-to-r from-[#3533cd] to-[#6675F7] text-white py-4 px-6 rounded-xl font-bold text-base hover:shadow-lg hover:from-[#2a28a8] hover:to-[#5563e5] transition-all duration-300 flex items-center justify-center gap-2"
                   >
                     <svg
@@ -177,7 +181,7 @@
                       />
                     </svg>
                     Purchase Now
-                  </button>
+                  </a>
                   <button
                     class="flex-1 border-2 border-[#3533cd] text-[#3533cd] py-4 px-6 rounded-xl font-bold text-base hover:bg-[#3533cd] hover:text-white transition-all duration-300 flex items-center justify-center gap-2"
                   >
