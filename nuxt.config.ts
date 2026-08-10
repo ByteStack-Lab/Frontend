@@ -89,6 +89,24 @@ export default defineNuxtConfig({
       ]
     }
   },
+  // On-demand cache purge (Vercel ISR) — the backend calls this token to
+  // force-refresh a specific path's cache the moment a record is saved in
+  // Filament, instead of waiting out the isr `expiration` window. Read
+  // directly from process.env (not runtimeConfig) because Nitro's Vercel
+  // preset needs it at build time to bake into the deployed prerender
+  // function config — see ByteStackLab-Backend/app/Jobs/RevalidateFrontendCache.php
+  // for the caller. Must be set as a Vercel project env var (Production);
+  // the exact same value must also be set as VERCEL_BYPASS_TOKEN in the
+  // backend's .env. See root CLAUDE.md §4/§9 for the incident this fixes
+  // (2026-08-10: case-study images went stale on / and /case-studies for
+  // 18+ hours because `swr` wasn't actually revalidating in production).
+  nitro: {
+    vercel: {
+      config: {
+        bypassToken: process.env.VERCEL_BYPASS_TOKEN
+      }
+    }
+  },
   routeRules: {
     // Old service slugs, renamed/merged 2026-08-09 — see
     // ByteStackLab-Backend/database/seeders/ServiceSeeder.php and
@@ -108,14 +126,25 @@ export default defineNuxtConfig({
     // submit client-side straight to the Laravel API (see useApi.ts) — they
     // don't route through the cached Nuxt page handler, so caching the page
     // shell doesn't affect form submission.
-    '/': { swr: 300 },
+    //
+    // `/` and the case-studies routes use `isr` instead of `swr` (2026-08-10)
+    // — this is Vercel's actual ISR mechanism (a "prerender function" Vercel
+    // manages itself), which supports on-demand purge via bypassToken (see
+    // `nitro.vercel.config` above). Plain `swr`'s Cache-Control-header
+    // approach was observed in production to NOT reliably revalidate in the
+    // background at all — a homepage snapshot served a 404'd case-study
+    // image for 18+ hours, well past its 300s window. `expiration: 300`
+    // keeps the same 5-minute worst-case staleness as the old swr value;
+    // the CaseStudy model additionally force-purges these paths the instant
+    // a record is saved (see RevalidatesFrontendCache trait, backend).
+    '/': { isr: { expiration: 300 } },
     '/about': { swr: 600 },
     '/services': { swr: 300 },
     '/services/**': { swr: 300 },
     '/blog': { swr: 300 },
     '/blog/**': { swr: 300 },
-    '/case-studies': { swr: 300 },
-    '/case-studies/**': { swr: 300 },
+    '/case-studies': { isr: { expiration: 300 } },
+    '/case-studies/**': { isr: { expiration: 300 } },
     '/products': { swr: 300 },
     '/products/**': { swr: 300 },
     '/careers': { swr: 120 },
