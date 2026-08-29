@@ -18,14 +18,14 @@
         >
           <!-- Decorative Line -->
           <div
-            class="w-16 h-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full"
+            class="w-16 h-1 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full"
           />
 
           <!-- Main Content -->
           <div class="space-y-6">
             <!-- Mini Subtitle -->
             <p
-              class="text-sm lg:text-base text-purple-600 uppercase tracking-wider font-semibold"
+              class="text-sm lg:text-base text-[#3533cd] uppercase tracking-wider font-semibold"
             >
               About Us
             </p>
@@ -35,7 +35,7 @@
             >
               Building Software That<br >
               <span
-                class="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent"
+                class="bg-gradient-to-r from-[#3533cd] to-[#1e1b69] bg-clip-text text-transparent"
                 >Businesses Depend On</span
               >
             </h2>
@@ -62,11 +62,11 @@
           <!-- CTA Link -->
           <div class="flex items-center gap-3 group cursor-pointer">
             <NuxtLink to="/about" class="flex items-center gap-3 group">
-              <span class="text-purple-600 font-medium"
+              <span class="text-[#3533cd] font-medium"
                 >Learn More About Us</span
               >
               <svg aria-hidden="true"
-                class="w-5 h-5 text-purple-600 transform group-hover:translate-x-1 transition-transform duration-300"
+                class="w-5 h-5 text-[#3533cd] transform group-hover:translate-x-1 transition-transform duration-300"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -92,7 +92,7 @@
           >
             <!-- Video Background Image -->
             <div
-              class="aspect-video relative bg-gradient-to-br from-blue-400 via-purple-500 to-pink-500 video-thumbnail w-full"
+              class="aspect-video relative bg-gradient-to-br from-[#3533cd] via-[#6675F7] to-[#1e1b69] video-thumbnail w-full"
             >
               <!-- Background Image -->
               <img
@@ -141,7 +141,7 @@
                   >
                     <!-- Play Icon -->
                     <svg
-                      class="w-6 h-6 text-purple-600 ml-1 group-hover:text-purple-700 transition-colors duration-300"
+                      class="w-6 h-6 text-[#3533cd] ml-1 group-hover:text-[#1e1b69] transition-colors duration-300"
                       fill="currentColor"
                       viewBox="0 0 24 24"
                       aria-hidden="true"
@@ -156,10 +156,10 @@
 
           <!-- Decorative Elements -->
           <div
-            class="absolute -top-3 -right-3 w-8 h-8 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full shadow-md animate-bounce"
+            class="absolute -top-3 -right-3 w-8 h-8 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full shadow-md animate-bounce"
           />
           <div
-            class="absolute -bottom-3 -left-3 w-6 h-6 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full shadow-md animate-pulse"
+            class="absolute -bottom-3 -left-3 w-6 h-6 bg-gradient-to-r from-[#1e1b69] to-[#3533cd] rounded-full shadow-md animate-pulse"
           />
         </div>
       </div>
@@ -179,7 +179,7 @@
         <!-- Close Button -->
         <button
           aria-label="Close video"
-          class="absolute -top-4 -right-4 w-14 h-14 bg-white rounded-full shadow-2xl flex items-center justify-center text-gray-700 hover:text-red-500 hover:bg-red-50 transition-all duration-300 z-20 border-4 border-white ring-4 ring-purple-500/40 hover:ring-red-500/50"
+          class="absolute -top-4 -right-4 w-14 h-14 bg-white rounded-full shadow-2xl flex items-center justify-center text-gray-700 hover:text-red-500 hover:bg-red-50 transition-all duration-300 z-20 border-4 border-white ring-4 ring-[#3533cd]/40 hover:ring-red-500/50"
           @click="closeVideoModal"
         >
           <svg
@@ -200,7 +200,7 @@
 
         <!-- Video Container -->
         <div
-          class="relative bg-white rounded-2xl overflow-hidden border-4 border-white ring-8 ring-purple-500/20 transform hover:scale-[1.02] transition-all duration-300 video-container shadow-2xl"
+          class="relative bg-white rounded-2xl overflow-hidden border-4 border-white ring-8 ring-[#3533cd]/20 transform hover:scale-[1.02] transition-all duration-300 video-container shadow-2xl"
         >
           <div class="aspect-video">
             <iframe
@@ -382,7 +382,7 @@ const handleImageError = (event) => {
   box-shadow:
     0 40px 80px -12px rgba(0, 0, 0, 0.5),
     0 25px 50px -15px rgba(0, 0, 0, 0.4),
-    0 0 0 1px rgba(147, 51, 234, 0.3),
+    0 0 0 1px rgba(53, 51, 205, 0.3),
     0 0 0 6px rgba(255, 255, 255, 1);
   backdrop-filter: none;
   transform: translateZ(0);

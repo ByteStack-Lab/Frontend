@@ -27,124 +27,19 @@
             class="text-gray-600 hover:text-[#3533cd] transition-colors duration-200 font-medium text-sm lg:text-base"
             >Home</NuxtLink
           >
-          <div class="relative group">
-            <button
-              class="text-gray-600 hover:text-[#3533cd] transition-colors duration-200 font-medium text-sm lg:text-base flex items-center space-x-1"
-            >
-              <span>Services</span>
-              <svg aria-hidden="true"
-                class="w-4 h-4 transition-transform duration-200 group-hover:rotate-180"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </button>
-            <!-- Services Dropdown -->
-            <div
-              class="absolute top-full left-0 mt-2 w-[600px] bg-white shadow-xl rounded-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0"
-            >
-              <div class="p-6">
-                <!-- Services Grid - 2 columns -->
-                <div class="grid grid-cols-2 gap-4 mb-6">
-                  <!-- Dynamic Services -->
-                  <NuxtLink
-                    v-for="service in navbarServices"
-                    :key="service.id"
-                    :to="`/services/${service.slug}`"
-                    class="flex items-center space-x-3 p-4 rounded-xl transition-all duration-200 group/item"
-                    :class="`hover:bg-gradient-to-r ${getServiceColor(service.category).hover}`"
-                  >
-                    <div
-                      class="w-12 h-12 bg-gradient-to-r rounded-xl flex items-center justify-center group-hover/item:scale-110 transition-transform duration-200"
-                      :class="`${getServiceColor(service.category).from} ${getServiceColor(service.category).to}`"
-                    >
-                      <svg
-                        v-if="service.icon"
-                        aria-hidden="true"
-                        class="w-6 h-6 text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <image :href="service.icon" width="24" height="24" />
-                      </svg>
-                      <svg
-                        v-else
-                        aria-hidden="true"
-                        class="w-6 h-6 text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          :d="getServiceIcon(service.category)"
-                        />
-                      </svg>
-                    </div>
-                    <div>
-                      <h3
-                        class="font-semibold text-gray-900 transition-colors duration-200"
-                        :class="getServiceColor(service.category).text"
-                      >
-                        {{ service.title }}
-                      </h3>
-                    </div>
-                  </NuxtLink>
-                </div>
-
-                <!-- View All Services Link -->
-                <div class="pt-4 border-t border-gray-100">
-                  <NuxtLink
-                    to="/services"
-                    class="flex items-center justify-center space-x-2 text-[#3533cd] hover:text-white hover:bg-gradient-to-r hover:from-[#3533cd] hover:to-[#1e1b69] font-medium py-3 px-6 rounded-xl transition-all duration-300 group border border-[#3533cd] hover:border-transparent"
-                  >
-                    <span>View all services</span>
-                    <svg aria-hidden="true"
-                      class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M17 8l4 4m0 0l-4 4m4-4H3"
-                      />
-                    </svg>
-                  </NuxtLink>
-                </div>
-              </div>
-            </div>
-          </div>
           <a
             href="#about"
             class="text-gray-600 hover:text-[#3533cd] transition-colors duration-200 font-medium cursor-pointer text-sm lg:text-base"
             @click="scrollToSection('about')"
-            >About us</a
+            >About Us</a
           >
+          <NavServicesDropdown :services="navbarServices" />
+          <NavProductsDropdown :products="navbarProducts" />
           <a
             href="#case-studies"
             class="text-gray-600 hover:text-[#3533cd] transition-colors duration-200 font-medium cursor-pointer text-sm lg:text-base"
             @click="scrollToSection('case-studies')"
             >Case Studies</a
-          >
-
-          <a
-            href="#how-it-works"
-            class="text-gray-600 hover:text-[#3533cd] transition-colors duration-200 font-medium cursor-pointer text-sm lg:text-base"
-            @click="scrollToSection('how-it-works')"
-            >How it Works</a
           >
           <a
             href="#blog"
@@ -166,120 +61,17 @@
             class="text-gray-600 hover:text-[#3533cd] transition-colors duration-200 font-medium text-sm lg:text-base"
             >About Us</NuxtLink
           >
-          <div class="relative group">
-            <button
-              class="text-gray-600 hover:text-[#3533cd] transition-colors duration-200 font-medium text-sm lg:text-base flex items-center space-x-1"
-            >
-              <span>Services</span>
-              <svg aria-hidden="true"
-                class="w-4 h-4 transition-transform duration-200 group-hover:rotate-180"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </button>
-            <!-- Services Dropdown -->
-            <div
-              class="absolute top-full left-0 mt-2 w-[600px] bg-white shadow-xl rounded-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0"
-            >
-              <div class="p-6">
-                <!-- Services Grid - 2 columns -->
-                <div class="grid grid-cols-2 gap-4 mb-6">
-                  <!-- Dynamic Services -->
-                  <NuxtLink
-                    v-for="service in navbarServices"
-                    :key="service.id"
-                    :to="`/services/${service.slug}`"
-                    class="flex items-center space-x-3 p-4 rounded-xl transition-all duration-200 group/item"
-                    :class="`hover:bg-gradient-to-r ${getServiceColor(service.category).hover}`"
-                  >
-                    <div
-                      class="w-12 h-12 bg-gradient-to-r rounded-xl flex items-center justify-center group-hover/item:scale-110 transition-transform duration-200"
-                      :class="`${getServiceColor(service.category).from} ${getServiceColor(service.category).to}`"
-                    >
-                      <svg
-                        v-if="service.icon"
-                        aria-hidden="true"
-                        class="w-6 h-6 text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <image :href="service.icon" width="24" height="24" />
-                      </svg>
-                      <svg
-                        v-else
-                        aria-hidden="true"
-                        class="w-6 h-6 text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          :d="getServiceIcon(service.category)"
-                        />
-                      </svg>
-                    </div>
-                    <div>
-                      <h3
-                        class="font-semibold text-gray-900 transition-colors duration-200"
-                        :class="getServiceColor(service.category).text"
-                      >
-                        {{ service.title }}
-                      </h3>
-                    </div>
-                  </NuxtLink>
-                </div>
-
-                <!-- View All Services Link -->
-                <div class="pt-4 border-t border-gray-100">
-                  <NuxtLink
-                    to="/services"
-                    class="flex items-center justify-center space-x-2 text-[#3533cd] hover:text-white hover:bg-gradient-to-r hover:from-[#3533cd] hover:to-[#1e1b69] font-medium py-3 px-6 rounded-xl transition-all duration-300 group border border-[#3533cd] hover:border-transparent"
-                  >
-                    <span>View all services</span>
-                    <svg aria-hidden="true"
-                      class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M17 8l4 4m0 0l-4 4m4-4H3"
-                      />
-                    </svg>
-                  </NuxtLink>
-                </div>
-              </div>
-            </div>
-          </div>
+          <NavServicesDropdown :services="navbarServices" />
+          <NavProductsDropdown :products="navbarProducts" />
           <NuxtLink
             to="/case-studies"
             class="text-gray-600 hover:text-[#3533cd] transition-colors duration-200 font-medium text-sm lg:text-base"
             >Case Studies</NuxtLink
           >
           <NuxtLink
-            to="/products"
-            class="text-gray-600 hover:text-[#3533cd] transition-colors duration-200 font-medium text-sm lg:text-base"
-            >Products</NuxtLink
-          >
-          <NuxtLink
             to="/blog"
             class="text-gray-600 hover:text-[#3533cd] transition-colors duration-200 font-medium text-sm lg:text-base"
-            >Blogs</NuxtLink
+            >Blog</NuxtLink
           >
         </div>
 
@@ -504,6 +296,100 @@
             </div>
           </div>
 
+          <!-- Products with submenu -->
+          <div class="menu-item">
+            <button
+              class="w-full flex items-center justify-between space-x-3 text-gray-700 hover:text-[#3533cd] transition-all duration-300 font-medium py-3 px-4 rounded-xl hover:bg-gradient-to-r hover:from-[#3533cd]/10 hover:to-[#1e1b69]/10 hover:shadow-sm"
+              @click="isProductsOpen = !isProductsOpen"
+            >
+              <div class="flex items-center space-x-3">
+                <svg aria-hidden="true"
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
+                  />
+                </svg>
+                <span>Products</span>
+              </div>
+              <svg aria-hidden="true"
+                class="w-4 h-4 transition-transform duration-200"
+                :class="isProductsOpen ? 'rotate-180' : ''"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+            <!-- Products submenu -->
+            <div
+              v-if="isProductsOpen"
+              class="ml-4 mt-3 space-y-3 bg-gray-50 rounded-xl p-4"
+            >
+              <NuxtLink
+                v-for="product in navbarProducts"
+                :key="product.id"
+                :to="`/products/${product.slug}`"
+                class="flex items-center space-x-3 p-3 rounded-lg hover:bg-white hover:shadow-sm transition-all duration-200 group/item"
+                @click="isMenuOpen = false"
+              >
+                <div
+                  class="w-10 h-10 rounded-lg flex items-center justify-center group-hover/item:scale-110 transition-transform duration-200"
+                  :class="
+                    product.bg_gradient ||
+                    'bg-gradient-to-br from-[#3533cd] to-[#1e1b69]'
+                  "
+                >
+                  <svg aria-hidden="true"
+                    class="w-5 h-5 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      :d="product.icon_path || defaultProductIcon"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <p
+                    class="font-medium text-gray-900 group-hover/item:text-[#3533cd] transition-colors duration-200"
+                  >
+                    {{ product.name }}
+                  </p>
+                </div>
+              </NuxtLink>
+              <p
+                v-if="!navbarProducts.length"
+                class="text-sm text-gray-500 px-3 py-2"
+              >
+                Explore our full product lineup.
+              </p>
+              <NuxtLink
+                to="/products"
+                class="flex items-center justify-center space-x-2 text-[#3533cd] font-medium py-2.5 px-4 rounded-lg border border-[#3533cd]/30 hover:bg-[#3533cd] hover:text-white transition-all duration-200"
+                @click="isMenuOpen = false"
+              >
+                <span>View all products</span>
+              </NuxtLink>
+            </div>
+          </div>
+
           <NuxtLink
             to="/case-studies"
             class="menu-item flex items-center space-x-3 text-gray-700 hover:text-[#3533cd] transition-all duration-300 font-medium py-3 px-4 rounded-xl hover:bg-gradient-to-r hover:from-[#3533cd]/10 hover:to-[#1e1b69]/10 hover:shadow-sm"
@@ -526,27 +412,6 @@
           </NuxtLink>
 
           <NuxtLink
-            to="/products"
-            class="menu-item flex items-center space-x-3 text-gray-700 hover:text-[#3533cd] transition-all duration-300 font-medium py-3 px-4 rounded-xl hover:bg-gradient-to-r hover:from-[#3533cd]/10 hover:to-[#1e1b69]/10 hover:shadow-sm"
-            @click="isMenuOpen = false"
-          >
-            <svg aria-hidden="true"
-              class="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
-              />
-            </svg>
-            <span>Products</span>
-          </NuxtLink>
-
-          <NuxtLink
             to="/blog"
             class="menu-item flex items-center space-x-3 text-gray-700 hover:text-[#3533cd] transition-all duration-300 font-medium py-3 px-4 rounded-xl hover:bg-gradient-to-r hover:from-[#3533cd]/10 hover:to-[#1e1b69]/10 hover:shadow-sm"
             @click="isMenuOpen = false"
@@ -564,7 +429,7 @@
                 d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
               />
             </svg>
-            <span>Blogs</span>
+            <span>Blog</span>
           </NuxtLink>
 
           <NuxtLink
@@ -852,12 +717,20 @@
 import { ref, watch, onMounted, onUnmounted, nextTick, computed } from "vue";
 import { useRoute } from "vue-router";
 import { getServiceIconPath } from "~/utils/serviceIcons";
+import { getServiceColor } from "~/utils/serviceColors";
 
 const route = useRoute();
 const isMenuOpen = ref(false);
 const isServicesOpen = ref(false);
+const isProductsOpen = ref(false);
 const navbarServices = ref([]);
+const navbarProducts = ref([]);
 const api = useApi();
+
+// Fallback icon (matches the "Products" tab icon in the mobile bottom nav)
+// for any navbar-flagged product that has no icon_path set in Filament.
+const defaultProductIcon =
+  "M9.75 3h4.5L16 6h4a1 1 0 011 1v11a3 3 0 01-3 3H6a3 3 0 01-3-3V7a1 1 0 011-1h4l1.75-3zM8 12h8M8 16h5";
 
 // Check if current route is home page
 const isHomePage = computed(() => {
@@ -875,6 +748,16 @@ const isRouteActive = (path) => {
 
   return route.path.startsWith(path);
 };
+
+// Load navbar-flagged products on component mount
+onMounted(async () => {
+  try {
+    navbarProducts.value = await api.getNavbarProducts();
+  } catch (error) {
+    console.error("Failed to load navbar products:", error);
+    navbarProducts.value = [];
+  }
+});
 
 // Load navbar services on component mount
 onMounted(async () => {
@@ -956,86 +839,6 @@ onMounted(async () => {
 const getServiceIcon = (category, icon) => {
   if (icon) return icon;
   return getServiceIconPath(category);
-};
-
-// Helper function to get service color based on category
-const getServiceColor = (category) => {
-  const colors = {
-    "web-development": {
-      from: "from-blue-500",
-      to: "to-blue-600",
-      hover: "hover:from-blue-50 hover:to-blue-100",
-      text: "group-hover/item:text-blue-600",
-    },
-    "mobile-development": {
-      from: "from-green-500",
-      to: "to-green-600",
-      hover: "hover:from-green-50 hover:to-green-100",
-      text: "group-hover/item:text-green-600",
-    },
-    "ui-ux-design": {
-      from: "from-purple-500",
-      to: "to-purple-600",
-      hover: "hover:from-purple-50 hover:to-purple-100",
-      text: "group-hover/item:text-purple-600",
-    },
-    "digital-marketing": {
-      from: "from-orange-500",
-      to: "to-orange-600",
-      hover: "hover:from-orange-50 hover:to-orange-100",
-      text: "group-hover/item:text-orange-600",
-    },
-    consulting: {
-      from: "from-indigo-500",
-      to: "to-indigo-600",
-      hover: "hover:from-indigo-50 hover:to-indigo-100",
-      text: "group-hover/item:text-indigo-600",
-    },
-    maintenance: {
-      from: "from-gray-500",
-      to: "to-gray-600",
-      hover: "hover:from-gray-50 hover:to-gray-100",
-      text: "group-hover/item:text-gray-600",
-    },
-    "ai-automation": {
-      from: "from-violet-500",
-      to: "to-violet-600",
-      hover: "hover:from-violet-50 hover:to-violet-100",
-      text: "group-hover/item:text-violet-600",
-    },
-    "saas-development": {
-      from: "from-cyan-500",
-      to: "to-cyan-600",
-      hover: "hover:from-cyan-50 hover:to-cyan-100",
-      text: "group-hover/item:text-cyan-600",
-    },
-    "software-testing": {
-      from: "from-amber-500",
-      to: "to-amber-600",
-      hover: "hover:from-amber-50 hover:to-amber-100",
-      text: "group-hover/item:text-amber-600",
-    },
-    "ecommerce-development": {
-      from: "from-rose-500",
-      to: "to-rose-600",
-      hover: "hover:from-rose-50 hover:to-rose-100",
-      text: "group-hover/item:text-rose-600",
-    },
-    "devops-cloud": {
-      from: "from-teal-500",
-      to: "to-teal-600",
-      hover: "hover:from-teal-50 hover:to-teal-100",
-      text: "group-hover/item:text-teal-600",
-    },
-    cybersecurity: {
-      from: "from-red-500",
-      to: "to-red-600",
-      hover: "hover:from-red-50 hover:to-red-100",
-      text: "group-hover/item:text-red-600",
-    },
-  };
-
-  return colors[category] || colors["web-development"];
 };
 
 // Watch for menu state changes to toggle body scroll

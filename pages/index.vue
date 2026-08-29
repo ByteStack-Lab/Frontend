@@ -19,9 +19,6 @@
     <!-- Counter Section -->
     <CounterSection />
 
-    <!-- Partner Section -->
-    <PartnerSection />
-
     <!-- Testimonials Section -->
     <TestimonialsSection />
 
@@ -29,6 +26,9 @@
     <section id="case-studies">
       <CaseStudiesSection />
     </section>
+
+    <!-- Featured Products Section — our own SaaS products, not client work -->
+    <FeaturedProductsSection />
 
     <!--
       Capability / trust ("why us") followed by process ("how we work").
@@ -73,8 +73,8 @@ import TrustStripSection from '~/components/sections/TrustStripSection.vue'
 import ServicesSection from '~/components/sections/ServicesSection.vue'
 import AboutSection from '~/components/sections/AboutSection.vue'
 import CounterSection from '~/components/sections/CounterSection.vue'
-import PartnerSection from '~/components/sections/PartnerSection.vue'
 import CaseStudiesSection from '~/components/sections/CaseStudiesSection.vue'
+import FeaturedProductsSection from '~/components/sections/FeaturedProductsSection.vue'
 import TestimonialsSection from '~/components/sections/TestimonialsSection.vue'
 import DevelopmentApproachSection from '~/components/sections/DevelopmentApproachSection.vue'
 import TechStackSection from '~/components/sections/TechStackSection.vue'

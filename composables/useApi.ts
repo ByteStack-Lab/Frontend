@@ -20,6 +20,7 @@ import type {
   Product,
   ProductCategory,
   ProductDetail,
+  ProductNavbar,
   Service,
   ServiceFeatured,
   ServiceNavbar,
@@ -230,6 +231,12 @@ export const useApi = () => {
     // Get featured products
     async getFeaturedProducts(): Promise<Product[]> {
       const { data } = await request<ApiResponse<Product[]>>('/products/featured', {}, 'Error fetching featured products:')
+      return data
+    },
+
+    // Get products flagged for the navbar dropdown
+    async getNavbarProducts(): Promise<ProductNavbar[]> {
+      const { data } = await request<ApiResponse<ProductNavbar[]>>('/products/navbar', {}, 'Error fetching navbar products:')
       return data
     },
 

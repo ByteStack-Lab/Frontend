@@ -29,3 +29,45 @@ const ICON_PATHS = {
 export function getServiceIconPath(category) {
   return ICON_PATHS[category] || ICON_PATHS["web-development"];
 }
+
+// Per-category banner gradient for the services listing cards — mirrors the
+// per-product `bg_gradient` field on the Products page so both listings use
+// the same "colored banner + centered icon" card shell. Every class below is
+// already present in main.css's Tailwind safelist (see the comment there),
+// so pairing any from-*/to-* combination here is safe.
+const GRADIENTS = {
+  "web-development": "bg-gradient-to-br from-indigo-600 to-violet-700",
+  "mobile-development": "bg-gradient-to-br from-pink-500 to-rose-600",
+  "ui-ux-design": "bg-gradient-to-br from-purple-500 to-fuchsia-500",
+  "digital-marketing": "bg-gradient-to-br from-amber-500 to-orange-500",
+  consulting: "bg-gradient-to-br from-blue-500 to-indigo-500",
+  maintenance: "bg-gradient-to-br from-lime-500 to-green-500",
+  "ai-automation": "bg-gradient-to-br from-cyan-500 to-blue-500",
+  "saas-development": "bg-gradient-to-br from-teal-500 to-cyan-500",
+  "software-testing": "bg-gradient-to-br from-emerald-500 to-teal-500",
+  "ecommerce-development": "bg-gradient-to-br from-rose-500 to-fuchsia-500",
+  "devops-cloud": "bg-gradient-to-br from-emerald-600 to-teal-700",
+  cybersecurity: "bg-gradient-to-br from-green-500 to-emerald-500",
+};
+
+export function getServiceGradient(category) {
+  return GRADIENTS[category] || GRADIENTS["web-development"];
+}
+
+// "ui-ux-design" -> "Ui Ux Design" is wrong, so special-case the acronyms;
+// everything else is a plain slug-to-title-case conversion.
+const LABEL_OVERRIDES = {
+  "ui-ux-design": "UI/UX Design",
+  "ai-automation": "AI Automation",
+  "saas-development": "SaaS Development",
+  "devops-cloud": "DevOps & Cloud",
+};
+
+export function formatCategoryLabel(category) {
+  if (!category) return "";
+  if (LABEL_OVERRIDES[category]) return LABEL_OVERRIDES[category];
+  return category
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}

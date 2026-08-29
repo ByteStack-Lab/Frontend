@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen bg-gradient-to-br from-gray-50 to-purple-50">
     <!-- About Hero Section -->
-    <section class="relative pt-20 pb-12 overflow-hidden">
+    <section class="relative pt-28 pb-12 overflow-hidden">
       <!-- Animated Background -->
       <div class="absolute inset-0 overflow-hidden pointer-events-none">
         <!-- Matrix-style Grid Lines -->

@@ -1,7 +1,7 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-gray-50 to-purple-50">
+  <div class="min-h-screen bg-gradient-to-br from-gray-50 to-indigo-50">
     <!-- Services Hero Section -->
-    <section class="relative pt-20 pb-12 overflow-hidden">
+    <section class="relative pt-28 pb-12 overflow-hidden">
       <!-- Animated Background -->
       <div class="absolute inset-0 overflow-hidden pointer-events-none">
         <!-- Matrix-style Grid Lines -->
@@ -44,13 +44,13 @@
       </div>
 
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <div class="text-center mb-10">
+        <div class="text-center mb-6">
           <!-- Decorative Line -->
           <div
-            class="w-16 h-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full mx-auto mb-4"
+            class="w-16 h-1 bg-gradient-to-r from-[#3533cd] to-[#E56F8C] rounded-full mx-auto mb-6"
           />
 
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
             <span class="text-gray-900">Our</span>
             <span
               class="bg-gradient-to-r from-[#3533cd] via-[#6675F7] to-[#1e1b69] bg-clip-text text-transparent"
@@ -65,11 +65,61 @@
             ideas into powerful, scalable, and user-friendly applications.
           </p>
         </div>
+
+        <!-- Stats Row -->
+        <div class="flex flex-wrap justify-center gap-8 mt-12">
+          <div class="text-center">
+            <div class="text-3xl font-bold text-[#3533cd]">
+              {{ services.length }}+
+            </div>
+            <div class="text-sm text-gray-500 mt-1">Services</div>
+          </div>
+          <div class="w-px h-12 bg-gray-200 self-center hidden sm:block"/>
+          <div class="text-center">
+            <div class="text-3xl font-bold text-[#3533cd]">
+              {{ serviceCategories.length }}+
+            </div>
+            <div class="text-sm text-gray-500 mt-1">Categories</div>
+          </div>
+          <div class="w-px h-12 bg-gray-200 self-center hidden sm:block"/>
+          <div class="text-center">
+            <div class="text-3xl font-bold text-[#3533cd]">5+</div>
+            <div class="text-sm text-gray-500 mt-1">Years Experience</div>
+          </div>
+          <div class="w-px h-12 bg-gray-200 self-center hidden sm:block"/>
+          <div class="text-center">
+            <div class="text-3xl font-bold text-[#3533cd]">100%</div>
+            <div class="text-sm text-gray-500 mt-1">Client Focused</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filter Tabs -->
+    <section
+      class="py-6 bg-white border-b border-gray-100 sticky top-0 z-10 shadow-sm"
+    >
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="flex flex-wrap justify-center gap-3">
+          <button
+            v-for="tab in filterTabs"
+            :key="tab.id"
+            :class="[
+              'px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300',
+              selectedCategory === tab.id
+                ? 'bg-gradient-to-r from-[#3533cd] to-[#6675F7] text-white shadow-md'
+                : 'bg-gray-100 text-gray-600 hover:bg-gray-200',
+            ]"
+            @click="selectedCategory = tab.id"
+          >
+            {{ tab.label }}
+          </button>
+        </div>
       </div>
     </section>
 
     <!-- Services Grid Section -->
-    <section class="py-16 bg-white">
+    <section class="py-20">
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
         <div v-if="pending" class="text-center py-12">
           <div
@@ -78,83 +128,100 @@
           <p class="mt-4 text-gray-600">Loading services...</p>
         </div>
 
-        <div v-else class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+        <div v-else class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div
             v-for="service in filteredServices"
             :key="service.id"
-            class="group bg-white rounded-xl shadow-card p-8 hover:shadow-card-hover transition-all duration-300 hover:transform hover:scale-105 border border-gray-100"
+            class="group bg-white rounded-2xl shadow-card overflow-hidden hover:shadow-card-hover transition-all duration-500 hover:-translate-y-2 border border-gray-100 flex flex-col"
           >
+            <!-- Card Banner -->
             <div
-              class="w-16 h-16 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
+              class="relative h-52 overflow-hidden"
+              :class="getServiceGradient(service.category)"
             >
-              <NuxtImg
-                v-if="service.icon"
-                :src="service.icon"
-                :alt="service.title"
-                loading="lazy"
-                width="32"
-                height="32"
-                class="w-8 h-8 text-white"
-              />
-              <svg
-                v-else
-                aria-hidden="true"
-                class="w-8 h-8 text-white"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  :d="getServiceIconPath(service.category)"
-                />
-              </svg>
+              <!-- Category Tag -->
+              <div class="absolute top-4 right-4 z-10">
+                <span
+                  class="px-3 py-1 bg-white/20 backdrop-blur-sm text-white text-xs font-semibold rounded-full border border-white/30"
+                >
+                  {{ formatCategoryLabel(service.category) }}
+                </span>
+              </div>
+              <!-- Icon -->
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div
+                  class="w-20 h-20 bg-white/15 backdrop-blur-sm rounded-2xl flex items-center justify-center border border-white/20 group-hover:scale-110 transition-transform duration-500"
+                >
+                  <NuxtImg
+                    v-if="service.icon"
+                    :src="service.icon"
+                    :alt="service.title"
+                    loading="lazy"
+                    width="40"
+                    height="40"
+                    class="w-10 h-10 text-white"
+                  />
+                  <svg
+                    v-else
+                    aria-hidden="true"
+                    class="w-10 h-10 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.5"
+                      :d="getServiceIconPath(service.category)"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <!-- Bottom Wave -->
+              <div class="absolute bottom-0 left-0 right-0">
+                <svg aria-hidden="true"
+                  viewBox="0 0 400 40"
+                  preserveAspectRatio="none"
+                  class="w-full h-8 fill-white"
+                >
+                  <path d="M0,40 C100,10 300,30 400,0 L400,40 Z" />
+                </svg>
+              </div>
             </div>
 
-            <h3
-              class="text-xl font-bold text-gray-900 mb-4 group-hover:text-[#3533cd] transition-colors duration-300"
-            >
-              {{ service.title }}
-            </h3>
-            <p class="text-gray-600 leading-relaxed mb-6">
-              {{ service.short_description }}
-            </p>
-
-            <!-- Features List -->
-            <ul
-              v-if="service.features && service.features.length > 0"
-              class="space-y-2 mb-6"
-            >
-              <li
-                v-for="feature in service.features.slice(0, 3)"
-                :key="feature"
-                class="flex items-center text-sm text-gray-600"
+            <!-- Card Body -->
+            <div class="p-6 flex flex-col flex-1">
+              <h3
+                class="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#3533cd] transition-colors duration-300"
               >
-                <svg aria-hidden="true"
-                  class="w-4 h-4 text-[#3533cd] mr-2"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 13l4 4L19 7"
-                  />
-                </svg>
-                {{ feature }}
-              </li>
-            </ul>
+                {{ service.title }}
+              </h3>
+              <p class="text-gray-600 text-sm leading-relaxed mb-4 flex-1">
+                {{ service.short_description }}
+              </p>
 
-            <NuxtLink
-              :to="`/services/${service.slug}`"
-              class="w-full bg-gradient-to-r from-[#3533cd] to-[#1e1b69] text-white py-3 px-6 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 text-center block"
-            >
-              Learn More
-            </NuxtLink>
+              <!-- Feature Pills -->
+              <div
+                v-if="service.features && service.features.length > 0"
+                class="flex flex-wrap gap-2 mb-5"
+              >
+                <span
+                  v-for="feature in service.features.slice(0, 3)"
+                  :key="feature"
+                  class="px-3 py-1 bg-indigo-50 text-indigo-700 text-xs font-medium rounded-full"
+                >
+                  {{ feature }}
+                </span>
+              </div>
+
+              <NuxtLink
+                :to="`/services/${service.slug}`"
+                class="w-full bg-gradient-to-r from-[#3533cd] to-[#6675F7] text-white py-3 px-4 rounded-xl font-semibold text-sm text-center hover:shadow-lg transition-all duration-300"
+              >
+                Learn More
+              </NuxtLink>
+            </div>
           </div>
         </div>
 
@@ -200,7 +267,11 @@
 </template>
 
 <script setup>
-import { getServiceIconPath } from "~/utils/serviceIcons";
+import {
+  getServiceIconPath,
+  getServiceGradient,
+  formatCategoryLabel,
+} from "~/utils/serviceIcons";
 
 // Page meta for SEO
 useHead({
@@ -263,6 +334,23 @@ const filteredServices = computed(() => {
     (service) => service.category === selectedCategory.value,
   );
 });
+
+// Distinct categories actually present in the loaded services, used for
+// both the Stats Row count and the filter tabs below.
+const serviceCategories = computed(() => {
+  return [...new Set(services.value.map((service) => service.category))];
+});
+
+// Filter tabs — "All Services" plus one tab per category that's actually
+// in use, so this never drifts out of sync with the real data the way a
+// hardcoded list (like the one on /products) can.
+const filterTabs = computed(() => [
+  { id: "", label: "All Services" },
+  ...serviceCategories.value.map((category) => ({
+    id: category,
+    label: formatCategoryLabel(category),
+  })),
+]);
 </script>
 
 <style scoped>

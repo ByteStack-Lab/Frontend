@@ -206,6 +206,17 @@ export interface ProductCategory {
   count: number
 }
 
+export interface ProductNavbar {
+  id: number
+  name: string
+  slug: string
+  tagline: string | null
+  short_description: string
+  icon_path: string | null
+  bg_gradient: string | null
+  category: string
+}
+
 // ===== PARTNERS =====
 
 export interface Partner {

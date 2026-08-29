@@ -134,8 +134,9 @@
             </p>
 
             <!-- Specialty chips: tells a first-time visitor what we actually
-                 do before they scroll, and gives mobile a visual anchor since
-                 HeroTerminal is desktop-only. -->
+                 do before they scroll — this is what mobile sees first,
+                 since HeroTerminal now falls below the CTA row on small
+                 screens (see the comment near HeroTerminal below). -->
             <ul class="flex flex-wrap gap-2 pt-1">
               <li
                 v-for="specialty in specialties"
@@ -151,11 +152,11 @@
           <div class="flex flex-row items-center gap-3 sm:gap-4 pt-4">
             <NuxtLink
               to="/contact"
-              class="interactive-button flex-1 sm:flex-none bg-gradient-to-r from-[#3533cd] to-[#1e1b69] text-white px-6 sm:px-8 py-3 rounded-lg font-semibold text-base shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center"
+              class="interactive-button bg-gradient-to-r from-[#3533cd] to-[#1e1b69] text-white px-4 py-2.5 sm:px-8 sm:py-3 rounded-lg font-semibold text-sm sm:text-base shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center"
             >
               Book a Free Consultation
               <svg aria-hidden="true"
-                class="ml-2 w-5 h-5"
+                class="ml-1.5 sm:ml-2 w-4 h-4 sm:w-5 sm:h-5"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"

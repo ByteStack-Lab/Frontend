@@ -1,6 +1,24 @@
 /* Base Styles */
 @import "tailwindcss";
 
+/*
+ * Safelist for Tailwind classes assembled from CMS (Filament/API) data
+ * rather than typed literally in a .vue file — e.g. Product.bg_gradient,
+ * highlight.icon_bg/icon_color, and review.avatar_bg (all free-text fields
+ * in Filament), plus ProductCardResource::badgeClass()'s color map.
+ * Tailwind's JIT scanner only generates CSS for class names it finds by
+ * scanning source files, so a class that exists only as a runtime string
+ * from the database silently produces no CSS — the element renders with
+ * the class attribute set but no matching style (e.g. BytePOS's
+ * "from-emerald-600 to-teal-700" gradient rendering as a blank white card
+ * because no other component happened to use that exact color pair).
+ * Every combination currently used by ProductSeeder.php is listed below.
+ * Adding a new bg_gradient/icon_bg/icon_color/avatar_bg color combination
+ * in Filament that isn't in this list (or already used elsewhere in the
+ * frontend) will hit the same bug — add its classes here too.
+ */
+@source inline("bg-gradient-to-br from-indigo-600 to-violet-700 from-pink-500 to-rose-600 from-emerald-600 to-teal-700 from-amber-500 to-orange-500 from-blue-500 to-indigo-500 from-cyan-500 to-blue-500 to-teal-500 from-emerald-500 from-green-500 to-emerald-500 from-lime-500 to-green-500 from-rose-500 from-purple-500 to-fuchsia-500 from-teal-500 to-cyan-500 bg-blue-50 text-blue-600 bg-cyan-50 text-cyan-600 bg-emerald-50 text-emerald-600 bg-green-50 text-green-600 bg-indigo-50 text-indigo-600 bg-lime-50 text-lime-600 bg-pink-50 text-pink-600 bg-purple-50 text-purple-600 bg-rose-50 text-rose-600 bg-teal-50 text-teal-600 bg-violet-50 text-violet-600 bg-yellow-400 text-yellow-900 bg-green-400 text-green-900 bg-purple-400 text-purple-900 bg-cyan-400 text-cyan-900 bg-pink-400 text-pink-900 bg-blue-400 text-blue-900 bg-red-400 text-red-900 bg-orange-400 text-orange-900 bg-indigo-400 text-indigo-900 bg-gray-400 text-gray-900");
+
 /* Base styling */
 html {
   scroll-behavior: smooth;
@@ -87,7 +105,7 @@ html, body {
 
 /* Buttons */
 .btn-primary {
-  background: linear-gradient(135deg, #6675F7 0%, #57007B 100%);
+  background: linear-gradient(135deg, #3533cd 0%, #1e1b69 100%);
   color: white;
   padding: 16px 32px;
   border-radius: 12px;
@@ -100,7 +118,7 @@ html, body {
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0px 8px 30px 0px rgba(102, 117, 247, 0.3);
+  box-shadow: 0px 8px 30px 0px rgba(53, 51, 205, 0.3);
 }
 
 .btn-secondary {

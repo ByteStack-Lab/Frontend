@@ -330,6 +330,8 @@
 </template>
 
 <script setup>
+import { getProductCategoryLabel } from "~/utils/productCategories";
+
 useHead({
   title: "Products - ByteStackLab",
   meta: [
@@ -342,14 +344,6 @@ useHead({
 });
 
 const activeFilter = ref("all");
-
-const filterTabs = [
-  { id: "all", label: "All Products" },
-  { id: "saas", label: "SaaS Tools" },
-  { id: "analytics", label: "Analytics" },
-  { id: "automation", label: "Automation" },
-  { id: "security", label: "Security" },
-];
 
 // Server-side data fetching for SSR/SEO
 const {
@@ -376,6 +370,20 @@ const {
 
 const products = computed(() => pageData.value?.products || []);
 const error = computed(() => pageData.value?.error || null);
+
+// "All Products" plus one tab per category actually present in the loaded
+// products — built from real data instead of a hardcoded list, so a new
+// category (e.g. WordPress, Shopify) shows up here automatically instead
+// of being unfilterable until someone remembers to add a tab for it.
+const filterTabs = computed(() => [
+  { id: "all", label: "All Products" },
+  ...[...new Set(products.value.map((p) => p.categoryId).filter(Boolean))].map(
+    (categoryId) => ({
+      id: categoryId,
+      label: getProductCategoryLabel(categoryId),
+    }),
+  ),
+]);
 
 // Computed property for filtered products
 const filteredProducts = computed(() => {

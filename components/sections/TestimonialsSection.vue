@@ -121,7 +121,7 @@
             <div
               v-for="(testimonial, index) in leftAvatars"
               :key="'left-' + index"
-              class="cursor-pointer transition-all duration-500 opacity-60 hover:opacity-80 flex items-center"
+              class="cursor-pointer transition-all duration-700 opacity-60 hover:opacity-80 flex items-center"
               @click="goToTestimonial(getLeftIndex(index))"
             >
               <NuxtImg
@@ -155,7 +155,7 @@
             <div
               v-for="(testimonial, index) in rightAvatars"
               :key="'right-' + index"
-              class="cursor-pointer transition-all duration-500 opacity-60 hover:opacity-80 flex items-center"
+              class="cursor-pointer transition-all duration-700 opacity-60 hover:opacity-80 flex items-center"
               @click="goToTestimonial(getRightIndex(index))"
             >
               <NuxtImg
@@ -477,7 +477,7 @@ onUnmounted(() => {
 /* Smooth fade transition */
 .fade-enter-active,
 .fade-leave-active {
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.9s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .fade-enter-from {
@@ -503,9 +503,12 @@ onUnmounted(() => {
   height: 4.5rem;
 }
 
-/* Smooth hover effects */
+/* Smooth hover effects — kept in sync with the duration-700 utility class
+   on these elements (Tailwind and this scoped rule both target the same
+   nodes, so a mismatched value here was making the avatar swap feel
+   noticeably snappier than the 0.9s text fade above). */
 .cursor-pointer {
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .cursor-pointer:hover {

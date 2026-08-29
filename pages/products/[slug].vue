@@ -61,7 +61,7 @@
                 <span
                   class="px-4 py-1.5 bg-indigo-50 text-[#3533cd] text-sm font-semibold rounded-full border border-indigo-100"
                 >
-                  {{ product.category }}
+                  {{ getProductCategoryLabel(product.category) }}
                 </span>
                 <span
                   v-if="product.badge"
@@ -1177,6 +1177,8 @@
 </template>
 
 <script setup>
+import { getProductCategoryLabel } from "~/utils/productCategories";
+
 const route = useRoute();
 const slug = computed(() => route.params.slug);
 
