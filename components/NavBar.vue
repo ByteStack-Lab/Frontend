@@ -255,13 +255,13 @@
                 @click="isMenuOpen = false"
               >
                 <div
-                  class="w-10 h-10 bg-gradient-to-r rounded-lg flex items-center justify-center group-hover/item:scale-110 transition-transform duration-200"
+                  class="w-10 h-10 shrink-0 bg-gradient-to-r rounded-lg flex items-center justify-center group-hover/item:scale-110 transition-transform duration-200"
                   :class="`${getServiceColor(service.category).from} ${getServiceColor(service.category).to}`"
                 >
                   <svg
                     v-if="service.icon"
                     aria-hidden="true"
-                    class="w-5 h-5 text-white"
+                    class="w-5 h-5 shrink-0 text-white"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -271,7 +271,7 @@
                   <svg
                     v-else
                     aria-hidden="true"
-                    class="w-5 h-5 text-white"
+                    class="w-5 h-5 shrink-0 text-white"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -346,14 +346,14 @@
                 @click="isMenuOpen = false"
               >
                 <div
-                  class="w-10 h-10 rounded-lg flex items-center justify-center group-hover/item:scale-110 transition-transform duration-200"
+                  class="w-10 h-10 shrink-0 rounded-lg flex items-center justify-center group-hover/item:scale-110 transition-transform duration-200"
                   :class="
                     product.bg_gradient ||
                     'bg-gradient-to-br from-[#3533cd] to-[#1e1b69]'
                   "
                 >
                   <svg aria-hidden="true"
-                    class="w-5 h-5 text-white"
+                    class="w-5 h-5 shrink-0 text-white"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"

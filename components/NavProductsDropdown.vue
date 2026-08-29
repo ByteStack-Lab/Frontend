@@ -35,14 +35,14 @@
             class="flex items-center space-x-3 p-4 rounded-xl transition-all duration-200 group/item hover:bg-gray-50"
           >
             <div
-              class="w-12 h-12 rounded-xl flex items-center justify-center group-hover/item:scale-110 transition-transform duration-200"
+              class="w-12 h-12 shrink-0 rounded-xl flex items-center justify-center group-hover/item:scale-110 transition-transform duration-200"
               :class="
                 product.bg_gradient ||
                 'bg-gradient-to-br from-[#3533cd] to-[#1e1b69]'
               "
             >
               <svg aria-hidden="true"
-                class="w-6 h-6 text-white"
+                class="w-6 h-6 shrink-0 text-white"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"

@@ -156,6 +156,7 @@
                 class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#3533cd] focus:border-transparent transition-all duration-200 form-input"
               >
                 <option value="">Select a service</option>
+                <option value="free-consultation">Free Consultation</option>
                 <option value="ai-automation">AI Automation & Integration</option>
                 <option value="saas-development">SaaS Product Development</option>
                 <option value="web-application-development">Custom Web & E-commerce Development</option>

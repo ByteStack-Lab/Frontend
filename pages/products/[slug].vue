@@ -413,7 +413,7 @@
                 v-else
                 class="bg-white rounded-2xl p-8 text-center border border-gray-100 text-gray-500"
               >
-                Overview তথ্য এখনো যোগ করা হয়নি।
+                Overview information hasn't been added yet.
               </div>
             </div>
 
@@ -499,7 +499,7 @@
                 v-else
                 class="bg-white rounded-2xl p-8 text-center border border-gray-100 text-gray-500"
               >
-                Pricing & Plans তথ্য এখনো পাওয়া যায়নি।
+                Pricing & Plans information isn't available yet.
               </div>
             </div>
 
@@ -563,7 +563,7 @@
                 v-else
                 class="bg-white rounded-2xl p-8 text-center border border-gray-100 text-gray-500"
               >
-                Reviews এখনো পাওয়া যায়নি।
+                No reviews yet.
               </div>
             </div>
 
