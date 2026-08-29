@@ -51,7 +51,8 @@
         <!-- Empty State -->
         <div v-else-if="blogs.length === 0" class="text-center py-20">
           <div class="text-gray-500 mb-4">
-            <svg aria-hidden="true"
+            <svg
+              aria-hidden="true"
               class="w-16 h-16 mx-auto mb-4"
               fill="none"
               stroke="currentColor"
@@ -204,7 +205,8 @@
                     <span
                       class="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium bg-purple-100 text-purple-800 rounded-full"
                     >
-                      <svg aria-hidden="true"
+                      <svg
+                        aria-hidden="true"
                         class="w-3 h-3"
                         fill="none"
                         stroke="currentColor"
@@ -248,7 +250,8 @@
                       class="inline-flex items-center text-[#3533cd] font-medium group-hover:text-[#1e1b69] transition-colors group"
                     >
                       Read More
-                      <svg aria-hidden="true"
+                      <svg
+                        aria-hidden="true"
                         class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform"
                         fill="none"
                         stroke="currentColor"
@@ -282,7 +285,8 @@
           @mouseenter="stopAutoSlide"
           @mouseleave="startAutoSlide"
         >
-          <svg aria-hidden="true"
+          <svg
+            aria-hidden="true"
             class="w-5 h-5 mr-2"
             fill="none"
             stroke="currentColor"
@@ -296,7 +300,8 @@
             />
           </svg>
           <span>View All Blogs</span>
-          <svg aria-hidden="true"
+          <svg
+            aria-hidden="true"
             class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform"
             fill="none"
             stroke="currentColor"

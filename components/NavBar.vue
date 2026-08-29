@@ -7,6 +7,8 @@
           <NuxtLink to="/">
             <img
               src="/images/bytestacklab-180x48.png"
+              width="180"
+              height="48"
               srcset="
                 /images/bytestacklab-180x48.png 1x,
                 /images/bytestacklab360x96.png  2x
@@ -131,6 +133,8 @@
           <NuxtLink to="/" @click="isMenuOpen = false">
             <img
               src="/images/bytestacklab-180x48.png"
+              width="180"
+              height="48"
               srcset="
                 /images/bytestacklab-180x48.png 1x,
                 /images/bytestacklab360x96.png  2x
@@ -168,7 +172,8 @@
             class="menu-item flex items-center space-x-3 text-gray-700 hover:text-[#3533cd] transition-all duration-300 font-medium py-3 px-4 rounded-xl hover:bg-gradient-to-r hover:from-[#3533cd]/10 hover:to-[#1e1b69]/10 hover:shadow-sm"
             @click="isMenuOpen = false"
           >
-            <svg aria-hidden="true"
+            <svg
+              aria-hidden="true"
               class="w-5 h-5"
               fill="none"
               stroke="currentColor"
@@ -189,7 +194,8 @@
             class="menu-item flex items-center space-x-3 text-gray-700 hover:text-[#3533cd] transition-all duration-300 font-medium py-3 px-4 rounded-xl hover:bg-gradient-to-r hover:from-[#3533cd]/10 hover:to-[#1e1b69]/10 hover:shadow-sm"
             @click="isMenuOpen = false"
           >
-            <svg aria-hidden="true"
+            <svg
+              aria-hidden="true"
               class="w-5 h-5"
               fill="none"
               stroke="currentColor"
@@ -212,7 +218,8 @@
               @click="isServicesOpen = !isServicesOpen"
             >
               <div class="flex items-center space-x-3">
-                <svg aria-hidden="true"
+                <svg
+                  aria-hidden="true"
                   class="w-5 h-5"
                   fill="none"
                   stroke="currentColor"
@@ -227,7 +234,8 @@
                 </svg>
                 <span>Services</span>
               </div>
-              <svg aria-hidden="true"
+              <svg
+                aria-hidden="true"
                 class="w-4 h-4 transition-transform duration-200"
                 :class="isServicesOpen ? 'rotate-180' : ''"
                 fill="none"
@@ -303,7 +311,8 @@
               @click="isProductsOpen = !isProductsOpen"
             >
               <div class="flex items-center space-x-3">
-                <svg aria-hidden="true"
+                <svg
+                  aria-hidden="true"
                   class="w-5 h-5"
                   fill="none"
                   stroke="currentColor"
@@ -318,7 +327,8 @@
                 </svg>
                 <span>Products</span>
               </div>
-              <svg aria-hidden="true"
+              <svg
+                aria-hidden="true"
                 class="w-4 h-4 transition-transform duration-200"
                 :class="isProductsOpen ? 'rotate-180' : ''"
                 fill="none"
@@ -352,7 +362,8 @@
                     'bg-gradient-to-br from-[#3533cd] to-[#1e1b69]'
                   "
                 >
-                  <svg aria-hidden="true"
+                  <svg
+                    aria-hidden="true"
                     class="w-5 h-5 shrink-0 text-white"
                     fill="none"
                     stroke="currentColor"
@@ -395,7 +406,8 @@
             class="menu-item flex items-center space-x-3 text-gray-700 hover:text-[#3533cd] transition-all duration-300 font-medium py-3 px-4 rounded-xl hover:bg-gradient-to-r hover:from-[#3533cd]/10 hover:to-[#1e1b69]/10 hover:shadow-sm"
             @click="isMenuOpen = false"
           >
-            <svg aria-hidden="true"
+            <svg
+              aria-hidden="true"
               class="w-5 h-5"
               fill="none"
               stroke="currentColor"
@@ -416,7 +428,8 @@
             class="menu-item flex items-center space-x-3 text-gray-700 hover:text-[#3533cd] transition-all duration-300 font-medium py-3 px-4 rounded-xl hover:bg-gradient-to-r hover:from-[#3533cd]/10 hover:to-[#1e1b69]/10 hover:shadow-sm"
             @click="isMenuOpen = false"
           >
-            <svg aria-hidden="true"
+            <svg
+              aria-hidden="true"
               class="w-5 h-5"
               fill="none"
               stroke="currentColor"
@@ -437,7 +450,8 @@
             class="menu-item flex items-center space-x-3 text-gray-700 hover:text-[#3533cd] transition-all duration-300 font-medium py-3 px-4 rounded-xl hover:bg-gradient-to-r hover:from-[#3533cd]/10 hover:to-[#1e1b69]/10 hover:shadow-sm"
             @click="isMenuOpen = false"
           >
-            <svg aria-hidden="true"
+            <svg
+              aria-hidden="true"
               class="w-5 h-5"
               fill="none"
               stroke="currentColor"
@@ -484,7 +498,8 @@
               <div
                 class="w-8 h-8 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full flex items-center justify-center"
               >
-                <svg aria-hidden="true"
+                <svg
+                  aria-hidden="true"
                   class="w-4 h-4 text-white"
                   fill="none"
                   stroke="currentColor"
@@ -512,7 +527,8 @@
               <div
                 class="w-8 h-8 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full flex items-center justify-center"
               >
-                <svg aria-hidden="true"
+                <svg
+                  aria-hidden="true"
                   class="w-4 h-4 text-white"
                   fill="none"
                   stroke="currentColor"
@@ -547,7 +563,8 @@
                 class="social-icon w-10 h-10 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full flex items-center justify-center shadow-md"
                 title="Facebook"
               >
-                <svg aria-hidden="true"
+                <svg
+                  aria-hidden="true"
                   class="w-5 h-5 text-white"
                   fill="currentColor"
                   viewBox="0 0 24 24"
@@ -566,7 +583,8 @@
                 class="social-icon w-10 h-10 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full flex items-center justify-center shadow-md"
                 title="LinkedIn"
               >
-                <svg aria-hidden="true"
+                <svg
+                  aria-hidden="true"
                   class="w-5 h-5 text-white"
                   fill="currentColor"
                   viewBox="0 0 24 24"
@@ -585,7 +603,8 @@
                 class="social-icon w-10 h-10 bg-gradient-to-r from-slate-800 to-black rounded-full flex items-center justify-center shadow-md"
                 title="Twitter/X"
               >
-                <svg aria-hidden="true"
+                <svg
+                  aria-hidden="true"
                   class="w-5 h-5 text-white"
                   fill="currentColor"
                   viewBox="0 0 24 24"
@@ -604,7 +623,8 @@
                 class="social-icon w-10 h-10 bg-gradient-to-r from-red-600 to-red-700 rounded-full flex items-center justify-center shadow-md"
                 title="YouTube"
               >
-                <svg aria-hidden="true"
+                <svg
+                  aria-hidden="true"
                   class="w-5 h-5 text-white"
                   fill="currentColor"
                   viewBox="0 0 24 24"
@@ -628,7 +648,8 @@
         :class="isRouteActive('/') ? 'mobile-tab-active' : ''"
         @click="closeMenu"
       >
-        <svg aria-hidden="true"
+        <svg
+          aria-hidden="true"
           class="w-5 h-5"
           fill="none"
           stroke="currentColor"
@@ -650,7 +671,8 @@
         :class="isRouteActive('/services') ? 'mobile-tab-active' : ''"
         @click="closeMenu"
       >
-        <svg aria-hidden="true"
+        <svg
+          aria-hidden="true"
           class="w-5 h-5"
           fill="none"
           stroke="currentColor"
@@ -672,7 +694,8 @@
         :class="isRouteActive('/products') ? 'mobile-tab-active' : ''"
         @click="closeMenu"
       >
-        <svg aria-hidden="true"
+        <svg
+          aria-hidden="true"
           class="w-5 h-5"
           fill="none"
           stroke="currentColor"
@@ -694,7 +717,8 @@
         :class="isRouteActive('/contact') ? 'mobile-tab-active' : ''"
         @click="closeMenu"
       >
-        <svg aria-hidden="true"
+        <svg
+          aria-hidden="true"
           class="w-5 h-5"
           fill="none"
           stroke="currentColor"

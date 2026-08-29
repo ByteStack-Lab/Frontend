@@ -11,7 +11,8 @@
             <div
               class="w-16 h-16 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300"
             >
-              <svg aria-hidden="true"
+              <svg
+                aria-hidden="true"
                 class="w-8 h-8 text-white"
                 fill="none"
                 stroke="currentColor"
@@ -43,7 +44,8 @@
             <div
               class="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300"
             >
-              <svg aria-hidden="true"
+              <svg
+                aria-hidden="true"
                 class="w-8 h-8 text-white"
                 fill="none"
                 stroke="currentColor"
@@ -75,7 +77,8 @@
             <div
               class="w-16 h-16 bg-gradient-to-r from-[#1e1b69] to-[#0f0d3d] rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300"
             >
-              <svg aria-hidden="true"
+              <svg
+                aria-hidden="true"
                 class="w-8 h-8 text-white"
                 fill="none"
                 stroke="currentColor"
@@ -107,7 +110,8 @@
             <div
               class="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300"
             >
-              <svg aria-hidden="true"
+              <svg
+                aria-hidden="true"
                 class="w-8 h-8 text-white"
                 fill="none"
                 stroke="currentColor"

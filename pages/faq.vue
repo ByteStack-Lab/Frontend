@@ -45,7 +45,8 @@
               <h2 class="font-semibold text-gray-900">
                 {{ faq.question }}
               </h2>
-              <svg aria-hidden="true"
+              <svg
+                aria-hidden="true"
                 class="w-5 h-5 text-[#3533cd] transform transition-transform duration-200 flex-shrink-0"
                 :class="{ 'rotate-180': faq.isOpen }"
                 fill="none"
@@ -166,7 +167,7 @@ const toggleFaq = (index) => {
 const breadcrumbSchema = useBreadcrumbSchema();
 
 useHead({
-  title: "FAQ - ByteStackLab | Frequently Asked Questions",
+  title: "Frequently Asked Questions",
   meta: [
     {
       name: "description",

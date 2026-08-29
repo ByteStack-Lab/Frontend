@@ -149,7 +149,8 @@
                   class="inline-flex items-center px-6 py-3 font-medium transition-colors group read-more-btn"
                 >
                   Read More
-                  <svg aria-hidden="true"
+                  <svg
+                    aria-hidden="true"
                     class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform"
                     fill="none"
                     stroke="currentColor"
@@ -183,7 +184,8 @@
           class="inline-flex items-center px-6 py-3 text-[#3533cd] font-medium hover:text-[#1e1b69] transition-colors group"
         >
           Read More Case Studies
-          <svg aria-hidden="true"
+          <svg
+            aria-hidden="true"
             class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform"
             fill="none"
             stroke="currentColor"

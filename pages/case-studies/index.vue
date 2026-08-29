@@ -137,9 +137,19 @@
                 <div class="relative">
                   <!-- Dynamic Image with Fallback -->
                   <div v-if="getImageUrl(caseStudy)" class="relative group">
+                    <!--
+                      width/height reserve a 3:2 box before the image loads.
+                      Without them this was the one content image on the site
+                      rendering at zero height until it arrived, shoving the
+                      rest of the row down on load (CLS). Kept as attributes
+                      rather than an aspect-ratio crop so a taller or wider
+                      case-study image still renders uncropped.
+                    -->
                     <NuxtImg
                       :src="getImageUrl(caseStudy)"
                       :alt="caseStudy.title || 'Case Study'"
+                      width="1200"
+                      height="800"
                       class="w-full h-auto rounded-2xl shadow-lg hover:scale-105 transition-transform duration-300"
                       loading="lazy"
                       sizes="100vw lg:50vw"
@@ -273,7 +283,7 @@
 <script setup>
 // Page meta for SEO
 useHead({
-  title: 'Case Studies - ByteStackLab | Our Portfolio of Successful Projects',
+  title: 'Case Studies — Client Success Stories',
   meta: [
     {
       name: 'description',
@@ -281,7 +291,7 @@ useHead({
     },
     {
       property: 'og:title',
-      content: 'Case Studies - ByteStackLab | Our Portfolio of Successful Projects'
+      content: 'Case Studies — Client Success Stories'
     },
     {
       property: 'og:description',

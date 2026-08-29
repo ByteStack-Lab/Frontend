@@ -479,10 +479,10 @@ const {
 })
 
 // Correct HTTP status for crawlers/SEO, while keeping this page's own
-// "Case Study Not Found" UI (below) instead of redirecting to a generic error page
-if (import.meta.server && (!caseStudy.value || error.value)) {
-  setResponseStatus(404)
-}
+// "Case Study Not Found" UI (below) instead of redirecting to a generic error
+// page. 404 only for a genuinely missing case study — an API outage answers 503
+// so crawlers retry rather than drop the URL (see composables/useContentStatus.ts).
+useContentStatus(Boolean(caseStudy.value) && !error.value, error.value)
 
 // Related case studies (exclude current), fetched separately
 const { data: relatedCaseStudies } = await useLazyAsyncData(
@@ -505,8 +505,8 @@ const breadcrumbSchema = useBreadcrumbSchema()
 
 useHead(() => ({
   title: caseStudy.value
-    ? `${caseStudy.value.title} - Case Study | ByteStackLab`
-    : 'Case Study | ByteStackLab',
+    ? `${caseStudy.value.title} — Case Study`
+    : 'Case Study',
   meta: [
     { name: 'description', content: caseStudy.value?.description || '' },
     {
@@ -516,7 +516,10 @@ useHead(() => ({
         : 'Case Study | ByteStackLab',
     },
     { property: 'og:description', content: caseStudy.value?.description || '' },
-    { property: 'og:image', content: caseStudy.value?.image || '' },
+    // ogImage() keeps the site-wide fallback when a case study has no image —
+    // see utils/seo.js for why '' is the wrong default here.
+    { property: 'og:image', content: ogImage(caseStudy.value?.image) },
+    { name: 'twitter:image', content: ogImage(caseStudy.value?.image) },
     { property: 'og:type', content: 'article' },
   ],
   // There's no schema_markup column on case_studies (unlike blogs/services/

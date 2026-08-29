@@ -190,7 +190,8 @@
             <div
               class="w-16 h-16 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg flex items-center justify-center mb-6"
             >
-              <svg aria-hidden="true"
+              <svg
+                aria-hidden="true"
                 class="w-8 h-8 text-white"
                 fill="none"
                 stroke="currentColor"
@@ -221,7 +222,8 @@
             <div
               class="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center mb-6"
             >
-              <svg aria-hidden="true"
+              <svg
+                aria-hidden="true"
                 class="w-8 h-8 text-white"
                 fill="none"
                 stroke="currentColor"
@@ -282,7 +284,8 @@
             <div
               class="w-20 h-20 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:shadow-lg transition-shadow duration-300"
             >
-              <svg aria-hidden="true"
+              <svg
+                aria-hidden="true"
                 class="w-10 h-10 text-white"
                 fill="none"
                 stroke="currentColor"
@@ -312,7 +315,8 @@
             <div
               class="w-20 h-20 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:shadow-lg transition-shadow duration-300"
             >
-              <svg aria-hidden="true"
+              <svg
+                aria-hidden="true"
                 class="w-10 h-10 text-white"
                 fill="none"
                 stroke="currentColor"
@@ -341,7 +345,8 @@
             <div
               class="w-20 h-20 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:shadow-lg transition-shadow duration-300"
             >
-              <svg aria-hidden="true"
+              <svg
+                aria-hidden="true"
                 class="w-10 h-10 text-white"
                 fill="none"
                 stroke="currentColor"
@@ -370,7 +375,8 @@
             <div
               class="w-20 h-20 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:shadow-lg transition-shadow duration-300"
             >
-              <svg aria-hidden="true"
+              <svg
+                aria-hidden="true"
                 class="w-10 h-10 text-white"
                 fill="none"
                 stroke="currentColor"
@@ -424,7 +430,8 @@
             <div
               class="w-16 h-16 bg-gradient-to-br from-purple-600 to-blue-600 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg"
             >
-              <svg aria-hidden="true"
+              <svg
+                aria-hidden="true"
                 class="w-8 h-8 text-white"
                 fill="none"
                 stroke="currentColor"
@@ -476,7 +483,8 @@
             <div
               class="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg"
             >
-              <svg aria-hidden="true"
+              <svg
+                aria-hidden="true"
                 class="w-8 h-8 text-white"
                 fill="none"
                 stroke="currentColor"
@@ -522,7 +530,8 @@
             <div
               class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg"
             >
-              <svg aria-hidden="true"
+              <svg
+                aria-hidden="true"
                 class="w-8 h-8 text-white"
                 fill="none"
                 stroke="currentColor"
@@ -570,7 +579,8 @@
             <div
               class="w-16 h-16 bg-gradient-to-br from-purple-600 to-pink-600 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg"
             >
-              <svg aria-hidden="true"
+              <svg
+                aria-hidden="true"
                 class="w-8 h-8 text-white"
                 fill="none"
                 stroke="currentColor"
@@ -942,7 +952,8 @@
 
             <!-- Quote Mark -->
             <div class="flex justify-center mb-8">
-              <svg aria-hidden="true"
+              <svg
+                aria-hidden="true"
                 class="w-16 h-16 text-[#3533cd]"
                 fill="currentColor"
                 viewBox="0 0 24 24"
@@ -1150,7 +1161,8 @@
                 <div
                   class="w-8 h-8 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1"
                 >
-                  <svg aria-hidden="true"
+                  <svg
+                    aria-hidden="true"
                     class="w-4 h-4 text-white"
                     fill="none"
                     stroke="currentColor"
@@ -1181,7 +1193,8 @@
                 <div
                   class="w-8 h-8 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1"
                 >
-                  <svg aria-hidden="true"
+                  <svg
+                    aria-hidden="true"
                     class="w-4 h-4 text-white"
                     fill="none"
                     stroke="currentColor"
@@ -1212,7 +1225,8 @@
                 <div
                   class="w-8 h-8 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1"
                 >
-                  <svg aria-hidden="true"
+                  <svg
+                    aria-hidden="true"
                     class="w-4 h-4 text-white"
                     fill="none"
                     stroke="currentColor"
@@ -1248,7 +1262,8 @@
                 <div
                   class="w-16 h-16 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300"
                 >
-                  <svg aria-hidden="true"
+                  <svg
+                    aria-hidden="true"
                     class="w-8 h-8 text-white"
                     fill="none"
                     stroke="currentColor"
@@ -1280,7 +1295,8 @@
                 <div
                   class="w-16 h-16 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300"
                 >
-                  <svg aria-hidden="true"
+                  <svg
+                    aria-hidden="true"
                     class="w-8 h-8 text-white"
                     fill="none"
                     stroke="currentColor"
@@ -1310,7 +1326,8 @@
                 <div
                   class="w-16 h-16 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300"
                 >
-                  <svg aria-hidden="true"
+                  <svg
+                    aria-hidden="true"
                     class="w-8 h-8 text-white"
                     fill="none"
                     stroke="currentColor"
@@ -1342,7 +1359,8 @@
                 <div
                   class="w-16 h-16 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300"
                 >
-                  <svg aria-hidden="true"
+                  <svg
+                    aria-hidden="true"
                     class="w-8 h-8 text-white"
                     fill="none"
                     stroke="currentColor"
@@ -1392,7 +1410,8 @@
             class="bg-white text-[#3533cd] px-8 py-4 rounded-lg font-semibold text-lg shadow-lg hover:shadow-xl hover:bg-gray-50 transition-all duration-300 flex items-center justify-center"
           >
             Get Started Today
-            <svg aria-hidden="true"
+            <svg
+              aria-hidden="true"
               class="ml-2 w-5 h-5"
               fill="none"
               stroke="currentColor"
@@ -1422,7 +1441,7 @@
 <script setup>
 // Meta tags for SEO
 useHead({
-  title: "About ByteStackLab | Custom Software Development Company Since 2020",
+  title: "About ByteStackLab — Software Development Since 2020",
   meta: [
     {
       name: "description",
@@ -1437,7 +1456,7 @@ useHead({
     {
       property: "og:title",
       content:
-        "About ByteStackLab | Custom Software Development Company Since 2020",
+        "About ByteStackLab — Software Development Since 2020",
     },
     {
       property: "og:description",

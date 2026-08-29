@@ -24,7 +24,16 @@ useHead({
 })
 
 useHead({
-      titleTemplate: '%s - ByteStackLab',
+  // Appends the brand only when the page's own title doesn't already carry it.
+  // Several pages set titles like "About ByteStackLab | ..." — a plain
+  // '%s - ByteStackLab' template turned those into "... - ByteStackLab -
+  // ByteStackLab", pushing every title well past the ~60 characters Google
+  // renders in a result. The guard keeps brand-bearing titles untouched and
+  // brands the rest, so neither style can regress into a duplicate.
+  titleTemplate: (titleChunk) => {
+    if (!titleChunk) return 'ByteStackLab | AI-Powered Software Development Company'
+    return /bytestacklab/i.test(titleChunk) ? titleChunk : `${titleChunk} | ByteStackLab`
+  },
   meta: [
     { name: 'description', content: 'Professional software development services for modern businesses' },
     // Site-wide OG/Twitter fallbacks — any page-level useHead()/useSeoMeta()
@@ -32,12 +41,12 @@ useHead({
     // the article's own image) overrides these automatically.
     { property: 'og:site_name', content: 'ByteStackLab' },
     { property: 'og:type', content: 'website' },
-    { property: 'og:image', content: 'https://bytestacklab.com/images/hero-image.png' },
+    { property: 'og:image', content: SITE_OG_IMAGE },
     { property: 'og:image:width', content: '1000' },
     { property: 'og:image:height', content: '720' },
     { property: 'og:locale', content: 'en_US' },
     { name: 'twitter:card', content: 'summary_large_image' },
-    { name: 'twitter:image', content: 'https://bytestacklab.com/images/hero-image.png' }
+    { name: 'twitter:image', content: SITE_OG_IMAGE }
   ],
   script: [
     {

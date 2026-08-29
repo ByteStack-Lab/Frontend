@@ -101,7 +101,7 @@ useHead({
       property: 'og:description',
       content: 'AI automation, SaaS products, and enterprise web/mobile apps built by ByteStackLab.'
     },
-    { property: 'og:image', content: 'https://bytestacklab.com/images/hero-image.png' },
+    { property: 'og:image', content: SITE_OG_IMAGE },
     { property: 'og:type', content: 'website' },
     { name: 'twitter:card', content: 'summary_large_image' }
   ]

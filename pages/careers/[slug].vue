@@ -121,7 +121,8 @@
         <div
           class="w-24 h-24 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6"
         >
-          <svg aria-hidden="true"
+          <svg
+            aria-hidden="true"
             class="w-12 h-12 text-red-400"
             fill="none"
             stroke="currentColor"
@@ -154,7 +155,8 @@
           to="/careers"
           class="inline-flex items-center text-[#3533cd] hover:text-[#1e1b69] transition-colors mb-8"
         >
-          <svg aria-hidden="true"
+          <svg
+            aria-hidden="true"
             class="w-5 h-5 mr-2"
             fill="none"
             stroke="currentColor"
@@ -192,7 +194,8 @@
                   ⭐ Featured
                 </span>
                 <span class="text-sm text-gray-500 flex items-center">
-                  <svg aria-hidden="true"
+                  <svg
+                    aria-hidden="true"
                     class="w-4 h-4 mr-1"
                     fill="none"
                     stroke="currentColor"
@@ -215,7 +218,8 @@
                 </span>
                 <span class="mx-2 text-gray-300">•</span>
                 <span class="text-sm text-gray-500 flex items-center">
-                  <svg aria-hidden="true"
+                  <svg
+                    aria-hidden="true"
                     class="w-4 h-4 mr-1"
                     fill="none"
                     stroke="currentColor"
@@ -243,7 +247,8 @@
                 class="flex items-center space-x-6 text-sm text-gray-500 mb-6 flex-wrap gap-y-2"
               >
                 <div class="flex items-center">
-                  <svg aria-hidden="true"
+                  <svg
+                    aria-hidden="true"
                     class="w-5 h-5 mr-2"
                     fill="none"
                     stroke="currentColor"
@@ -259,7 +264,8 @@
                   <span class="font-semibold">{{ job.salary_range }}</span>
                 </div>
                 <div v-if="job.application_deadline" class="flex items-center">
-                  <svg aria-hidden="true"
+                  <svg
+                    aria-hidden="true"
                     class="w-5 h-5 mr-2"
                     fill="none"
                     stroke="currentColor"
@@ -285,7 +291,8 @@
                 @click="scrollToApplication"
               >
                 Apply Now
-                <svg aria-hidden="true"
+                <svg
+                  aria-hidden="true"
                   class="ml-2 w-5 h-5"
                   fill="none"
                   stroke="currentColor"
@@ -335,7 +342,8 @@
                   :key="responsibility"
                   class="flex items-start"
                 >
-                  <svg aria-hidden="true"
+                  <svg
+                    aria-hidden="true"
                     class="w-5 h-5 text-[#6675F7] mr-3 mt-0.5 flex-shrink-0"
                     fill="none"
                     stroke="currentColor"
@@ -367,7 +375,8 @@
                   :key="requirement"
                   class="flex items-start"
                 >
-                  <svg aria-hidden="true"
+                  <svg
+                    aria-hidden="true"
                     class="w-5 h-5 text-[#3533cd] mr-3 mt-0.5 flex-shrink-0"
                     fill="none"
                     stroke="currentColor"
@@ -399,7 +408,8 @@
                   :key="benefit"
                   class="flex items-start"
                 >
-                  <svg aria-hidden="true"
+                  <svg
+                    aria-hidden="true"
                     class="w-5 h-5 text-[#1e1b69] mr-3 mt-0.5 flex-shrink-0"
                     fill="none"
                     stroke="currentColor"
@@ -428,7 +438,8 @@
                 <div
                   class="w-16 h-16 bg-gradient-to-r from-[#3533cd] via-[#6675F7] to-[#1e1b69] rounded-full flex items-center justify-center mx-auto mb-4"
                 >
-                  <svg aria-hidden="true"
+                  <svg
+                    aria-hidden="true"
                     class="w-8 h-8 text-white"
                     fill="none"
                     stroke="currentColor"
@@ -453,7 +464,8 @@
                   class="w-full bg-gradient-to-r from-[#3533cd] via-[#6675F7] to-[#1e1b69] text-white px-6 py-4 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2"
                   @click="scrollToApplication"
                 >
-                  <svg aria-hidden="true"
+                  <svg
+                    aria-hidden="true"
                     class="w-5 h-5"
                     fill="none"
                     stroke="currentColor"
@@ -540,7 +552,8 @@
                   title="Share on X"
                   @click="shareJob('twitter')"
                 >
-                  <svg aria-hidden="true"
+                  <svg
+                    aria-hidden="true"
                     class="w-5 h-5 group-hover:scale-110 transition-transform"
                     fill="currentColor"
                     viewBox="0 0 24 24"
@@ -555,7 +568,8 @@
                   title="Share on LinkedIn"
                   @click="shareJob('linkedin')"
                 >
-                  <svg aria-hidden="true"
+                  <svg
+                    aria-hidden="true"
                     class="w-5 h-5 group-hover:scale-110 transition-transform"
                     fill="currentColor"
                     viewBox="0 0 24 24"
@@ -570,7 +584,8 @@
                   title="Share on Facebook"
                   @click="shareJob('facebook')"
                 >
-                  <svg aria-hidden="true"
+                  <svg
+                    aria-hidden="true"
                     class="w-5 h-5 group-hover:scale-110 transition-transform"
                     fill="currentColor"
                     viewBox="0 0 24 24"
@@ -585,7 +600,8 @@
                   title="Share on WhatsApp"
                   @click="shareJob('whatsapp')"
                 >
-                  <svg aria-hidden="true"
+                  <svg
+                    aria-hidden="true"
                     class="w-5 h-5 group-hover:scale-110 transition-transform"
                     fill="currentColor"
                     viewBox="0 0 24 24"
@@ -600,7 +616,8 @@
                   title="Copy Job Link"
                   @click="copyJobLink"
                 >
-                  <svg aria-hidden="true"
+                  <svg
+                    aria-hidden="true"
                     class="w-5 h-5 group-hover:scale-110 transition-transform"
                     fill="none"
                     stroke="currentColor"
@@ -878,40 +895,66 @@ const { data: pageData, pending: loading } = await useLazyAsyncData(
     const { getCareerJob } = useApi();
     try {
       const job = await getCareerJob(route.params.slug);
-      return { job, error: null };
+      return { job, error: null, errorStatus: null };
     } catch (err) {
       return {
         job: null,
         error:
           err.response?.data?.message || err.data?.message || "Job not found",
+        // Carried through the payload as a plain number — a raw Error object
+        // wouldn't survive serialisation. 0 means "failed with no status at
+        // all" (refused connection, timeout). See useContentStatus below.
+        errorStatus: upstreamStatus(err) ?? 0,
       };
     }
   },
-  { default: () => ({ job: null, error: null }) },
+  { default: () => ({ job: null, error: null, errorStatus: null }) },
 );
 
 const job = computed(() => pageData.value?.job || null);
 const error = computed(() => pageData.value?.error || null);
 
 // Correct HTTP status for crawlers/SEO, while keeping this page's own
-// "Job Not Found" UI (below) instead of redirecting to a generic error page
-if (import.meta.server && !job.value) {
-  setResponseStatus(404);
-}
+// "Job Not Found" UI (below) instead of redirecting to a generic error page.
+// 404 only for a genuinely missing job — an API outage answers 503 so crawlers
+// retry rather than drop the URL (see composables/useContentStatus.ts).
+useContentStatus(
+  Boolean(job.value),
+  pageData.value?.error ? (pageData.value.errorStatus ?? 0) : undefined,
+);
 
 // Dynamic SEO meta tags
 const breadcrumbSchema = useBreadcrumbSchema();
 
+// `description` is stored as HTML in Filament — a meta description has to be
+// plain text, so tags are stripped and whitespace collapsed before it's used
+// as the fallback.
+const plainText = (html) =>
+  String(html || "")
+    .replace(/<[^>]*>/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .slice(0, 300);
+
 useHead(() => {
   const head = {};
 
-  if (job.value?.meta_title) {
-    head.title = job.value.meta_title;
+  // Every job needs a title, not just the ones an admin filled meta_title in
+  // for — without this fallback those pages inherited the site-wide default
+  // title and every job listing looked identical in search results.
+  // The brand suffix is appended by app.vue's titleTemplate.
+  if (job.value) {
+    head.title =
+      job.value.meta_title || `${job.value.title} — Careers`;
+
+    const description =
+      job.value.meta_description || plainText(job.value.description);
+
     head.meta = [
-      {
-        name: "description",
-        content: job.value.meta_description || job.value.description,
-      },
+      { name: "description", content: description },
+      { property: "og:title", content: job.value.title },
+      { property: "og:description", content: description },
+      { property: "og:type", content: "article" },
     ];
   }
 

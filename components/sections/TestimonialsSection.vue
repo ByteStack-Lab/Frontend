@@ -90,7 +90,8 @@
 
           <!-- Quote Mark -->
           <div class="flex justify-center mb-12">
-            <svg aria-hidden="true"
+            <svg
+              aria-hidden="true"
               class="w-16 h-16 text-[#3533cd]"
               fill="currentColor"
               viewBox="0 0 24 24"

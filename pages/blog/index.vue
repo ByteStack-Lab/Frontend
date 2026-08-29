@@ -349,7 +349,8 @@
                   class="flex items-center text-[#3533cd] font-semibold text-sm group"
                 >
                   Read More
-                  <svg aria-hidden="true"
+                  <svg
+                    aria-hidden="true"
                     class="w-4 h-4 ml-1 transition-transform duration-300 group-hover:translate-x-1"
                     fill="none"
                     stroke="currentColor"
@@ -416,7 +417,7 @@
 <script setup>
 // Meta tags for SEO
 useSeoMeta({
-  title: "Blog - ByteStackLab | Latest Web Development Insights",
+  title: "Blog — Software Development Insights",
   description:
     "Stay updated with the latest trends, insights, and best practices in web development, mobile apps, and digital transformation. Learn from our experience and expertise.",
   ogTitle: "Blog - ByteStackLab",

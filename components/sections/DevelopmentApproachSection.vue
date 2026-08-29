@@ -33,7 +33,8 @@
             <div
               class="w-16 h-16 bg-gray-900 rounded-2xl flex items-center justify-center flex-shrink-0"
             >
-              <svg aria-hidden="true"
+              <svg
+                aria-hidden="true"
                 class="w-8 h-8 text-white"
                 fill="none"
                 stroke="currentColor"
@@ -70,7 +71,8 @@
             <div
               class="w-16 h-16 bg-[#3533cd] rounded-2xl flex items-center justify-center flex-shrink-0"
             >
-              <svg aria-hidden="true"
+              <svg
+                aria-hidden="true"
                 class="w-8 h-8 text-white"
                 fill="none"
                 stroke="currentColor"
@@ -109,7 +111,8 @@
             <div
               class="w-16 h-16 bg-gradient-to-r from-pink-500 to-red-400 rounded-2xl flex items-center justify-center flex-shrink-0"
             >
-              <svg aria-hidden="true"
+              <svg
+                aria-hidden="true"
                 class="w-8 h-8 text-white"
                 fill="none"
                 stroke="currentColor"
@@ -148,7 +151,8 @@
             <div
               class="w-16 h-16 bg-green-500 rounded-2xl flex items-center justify-center flex-shrink-0"
             >
-              <svg aria-hidden="true"
+              <svg
+                aria-hidden="true"
                 class="w-8 h-8 text-white"
                 fill="none"
                 stroke="currentColor"
@@ -187,7 +191,8 @@
             <div
               class="w-16 h-16 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-2xl flex items-center justify-center flex-shrink-0"
             >
-              <svg aria-hidden="true"
+              <svg
+                aria-hidden="true"
                 class="w-8 h-8 text-white"
                 fill="none"
                 stroke="currentColor"
@@ -225,7 +230,8 @@
             <div
               class="w-16 h-16 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-2xl flex items-center justify-center flex-shrink-0"
             >
-              <svg aria-hidden="true"
+              <svg
+                aria-hidden="true"
                 class="w-8 h-8 text-white"
                 fill="none"
                 stroke="currentColor"

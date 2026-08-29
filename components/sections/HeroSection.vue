@@ -155,7 +155,8 @@
               class="interactive-button bg-gradient-to-r from-[#3533cd] to-[#1e1b69] text-white px-4 py-2.5 sm:px-8 sm:py-3 rounded-lg font-semibold text-sm sm:text-base shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center"
             >
               Book a Free Consultation
-              <svg aria-hidden="true"
+              <svg
+                aria-hidden="true"
                 class="ml-1.5 sm:ml-2 w-4 h-4 sm:w-5 sm:h-5"
                 fill="none"
                 stroke="currentColor"
@@ -175,7 +176,8 @@
               class="flex items-center justify-center whitespace-nowrap text-gray-700 font-semibold text-base px-2 hover:text-[#3533cd] transition-colors duration-300"
             >
               Explore Services
-              <svg aria-hidden="true"
+              <svg
+                aria-hidden="true"
                 class="ml-1.5 w-4 h-4"
                 fill="none"
                 stroke="currentColor"
@@ -202,7 +204,8 @@
               <span
                 class="w-11 h-11 bg-[#3533cd] rounded-full flex items-center justify-center"
               >
-                <svg aria-hidden="true"
+                <svg
+                  aria-hidden="true"
                   class="w-5 h-5 text-white"
                   fill="currentColor"
                   viewBox="0 0 24 24"

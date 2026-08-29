@@ -244,7 +244,8 @@
             >
               <span v-if="!isSubmitting">Send Message</span>
               <span v-else class="flex items-center justify-center">
-                <svg aria-hidden="true"
+                <svg
+                  aria-hidden="true"
                   class="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -305,7 +306,8 @@
                   <h4 class="font-medium text-gray-900 pr-4 text-sm">
                     {{ faq.question }}
                   </h4>
-                  <svg aria-hidden="true"
+                  <svg
+                    aria-hidden="true"
                     class="w-4 h-4 text-gray-500 transform transition-transform duration-200 flex-shrink-0"
                     :class="{ 'rotate-180': faq.isOpen }"
                     fill="none"
@@ -359,7 +361,8 @@
                 <div
                   class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-1"
                 >
-                  <svg aria-hidden="true"
+                  <svg
+                    aria-hidden="true"
                     class="w-5 h-5 text-blue-600"
                     fill="none"
                     stroke="currentColor"
@@ -394,7 +397,8 @@
                 </h4>
                 <ul class="space-y-2 text-sm text-gray-600">
                   <li class="flex items-center space-x-2">
-                    <svg aria-hidden="true"
+                    <svg
+                      aria-hidden="true"
                       class="w-4 h-4 text-green-500"
                       fill="currentColor"
                       viewBox="0 0 20 20"
@@ -408,7 +412,8 @@
                     <span>Expert development team</span>
                   </li>
                   <li class="flex items-center space-x-2">
-                    <svg aria-hidden="true"
+                    <svg
+                      aria-hidden="true"
                       class="w-4 h-4 text-green-500"
                       fill="currentColor"
                       viewBox="0 0 20 20"
@@ -422,7 +427,8 @@
                     <span>Dedicated support & maintenance</span>
                   </li>
                   <li class="flex items-center space-x-2">
-                    <svg aria-hidden="true"
+                    <svg
+                      aria-hidden="true"
                       class="w-4 h-4 text-green-500"
                       fill="currentColor"
                       viewBox="0 0 20 20"
@@ -436,7 +442,8 @@
                     <span>Agile development process</span>
                   </li>
                   <li class="flex items-center space-x-2">
-                    <svg aria-hidden="true"
+                    <svg
+                      aria-hidden="true"
                       class="w-4 h-4 text-green-500"
                       fill="currentColor"
                       viewBox="0 0 20 20"
@@ -450,7 +457,8 @@
                     <span>Competitive pricing</span>
                   </li>
                   <li class="flex items-center space-x-2">
-                    <svg aria-hidden="true"
+                    <svg
+                      aria-hidden="true"
                       class="w-4 h-4 text-green-500"
                       fill="currentColor"
                       viewBox="0 0 20 20"
@@ -474,7 +482,8 @@
                   rel="noopener noreferrer"
                   class="inline-flex items-center justify-center w-full bg-gradient-to-r from-[#3533cd] to-[#1e1b69] text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-200"
                 >
-                  <svg aria-hidden="true"
+                  <svg
+                    aria-hidden="true"
                     class="w-5 h-5 mr-2"
                     fill="none"
                     stroke="currentColor"
@@ -528,7 +537,8 @@
                 rel="noopener noreferrer"
                 class="inline-flex items-center justify-center bg-[#4285F4] text-white px-6 py-2 rounded-lg font-medium hover:bg-[#3367D6] transition-colors duration-200 shadow-sm hover:shadow-md"
               >
-                <svg aria-hidden="true"
+                <svg
+                  aria-hidden="true"
                   class="w-4 h-4 mr-2"
                   fill="none"
                   stroke="currentColor"
@@ -564,7 +574,8 @@
             href="tel:+8801812209019"
             class="bg-white text-[#3533cd] px-8 py-4 rounded-xl font-semibold hover:shadow-xl hover:bg-gray-50 transition-all duration-200 inline-flex items-center justify-center space-x-2"
           >
-            <svg aria-hidden="true"
+            <svg
+              aria-hidden="true"
               class="w-5 h-5"
               fill="none"
               stroke="currentColor"
@@ -601,7 +612,7 @@
 <script setup>
 // Meta tags for SEO
 useHead({
-  title: "Contact Us - ByteStackLab | Software Development Company",
+  title: "Contact Our Software Development Team",
   meta: [
     {
       name: "description",

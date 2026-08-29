@@ -6,7 +6,8 @@
         to="/products"
         class="inline-flex items-center gap-2 text-[#3533cd] font-semibold hover:gap-3 transition-all duration-300 group"
       >
-        <svg aria-hidden="true"
+        <svg
+          aria-hidden="true"
           class="w-5 h-5 group-hover:-translate-x-1 transition-transform duration-300"
           fill="none"
           stroke="currentColor"
@@ -123,7 +124,8 @@
                   <div
                     class="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0"
                   >
-                    <svg aria-hidden="true"
+                    <svg
+                      aria-hidden="true"
                       class="w-3 h-3 text-green-600"
                       fill="none"
                       stroke="currentColor"
@@ -168,7 +170,8 @@
                     rel="noopener noreferrer"
                     class="flex-1 bg-gradient-to-r from-[#3533cd] to-[#6675F7] text-white py-4 px-6 rounded-xl font-bold text-base hover:shadow-lg hover:from-[#2a28a8] hover:to-[#5563e5] transition-all duration-300 flex items-center justify-center gap-2"
                   >
-                    <svg aria-hidden="true"
+                    <svg
+                      aria-hidden="true"
                       class="w-5 h-5"
                       fill="none"
                       stroke="currentColor"
@@ -186,7 +189,8 @@
                   <button
                     class="flex-1 border-2 border-[#3533cd] text-[#3533cd] py-4 px-6 rounded-xl font-bold text-base hover:bg-[#3533cd] hover:text-white transition-all duration-300 flex items-center justify-center gap-2"
                   >
-                    <svg aria-hidden="true"
+                    <svg
+                      aria-hidden="true"
                       class="w-5 h-5"
                       fill="none"
                       stroke="currentColor"
@@ -230,7 +234,8 @@
                   <div
                     class="w-28 h-28 bg-white/20 backdrop-blur-sm rounded-3xl flex items-center justify-center mb-8 border border-white/30 shadow-xl"
                   >
-                    <svg aria-hidden="true"
+                    <svg
+                      aria-hidden="true"
                       class="w-14 h-14 text-white"
                       fill="none"
                       stroke="currentColor"
@@ -276,7 +281,8 @@
               <div
                 class="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-br from-yellow-400 to-orange-400 rounded-2xl shadow-lg flex items-center justify-center animate-bounce-slow"
               >
-                <svg aria-hidden="true"
+                <svg
+                  aria-hidden="true"
                   class="w-8 h-8 text-white"
                   fill="none"
                   stroke="currentColor"
@@ -293,7 +299,8 @@
               <div
                 class="absolute -bottom-4 -left-4 w-14 h-14 bg-gradient-to-br from-[#3533cd] to-[#6675F7] rounded-2xl shadow-lg flex items-center justify-center animate-pulse-slow"
               >
-                <svg aria-hidden="true"
+                <svg
+                  aria-hidden="true"
                   class="w-7 h-7 text-white"
                   fill="currentColor"
                   viewBox="0 0 20 20"
@@ -383,7 +390,8 @@
                     class="w-12 h-12 rounded-xl flex items-center justify-center mb-4"
                     :class="highlight.icon_bg"
                   >
-                    <svg aria-hidden="true"
+                    <svg
+                      aria-hidden="true"
                       class="w-6 h-6"
                       :class="highlight.icon_color"
                       fill="none"
@@ -466,7 +474,8 @@
                       :key="item"
                       class="flex items-start gap-2 text-sm text-gray-700"
                     >
-                      <svg aria-hidden="true"
+                      <svg
+                        aria-hidden="true"
                         class="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0"
                         fill="none"
                         stroke="currentColor"
@@ -618,7 +627,8 @@
                     <div
                       class="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center mb-4 border border-white/30"
                     >
-                      <svg aria-hidden="true"
+                      <svg
+                        aria-hidden="true"
                         class="w-10 h-10 text-white"
                         fill="none"
                         stroke="currentColor"
@@ -670,7 +680,8 @@
                     <div
                       class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-14 h-14 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/40"
                     >
-                      <svg aria-hidden="true"
+                      <svg
+                        aria-hidden="true"
                         class="w-7 h-7 text-white"
                         fill="none"
                         stroke="currentColor"
@@ -698,7 +709,8 @@
                 <div
                   class="absolute top-4 right-4 bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-medium border border-white/30 flex items-center gap-1.5"
                 >
-                  <svg aria-hidden="true"
+                  <svg
+                    aria-hidden="true"
                     class="w-3.5 h-3.5"
                     fill="none"
                     stroke="currentColor"
@@ -720,7 +732,8 @@
                   class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 hover:bg-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 z-10"
                   @click.stop="galleryPrev"
                 >
-                  <svg aria-hidden="true"
+                  <svg
+                    aria-hidden="true"
                     class="w-5 h-5 text-gray-800"
                     fill="none"
                     stroke="currentColor"
@@ -741,7 +754,8 @@
                   class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 hover:bg-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 z-10"
                   @click.stop="galleryNext"
                 >
-                  <svg aria-hidden="true"
+                  <svg
+                    aria-hidden="true"
                     class="w-5 h-5 text-gray-800"
                     fill="none"
                     stroke="currentColor"
@@ -844,7 +858,8 @@
                   class="w-14 h-14 rounded-lg overflow-hidden flex-shrink-0 flex items-center justify-center"
                   :class="product.bg_gradient"
                 >
-                  <svg aria-hidden="true"
+                  <svg
+                    aria-hidden="true"
                     class="w-7 h-7 text-white"
                     fill="none"
                     stroke="currentColor"
@@ -886,7 +901,8 @@
                 class="w-full mt-2 py-3 rounded-xl border-2 border-dashed border-[#3533cd]/40 text-[#3533cd] font-semibold text-sm hover:bg-indigo-50 hover:border-[#3533cd] transition-all duration-300 flex items-center justify-center gap-2"
                 @click="openLightbox(0)"
               >
-                <svg aria-hidden="true"
+                <svg
+                  aria-hidden="true"
                   class="w-4 h-4"
                   fill="none"
                   stroke="currentColor"
@@ -948,7 +964,8 @@
             class="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 hover:bg-white/25 rounded-full flex items-center justify-center text-white transition-all duration-200 hover:scale-110"
             @click.stop="lightboxPrev"
           >
-            <svg aria-hidden="true"
+            <svg
+              aria-hidden="true"
               class="w-6 h-6"
               fill="none"
               stroke="currentColor"
@@ -969,7 +986,8 @@
             class="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 hover:bg-white/25 rounded-full flex items-center justify-center text-white transition-all duration-200 hover:scale-110"
             @click.stop="lightboxNext"
           >
-            <svg aria-hidden="true"
+            <svg
+              aria-hidden="true"
               class="w-6 h-6"
               fill="none"
               stroke="currentColor"
@@ -1010,7 +1028,8 @@
                   <div
                     class="w-24 h-24 bg-white/20 backdrop-blur-sm rounded-3xl flex items-center justify-center mx-auto mb-6 border border-white/30"
                   >
-                    <svg aria-hidden="true"
+                    <svg
+                      aria-hidden="true"
                       class="w-12 h-12 text-white"
                       fill="none"
                       stroke="currentColor"
@@ -1101,7 +1120,8 @@
                   <div
                     class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center"
                   >
-                    <svg aria-hidden="true"
+                    <svg
+                      aria-hidden="true"
                       class="w-6 h-6 text-white"
                       fill="none"
                       stroke="currentColor"
@@ -1236,19 +1256,23 @@ const { data: pageData, pending: loading } = await useLazyAsyncData(
         console.error("Error fetching related products:", relatedErr);
       }
 
-      return { product: normalized, relatedProducts, error: null };
+      return { product: normalized, relatedProducts, error: null, errorStatus: null };
     } catch (err) {
       console.error("Error fetching product:", err);
       return {
         product: null,
         relatedProducts: [],
         error: "Failed to load product. Please try again later.",
+        // Carried through the payload as a plain number — a raw Error object
+        // wouldn't survive serialisation. 0 means "failed with no status at
+        // all" (refused connection, timeout). See useContentStatus below.
+        errorStatus: upstreamStatus(err) ?? 0,
       };
     }
   },
   {
     watch: [slug],
-    default: () => ({ product: null, relatedProducts: [], error: null }),
+    default: () => ({ product: null, relatedProducts: [], error: null, errorStatus: null }),
   },
 );
 
@@ -1257,10 +1281,13 @@ const relatedProducts = computed(() => pageData.value?.relatedProducts || []);
 const error = computed(() => pageData.value?.error || null);
 
 // Correct HTTP status for crawlers/SEO, while keeping this page's own
-// "Product Not Found" UI (below) instead of redirecting to a generic error page
-if (import.meta.server && !product.value) {
-  setResponseStatus(404);
-}
+// "Product Not Found" UI (below) instead of redirecting to a generic error
+// page. 404 only for a genuinely missing product — an API outage answers 503
+// so crawlers retry rather than drop the URL (see composables/useContentStatus.ts).
+useContentStatus(
+  Boolean(product.value),
+  pageData.value?.error ? (pageData.value.errorStatus ?? 0) : undefined,
+);
 
 // Reset UI state when navigating between product slugs client-side
 watch(slug, () => {
@@ -1373,14 +1400,34 @@ onMounted(() => {
 const breadcrumbSchema = useBreadcrumbSchema();
 
 useHead(() => ({
+  // Brand suffix comes from app.vue's titleTemplate.
   title: product.value
-    ? `${product.value.name} - ByteStackLab Products`
-    : "Product Not Found - ByteStackLab",
+    ? product.value.seo?.meta_title || `${product.value.name} — Product`
+    : "Product Not Found",
   meta: [
     {
       name: "description",
-      content: product.value?.description || "Product not found.",
+      content:
+        product.value?.seo?.meta_description ||
+        product.value?.short_description ||
+        product.value?.tagline ||
+        product.value?.description ||
+        "Product not found.",
     },
+    { property: "og:title", content: product.value?.name || "Product" },
+    ...(product.value?.tagline || product.value?.short_description
+      ? [
+          {
+            property: "og:description",
+            content:
+              product.value.tagline || product.value.short_description,
+          },
+        ]
+      : []),
+    // ogImage() keeps the site-wide fallback when a product has no image —
+    // see utils/seo.js for why "" is the wrong default here.
+    { property: "og:image", content: ogImage(product.value?.featured_image) },
+    { name: "twitter:image", content: ogImage(product.value?.featured_image) },
   ],
   script: [
     ...(product.value?.seo?.schema_markup

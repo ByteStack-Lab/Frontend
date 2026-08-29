@@ -17,7 +17,8 @@
               v-if="notification.type === 'success'" 
               class="w-10 h-10 rounded-full bg-gradient-to-r from-green-400 to-green-500 flex items-center justify-center shadow-lg animate-pulse-success"
             >
-              <svg aria-hidden="true" 
+              <svg
+                aria-hidden="true" 
                 class="w-6 h-6 text-white" 
                 fill="none" 
                 stroke="currentColor" 
@@ -37,7 +38,8 @@
               v-else-if="notification.type === 'error'" 
               class="w-10 h-10 rounded-full bg-gradient-to-r from-red-400 to-red-500 flex items-center justify-center shadow-lg animate-pulse-error"
             >
-              <svg aria-hidden="true" 
+              <svg
+                aria-hidden="true" 
                 class="w-6 h-6 text-white" 
                 fill="none" 
                 stroke="currentColor" 
@@ -57,7 +59,8 @@
               v-else-if="notification.type === 'warning'" 
               class="w-10 h-10 rounded-full bg-gradient-to-r from-yellow-400 to-yellow-500 flex items-center justify-center shadow-lg animate-pulse-warning"
             >
-              <svg aria-hidden="true" 
+              <svg
+                aria-hidden="true" 
                 class="w-6 h-6 text-white" 
                 fill="none" 
                 stroke="currentColor" 
@@ -77,7 +80,8 @@
               v-else-if="notification.type === 'info'" 
               class="w-10 h-10 rounded-full bg-gradient-to-r from-blue-400 to-blue-500 flex items-center justify-center shadow-lg animate-pulse-info"
             >
-              <svg aria-hidden="true" 
+              <svg
+                aria-hidden="true" 
                 class="w-6 h-6 text-white" 
                 fill="none" 
                 stroke="currentColor" 
@@ -97,7 +101,8 @@
               v-else 
               class="w-10 h-10 rounded-full bg-gradient-to-r from-gray-400 to-gray-500 flex items-center justify-center shadow-lg animate-pulse-default"
             >
-              <svg aria-hidden="true" 
+              <svg
+                aria-hidden="true" 
                 class="w-6 h-6 text-white" 
                 fill="none" 
                 stroke="currentColor" 

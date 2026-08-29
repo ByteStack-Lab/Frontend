@@ -180,7 +180,8 @@
               </div>
               <!-- Bottom Wave -->
               <div class="absolute bottom-0 left-0 right-0">
-                <svg aria-hidden="true"
+                <svg
+                  aria-hidden="true"
                   viewBox="0 0 400 40"
                   preserveAspectRatio="none"
                   class="w-full h-8 fill-white"
@@ -275,7 +276,7 @@ import {
 
 // Page meta for SEO
 useHead({
-  title: "Our Services - AI Automation, SaaS & Software Development | ByteStackLab",
+  title: "Software Development & AI Automation Services",
   meta: [
     {
       name: "description",
@@ -290,7 +291,7 @@ useHead({
     {
       property: "og:title",
       content:
-        "Our Services - AI Automation, SaaS & Software Development | ByteStackLab",
+        "Software Development & AI Automation Services",
     },
     {
       property: "og:description",
@@ -302,7 +303,7 @@ useHead({
     {
       name: "twitter:title",
       content:
-        "Our Services - AI Automation, SaaS & Software Development | ByteStackLab",
+        "Software Development & AI Automation Services",
     },
     {
       name: "twitter:description",

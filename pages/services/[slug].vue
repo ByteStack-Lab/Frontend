@@ -84,7 +84,8 @@
 
               <div class="flex flex-wrap gap-4 mb-8">
                 <div class="flex items-center text-[#3533cd]">
-                  <svg aria-hidden="true"
+                  <svg
+                    aria-hidden="true"
                     class="w-5 h-5 mr-2"
                     fill="none"
                     stroke="currentColor"
@@ -104,7 +105,8 @@
                   v-if="service.delivery_time"
                   class="flex items-center text-gray-600"
                 >
-                  <svg aria-hidden="true"
+                  <svg
+                    aria-hidden="true"
                     class="w-5 h-5 mr-2"
                     fill="none"
                     stroke="currentColor"
@@ -236,7 +238,8 @@
                     :key="feature"
                     class="flex items-center space-x-3"
                   >
-                    <svg aria-hidden="true"
+                    <svg
+                      aria-hidden="true"
                       class="w-5 h-5 text-[#3533cd] flex-shrink-0"
                       fill="none"
                       stroke="currentColor"
@@ -335,7 +338,8 @@
                         <div
                           class="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center"
                         >
-                          <svg aria-hidden="true"
+                          <svg
+                            aria-hidden="true"
                             class="w-4 h-4 text-white"
                             fill="none"
                             stroke="currentColor"
@@ -373,7 +377,8 @@
 
               <!-- Fallback when no gallery images -->
               <div v-else class="bg-gray-50 rounded-xl p-8 text-center">
-                <svg aria-hidden="true"
+                <svg
+                  aria-hidden="true"
                   class="w-16 h-16 text-gray-400 mx-auto mb-4"
                   fill="none"
                   stroke="currentColor"
@@ -433,7 +438,8 @@
             class="absolute left-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 transition-colors"
             @click.stop="prevImage"
           >
-            <svg aria-hidden="true"
+            <svg
+              aria-hidden="true"
               class="w-8 h-8"
               fill="none"
               stroke="currentColor"
@@ -453,7 +459,8 @@
             class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 transition-colors"
             @click.stop="nextImage"
           >
-            <svg aria-hidden="true"
+            <svg
+              aria-hidden="true"
               class="w-8 h-8"
               fill="none"
               stroke="currentColor"
@@ -533,7 +540,8 @@
               <div
                 class="w-14 h-14 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full flex items-center justify-center mb-6"
               >
-                <svg aria-hidden="true"
+                <svg
+                  aria-hidden="true"
                   class="w-7 h-7 text-white"
                   fill="none"
                   stroke="currentColor"
@@ -561,7 +569,8 @@
               <div
                 class="w-14 h-14 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full flex items-center justify-center mb-6"
               >
-                <svg aria-hidden="true"
+                <svg
+                  aria-hidden="true"
                   class="w-7 h-7 text-white"
                   fill="none"
                   stroke="currentColor"
@@ -589,7 +598,8 @@
               <div
                 class="w-14 h-14 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full flex items-center justify-center mb-6"
               >
-                <svg aria-hidden="true"
+                <svg
+                  aria-hidden="true"
                   class="w-7 h-7 text-white"
                   fill="none"
                   stroke="currentColor"
@@ -688,7 +698,8 @@
                 <span class="font-semibold text-gray-900">{{
                   faq.question
                 }}</span>
-                <svg aria-hidden="true"
+                <svg
+                  aria-hidden="true"
                   :class="[
                     'w-5 h-5 text-gray-500 transition-transform',
                     openFaqs.includes(faq.id) ? 'rotate-180' : '',
@@ -757,10 +768,10 @@ const {
 });
 
 // Correct HTTP status for crawlers/SEO, while keeping this page's own
-// "Service Not Found" UI (below) instead of redirecting to a generic error page
-if (import.meta.server && (!service.value || error.value)) {
-  setResponseStatus(404);
-}
+// "Service Not Found" UI (below) instead of redirecting to a generic error
+// page. 404 only for a genuinely missing service — an API outage answers 503
+// so crawlers retry rather than drop the URL (see composables/useContentStatus.ts).
+useContentStatus(Boolean(service.value) && !error.value, error.value);
 
 // Steps shown in the "How We Quote Your Project" section
 const pricingSteps = [
@@ -868,14 +879,19 @@ onMounted(() => {
 const breadcrumbSchema = useBreadcrumbSchema();
 
 useHead(() => ({
+  // Brand suffix comes from app.vue's titleTemplate. Filament's own
+  // seo.meta_title wins when set — it already carries the brand, and the
+  // template's guard leaves brand-bearing titles alone rather than doubling it.
   title: service.value
-    ? `${service.value.title} - ByteStackLab`
-    : "Service Details - ByteStackLab",
+    ? service.value.seo?.meta_title || service.value.title
+    : "Service Details",
   meta: [
     {
       name: "description",
       content:
-        service.value?.short_description || "Professional digital services",
+        service.value?.seo?.meta_description ||
+        service.value?.short_description ||
+        "Professional digital services",
     },
     {
       name: "keywords",
@@ -883,14 +899,22 @@ useHead(() => ({
     },
     {
       property: "og:title",
-      content: service.value
-        ? `${service.value.title} - ByteStackLab`
-        : "Service Details - ByteStackLab",
+      content: service.value?.title || "Service Details",
     },
     {
       property: "og:description",
       content:
         service.value?.short_description || "Professional digital services",
+    },
+    // ogImage() keeps the site-wide fallback when a service has no image —
+    // see utils/seo.js for why "" is the wrong default here.
+    {
+      property: "og:image",
+      content: ogImage(service.value?.featured_image),
+    },
+    {
+      name: "twitter:image",
+      content: ogImage(service.value?.featured_image),
     },
   ],
   script: [

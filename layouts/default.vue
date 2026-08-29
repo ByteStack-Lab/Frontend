@@ -3,11 +3,23 @@
     <!-- Page Preloader -->
     <PagePreloader :show="isPageLoading" />
     
+    <!--
+      Keyboard/screen-reader users landed on every page having to tab through
+      the whole navigation (and the mobile tab bar) before reaching content.
+      Visually hidden until focused, then it appears above the fixed navbar.
+    -->
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100000] focus:rounded-lg focus:bg-[#3533cd] focus:px-4 focus:py-2 focus:text-white focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-white"
+    >
+      Skip to main content
+    </a>
+
     <!-- Navigation -->
     <NavBar />
 
     <!-- Main Content -->
-    <main class="pt-20">
+    <main id="main-content" tabindex="-1" class="pt-20 focus:outline-none">
       <slot />
     </main>
 

@@ -108,6 +108,39 @@ export default defineNuxtConfig({
     }
   },
   routeRules: {
+    // Security response headers — the live site previously sent nothing but
+    // Vercel's own HSTS, so the document was framable, MIME-sniffable, and
+    // leaked full referrer URLs cross-origin.
+    //
+    // The CSP here deliberately stops short of `script-src`/`style-src`.
+    // Nuxt inlines the hydration payload as an inline <script> and inlines
+    // critical CSS as inline <style>; locking those down without a
+    // per-request nonce would need `'unsafe-inline'` anyway, which buys
+    // nothing. The four directives that ARE set are the ones that work
+    // without a nonce and cannot break rendering:
+    //   frame-ancestors — clickjacking (supersedes X-Frame-Options)
+    //   base-uri        — <base> injection redirecting every relative URL
+    //   object-src      — legacy plugin embeds
+    //   form-action     — stops an injected <form> POSTing elsewhere; every
+    //                     real form on the site submits via fetch() to the
+    //                     API, which form-action does not govern.
+    // Adding script-src is a follow-up that requires wiring a CSP nonce
+    // through Nitro first.
+    '/**': {
+      headers: {
+        'X-Content-Type-Options': 'nosniff',
+        'X-Frame-Options': 'SAMEORIGIN',
+        'Referrer-Policy': 'strict-origin-when-cross-origin',
+        'Permissions-Policy': 'camera=(), microphone=(), geolocation=(), interest-cohort=()',
+        'Content-Security-Policy': [
+          "frame-ancestors 'self'",
+          "base-uri 'self'",
+          "object-src 'none'",
+          "form-action 'self'"
+        ].join('; ')
+      }
+    },
+
     // Old service slugs, renamed/merged 2026-08-09 — see
     // ByteStackLab-Backend/database/seeders/ServiceSeeder.php and
     // SERVICES-CONTENT-STRATEGY.md §3.5 for the rationale.

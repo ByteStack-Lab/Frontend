@@ -53,7 +53,8 @@
             to="/blog"
             class="mb-6 inline-flex items-center gap-2 text-sm font-medium text-[#3533cd] hover:text-[#1e1b69] transition-colors"
           >
-            <svg aria-hidden="true"
+            <svg
+              aria-hidden="true"
               class="h-4 w-4"
               fill="none"
               stroke="currentColor"
@@ -78,7 +79,8 @@
               class="hover:text-[#3533cd] transition-colors duration-200"
               >Home</NuxtLink
             >
-            <svg aria-hidden="true"
+            <svg
+              aria-hidden="true"
               class="w-4 h-4"
               fill="none"
               stroke="currentColor"
@@ -96,7 +98,8 @@
               class="hover:text-[#3533cd] transition-colors duration-200"
               >Blog</NuxtLink
             >
-            <svg aria-hidden="true"
+            <svg
+              aria-hidden="true"
               class="w-4 h-4"
               fill="none"
               stroke="currentColor"
@@ -211,7 +214,8 @@
                 v-else-if="blog.category"
                 class="flex items-center gap-1.5 rounded-full border border-[#d9d9ff] bg-[#eeeeff] px-3 py-1 text-sm font-semibold text-[#3533cd]"
               >
-                <svg aria-hidden="true"
+                <svg
+                  aria-hidden="true"
                   class="w-3.5 h-3.5"
                   fill="none"
                   stroke="currentColor"
@@ -230,7 +234,8 @@
             <div
               class="flex items-center rounded-full bg-white/90 px-3 py-1.5 text-sm text-gray-600 shadow-sm ring-1 ring-gray-100"
             >
-              <svg aria-hidden="true"
+              <svg
+                aria-hidden="true"
                 class="w-4 h-4 mr-2"
                 fill="none"
                 stroke="currentColor"
@@ -248,7 +253,8 @@
             <div
               class="flex items-center rounded-full bg-white/90 px-3 py-1.5 text-sm text-gray-600 shadow-sm ring-1 ring-gray-100"
             >
-              <svg aria-hidden="true"
+              <svg
+                aria-hidden="true"
                 class="w-4 h-4 mr-2"
                 fill="none"
                 stroke="currentColor"
@@ -266,7 +272,8 @@
             <div
               class="flex items-center rounded-full bg-white/90 px-3 py-1.5 text-sm text-gray-600 shadow-sm ring-1 ring-gray-100"
             >
-              <svg aria-hidden="true"
+              <svg
+                aria-hidden="true"
                 class="w-4 h-4 mr-2"
                 fill="none"
                 stroke="currentColor"
@@ -417,7 +424,8 @@
               </h4>
               <div class="flex flex-wrap items-center gap-3">
                 <button class="share-action-btn" @click="shareToX">
-                  <svg aria-hidden="true"
+                  <svg
+                    aria-hidden="true"
                     class="mr-2 h-4 w-4"
                     fill="currentColor"
                     viewBox="0 0 24 24"
@@ -430,7 +438,8 @@
                 </button>
 
                 <button class="share-action-btn" @click="shareToFacebook">
-                  <svg aria-hidden="true"
+                  <svg
+                    aria-hidden="true"
                     class="mr-2 h-4 w-4"
                     fill="currentColor"
                     viewBox="0 0 24 24"
@@ -443,7 +452,8 @@
                 </button>
 
                 <button class="share-action-btn" @click="shareToLinkedIn">
-                  <svg aria-hidden="true"
+                  <svg
+                    aria-hidden="true"
                     class="mr-2 h-4 w-4"
                     fill="currentColor"
                     viewBox="0 0 24 24"
@@ -456,7 +466,8 @@
                 </button>
 
                 <button class="share-action-btn" @click="copyArticleLink">
-                  <svg aria-hidden="true"
+                  <svg
+                    aria-hidden="true"
                     class="mr-2 h-4 w-4"
                     fill="none"
                     stroke="currentColor"
@@ -557,7 +568,8 @@
                   class="inline-flex items-center text-[#3533cd] hover:text-[#1e1b69] font-medium text-sm group"
                 >
                   Read More
-                  <svg aria-hidden="true"
+                  <svg
+                    aria-hidden="true"
                     class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"
                     fill="none"
                     stroke="currentColor"
@@ -591,7 +603,8 @@
           aria-label="Close lightbox"
           @click="closeLightbox"
         >
-          <svg aria-hidden="true"
+          <svg
+            aria-hidden="true"
             class="w-8 h-8"
             fill="none"
             stroke="currentColor"
@@ -613,7 +626,8 @@
           aria-label="Previous image"
           @click.stop="previousImage"
         >
-          <svg aria-hidden="true"
+          <svg
+            aria-hidden="true"
             class="w-8 h-8"
             fill="none"
             stroke="currentColor"
@@ -635,7 +649,8 @@
           aria-label="Next image"
           @click.stop="nextImage"
         >
-          <svg aria-hidden="true"
+          <svg
+            aria-hidden="true"
             class="w-8 h-8"
             fill="none"
             stroke="currentColor"
@@ -691,10 +706,10 @@ const {
 });
 
 // Correct HTTP status for crawlers/SEO, while keeping this page's own
-// "Blog Post Not Found" UI (below) instead of redirecting to a generic error page
-if (import.meta.server && (!blog.value || error.value)) {
-  setResponseStatus(404);
-}
+// "Blog Post Not Found" UI (below) instead of redirecting to a generic error
+// page. 404 only for a genuinely missing post — an API outage answers 503 so
+// crawlers retry rather than drop the URL (see composables/useContentStatus.ts).
+useContentStatus(Boolean(blog.value) && !error.value, error.value);
 
 // Related posts — fetched separately so a failure here doesn't break the page
 const { data: relatedBlogs } = await useLazyAsyncData(
@@ -715,9 +730,12 @@ const { data: relatedBlogs } = await useLazyAsyncData(
 const breadcrumbSchema = useBreadcrumbSchema();
 
 useHead(() => ({
+  // The brand suffix is appended by app.vue's titleTemplate — adding
+  // "| ByteStackLab Blog" here too produced 110+ character titles that Google
+  // truncated well before the end of the post name.
   title: blog.value
-    ? `${blog.value.title} | ByteStackLab Blog`
-    : "Blog | ByteStackLab",
+    ? blog.value.metaTitle || blog.value.title
+    : "Blog",
   meta: [
     {
       name: "description",
@@ -725,8 +743,26 @@ useHead(() => ({
     },
     { property: "og:title", content: blog.value?.title || "" },
     { property: "og:description", content: blog.value?.excerpt || "" },
-    { property: "og:image", content: blog.value?.featuredImage || "" },
+    // ogImage() keeps the site-wide fallback when a post has no featured
+    // image — see utils/seo.js for why "" is the wrong default here.
+    { property: "og:image", content: ogImage(blog.value?.featuredImage) },
+    { name: "twitter:image", content: ogImage(blog.value?.featuredImage) },
     { property: "og:type", content: "article" },
+    // Article-level signals Google surfaces as the byline/date in results.
+    // The API returns "YYYY-MM-DD HH:MM:SS"; swapping the space for a T makes
+    // it valid ISO-8601. No timezone suffix is added — the API doesn't send one
+    // and guessing UTC would be a silent lie if APP_TIMEZONE ever changes.
+    ...(blog.value?.publishedAt
+      ? [
+          {
+            property: "article:published_time",
+            content: String(blog.value.publishedAt).replace(" ", "T"),
+          },
+        ]
+      : []),
+    ...(blog.value?.authorName
+      ? [{ property: "article:author", content: blog.value.authorName }]
+      : []),
   ],
   script: [
     ...(blog.value?.schemaMarkup

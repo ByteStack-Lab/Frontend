@@ -229,7 +229,8 @@
               @click="toggleFaq(faq.id)"
             >
               <span class="font-semibold text-gray-900">{{ faq.question }}</span>
-              <svg aria-hidden="true"
+              <svg
+                aria-hidden="true"
                 :class="['w-5 h-5 text-gray-500 transition-transform', openFaqs.includes(faq.id) ? 'rotate-180' : '']"
                 fill="none"
                 stroke="currentColor"
@@ -278,21 +279,53 @@
 // launch — swap in real positioning, capability details, and stack list
 // once the business has finalized them.
 
+const siteUrl = useSiteConfig().url.replace(/\/$/, "");
+const breadcrumbSchema = useBreadcrumbSchema();
+
 useHead({
-  title: "SaaS Development - ByteStackLab",
+  title: "SaaS Product Development",
   meta: [
     {
       name: "description",
       content:
         "ByteStackLab designs and builds multi-tenant SaaS products — subscription billing, API-first architecture, and security done right from day one.",
     },
-    { property: "og:title", content: "SaaS Development - ByteStackLab" },
+    { property: "og:title", content: "SaaS Product Development" },
     {
       property: "og:description",
       content:
         "ByteStackLab designs and builds multi-tenant SaaS products — subscription billing, API-first architecture, and security done right from day one.",
     },
     { property: "og:type", content: "website" },
+  ],
+  script: [
+    // These two service landing pages are static files, so they shadow the
+    // API-driven /services/[slug] route — which means they don't inherit the
+    // Service/BreadcrumbList JSON-LD that page emits from Filament's
+    // schema_markup column. Declared here so they aren't the only two service
+    // pages on the site with no structured data.
+    {
+      type: "application/ld+json",
+      innerHTML: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Service",
+        name: "SaaS Product Development",
+        serviceType: "Multi-tenant SaaS product development",
+        description: "ByteStackLab designs and builds multi-tenant SaaS products - subscription billing, API-first architecture, and security done right from day one.",
+        url: `${siteUrl}/services/saas-development`,
+        provider: {
+          "@type": "Organization",
+          name: "ByteStackLab",
+          url: siteUrl,
+        },
+        areaServed: "Worldwide",
+      }),
+    },
+    breadcrumbSchema([
+      { name: "Home", path: "/" },
+      { name: "Services", path: "/services" },
+      { name: "SaaS Product Development", path: "/services/saas-development" },
+    ]),
   ],
 });
 

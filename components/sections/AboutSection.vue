@@ -65,7 +65,8 @@
               <span class="text-[#3533cd] font-medium"
                 >Learn More About Us</span
               >
-              <svg aria-hidden="true"
+              <svg
+                aria-hidden="true"
                 class="w-5 h-5 text-[#3533cd] transform group-hover:translate-x-1 transition-transform duration-300"
                 fill="none"
                 stroke="currentColor"

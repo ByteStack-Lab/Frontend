@@ -37,10 +37,10 @@
             <div class="w-10 h-10 rounded-xl bg-[#eef0ff] flex items-center justify-center flex-shrink-0">
               <svg aria-hidden="true" class="w-5 h-5 text-[#3533cd]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path
-stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                 <path
-stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
               </svg>
             </div>
@@ -56,7 +56,7 @@ stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             <div class="w-10 h-10 rounded-xl bg-[#eef0ff] flex items-center justify-center flex-shrink-0">
               <svg aria-hidden="true" class="w-5 h-5 text-[#3533cd]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path
-stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
               </svg>
             </div>
@@ -72,7 +72,7 @@ stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             <div class="w-10 h-10 rounded-xl bg-[#eef0ff] flex items-center justify-center flex-shrink-0">
               <svg aria-hidden="true" class="w-5 h-5 text-[#3533cd]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path
-stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
               </svg>
             </div>
@@ -135,7 +135,7 @@ stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             Contact Privacy Team
             <svg aria-hidden="true" class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path
-stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </NuxtLink>
@@ -153,14 +153,14 @@ stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
 
 <script setup>
 useHead({
-  title: "Privacy Policy - ByteStackLab",
+  title: "Privacy Policy",
   meta: [
     {
       name: "description",
       content:
         "Read ByteStackLab's Privacy Policy to understand what data we collect, how we use it, and how we protect your information when you interact with our services.",
     },
-    { property: "og:title", content: "Privacy Policy - ByteStackLab" },
+    { property: "og:title", content: "Privacy Policy" },
     {
       property: "og:description",
       content:

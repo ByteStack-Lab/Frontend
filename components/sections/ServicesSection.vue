@@ -112,7 +112,8 @@
             </div>
             <!-- Bottom Wave -->
             <div class="absolute bottom-0 left-0 right-0">
-              <svg aria-hidden="true"
+              <svg
+                aria-hidden="true"
                 viewBox="0 0 400 40"
                 preserveAspectRatio="none"
                 class="w-full h-8 fill-white"
@@ -170,7 +171,8 @@
           class="inline-flex items-center px-6 py-3 text-[#3533cd] font-medium hover:text-[#1e1b69] transition-colors group"
         >
           View All Services
-          <svg aria-hidden="true"
+          <svg
+            aria-hidden="true"
             class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform"
             fill="none"
             stroke="currentColor"

@@ -88,7 +88,8 @@
             <div
               class="w-16 h-16 bg-white/15 backdrop-blur-sm rounded-2xl flex items-center justify-center border border-white/20 group-hover:scale-110 transition-transform duration-500"
             >
-              <svg aria-hidden="true"
+              <svg
+                aria-hidden="true"
                 class="w-8 h-8 text-white"
                 fill="none"
                 stroke="currentColor"
@@ -147,7 +148,8 @@
                 class="inline-flex items-center text-[#3533cd] font-semibold text-sm group-hover:text-[#1e1b69] transition-colors"
               >
                 Learn More
-                <svg aria-hidden="true"
+                <svg
+                  aria-hidden="true"
                   class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform"
                   fill="none"
                   stroke="currentColor"
@@ -180,7 +182,8 @@
           class="inline-flex items-center px-6 py-3 text-[#3533cd] font-medium hover:text-[#1e1b69] transition-colors group"
         >
           View All Products
-          <svg aria-hidden="true"
+          <svg
+            aria-hidden="true"
             class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform"
             fill="none"
             stroke="currentColor"

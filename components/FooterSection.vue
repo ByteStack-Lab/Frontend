@@ -11,6 +11,8 @@
           <div class="flex items-center space-x-2">
             <img
               src="/images/bytestacklab-180x48.png"
+              width="180"
+              height="48"
               srcset="
                 /images/bytestacklab-180x48.png 1x,
                 /images/bytestacklab360x96.png  2x
@@ -246,7 +248,8 @@
                 <div
                   class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0"
                 >
-                  <svg aria-hidden="true"
+                  <svg
+                    aria-hidden="true"
                     class="w-4 h-4 text-blue-600"
                     fill="none"
                     stroke="currentColor"
@@ -275,7 +278,8 @@
                 <div
                   class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0"
                 >
-                  <svg aria-hidden="true"
+                  <svg
+                    aria-hidden="true"
                     class="w-4 h-4 text-green-600"
                     fill="none"
                     stroke="currentColor"
@@ -304,7 +308,8 @@
                 <div
                   class="w-8 h-8 bg-[#25D366] rounded-lg flex items-center justify-center flex-shrink-0"
                 >
-                  <svg aria-hidden="true"
+                  <svg
+                    aria-hidden="true"
                     class="w-4 h-4 text-white"
                     fill="currentColor"
                     viewBox="0 0 24 24"
@@ -331,7 +336,8 @@
                 <div
                   class="w-8 h-8 bg-[#0088CC] rounded-lg flex items-center justify-center flex-shrink-0"
                 >
-                  <svg aria-hidden="true"
+                  <svg
+                    aria-hidden="true"
                     class="w-4 h-4 text-white"
                     fill="currentColor"
                     viewBox="0 0 24 24"
@@ -367,7 +373,8 @@
             <!-- Address -->
             <div class="text-gray-900 text-sm">
               <div class="flex items-start space-x-2">
-                <svg aria-hidden="true"
+                <svg
+                  aria-hidden="true"
                   class="w-4 h-4 text-gray-600 mt-1 flex-shrink-0"
                   fill="none"
                   stroke="currentColor"

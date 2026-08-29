@@ -15,7 +15,8 @@
           ⭐ Featured
         </span>
         <span class="text-sm text-gray-500 flex items-center">
-          <svg aria-hidden="true"
+          <svg
+            aria-hidden="true"
             class="w-4 h-4 mr-1"
             fill="none"
             stroke="currentColor"
@@ -38,7 +39,8 @@
         </span>
         <span class="mx-2 text-gray-300">•</span>
         <span class="text-sm text-gray-500 flex items-center">
-          <svg aria-hidden="true"
+          <svg
+            aria-hidden="true"
             class="w-4 h-4 mr-1"
             fill="none"
             stroke="currentColor"
@@ -105,7 +107,8 @@
           class="bg-gradient-to-r from-[#3533cd] via-[#6675F7] to-[#1e1b69] text-white px-8 py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 flex items-center w-full lg:w-auto justify-center"
         >
           Apply Now
-          <svg aria-hidden="true"
+          <svg
+            aria-hidden="true"
             class="ml-2 w-5 h-5"
             fill="none"
             stroke="currentColor"
@@ -125,7 +128,8 @@
           class="border-2 border-[#3533cd] text-[#3533cd] px-8 py-3 rounded-lg font-semibold hover:bg-[#3533cd] hover:text-white transition-all duration-300 flex items-center w-full lg:w-auto justify-center"
         >
           View Details
-          <svg aria-hidden="true"
+          <svg
+            aria-hidden="true"
             class="ml-2 w-5 h-5"
             fill="none"
             stroke="currentColor"

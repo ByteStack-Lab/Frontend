@@ -73,7 +73,8 @@
               @click="scrollToPositions"
             >
               View Open Positions
-              <svg aria-hidden="true"
+              <svg
+                aria-hidden="true"
                 class="ml-2 w-5 h-5"
                 fill="none"
                 stroke="currentColor"
@@ -93,7 +94,8 @@
               @click="scrollToCulture"
             >
               Learn Our Culture
-              <svg aria-hidden="true"
+              <svg
+                aria-hidden="true"
                 class="ml-2 w-5 h-5"
                 fill="none"
                 stroke="currentColor"
@@ -221,7 +223,8 @@
           <div
             class="w-24 h-24 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6"
           >
-            <svg aria-hidden="true"
+            <svg
+              aria-hidden="true"
               class="w-12 h-12 text-red-400"
               fill="none"
               stroke="currentColor"
@@ -298,7 +301,8 @@
               <div
                 class="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6"
               >
-                <svg aria-hidden="true"
+                <svg
+                  aria-hidden="true"
                   class="w-12 h-12 text-gray-400"
                   fill="none"
                   stroke="currentColor"
@@ -360,7 +364,8 @@
             <div
               class="w-16 h-16 bg-gradient-to-r from-[#3533cd] to-[#6675F7] rounded-xl mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
             >
-              <svg aria-hidden="true"
+              <svg
+                aria-hidden="true"
                 class="w-8 h-8 text-white"
                 fill="none"
                 stroke="currentColor"
@@ -389,7 +394,8 @@
             <div
               class="w-16 h-16 bg-gradient-to-r from-[#6675F7] to-[#3533cd] rounded-xl mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
             >
-              <svg aria-hidden="true"
+              <svg
+                aria-hidden="true"
                 class="w-8 h-8 text-white"
                 fill="none"
                 stroke="currentColor"
@@ -418,7 +424,8 @@
             <div
               class="w-16 h-16 bg-gradient-to-r from-[#1e1b69] to-[#3533cd] rounded-xl mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
             >
-              <svg aria-hidden="true"
+              <svg
+                aria-hidden="true"
                 class="w-8 h-8 text-white"
                 fill="none"
                 stroke="currentColor"
@@ -447,7 +454,8 @@
             <div
               class="w-16 h-16 bg-gradient-to-r from-[#6675F7] to-[#1e1b69] rounded-xl mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
             >
-              <svg aria-hidden="true"
+              <svg
+                aria-hidden="true"
                 class="w-8 h-8 text-white"
                 fill="none"
                 stroke="currentColor"
@@ -476,7 +484,8 @@
             <div
               class="w-16 h-16 bg-gradient-to-r from-[#3533cd] to-[#6675F7] rounded-xl mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
             >
-              <svg aria-hidden="true"
+              <svg
+                aria-hidden="true"
                 class="w-8 h-8 text-white"
                 fill="none"
                 stroke="currentColor"
@@ -505,7 +514,8 @@
             <div
               class="w-16 h-16 bg-gradient-to-r from-[#1e1b69] to-[#6675F7] rounded-xl mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
             >
-              <svg aria-hidden="true"
+              <svg
+                aria-hidden="true"
                 class="w-8 h-8 text-white"
                 fill="none"
                 stroke="currentColor"
@@ -555,7 +565,8 @@
               <div
                 class="absolute -right-4 top-1/2 transform -translate-y-1/2 hidden lg:block"
               >
-                <svg aria-hidden="true"
+                <svg
+                  aria-hidden="true"
                   class="w-8 h-8 text-[#cfd4ff]"
                   fill="currentColor"
                   viewBox="0 0 20 20"
@@ -585,7 +596,8 @@
               <div
                 class="absolute -right-4 top-1/2 transform -translate-y-1/2 hidden lg:block"
               >
-                <svg aria-hidden="true"
+                <svg
+                  aria-hidden="true"
                   class="w-8 h-8 text-[#cfd4ff]"
                   fill="currentColor"
                   viewBox="0 0 20 20"
@@ -615,7 +627,8 @@
               <div
                 class="absolute -right-4 top-1/2 transform -translate-y-1/2 hidden lg:block"
               >
-                <svg aria-hidden="true"
+                <svg
+                  aria-hidden="true"
                   class="w-8 h-8 text-[#cfd4ff]"
                   fill="currentColor"
                   viewBox="0 0 20 20"
@@ -673,7 +686,8 @@
             class="bg-white text-[#3533cd] px-8 py-4 rounded-lg font-semibold text-lg shadow-lg hover:shadow-xl hover:bg-gray-50 transition-all duration-300 flex items-center justify-center"
           >
             Submit General Application
-            <svg aria-hidden="true"
+            <svg
+              aria-hidden="true"
               class="ml-2 w-5 h-5"
               fill="none"
               stroke="currentColor"
@@ -693,7 +707,8 @@
             class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-[#3533cd] transition-all duration-300 flex items-center justify-center"
           >
             Have Questions?
-            <svg aria-hidden="true"
+            <svg
+              aria-hidden="true"
               class="ml-2 w-5 h-5"
               fill="none"
               stroke="currentColor"
@@ -716,7 +731,7 @@
 <script setup>
 // Meta tags for SEO
 useHead({
-  title: "Careers - ByteStackLab | Join Our Team",
+  title: "Careers — Join Our Team",
   meta: [
     {
       name: "description",
@@ -725,7 +740,7 @@ useHead({
     },
     {
       property: "og:title",
-      content: "Careers - ByteStackLab | Join Our Team",
+      content: "Careers — Join Our Team",
     },
     {
       property: "og:description",

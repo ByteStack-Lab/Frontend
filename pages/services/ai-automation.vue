@@ -234,7 +234,8 @@
               @click="toggleFaq(faq.id)"
             >
               <span class="font-semibold text-gray-900">{{ faq.question }}</span>
-              <svg aria-hidden="true"
+              <svg
+                aria-hidden="true"
                 :class="['w-5 h-5 text-gray-500 transition-transform', openFaqs.includes(faq.id) ? 'rotate-180' : '']"
                 fill="none"
                 stroke="currentColor"
@@ -283,21 +284,53 @@
 // launch — swap in real positioning, capability details, and process copy
 // once the business has finalized them.
 
+const siteUrl = useSiteConfig().url.replace(/\/$/, "");
+const breadcrumbSchema = useBreadcrumbSchema();
+
 useHead({
-  title: "AI & Automation Solutions - ByteStackLab",
+  title: "AI Automation & Integration Services",
   meta: [
     {
       name: "description",
       content:
         "AI chatbots, process automation, and LLM integrations built by ByteStackLab. We help businesses automate repetitive work and integrate AI into existing systems.",
     },
-    { property: "og:title", content: "AI & Automation Solutions - ByteStackLab" },
+    { property: "og:title", content: "AI Automation & Integration Services" },
     {
       property: "og:description",
       content:
         "AI chatbots, process automation, and LLM integrations built by ByteStackLab. We help businesses automate repetitive work and integrate AI into existing systems.",
     },
     { property: "og:type", content: "website" },
+  ],
+  script: [
+    // These two service landing pages are static files, so they shadow the
+    // API-driven /services/[slug] route — which means they don't inherit the
+    // Service/BreadcrumbList JSON-LD that page emits from Filament's
+    // schema_markup column. Declared here so they aren't the only two service
+    // pages on the site with no structured data.
+    {
+      type: "application/ld+json",
+      innerHTML: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Service",
+        name: "AI Automation & Integration",
+        serviceType: "AI automation and LLM integration",
+        description: "AI chatbots, process automation, and LLM integrations built by ByteStackLab. We help businesses automate repetitive work and integrate AI into existing systems.",
+        url: `${siteUrl}/services/ai-automation`,
+        provider: {
+          "@type": "Organization",
+          name: "ByteStackLab",
+          url: siteUrl,
+        },
+        areaServed: "Worldwide",
+      }),
+    },
+    breadcrumbSchema([
+      { name: "Home", path: "/" },
+      { name: "Services", path: "/services" },
+      { name: "AI Automation & Integration", path: "/services/ai-automation" },
+    ]),
   ],
 });
 

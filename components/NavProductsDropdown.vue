@@ -4,7 +4,8 @@
       class="text-gray-600 hover:text-[#3533cd] transition-colors duration-200 font-medium text-sm lg:text-base flex items-center space-x-1"
     >
       <span>Products</span>
-      <svg aria-hidden="true"
+      <svg
+        aria-hidden="true"
         class="w-4 h-4 transition-transform duration-200 group-hover:rotate-180"
         fill="none"
         stroke="currentColor"
@@ -41,7 +42,8 @@
                 'bg-gradient-to-br from-[#3533cd] to-[#1e1b69]'
               "
             >
-              <svg aria-hidden="true"
+              <svg
+                aria-hidden="true"
                 class="w-6 h-6 shrink-0 text-white"
                 fill="none"
                 stroke="currentColor"
@@ -81,7 +83,8 @@
             class="flex items-center justify-center space-x-2 text-[#3533cd] hover:text-white hover:bg-gradient-to-r hover:from-[#3533cd] hover:to-[#1e1b69] font-medium py-3 px-6 rounded-xl transition-all duration-300 group border border-[#3533cd] hover:border-transparent"
           >
             <span>View all products</span>
-            <svg aria-hidden="true"
+            <svg
+              aria-hidden="true"
               class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1"
               fill="none"
               stroke="currentColor"
