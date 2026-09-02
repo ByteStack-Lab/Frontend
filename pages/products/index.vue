@@ -170,7 +170,7 @@
                 <span
                   class="px-3 py-1 bg-white/20 backdrop-blur-sm text-white text-xs font-semibold rounded-full border border-white/30"
                 >
-                  {{ product.category }}
+                  {{ getProductCategoryLabel(product.category) }}
                 </span>
               </div>
               <!-- Decorative Icon -->

@@ -14,6 +14,11 @@ const LABELS = {
   marketing: "Marketing",
   wordpress: "WordPress",
   shopify: "Shopify",
+  ecommerce: "eCommerce",
+  crm: "CRM",
+  pim: "PIM",
+  erp: "ERP",
+  hrms: "HRMS",
   other: "Other",
 };
 
