@@ -33,7 +33,7 @@
             <h2
               class="text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 leading-tight"
             >
-              Building Software That<br >
+              Building Software That<br />
               <span
                 class="bg-gradient-to-r from-[#3533cd] to-[#1e1b69] bg-clip-text text-transparent"
                 >Businesses Depend On</span
@@ -53,9 +53,9 @@
             <p
               class="text-base lg:text-lg text-gray-600 leading-relaxed max-w-2xl"
             >
-              One team handles design, development, deployment and maintenance
-              — so nothing gets lost in a handoff. Most of our clients come
-              back for a second project.
+              One team handles design, development, deployment and maintenance —
+              so nothing gets lost in a handoff. Most of our clients come back
+              for a second project.
             </p>
           </div>
 
@@ -98,19 +98,19 @@
               <!-- Background Image -->
               <img
                 ref="mainImage"
-                src="/images/about-us.webp"
-                alt="About us video thumbnail"
+                src="/images/about-us-home.webp"
+                alt="The ByteStackLab team in their office"
                 class="absolute inset-0 w-full h-full object-cover"
                 @load="handleImageLoad"
                 @error="handleImageError"
-              >
+              />
               <!-- Fallback SVG thumbnail -->
               <img
                 ref="fallbackImage"
                 src="/images/video-thumbnail.svg"
                 alt="Video thumbnail fallback"
                 class="absolute inset-0 w-full h-full object-cover hidden"
-              >
+              />
 
               <!-- Video Overlay - Very light to show thumbnail clearly -->
               <div
