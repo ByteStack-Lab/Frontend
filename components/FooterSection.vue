@@ -362,7 +362,7 @@
           </div>
         </div>
 
-        <!-- Widget 4: Location with Google Map -->
+        <!-- Widget 4: Location -->
         <div class="space-y-6">
           <h4 class="text-lg font-semibold text-gray-900">Our Location</h4>
           <div class="space-y-4">
@@ -370,7 +370,7 @@
               Visit our office or reach out to us for any inquiries.
             </p>
 
-            <!-- Address -->
+            <!-- Dhaka Address -->
             <div class="text-gray-900 text-sm">
               <div class="flex items-start space-x-2">
                 <svg
@@ -393,25 +393,55 @@
                     d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                   />
                 </svg>
-                <span>{{ contact.contact_address }}</span>
+                <div>
+                  <span>{{ contact.contact_address }}</span>
+                  <a
+                    href="https://goo.gl/maps/uttara-sector-10-dhaka"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="ml-2 inline-flex items-center text-xs font-medium text-[#3533cd] hover:underline whitespace-nowrap"
+                  >
+                    Get Directions
+                  </a>
+                </div>
               </div>
             </div>
 
-            <!-- Google Map Iframe -->
-            <div
-              class="w-full h-32 rounded-lg overflow-hidden border border-gray-200"
-            >
-              <iframe
-                :src="contact.google_maps_embed_url"
-                title="ByteStackLab office location on Google Maps"
-                width="100%"
-                height="100%"
-                style="border: 0"
-                allowfullscreen=""
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-                class="w-full h-full"
-              />
+            <!-- Larnaca Address -->
+            <div class="text-gray-900 text-sm">
+              <div class="flex items-start space-x-2">
+                <svg
+                  aria-hidden="true"
+                  class="w-4 h-4 text-gray-600 mt-1 flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                  />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                </svg>
+                <div>
+                  <span>Stadiou 100, 6020 Larnaca, Cyprus</span>
+                  <a
+                    href="https://www.google.com/maps/search/?api=1&query=Stadiou+100,+6020+Larnaca,+Cyprus"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="ml-2 inline-flex items-center text-xs font-medium text-[#3533cd] hover:underline whitespace-nowrap"
+                  >
+                    Get Directions
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -441,14 +471,12 @@ const DEFAULT_CONTACT_SETTINGS = {
   contact_phone_display: "+880-1812-209019",
   contact_phone_link: "+8801812209019",
   contact_email: "hello@bytestacklab.com",
-  contact_address: "Dhaka, Bangladesh",
+  contact_address: "Uttara Sector 10, Dhaka, Bangladesh",
   social_facebook: "https://facebook.com/bytestacklab",
   social_twitter: "https://x.com/bytestacklab",
   social_linkedin: "https://linkedin.com/company/bytestacklab",
   social_instagram: "https://instagram.com/bytestacklab",
   social_youtube: "https://youtube.com/@bytestacklab",
-  google_maps_embed_url:
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d116833.83187767277!2d90.34132765820314!3d23.780753!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8b087026b81%3A0x8fa563bbdd5904c2!2sDhaka%2C%20Bangladesh!5e0!3m2!1sen!2s!4v1704634800000!5m2!1sen!2s",
 };
 
 const { data: contactSettingsData } = await useLazyAsyncData(

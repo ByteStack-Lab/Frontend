@@ -383,9 +383,52 @@
                   </svg>
                 </div>
                 <div>
-                  <h4 class="font-semibold text-gray-900 mb-1">Address</h4>
+                  <h4 class="font-semibold text-gray-900 mb-1">Dhaka Office</h4>
                   <p class="text-gray-600 leading-relaxed">
-                    Uttara Sector 10, Dhaka, Bangladesh<br >
+                    Uttara Sector 10, Dhaka, Bangladesh
+                  </p>
+                  <p class="text-xs text-gray-400 mt-1">
+                    Available for remote and on-site consultations
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start space-x-3">
+                <div
+                  class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-1"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="w-5 h-5 text-blue-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                    />
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-gray-900 mb-1">Larnaca Office (Cyprus)</h4>
+                  <p class="text-gray-600 leading-relaxed">
+                    Stadiou 100, 6020 Larnaca, Cyprus<br >
+                    Call:
+                    <a
+                      href="tel:+35796671459"
+                      class="text-[#3533cd] font-medium hover:underline"
+                    >+357 96671459</a>
+                  </p>
+                  <p class="text-xs text-gray-400 mt-1">
                     Available for remote and on-site consultations
                   </p>
                 </div>
@@ -506,53 +549,94 @@
           <div class="bg-white rounded-2xl shadow-card p-8">
             <h3 class="text-xl font-bold text-gray-900 mb-6">Find Us on Map</h3>
 
-            <!-- Map Container -->
-            <div
-              class="relative h-64 lg:h-80 rounded-xl overflow-hidden bg-gray-100"
-            >
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3649.936094571845!2d90.39569431536895!3d23.87449978453776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c5e127c50a81%3A0x10c8d5d4c68b8a6!2sUttara%20Sector%2010%2C%20Dhaka!5e0!3m2!1sen!2sbd!4v1672834567890!5m2!1sen!2sbd"
-                title="ByteStackLab office location on Google Maps"
-                width="100%"
-                height="100%"
-                style="border: 0"
-                allowfullscreen=""
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-                class="absolute inset-0"
-              />
-            </div>
-
-            <!-- Map Info -->
-            <div class="mt-4 text-center">
-              <p class="text-sm text-gray-600 mb-4">
-                Located in the heart of Uttara, easily accessible by car or
-                public transport.
-              </p>
-
-              <!-- Directions Button -->
-              <a
-                href="https://goo.gl/maps/uttara-sector-10-dhaka"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex items-center justify-center bg-[#4285F4] text-white px-6 py-2 rounded-lg font-medium hover:bg-[#3367D6] transition-colors duration-200 shadow-sm hover:shadow-md"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="w-4 h-4 mr-2"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+            <div class="grid grid-cols-1 gap-6">
+              <!-- Dhaka Map -->
+              <div>
+                <div
+                  class="relative h-40 rounded-xl overflow-hidden bg-gray-100"
                 >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3649.936094571845!2d90.39569431536895!3d23.87449978453776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c5e127c50a81%3A0x10c8d5d4c68b8a6!2sUttara%20Sector%2010%2C%20Dhaka!5e0!3m2!1sen!2sbd!4v1672834567890!5m2!1sen!2sbd"
+                    title="ByteStackLab Dhaka office location on Google Maps"
+                    width="100%"
+                    height="100%"
+                    style="border: 0"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    class="absolute inset-0"
                   />
-                </svg>
-                Get Directions
-              </a>
+                </div>
+                <div class="mt-3 text-center">
+                  <p class="text-xs text-gray-600 mb-2">Dhaka, Bangladesh</p>
+                  <a
+                    href="https://goo.gl/maps/uttara-sector-10-dhaka"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center justify-center bg-[#4285F4] text-white px-4 py-1.5 rounded-lg text-sm font-medium hover:bg-[#3367D6] transition-colors duration-200 shadow-sm hover:shadow-md"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="w-4 h-4 mr-1.5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"
+                      />
+                    </svg>
+                    Get Directions
+                  </a>
+                </div>
+              </div>
+
+              <!-- Larnaca Map -->
+              <div>
+                <div
+                  class="relative h-40 rounded-xl overflow-hidden bg-gray-100"
+                >
+                  <iframe
+                    src="https://www.google.com/maps?q=Stadiou+100,+6020+Larnaca,+Cyprus&output=embed"
+                    title="ByteStackLab Larnaca office location on Google Maps"
+                    width="100%"
+                    height="100%"
+                    style="border: 0"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    class="absolute inset-0"
+                  />
+                </div>
+                <div class="mt-3 text-center">
+                  <p class="text-xs text-gray-600 mb-2">Larnaca, Cyprus</p>
+                  <a
+                    href="https://www.google.com/maps/search/?api=1&query=Stadiou+100,+6020+Larnaca,+Cyprus"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center justify-center bg-[#4285F4] text-white px-4 py-1.5 rounded-lg text-sm font-medium hover:bg-[#3367D6] transition-colors duration-200 shadow-sm hover:shadow-md"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="w-4 h-4 mr-1.5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"
+                      />
+                    </svg>
+                    Get Directions
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>

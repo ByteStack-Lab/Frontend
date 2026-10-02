@@ -213,18 +213,6 @@
                   </div>
                 </div>
                 
-                <!-- Metrics -->
-                <div v-if="caseStudy.metrics && caseStudy.metrics.length > 0" class="grid grid-cols-2 gap-4">
-                  <div 
-                    v-for="metric in caseStudy.metrics.slice(0, 2)" 
-                    :key="metric.label || metric.metric || metric"
-                    class="text-center p-4 bg-white/50 rounded-lg border border-white/30"
-                  >
-                    <div class="text-2xl font-bold text-gray-900">{{ metric.value || metric.percentage || metric }}</div>
-                    <div class="text-sm text-gray-600">{{ metric.label || metric.metric || 'Result' }}</div>
-                  </div>
-                </div>
-                
                 <div 
                   class="pt-4 flex"
                   :class="index % 2 === 0 ? 'justify-end' : 'justify-start'"
