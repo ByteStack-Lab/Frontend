@@ -629,7 +629,7 @@
     </section>
 
     <!-- Our Team Section -->
-    <section v-if="teamPending || teamError || (team && team.length > 0)" class="py-16 bg-white">
+    <section v-if="team && team.length > 0" class="py-16 bg-white">
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
         <div class="text-center mb-12">
           <div
@@ -648,22 +648,8 @@
           </p>
         </div>
 
-        <!-- Loading State -->
-        <div v-if="teamPending" class="flex justify-center items-center py-12">
-          <div
-            class="animate-spin rounded-full h-12 w-12 border-b-2 border-[#3533cd]"
-          />
-        </div>
-
-        <!-- Error State -->
-        <div v-else-if="teamError" class="text-center py-12">
-          <p class="text-red-600">
-            Failed to load our team. Please try again later.
-          </p>
-        </div>
-
         <!-- Team Grid -->
-        <div v-else class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <div
             v-for="member in team"
             :key="member.id"
@@ -1475,11 +1461,9 @@ useHead({
 });
 
 // Fetch team members from API
-const {
-  data: team,
-  pending: teamPending,
-  error: teamError,
-} = await useLazyAsyncData("about-team", () => {
+// The whole section is hidden unless at least one active member comes back
+// (the API only returns active members) — including while loading or on error.
+const { data: team } = await useLazyAsyncData("about-team", () => {
   const { getTeam } = useApi();
   return getTeam();
 });
