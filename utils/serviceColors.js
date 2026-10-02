@@ -65,6 +65,12 @@ const SERVICE_COLORS = {
     hover: "hover:from-teal-50 hover:to-teal-100",
     text: "group-hover/item:text-teal-600",
   },
+  "iot-robotics": {
+    from: "from-orange-500",
+    to: "to-orange-600",
+    hover: "hover:from-orange-50 hover:to-orange-100",
+    text: "group-hover/item:text-orange-600",
+  },
   cybersecurity: {
     from: "from-red-500",
     to: "to-red-600",

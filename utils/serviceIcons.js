@@ -22,6 +22,8 @@ const ICON_PATHS = {
     "M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z",
   "devops-cloud":
     "M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-14 5h.01M19 17h.01M9 7h.01M9 17h.01",
+  "iot-robotics":
+    "M9 3v2m6-2v2M9 19v2m6-2v2M3 9h2m-2 6h2m14-6h2m-2 6h2M7 5h10a2 2 0 012 2v10a2 2 0 01-2 2H7a2 2 0 01-2-2V7a2 2 0 012-2zm3 5h4v4h-4v-4z",
   cybersecurity:
     "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
 };
@@ -48,6 +50,7 @@ const GRADIENTS = {
   "ecommerce-development": "bg-gradient-to-br from-rose-500 to-fuchsia-500",
   "devops-cloud": "bg-gradient-to-br from-emerald-600 to-teal-700",
   cybersecurity: "bg-gradient-to-br from-green-500 to-emerald-500",
+  "iot-robotics": "bg-gradient-to-br from-orange-500 to-red-500",
 };
 
 export function getServiceGradient(category) {
@@ -61,6 +64,7 @@ const LABEL_OVERRIDES = {
   "ai-automation": "AI Automation",
   "saas-development": "SaaS Development",
   "devops-cloud": "DevOps & Cloud",
+  "iot-robotics": "IoT & Robotics",
 };
 
 export function formatCategoryLabel(category) {
