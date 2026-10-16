@@ -118,8 +118,10 @@
                 style="background: rgba(0, 0, 0, 0.15)"
               />
 
-              <!-- Play Button Container -->
-              <div class="absolute inset-0 flex items-center justify-center">
+              <!-- Play Button Container (desktop only) -->
+              <div
+                class="absolute inset-0 hidden lg:flex items-center justify-center"
+              >
                 <!-- Outer Circle with pulse effect -->
                 <div class="relative">
                   <!-- Pulse Rings -->
@@ -237,7 +239,7 @@ const { isVisible, elementRef } = useScrollAnimation();
 // Video modal state
 const showVideoModal = ref(false);
 const videoUrl = ref(
-  "https://www.youtube.com/embed/ScMzIvxBSi4?autoplay=1&rel=0&modestbranding=1&controls=1",
+  "https://www.youtube.com/embed/Bpc-cl7r2h0?autoplay=1&rel=0&modestbranding=1&controls=1",
 );
 
 // Image references
@@ -246,6 +248,8 @@ const fallbackImage = ref(null);
 
 // Video modal functions
 const openVideoModal = () => {
+  // Video popup is desktop-only (Tailwind lg breakpoint)
+  if (!window.matchMedia("(min-width: 1024px)").matches) return;
   showVideoModal.value = true;
   // Keep website fully interactive - no scroll prevention
 };
