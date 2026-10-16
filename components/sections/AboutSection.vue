@@ -205,10 +205,14 @@
         <div
           class="relative bg-white rounded-2xl overflow-hidden border-4 border-white ring-8 ring-[#3533cd]/20 transform hover:scale-[1.02] transition-all duration-300 video-container shadow-2xl"
         >
-          <div class="aspect-video">
+          <div class="aspect-video relative overflow-hidden bg-black">
+            <!-- Iframe is taller than its box (letterboxed) so YouTube's title
+                 bar and logo fall into the cropped strips; pointer-events-none
+                 blocks hover/click, so no controls, seek or pause can surface. -->
             <iframe
               v-if="showVideoModal"
-              class="w-full h-full"
+              class="absolute left-0 w-full pointer-events-none"
+              style="top: -60px; height: calc(100% + 120px)"
               :src="videoUrl"
               title="Company Video"
               frameborder="0"
@@ -238,8 +242,10 @@ const { isVisible, elementRef } = useScrollAnimation();
 
 // Video modal state
 const showVideoModal = ref(false);
+// No controls/keyboard/fullscreen; loop needs playlist=<same id> to work
+const VIDEO_ID = "Bpc-cl7r2h0";
 const videoUrl = ref(
-  "https://www.youtube.com/embed/Bpc-cl7r2h0?autoplay=1&rel=0&modestbranding=1&controls=1",
+  `https://www.youtube-nocookie.com/embed/${VIDEO_ID}?autoplay=1&loop=1&playlist=${VIDEO_ID}&controls=0&disablekb=1&fs=0&rel=0&modestbranding=1&iv_load_policy=3&playsinline=1`,
 );
 
 // Image references
