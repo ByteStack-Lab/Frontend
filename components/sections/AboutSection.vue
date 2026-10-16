@@ -118,10 +118,8 @@
                 style="background: rgba(0, 0, 0, 0.15)"
               />
 
-              <!-- Play Button Container (desktop only) -->
-              <div
-                class="absolute inset-0 hidden lg:flex items-center justify-center"
-              >
+              <!-- Play Button Container -->
+              <div class="absolute inset-0 flex items-center justify-center">
                 <!-- Outer Circle with pulse effect -->
                 <div class="relative">
                   <!-- Pulse Rings -->
@@ -176,7 +174,8 @@
       @click="closeVideoModal"
     >
       <div
-        class="relative w-full max-w-5xl mx-auto p-8 transform transition-all duration-300 scale-100"
+        class="relative mx-auto transform transition-all duration-300 scale-100"
+        :class="isShort ? 'p-6' : 'w-full max-w-5xl p-8'"
         @click.stop
       >
         <!-- Close Button -->
@@ -205,13 +204,20 @@
         <div
           class="relative bg-white rounded-2xl overflow-hidden border-4 border-white ring-8 ring-[#3533cd]/20 transform hover:scale-[1.02] transition-all duration-300 video-container shadow-2xl"
         >
-          <div class="aspect-video relative overflow-hidden bg-black">
+          <div
+            class="relative overflow-hidden bg-black"
+            :class="isShort ? 'aspect-[9/16]' : 'aspect-video'"
+            :style="isShort ? 'width: min(80vw, 39vh)' : ''"
+          >
             <!-- Iframe is taller than its box (letterboxed) so YouTube's title
-                 bar and logo fall into the cropped strips; pointer-events-none
-                 blocks hover/click, so no controls, seek or pause can surface. -->
+                 bar and logo fall into the cropped strips. Desktop blocks all
+                 pointer input so no controls, seek or pause can surface; mobile
+                 keeps tap enabled because iOS may refuse unmuted autoplay, and
+                 tap-to-play is the only way out of that (no seek bar either way). -->
             <iframe
               v-if="showVideoModal"
-              class="absolute left-0 w-full pointer-events-none"
+              class="absolute left-0 w-full"
+              :class="{ 'pointer-events-none': !isShort }"
               style="top: -60px; height: calc(100% + 120px)"
               :src="videoUrl"
               title="Company Video"
@@ -242,11 +248,14 @@ const { isVisible, elementRef } = useScrollAnimation();
 
 // Video modal state
 const showVideoModal = ref(false);
+// Desktop plays the landscape video, below lg plays the vertical Short
+const DESKTOP_VIDEO_ID = "Bpc-cl7r2h0";
+const MOBILE_VIDEO_ID = "UcWGGg8gNrg";
+const isShort = ref(false);
 // No controls/keyboard/fullscreen; loop needs playlist=<same id> to work
-const VIDEO_ID = "Bpc-cl7r2h0";
-const videoUrl = ref(
-  `https://www.youtube-nocookie.com/embed/${VIDEO_ID}?autoplay=1&loop=1&playlist=${VIDEO_ID}&controls=0&disablekb=1&fs=0&rel=0&modestbranding=1&iv_load_policy=3&playsinline=1`,
-);
+const embedUrl = (id) =>
+  `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&loop=1&playlist=${id}&controls=0&disablekb=1&fs=0&rel=0&modestbranding=1&iv_load_policy=3&playsinline=1`;
+const videoUrl = ref("");
 
 // Image references
 const mainImage = ref(null);
@@ -254,8 +263,9 @@ const fallbackImage = ref(null);
 
 // Video modal functions
 const openVideoModal = () => {
-  // Video popup is desktop-only (Tailwind lg breakpoint)
-  if (!window.matchMedia("(min-width: 1024px)").matches) return;
+  // Tailwind lg breakpoint decides which video opens
+  isShort.value = !window.matchMedia("(min-width: 1024px)").matches;
+  videoUrl.value = embedUrl(isShort.value ? MOBILE_VIDEO_ID : DESKTOP_VIDEO_ID);
   showVideoModal.value = true;
   // Keep website fully interactive - no scroll prevention
 };
