@@ -20,7 +20,7 @@
       </div>
 
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <div class="text-center mb-16">
+        <div class="enter-rise text-center mb-16">
           <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
             <span
               class="bg-gradient-to-r from-[#3533cd] via-[#6675F7] to-[#1e1b69] bg-clip-text text-transparent"
@@ -276,7 +276,7 @@
     <!-- Contact Information & FAQ Row (Second Row) -->
     <section class="pb-12">
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <div class="grid md:grid-cols-2 gap-8">
+        <div v-reveal.stagger="120" class="grid md:grid-cols-2 gap-8">
           <!-- Contact Information Card -->
           <div class="contact-card">
             <ContactWidget />
@@ -351,7 +351,7 @@
     <!-- Office Location & Google Map Row (Third Row) -->
     <section class="pb-20">
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <div class="grid md:grid-cols-2 gap-8">
+        <div v-reveal.stagger="120" class="grid md:grid-cols-2 gap-8">
           <!-- Office Location Card -->
           <div class="bg-white rounded-2xl shadow-card p-8">
             <h3 class="text-xl font-bold text-gray-900 mb-6">Our Office</h3>
@@ -645,7 +645,7 @@
 
     <!-- CTA Section -->
     <section class="bg-gradient-to-r from-[#3533cd] to-[#1e1b69] py-16">
-      <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+      <div v-reveal.stagger="120" class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
         <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
           Ready to Start Your Project?
         </h2>

@@ -19,7 +19,7 @@
       </div>
 
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <div class="text-center mb-6">
+        <div class="enter-rise text-center mb-6">
           <div class="w-16 h-1 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full mx-auto mb-6"/>
           <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
             <span class="text-gray-900">Our</span>
@@ -31,7 +31,7 @@
         </div>
 
         <!-- Stats Row -->
-        <div class="flex flex-wrap justify-center gap-8 mt-12">
+        <div class="enter-in flex flex-wrap justify-center gap-8 mt-12" style="--enter-delay: 150ms">
           <div class="text-center">
             <div class="text-3xl font-bold text-[#3533cd]">
               {{ pending ? '...' : caseStudies.length + '+' }}
@@ -124,7 +124,7 @@
           -->
 
           <!-- Case Studies List - Matching Home Page Design -->
-          <div v-if="filteredCaseStudies && filteredCaseStudies.length > 0" class="space-y-12">
+          <div v-if="filteredCaseStudies && filteredCaseStudies.length > 0" v-reveal.stagger="0" class="space-y-12">
             <div 
               v-for="(caseStudy, index) in filteredCaseStudies" 
               :key="caseStudy.id || index"
@@ -198,6 +198,7 @@
                 <p class="text-gray-600 leading-relaxed text-lg">
                   {{ caseStudy.description }}
                 </p>
+
                 
                 <!-- Technologies Used -->
                 <div v-if="caseStudy.technologies && caseStudy.technologies.length > 0" class="space-y-3">
@@ -242,7 +243,7 @@
 
     <!-- CTA Section -->
     <section class="py-24 bg-gradient-to-r from-[#3533cd] via-[#2d2a7a] to-[#1e1b69]">
-      <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+      <div v-reveal.stagger="120" class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
         <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
           Ready to Create Your Success Story?
         </h2>

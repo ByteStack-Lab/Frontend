@@ -54,7 +54,7 @@
       <!-- Hero Section -->
       <section class="py-12 px-6">
         <div class="max-w-7xl mx-auto">
-          <div class="grid lg:grid-cols-2 gap-16 items-center">
+          <div class="enter-rise grid lg:grid-cols-2 gap-16 items-center">
             <!-- Left: Product Info -->
             <div>
               <!-- Badges -->
@@ -590,7 +590,7 @@
       <section class="py-20 px-6 bg-white">
         <div class="max-w-7xl mx-auto">
           <!-- Section Header -->
-          <div class="text-center mb-12">
+          <div v-reveal.stagger="110" class="text-center mb-12">
             <div
               class="w-16 h-1 bg-gradient-to-r from-[#3533cd] to-[#E56F8C] rounded-full mx-auto mb-6"
             />
@@ -603,7 +603,7 @@
             </p>
           </div>
 
-          <div class="grid lg:grid-cols-12 gap-10 items-start">
+          <div v-reveal.stagger="150" class="grid lg:grid-cols-12 gap-10 items-start">
             <!-- Left: Slider -->
             <div class="lg:col-span-7">
               <!-- Main Slider -->
@@ -1103,10 +1103,10 @@
       <!-- Related Products -->
       <section class="py-20 px-6">
         <div class="max-w-7xl mx-auto">
-          <h2 class="text-3xl font-bold text-gray-900 mb-10 text-center">
+          <h2 v-reveal class="text-3xl font-bold text-gray-900 mb-10 text-center">
             You Might Also Like
           </h2>
-          <div class="grid md:grid-cols-3 gap-8">
+          <div v-reveal.stagger="100" class="grid md:grid-cols-3 gap-8">
             <div
               v-for="related in relatedProducts"
               :key="related.slug"
@@ -1169,7 +1169,7 @@
 
       <!-- Bottom CTA -->
       <section class="py-20 px-6 bg-gradient-to-br from-[#3533cd] to-[#1e1b69]">
-        <div class="max-w-3xl mx-auto text-center">
+        <div v-reveal.stagger="120" class="max-w-3xl mx-auto text-center">
           <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
             Ready to get started with {{ product.name }}?
           </h2>

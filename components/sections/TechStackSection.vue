@@ -1,16 +1,8 @@
 <template>
-  <section
-    id="tech-stack"
-    ref="elementRef"
-    class="py-14 md:py-20 lg:py-16 bg-white transition-all duration-1000 ease-out"
-    :class="{
-      'opacity-0 translate-y-20': !isVisible,
-      'opacity-100 translate-y-0': isVisible,
-    }"
-  >
+  <section id="tech-stack" class="py-14 md:py-20 lg:py-16 bg-white">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <!-- Section Header -->
-      <div class="text-center mb-16">
+      <div v-reveal.stagger="110" class="text-center mb-16">
         <div
           class="w-16 h-1 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full mx-auto mb-6"
         />
@@ -28,7 +20,10 @@
       </div>
 
       <!-- Tech Categories -->
-      <div class="flex flex-wrap justify-center gap-8 mb-16">
+      <div
+        v-reveal="{ delay: 100 }"
+        class="flex flex-wrap justify-center gap-8 mb-16"
+      >
         <button
           v-for="category in categories"
           :key="category.id"
@@ -48,36 +43,35 @@
         </button>
       </div>
 
-      <!-- Tech Logos Grid -->
-      <Transition name="fade" mode="out-in">
-        <div
-          :key="activeCategory"
-          class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-12"
-        >
+      <!-- Tech Logos Grid — the wrapper reveals on scroll; the Transition inside
+           keeps handling the tab-switch animation exactly as before. -->
+      <div v-reveal="{ delay: 200 }">
+        <Transition name="fade" mode="out-in">
           <div
-            v-for="(tech, index) in getCurrentTechs"
-            :key="tech.name"
-            :style="{ animationDelay: `${index * 50}ms` }"
-            class="flex items-center justify-center p-6 transition-all duration-300 group animate-fade-in-up float-animation pulse-on-hover"
+            :key="activeCategory"
+            class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-12"
           >
-            <img
-              :src="tech.logo"
-              :alt="tech.name"
-              class="h-16 w-auto object-contain group-hover:scale-125 transition-transform duration-500"
+            <div
+              v-for="(tech, index) in getCurrentTechs"
+              :key="tech.name"
+              :style="{ animationDelay: `${index * 50}ms` }"
+              class="flex items-center justify-center p-6 transition-all duration-300 group animate-fade-in-up float-animation pulse-on-hover"
             >
+              <img
+                :src="tech.logo"
+                :alt="tech.name"
+                class="h-16 w-auto object-contain group-hover:scale-125 transition-transform duration-500"
+              >
+            </div>
           </div>
-        </div>
-      </Transition>
+        </Transition>
+      </div>
     </div>
   </section>
 </template>
 
 <script setup>
 import { ref, computed } from "vue";
-import { useScrollAnimation } from "~/composables/useScrollAnimation";
-
-// Scroll animation
-const { isVisible, elementRef } = useScrollAnimation();
 
 const activeCategory = ref("backend");
 

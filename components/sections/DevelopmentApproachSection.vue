@@ -6,7 +6,7 @@
   >
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <!-- Section Header -->
-      <div class="text-center mb-16">
+      <div v-reveal.stagger="110" class="text-center mb-16">
         <div
           class="w-16 h-1 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full mx-auto mb-6"
         />
@@ -24,7 +24,7 @@
       </div>
 
       <!-- Features Grid -->
-      <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+      <div v-reveal.stagger="100" class="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
         <!-- UX Driven Engineering -->
         <div
           class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300"

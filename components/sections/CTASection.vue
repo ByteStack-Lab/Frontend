@@ -14,7 +14,7 @@
     <div class="absolute top-1/2 left-1/4 w-16 h-16 bg-white/5 rounded-full" />
 
     <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-      <div class="max-w-4xl mx-auto text-center space-y-8">
+      <div v-reveal.stagger="120" class="max-w-4xl mx-auto text-center space-y-8">
         <!-- Heading -->
         <h2 class="text-4xl lg:text-5xl font-bold text-white leading-tight">
           Have a project in mind?

@@ -44,7 +44,7 @@
       </div>
 
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <div class="text-center mb-10">
+        <div class="enter-rise text-center mb-10">
           <!-- Decorative Line -->
           <div
             class="w-16 h-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full mx-auto mb-4"
@@ -72,7 +72,7 @@
     <!-- Our Story Section -->
     <section class="py-16 bg-white">
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div v-reveal.stagger="150" class="grid lg:grid-cols-2 gap-12 items-center">
           <!-- Content -->
           <div class="space-y-6">
             <div
@@ -164,7 +164,7 @@
     <!-- Mission & Vision Section -->
     <section class="py-16 bg-gradient-to-br from-gray-50 to-purple-50">
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <div class="text-center mb-10">
+        <div v-reveal.stagger="110" class="text-center mb-10">
           <div
             class="w-16 h-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full mx-auto mb-4"
           />
@@ -182,7 +182,7 @@
           </p>
         </div>
 
-        <div class="grid md:grid-cols-2 gap-8">
+        <div v-reveal.stagger="120" class="grid md:grid-cols-2 gap-8">
           <!-- Mission -->
           <div
             class="bg-white rounded-xl shadow-card p-8 lg:p-10 hover:shadow-card-hover transition-shadow duration-300"
@@ -259,7 +259,7 @@
     <!-- Core Values Section -->
     <section class="py-16 bg-white">
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <div class="text-center mb-10">
+        <div v-reveal.stagger="110" class="text-center mb-10">
           <div
             class="w-16 h-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full mx-auto mb-4"
           />
@@ -276,7 +276,7 @@
           </p>
         </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div v-reveal.stagger="100" class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           <!-- Innovation -->
           <div
             class="text-center group hover:transform hover:scale-105 transition-all duration-300"
@@ -404,7 +404,7 @@
     <!-- Team Section -->
     <section class="py-16 bg-gradient-to-br from-gray-50 to-purple-50">
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <div class="text-center mb-12">
+        <div v-reveal.stagger="110" class="text-center mb-12">
           <div
             class="w-16 h-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full mx-auto mb-4"
           />
@@ -422,7 +422,7 @@
           </p>
         </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div v-reveal.stagger="100" class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           <!-- Card 1: Software Engineering -->
           <div
             class="bg-white rounded-2xl p-7 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group flex flex-col items-center text-center"
@@ -631,7 +631,7 @@
     <!-- Our Team Section -->
     <section v-if="team && team.length > 0" class="py-16 bg-white">
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <div class="text-center mb-12">
+        <div v-reveal.stagger="110" class="text-center mb-12">
           <div
             class="w-16 h-1 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full mx-auto mb-4"
           />
@@ -649,7 +649,7 @@
         </div>
 
         <!-- Team Grid -->
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div v-reveal.stagger="90" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <div
             v-for="member in team"
             :key="member.id"
@@ -712,7 +712,7 @@
     <section class="py-16" style="background-color: #f7f7fa">
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
         <!-- Section Header with Navigation -->
-        <div class="flex justify-between items-center mb-12">
+        <div v-reveal class="flex justify-between items-center mb-12">
           <!-- Left: Title -->
           <div>
             <div
@@ -801,6 +801,7 @@
         <!-- Partners Logo Display -->
         <div
           v-else-if="partners && partners.length > 0"
+          v-reveal="{ delay: 100 }"
           class="relative overflow-hidden"
         >
           <Transition name="slide-fade" mode="out-in">
@@ -856,7 +857,7 @@
     <section class="pt-16 pb-20 bg-white relative">
       <div class="max-w-7xl mx-auto px-6 lg:px-16 xl:px-24">
         <!-- Section Header -->
-        <div class="text-center mb-12">
+        <div v-reveal.stagger="110" class="text-center mb-12">
           <div
             class="w-16 h-1 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full mx-auto mb-6"
           />
@@ -870,7 +871,7 @@
         </div>
 
         <!-- Main Testimonial Container -->
-        <div class="relative max-w-5xl mx-auto px-4 lg:px-8">
+        <div v-reveal="{ delay: 150 }" class="relative max-w-5xl mx-auto px-4 lg:px-8">
           <!-- Loading State -->
           <div
             v-if="testimonialsPending"
@@ -1115,7 +1116,7 @@
     <!-- Why Choose Us Section -->
     <section class="py-16 bg-white">
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div v-reveal.stagger="150" class="grid lg:grid-cols-2 gap-12 items-center">
           <!-- Content -->
           <div class="space-y-8">
             <div
@@ -1241,7 +1242,7 @@
           </div>
 
           <!-- Stats Grid -->
-          <div class="grid grid-cols-2 gap-6">
+          <div v-reveal.stagger="100" class="grid grid-cols-2 gap-6">
             <!-- Projects Completed -->
             <div class="text-center group">
               <div class="flex items-center justify-center mb-4">
@@ -1380,7 +1381,7 @@
     <section
       class="py-16 bg-gradient-to-r from-[#3533cd] via-[#2d2a7a] to-[#1e1b69]"
     >
-      <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+      <div v-reveal.stagger="120" class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
         <h2 class="text-3xl lg:text-4xl font-bold text-white mb-4">
           Have a Project in Mind?
         </h2>

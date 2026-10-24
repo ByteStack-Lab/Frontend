@@ -14,7 +14,7 @@
         />
       </div>
 
-      <div class="relative max-w-6xl mx-auto px-6 lg:px-8 text-center">
+      <div class="enter-rise relative max-w-6xl mx-auto px-6 lg:px-8 text-center">
         <div
           class="w-16 h-1 bg-gradient-to-r from-[#3533cd] via-[#6675F7] to-[#1e1b69] rounded-full mx-auto mb-6"
         />
@@ -31,7 +31,7 @@
     <!-- FAQ Accordion -->
     <section class="pb-20">
       <div class="max-w-4xl mx-auto px-6 lg:px-8">
-        <div class="space-y-3">
+        <div v-reveal.stagger="70" class="space-y-3">
           <div
             v-for="(faq, index) in faqs"
             :key="index"
@@ -82,7 +82,7 @@
 
     <!-- CTA Section -->
     <section class="py-24 bg-gradient-to-r from-[#3533cd] via-[#2d2a7a] to-[#1e1b69]">
-      <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+      <div v-reveal.stagger="120" class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
         <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
           Still Have Questions?
         </h2>

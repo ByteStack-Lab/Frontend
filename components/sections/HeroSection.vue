@@ -2,105 +2,11 @@
   <section
     class="relative bg-gradient-to-br from-gray-50 to-purple-50 min-h-[62vh] md:min-h-screen lg:min-h-[92vh] flex items-start md:items-center overflow-hidden pt-10 md:pt-20 lg:pt-12"
   >
-    <!-- Animated Technology Icons Background -->
-    <div class="absolute inset-0 overflow-hidden pointer-events-none">
-      <!-- Matrix-style Futuristic Grid Lines -->
-      <div class="absolute inset-0">
-        <!-- Vertical Grid Lines -->
-        <div
-          class="absolute left-32 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-blue-400/30 to-transparent animate-pulse-slow"
-        />
-        <div
-          class="absolute left-64 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-purple-400/20 to-transparent animate-pulse-medium"
-        />
-        <div
-          class="absolute left-96 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-green-400/25 to-transparent animate-pulse-fast"
-        />
-        <div
-          class="absolute right-32 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-indigo-400/30 to-transparent animate-pulse-slow"
-        />
-        <div
-          class="absolute right-64 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-pink-400/20 to-transparent animate-pulse-medium"
-        />
-        <div
-          class="absolute right-96 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-cyan-400/25 to-transparent animate-pulse-fast"
-        />
-
-        <!-- Horizontal Grid Lines -->
-        <div
-          class="absolute top-32 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-400/20 to-transparent animate-pulse-slow"
-        />
-        <div
-          class="absolute top-64 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-400/30 to-transparent animate-pulse-medium"
-        />
-        <div
-          class="absolute top-96 left-0 right-0 h-px bg-gradient-to-r from-transparent via-green-400/25 to-transparent animate-pulse-fast"
-        />
-        <div
-          class="absolute bottom-32 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-400/20 to-transparent animate-pulse-slow"
-        />
-        <div
-          class="absolute bottom-64 left-0 right-0 h-px bg-gradient-to-r from-transparent via-pink-400/30 to-transparent animate-pulse-medium"
-        />
-        <div
-          class="absolute bottom-96 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-400/25 to-transparent animate-pulse-fast"
-        />
-
-        <!-- Diagonal Matrix Lines -->
-        <div
-          class="absolute top-20 left-20 w-64 h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent rotate-45 animate-glow-slow"
-        />
-        <div
-          class="absolute top-40 right-20 w-48 h-px bg-gradient-to-r from-transparent via-purple-500/30 to-transparent -rotate-45 animate-glow-medium"
-        />
-        <div
-          class="absolute bottom-20 left-40 w-56 h-px bg-gradient-to-r from-transparent via-green-500/35 to-transparent rotate-12 animate-glow-fast"
-        />
-        <div
-          class="absolute bottom-40 right-40 w-40 h-px bg-gradient-to-r from-transparent via-indigo-500/40 to-transparent -rotate-12 animate-glow-slow"
-        />
-
-        <!-- Moving Data Points -->
-        <div
-          class="absolute top-48 left-36 w-1 h-1 bg-blue-500 rounded-full animate-data-flow-1"
-        />
-        <div
-          class="absolute top-72 right-48 w-1 h-1 bg-purple-500 rounded-full animate-data-flow-2"
-        />
-        <div
-          class="absolute bottom-48 left-72 w-1 h-1 bg-green-500 rounded-full animate-data-flow-3"
-        />
-        <div
-          class="absolute bottom-72 right-36 w-1 h-1 bg-indigo-500 rounded-full animate-data-flow-4"
-        />
-        <div
-          class="absolute top-60 left-80 w-1 h-1 bg-cyan-500 rounded-full animate-data-flow-5"
-        />
-        <div
-          class="absolute bottom-60 right-80 w-1 h-1 bg-pink-500 rounded-full animate-data-flow-6"
-        />
-
-        <!-- Connection Nodes -->
-        <div
-          class="absolute top-36 left-68 w-2 h-2 bg-blue-400 rounded-full animate-node-pulse opacity-60"
-        />
-        <div
-          class="absolute top-68 right-72 w-2 h-2 bg-purple-400 rounded-full animate-node-pulse opacity-50"
-          style="animation-delay: 0.5s"
-        />
-        <div
-          class="absolute bottom-36 left-88 w-2 h-2 bg-green-400 rounded-full animate-node-pulse opacity-70"
-          style="animation-delay: 1s"
-        />
-        <div
-          class="absolute bottom-68 right-56 w-2 h-2 bg-indigo-400 rounded-full animate-node-pulse opacity-55"
-          style="animation-delay: 1.5s"
-        />
-      </div>
-    </div>
+    <!-- Half-visible 3D globe (three.js, client-only, lazy chunk) with arcs from Dhaka to cities worldwide -->
+    <LazyHeroGlobe />
 
     <!-- Container Div -->
-    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-5 md:py-12 lg:py-10">
+    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-5 md:py-12 lg:py-10">
       <div
         class="grid md:grid-cols-2 gap-8 lg:gap-10 items-center"
       >
@@ -109,24 +15,27 @@
           <!-- Small Text Above -->
           <div class="space-y-6">
             <p
-              class="text-sm lg:text-base text-gray-500 uppercase tracking-wider font-medium"
+              class="hero-rise text-sm lg:text-base text-gray-500 uppercase tracking-wider font-medium"
+              style="--hero-delay: 0ms"
             >
               AI-FIRST SOFTWARE DEVELOPMENT COMPANY
             </p>
 
             <h1
-              class="text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-gray-900"
+              class="hero-rise text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-gray-900"
+              style="--hero-delay: 80ms"
             >
-              <span class="text-black">Software That Runs</span><br >
+              <span class="block text-black">Software That Runs</span>
               <span
-                class="bg-gradient-to-r from-[#3533cd] via-[#5450e0] to-[#1e1b69] bg-clip-text text-transparent"
+                class="block text-balance bg-gradient-to-r from-[#3533cd] via-[#5450e0] to-[#1e1b69] bg-clip-text text-transparent"
               >
                 Your Business For You</span
               >
             </h1>
 
             <p
-              class="text-base lg:text-lg text-gray-600 leading-relaxed max-w-xl"
+              class="hero-rise text-base lg:text-lg text-gray-600 leading-relaxed max-w-xl"
+              style="--hero-delay: 160ms"
             >
               We design, build and maintain AI automation, SaaS platforms and
               enterprise applications — shipped in two-week sprints, owned by
@@ -137,7 +46,10 @@
                  do before they scroll — this is what mobile sees first,
                  since HeroTerminal now falls below the CTA row on small
                  screens (see the comment near HeroTerminal below). -->
-            <ul class="flex flex-wrap gap-2 pt-1">
+            <ul
+              class="hero-in flex flex-wrap gap-2 pt-1"
+              style="--hero-delay: 260ms"
+            >
               <li
                 v-for="specialty in specialties"
                 :key="specialty"
@@ -149,7 +61,10 @@
           </div>
 
           <!-- CTA Buttons -->
-          <div class="flex flex-row items-center gap-3 sm:gap-4 pt-4">
+          <div
+            class="hero-in flex flex-row items-center gap-3 sm:gap-4 pt-4"
+            style="--hero-delay: 360ms"
+          >
             <NuxtLink
               to="/contact"
               class="interactive-button bg-gradient-to-r from-[#3533cd] to-[#1e1b69] text-white px-4 py-2.5 sm:px-8 sm:py-3 rounded-lg font-semibold text-sm sm:text-base shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center"
@@ -227,7 +142,10 @@
           instead of competing with it for the first screen.
         -->
         <div class="flex items-center justify-stretch relative">
-          <div class="relative z-10 w-[calc(100%-10px)] ml-auto">
+          <div
+            class="hero-in relative z-10 w-[calc(100%-10px)] ml-auto"
+            style="--hero-delay: 140ms"
+          >
             <HeroTerminal />
           </div>
         </div>
@@ -342,230 +260,39 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-/* Matrix-style futuristic animations */
-@keyframes pulse-slow {
-  0%,
-  100% {
-    opacity: 0.2;
+/*
+ * Entrance on load — pure CSS, so it runs from the first paint and needs no JS.
+ * The headline block (eyebrow / h1 / intro) only rises: no opacity change, so
+ * the text that is the page's LCP element is never held back at opacity 0.
+ * Everything else fades up. prefers-reduced-motion collapses both to instant
+ * (see the global rule in assets/css/main.css); `both` keeps the end state.
+ */
+@keyframes hero-rise {
+  from {
+    transform: translateY(14px);
   }
-  50% {
-    opacity: 0.8;
-  }
-}
-
-@keyframes pulse-medium {
-  0%,
-  100% {
-    opacity: 0.1;
-  }
-  50% {
-    opacity: 0.6;
+  to {
+    transform: none;
   }
 }
 
-@keyframes pulse-fast {
-  0%,
-  100% {
-    opacity: 0.3;
+@keyframes hero-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
   }
-  50% {
+  to {
     opacity: 1;
+    transform: none;
   }
 }
 
-@keyframes glow-slow {
-  0%,
-  100% {
-    opacity: 0.2;
-    box-shadow: 0 0 5px currentColor;
-  }
-  50% {
-    opacity: 0.8;
-    box-shadow: 0 0 20px currentColor;
-  }
+.hero-rise {
+  animation: hero-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) var(--hero-delay, 0ms) both;
 }
 
-@keyframes glow-medium {
-  0%,
-  100% {
-    opacity: 0.1;
-    box-shadow: 0 0 3px currentColor;
-  }
-  50% {
-    opacity: 0.6;
-    box-shadow: 0 0 15px currentColor;
-  }
-}
-
-@keyframes glow-fast {
-  0%,
-  100% {
-    opacity: 0.3;
-    box-shadow: 0 0 4px currentColor;
-  }
-  50% {
-    opacity: 1;
-    box-shadow: 0 0 25px currentColor;
-  }
-}
-
-@keyframes data-flow-1 {
-  0% {
-    transform: translate(0, 0);
-    opacity: 0;
-  }
-  10%,
-  90% {
-    opacity: 1;
-  }
-  100% {
-    transform: translate(200px, -100px);
-    opacity: 0;
-  }
-}
-
-@keyframes data-flow-2 {
-  0% {
-    transform: translate(0, 0);
-    opacity: 0;
-  }
-  10%,
-  90% {
-    opacity: 1;
-  }
-  100% {
-    transform: translate(-150px, 120px);
-    opacity: 0;
-  }
-}
-
-@keyframes data-flow-3 {
-  0% {
-    transform: translate(0, 0);
-    opacity: 0;
-  }
-  10%,
-  90% {
-    opacity: 1;
-  }
-  100% {
-    transform: translate(180px, -80px);
-    opacity: 0;
-  }
-}
-
-@keyframes data-flow-4 {
-  0% {
-    transform: translate(0, 0);
-    opacity: 0;
-  }
-  10%,
-  90% {
-    opacity: 1;
-  }
-  100% {
-    transform: translate(-120px, -150px);
-    opacity: 0;
-  }
-}
-
-@keyframes data-flow-5 {
-  0% {
-    transform: translate(0, 0);
-    opacity: 0;
-  }
-  10%,
-  90% {
-    opacity: 1;
-  }
-  100% {
-    transform: translate(-200px, 100px);
-    opacity: 0;
-  }
-}
-
-@keyframes data-flow-6 {
-  0% {
-    transform: translate(0, 0);
-    opacity: 0;
-  }
-  10%,
-  90% {
-    opacity: 1;
-  }
-  100% {
-    transform: translate(150px, -120px);
-    opacity: 0;
-  }
-}
-
-@keyframes node-pulse {
-  0%,
-  100% {
-    transform: scale(1);
-    opacity: 0.6;
-  }
-  50% {
-    transform: scale(1.5);
-    opacity: 1;
-  }
-}
-
-.animate-pulse-slow {
-  animation: pulse-slow 4s ease-in-out infinite;
-}
-
-.animate-pulse-medium {
-  animation: pulse-medium 3s ease-in-out infinite;
-}
-
-.animate-pulse-fast {
-  animation: pulse-fast 2s ease-in-out infinite;
-}
-
-.animate-glow-slow {
-  animation: glow-slow 5s ease-in-out infinite;
-}
-
-.animate-glow-medium {
-  animation: glow-medium 4s ease-in-out infinite;
-}
-
-.animate-glow-fast {
-  animation: glow-fast 3s ease-in-out infinite;
-}
-
-.animate-data-flow-1 {
-  animation: data-flow-1 8s linear infinite;
-}
-
-.animate-data-flow-2 {
-  animation: data-flow-2 10s linear infinite;
-  animation-delay: 1s;
-}
-
-.animate-data-flow-3 {
-  animation: data-flow-3 9s linear infinite;
-  animation-delay: 2s;
-}
-
-.animate-data-flow-4 {
-  animation: data-flow-4 7s linear infinite;
-  animation-delay: 0.5s;
-}
-
-.animate-data-flow-5 {
-  animation: data-flow-5 11s linear infinite;
-  animation-delay: 3s;
-}
-
-.animate-data-flow-6 {
-  animation: data-flow-6 6s linear infinite;
-  animation-delay: 1.5s;
-}
-
-.animate-node-pulse {
-  animation: node-pulse 2s ease-in-out infinite;
+.hero-in {
+  animation: hero-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) var(--hero-delay, 0ms) both;
 }
 
 /* Background gradient animation */

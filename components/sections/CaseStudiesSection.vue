@@ -1,17 +1,12 @@
 <template>
   <section
     id="case-studies"
-    ref="elementRef"
-    class="py-14 md:py-20 lg:py-16 transition-all duration-1000 ease-out"
-    :class="{
-      'opacity-0 translate-y-20': !isVisible,
-      'opacity-100 translate-y-0': isVisible,
-    }"
+    class="py-14 md:py-20 lg:py-16"
     style="background-color: #f7f7fa"
   >
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <!-- Section Header -->
-      <div class="text-center mb-16">
+      <div v-reveal.stagger="110" class="text-center mb-16">
         <div
           class="w-16 h-1 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full mx-auto mb-6"
         />
@@ -48,6 +43,7 @@
         <div
           v-for="(caseStudy, index) in caseStudies"
           :key="caseStudy.id"
+          v-reveal
           class="rounded-3xl p-8 lg:p-12 shadow-sm hover:shadow-md transition-shadow duration-300"
           :style="{ backgroundColor: caseStudy.bgColor }"
         >
@@ -56,6 +52,10 @@
           >
             <!-- Image Column -->
             <div
+              v-reveal="{
+                from: index % 2 === 0 ? 'left' : 'right',
+                delay: 120,
+              }"
               :class="
                 index % 2 === 0 ? 'order-2 lg:order-1' : 'order-2 lg:order-2'
               "
@@ -75,6 +75,10 @@
 
             <!-- Content Column -->
             <div
+              v-reveal="{
+                from: index % 2 === 0 ? 'right' : 'left',
+                delay: 220,
+              }"
               :class="
                 index % 2 === 0 ? 'order-1 lg:order-2' : 'order-1 lg:order-1'
               "
@@ -95,6 +99,7 @@
               <p class="text-gray-600 leading-relaxed text-lg">
                 {{ caseStudy.description }}
               </p>
+
 
               <!-- Technologies Used -->
               <div
@@ -188,11 +193,6 @@
 </template>
 
 <script setup>
-import { useScrollAnimation } from "~/composables/useScrollAnimation";
-
-// Scroll animation
-const { isVisible, elementRef } = useScrollAnimation();
-
 // API composable
 const api = useApi();
 

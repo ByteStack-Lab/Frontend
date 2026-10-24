@@ -48,7 +48,7 @@
         <div
           class="pointer-events-none absolute -bottom-24 right-0 h-72 w-72 rounded-full bg-[#E56F8C]/10 blur-3xl"
         />
-        <div class="max-w-4xl mx-auto px-6 lg:px-8">
+        <div class="enter-rise max-w-4xl mx-auto px-6 lg:px-8">
           <NuxtLink
             to="/blog"
             class="mb-6 inline-flex items-center gap-2 text-sm font-medium text-[#3533cd] hover:text-[#1e1b69] transition-colors"
@@ -337,7 +337,7 @@
 
       <!-- Featured Image -->
       <section class="py-8">
-        <div class="max-w-4xl mx-auto px-6 lg:px-8">
+        <div v-reveal:scale class="max-w-4xl mx-auto px-6 lg:px-8">
           <div class="relative overflow-hidden rounded-2xl shadow-2xl">
             <NuxtImg
               :src="blog.featuredImage || '/images/blogs/1.webp'"
@@ -492,7 +492,7 @@
       <section
         class="py-24 bg-gradient-to-r from-[#3533cd] via-[#2d2a7a] to-[#1e1b69]"
       >
-        <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+        <div v-reveal.stagger="120" class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
             Ready to Implement This Strategy?
           </h2>
@@ -523,14 +523,14 @@
         class="py-16 bg-gradient-to-b from-[#f8f8ff] to-white"
       >
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
-          <div class="text-center mb-12">
+          <div v-reveal.stagger="110" class="text-center mb-12">
             <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Related Articles
             </h2>
             <p class="text-gray-600">Discover more insights and stories</p>
           </div>
 
-          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div v-reveal.stagger="100" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <article
               v-for="relatedPost in relatedBlogs"
               :key="relatedPost.id"

@@ -174,7 +174,7 @@
 
         <!-- Job Header -->
         <div
-          class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-shadow duration-300 p-6 lg:p-8 mb-8"
+          class="enter-rise bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-shadow duration-300 p-6 lg:p-8 mb-8"
         >
           <div
             class="flex flex-col lg:flex-row lg:items-start lg:justify-between"
@@ -312,7 +312,7 @@
 
         <div class="grid lg:grid-cols-5 xl:grid-cols-3 gap-6 lg:gap-8">
           <!-- Main Content -->
-          <div class="lg:col-span-3 xl:col-span-2 space-y-6">
+          <div v-reveal.stagger="100" class="lg:col-span-3 xl:col-span-2 space-y-6">
             <!-- Job Description -->
             <div
               class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-6 lg:p-8"
@@ -429,7 +429,7 @@
           </div>
 
           <!-- Sidebar -->
-          <div class="lg:col-span-2 xl:col-span-1 space-y-6 min-w-0">
+          <div v-reveal.stagger="100" class="lg:col-span-2 xl:col-span-1 space-y-6 min-w-0">
             <!-- Quick Apply -->
             <div
               class="bg-gradient-to-br from-[#eef0ff] to-[#f5f6ff] rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-6 lg:p-8 sticky top-8 border border-[#cfd4ff]"

@@ -4,7 +4,7 @@
     class="py-10 md:py-16 lg:py-14 bg-gradient-to-r from-[#3533cd]/5 via-[#1e1b69]/5 to-[#0f0d3d]/5"
   >
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+      <div v-reveal.stagger="100" class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
         <!-- Years of Experience -->
         <div class="text-center group">
           <div class="flex items-center justify-center mb-4">

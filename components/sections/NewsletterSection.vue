@@ -6,6 +6,7 @@
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <!-- Card Container -->
       <div
+        v-reveal:scale
         class="bg-white rounded-3xl border-2 border-blue-300 shadow-lg p-6 lg:p-8 relative overflow-hidden"
       >
         <div

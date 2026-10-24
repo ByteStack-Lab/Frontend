@@ -21,7 +21,7 @@
           </ol>
         </nav>
 
-        <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="enter-rise grid lg:grid-cols-2 gap-12 items-center">
           <!-- Service Info -->
           <div>
             <div class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-violet-100 text-violet-700 mb-4">
@@ -102,14 +102,14 @@
     <!-- What We Build -->
     <section class="py-24 bg-white">
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <div class="text-center mb-16">
+        <div v-reveal.stagger="110" class="text-center mb-16">
           <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">What We Build</h2>
           <p class="text-xl text-gray-600 max-w-2xl mx-auto">
             Every engagement starts with your actual bottleneck, not a generic AI checklist.
           </p>
         </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div v-reveal.stagger="100" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div
             v-for="offering in offerings"
             :key="offering.title"
@@ -130,7 +130,7 @@
     <!-- How it works -->
     <section class="py-24 bg-gray-50">
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <div class="text-center mb-16">
+        <div v-reveal.stagger="110" class="text-center mb-16">
           <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">How It Works</h2>
           <p class="text-xl text-gray-600 max-w-2xl mx-auto">
             From first call to a system running in production.
@@ -138,7 +138,7 @@
         </div>
 
         <div class="bg-white rounded-2xl shadow-lg p-8 md:p-12">
-          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div v-reveal.stagger="100" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
             <div v-for="(step, index) in process" :key="step.title" class="relative text-center">
               <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-gradient-to-r from-violet-600 to-[#3533cd] text-white font-bold flex items-center justify-center">
                 {{ index + 1 }}
@@ -154,7 +154,7 @@
     <!-- Pricing Philosophy -->
     <section class="py-24 bg-white">
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <div class="text-center mb-16">
+        <div v-reveal.stagger="110" class="text-center mb-16">
           <div class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-[#3533cd]/10 text-[#1e1b69] mb-4">
             PRICING
           </div>
@@ -168,7 +168,7 @@
           </p>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-8">
+        <div v-reveal.stagger="100" class="grid md:grid-cols-3 gap-8">
           <div class="bg-gray-50 rounded-xl p-8">
             <div class="w-14 h-14 bg-gradient-to-r from-violet-600 to-[#3533cd] rounded-full flex items-center justify-center mb-6">
               <svg aria-hidden="true" class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -214,7 +214,7 @@
     <!-- FAQ Section -->
     <section class="py-24 bg-gray-50">
       <div class="max-w-4xl mx-auto px-6 lg:px-8">
-        <div class="text-center mb-16">
+        <div v-reveal.stagger="110" class="text-center mb-16">
           <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Frequently Asked Questions
           </h2>
@@ -223,7 +223,7 @@
           </p>
         </div>
 
-        <div class="space-y-6">
+        <div v-reveal.stagger="90" class="space-y-6">
           <div
             v-for="faq in faqs"
             :key="faq.id"
@@ -255,7 +255,7 @@
     <!-- CTA -->
     <section class="py-24 bg-white">
       <div class="max-w-4xl mx-auto px-6 lg:px-8">
-        <div class="bg-gradient-to-r from-violet-600 to-[#1e1b69] rounded-3xl p-10 md:p-16 text-center">
+        <div v-reveal.stagger="120" class="bg-gradient-to-r from-violet-600 to-[#1e1b69] rounded-3xl p-10 md:p-16 text-center">
           <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
             Have a process that eats too many hours?
           </h2>

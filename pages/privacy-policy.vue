@@ -14,7 +14,7 @@
         />
       </div>
 
-      <div class="relative max-w-6xl mx-auto px-6 lg:px-8 text-center">
+      <div class="enter-rise relative max-w-6xl mx-auto px-6 lg:px-8 text-center">
         <div
           class="w-16 h-1 bg-gradient-to-r from-[#3533cd] via-[#6675F7] to-[#1e1b69] rounded-full mx-auto mb-6"
         />
@@ -32,7 +32,7 @@
     <!-- Highlights -->
     <section class="pb-10">
       <div class="max-w-6xl mx-auto px-6 lg:px-8">
-        <div class="grid md:grid-cols-3 gap-5">
+        <div v-reveal.stagger="100" class="grid md:grid-cols-3 gap-5">
           <div class="bg-white border border-[#dfe3ff] rounded-2xl p-6 shadow-sm flex gap-4">
             <div class="w-10 h-10 rounded-xl bg-[#eef0ff] flex items-center justify-center flex-shrink-0">
               <svg aria-hidden="true" class="w-5 h-5 text-[#3533cd]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -118,7 +118,7 @@
 
     <!-- CTA Section -->
     <section class="py-24 bg-gradient-to-r from-[#3533cd] via-[#2d2a7a] to-[#1e1b69]">
-      <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+      <div v-reveal.stagger="120" class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
         <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
           Need Help With Your Privacy?
         </h2>

@@ -1,15 +1,10 @@
 <template>
   <section
-    ref="elementRef"
-    class="pt-16 pb-20 md:pt-32 md:pb-40 lg:pt-28 lg:pb-32 bg-white relative transition-all duration-1000 ease-out"
-    :class="{
-      'opacity-0 translate-y-20': !isVisible,
-      'opacity-100 translate-y-0': isVisible,
-    }"
+    class="pt-16 pb-20 md:pt-32 md:pb-40 lg:pt-28 lg:pb-32 bg-white relative"
   >
     <div class="max-w-7xl mx-auto px-6 lg:px-16 xl:px-24">
       <!-- Section Header -->
-      <div class="text-center mb-20">
+      <div v-reveal.stagger="110" class="text-center mb-20">
         <div
           class="w-16 h-1 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full mx-auto mb-6"
         />
@@ -25,7 +20,10 @@
       </div>
 
       <!-- Main Testimonial Container -->
-      <div class="relative max-w-5xl mx-auto px-4 lg:px-8">
+      <div
+        v-reveal="{ delay: 150 }"
+        class="relative max-w-5xl mx-auto px-4 lg:px-8"
+      >
         <!-- Loading State -->
         <div v-if="pending" class="flex justify-center items-center py-12">
           <div
@@ -291,10 +289,6 @@
 
 <script setup>
 import { ref, computed, onMounted, onUnmounted, watch } from "vue";
-import { useScrollAnimation } from "~/composables/useScrollAnimation";
-
-// Scroll animation
-const { isVisible, elementRef } = useScrollAnimation();
 
 // Current testimonial index
 const currentTestimonial = ref(0);

@@ -1,16 +1,8 @@
 <template>
-  <section
-    id="products"
-    ref="elementRef"
-    class="py-14 md:py-20 lg:py-16 bg-white transition-all duration-1000 ease-out"
-    :class="{
-      'opacity-0 translate-y-20': !isVisible,
-      'opacity-100 translate-y-0': isVisible,
-    }"
-  >
+  <section id="products" class="py-14 md:py-20 lg:py-16 bg-white">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <!-- Section Header -->
-      <div class="text-center mb-16">
+      <div v-reveal.stagger="110" class="text-center mb-16">
         <div
           class="w-16 h-1 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full mx-auto mb-6"
         />
@@ -57,13 +49,13 @@
       <!-- Products Grid -->
       <div
         v-else-if="products && products.length > 0"
+        v-reveal.stagger="90"
         class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
       >
         <NuxtLink
           v-for="product in products"
           :key="product.id"
           :to="`/products/${product.slug}`"
-          data-animate
           class="group bg-white rounded-2xl shadow-card overflow-hidden hover:shadow-card-hover transition-all duration-500 hover:-translate-y-2 border border-gray-100 flex flex-col"
         >
           <!-- Card Banner -->
@@ -203,11 +195,6 @@
 </template>
 
 <script setup>
-import { useScrollAnimation } from "~/composables/useScrollAnimation";
-
-// Scroll animation
-const { isVisible, elementRef } = useScrollAnimation();
-
 // Same fallback icon used for navbar-flagged products with no icon_path set.
 const defaultProductIcon =
   "M9.75 3h4.5L16 6h4a1 1 0 011 1v11a3 3 0 01-3 3H6a3 3 0 01-3-3V7a1 1 0 011-1h4l1.75-3zM8 12h8M8 16h5";
@@ -234,39 +221,5 @@ const {
 <style scoped>
 .group:hover svg {
   transform: translateX(4px);
-}
-
-@keyframes slideInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-[data-animate] {
-  animation: slideInUp 0.6s ease-out forwards;
-}
-
-[data-animate]:nth-child(1) {
-  animation-delay: 0.1s;
-}
-[data-animate]:nth-child(2) {
-  animation-delay: 0.2s;
-}
-[data-animate]:nth-child(3) {
-  animation-delay: 0.3s;
-}
-[data-animate]:nth-child(4) {
-  animation-delay: 0.4s;
-}
-[data-animate]:nth-child(5) {
-  animation-delay: 0.5s;
-}
-[data-animate]:nth-child(6) {
-  animation-delay: 0.6s;
 }
 </style>

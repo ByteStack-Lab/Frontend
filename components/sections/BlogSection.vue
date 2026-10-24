@@ -1,12 +1,7 @@
 <template>
   <section
     id="blog"
-    ref="elementRef"
-    class="py-14 md:py-20 lg:py-16 bg-gradient-to-br from-gray-50 via-white to-purple-50 relative overflow-hidden transition-all duration-1000 ease-out"
-    :class="{
-      'opacity-0 translate-y-20': !isVisible,
-      'opacity-100 translate-y-0': isVisible,
-    }"
+    class="py-14 md:py-20 lg:py-16 bg-gradient-to-br from-gray-50 via-white to-purple-50 relative overflow-hidden"
   >
     <!-- Background Pattern -->
     <div class="absolute inset-0 opacity-5">
@@ -22,7 +17,7 @@
     </div>
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <!-- Section Header -->
-      <div class="text-center mb-16">
+      <div v-reveal.stagger="110" class="text-center mb-16">
         <div
           class="w-16 h-1 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full mx-auto mb-6"
         />
@@ -40,7 +35,7 @@
       </div>
 
       <!-- Blog Slider Container -->
-      <div class="relative overflow-hidden">
+      <div v-reveal="{ delay: 100 }" class="relative overflow-hidden">
         <!-- Loading State -->
         <div v-if="isLoading" class="flex justify-center items-center py-20">
           <div
@@ -329,14 +324,10 @@
 
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from "vue";
-import { useScrollAnimation } from "~/composables/useScrollAnimation";
 import { useApi } from "~/composables/useApi";
 
 // Navigation
 const router = useRouter();
-
-// Scroll animation
-const { isVisible, elementRef } = useScrollAnimation();
 
 // Navigation function
 const goToBlog = async (event) => {

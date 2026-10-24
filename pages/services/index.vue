@@ -44,7 +44,7 @@
       </div>
 
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <div class="text-center mb-6">
+        <div class="enter-rise text-center mb-6">
           <!-- Decorative Line -->
           <div
             class="w-16 h-1 bg-gradient-to-r from-[#3533cd] to-[#E56F8C] rounded-full mx-auto mb-6"
@@ -67,7 +67,7 @@
         </div>
 
         <!-- Stats Row -->
-        <div class="flex flex-wrap justify-center gap-8 mt-12">
+        <div class="enter-in flex flex-wrap justify-center gap-8 mt-12" style="--enter-delay: 150ms">
           <div class="text-center">
             <div class="text-3xl font-bold text-[#3533cd]">
               {{ services.length }}+
@@ -128,7 +128,7 @@
           <p class="mt-4 text-gray-600">Loading services...</p>
         </div>
 
-        <div v-else class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div v-else v-reveal.stagger="90" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div
             v-for="service in filteredServices"
             :key="service.id"
@@ -241,7 +241,7 @@
     <section
       class="py-16 bg-gradient-to-r from-[#3533cd] via-[#2d2a7a] to-[#1e1b69]"
     >
-      <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+      <div v-reveal.stagger="120" class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
         <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
           Ready to Transform Your Ideas into Reality?
         </h2>

@@ -1,19 +1,12 @@
 <template>
-  <section
-    id="about"
-    ref="elementRef"
-    class="py-16 md:py-24 lg:py-20 bg-white transition-all duration-1000 ease-out"
-    :class="{
-      'opacity-0 translate-y-20': !isVisible,
-      'opacity-100 translate-y-0': isVisible,
-    }"
-  >
+  <section id="about" class="py-16 md:py-24 lg:py-20 bg-white">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div
         class="grid md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12 items-center"
       >
         <!-- Left Side - Content (Takes 3 columns - 60%) -->
         <div
+          v-reveal.stagger="120"
           class="md:col-span-1 lg:col-span-3 space-y-6 lg:space-y-8 order-2 lg:order-1"
         >
           <!-- Decorative Line -->
@@ -85,6 +78,7 @@
 
         <!-- Right Side - Video Section (Takes 2 columns - 40%) -->
         <div
+          v-reveal:right="{ delay: 150 }"
           class="md:col-span-1 lg:col-span-2 relative w-full max-w-md mx-auto lg:max-w-sm lg:mx-0 order-1 lg:order-2"
         >
           <!-- Main Video Container -->
@@ -241,10 +235,6 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
-import { useScrollAnimation } from "~/composables/useScrollAnimation";
-
-// Scroll animation
-const { isVisible, elementRef } = useScrollAnimation();
 
 // Video modal state
 const showVideoModal = ref(false);

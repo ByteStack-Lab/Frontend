@@ -22,7 +22,6 @@ components/
   FooterSection.vue → Global footer
 composables/        → All .ts as of 2026-08-09 (was plain .js)
   useApi.ts         → All API calls (services, blogs, case studies, etc.)
-  useScrollAnimation.ts
   useStaggeredAnimation.ts
   useNotification.ts
   usePageLoader.ts
@@ -33,6 +32,7 @@ types/api.ts        → API response interfaces
 utils/
   sanitizeHtml.js    → Strips <script>/event-handlers/javascript: URLs before any v-html
   motion.js          → prefers-reduced-motion helpers (added 2026-08-09)
+  reveal.ts          → `v-reveal` scroll-reveal directive (registered by plugins/reveal.ts; CSS in assets/css/main.css). Replaced the per-section useScrollAnimation composable.
 assets/css/main.css → Global styles
 public/images/      → Static assets — 1.6 MB total as of 2026-08-09 (was 20 MB; see P1/P3 in root CLAUDE.md)
 nuxt.config.ts      → App config, Google Fonts, runtimeConfig, image.domains (R2 CDN allowlist), sitemap

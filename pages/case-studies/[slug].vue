@@ -45,7 +45,7 @@
             </ol>
           </nav>
 
-          <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="enter-rise grid lg:grid-cols-2 gap-12 items-center">
             <!-- Case Study Info -->
             <div>
               <!-- Category Badge -->
@@ -146,13 +146,13 @@
       <!-- Project Overview -->
       <section class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
-          <div class="text-center mb-12">
+          <div v-reveal.stagger="110" class="text-center mb-12">
             <div class="w-16 h-1 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full mx-auto mb-6"/>
             <h2 class="text-3xl font-bold text-gray-900 mb-4">Project Overview</h2>
             <p class="text-gray-600">Detailed insights into the project development and implementation</p>
           </div>
           
-          <div class="grid lg:grid-cols-2 gap-12 items-start">
+          <div v-reveal.stagger="150" class="grid lg:grid-cols-2 gap-12 items-start">
             <!-- Left Column - Project Description -->
             <div class="prose prose-lg max-w-none">
               <!-- eslint-disable vue/no-v-html -- sanitized via sanitizeHtml() below, which strips <script> tags, inline event handlers, and javascript: URLs -->
@@ -283,12 +283,12 @@
       <!-- Technologies Used -->
       <section v-if="caseStudy.technologies && caseStudy.technologies.length > 0" class="py-20" style="background-color: #f7f7fa;">
         <div class="max-w-4xl mx-auto px-6 lg:px-8">
-          <div class="text-center mb-12">
+          <div v-reveal.stagger="110" class="text-center mb-12">
             <h2 class="text-3xl font-bold text-gray-900 mb-4">Technologies Used</h2>
             <p class="text-gray-600">The technology stack that powered this project</p>
           </div>
           
-          <div class="flex flex-wrap justify-center gap-4">
+          <div v-reveal.stagger="60" class="flex flex-wrap justify-center gap-4">
             <span 
               v-for="tech in caseStudy.technologies" 
               :key="tech"
@@ -303,7 +303,7 @@
       <!-- Challenges, Solutions, Results -->
       <section class="py-20 bg-white">
         <div class="max-w-6xl mx-auto px-6 lg:px-8">
-          <div class="grid lg:grid-cols-3 gap-8">
+          <div v-reveal.stagger="120" class="grid lg:grid-cols-3 gap-8">
             <!-- Challenges -->
             <div v-if="caseStudy.challenges && caseStudy.challenges.length > 0" class="space-y-6">
               <div class="text-center">
@@ -379,13 +379,13 @@
       <!-- Related Case Studies -->
       <section v-if="relatedCaseStudies && relatedCaseStudies.length > 0" class="py-20" style="background-color: #f7f7fa;">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
-          <div class="text-center mb-16">
+          <div v-reveal.stagger="110" class="text-center mb-16">
             <div class="w-16 h-1 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full mx-auto mb-6"/>
             <h2 class="text-3xl font-bold text-gray-900 mb-4">Related Case Studies</h2>
             <p class="text-gray-600">Explore more of our successful projects</p>
           </div>
           
-          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div v-reveal.stagger="100" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div 
               v-for="relatedCase in relatedCaseStudies.slice(0, 3)" 
               :key="relatedCase.id"
@@ -434,7 +434,7 @@
 
       <!-- CTA Section -->
       <section class="py-24 bg-gradient-to-r from-[#3533cd] via-[#2d2a7a] to-[#1e1b69]">
-        <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+        <div v-reveal.stagger="120" class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
             Ready to Start Your Own Success Story?
           </h2>

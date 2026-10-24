@@ -4,7 +4,7 @@
   >
     <div class="max-w-7xl mx-auto px-6 lg:px-8 py-16">
       <!-- Main Footer Content -->
-      <div class="grid lg:grid-cols-4 gap-12">
+      <div v-reveal.stagger="100" class="grid lg:grid-cols-4 gap-12">
         <!-- Widget 1: Company Info & Social Links -->
         <div class="space-y-6">
           <!-- Logo -->

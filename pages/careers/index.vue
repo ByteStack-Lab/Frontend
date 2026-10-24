@@ -44,7 +44,7 @@
       </div>
 
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <div class="text-center mb-16">
+        <div class="enter-rise text-center mb-16">
           <!-- Decorative Line -->
           <div
             class="w-16 h-1 bg-gradient-to-r from-[#3533cd] via-[#6675F7] to-[#1e1b69] rounded-full mx-auto mb-6"
@@ -117,7 +117,7 @@
     <!-- Career Stats Section -->
     <section class="py-16 bg-white">
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div v-reveal.stagger="100" class="grid grid-cols-2 md:grid-cols-4 gap-8">
           <div class="text-center">
             <div class="text-4xl font-bold text-[#3533cd] mb-2">
               {{ totalJobs }}
@@ -148,7 +148,7 @@
       class="py-24 bg-gradient-to-br from-gray-50 to-[#eef0ff]"
     >
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <div class="text-center mb-16">
+        <div v-reveal.stagger="110" class="text-center mb-16">
           <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
             Open Positions
           </h2>
@@ -346,7 +346,7 @@
     <!-- Why Join Us Section -->
     <section id="why-join-us" class="py-24 bg-white">
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <div class="text-center mb-16">
+        <div v-reveal.stagger="110" class="text-center mb-16">
           <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
             Why Work With Us?
           </h2>
@@ -356,7 +356,7 @@
           </p>
         </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div v-reveal.stagger="100" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           <!-- Benefits -->
           <div
             class="group bg-gradient-to-br from-[#eef0ff] to-[#f6f7ff] p-8 rounded-2xl hover:shadow-xl transition-all duration-500"
@@ -544,7 +544,7 @@
     <!-- Application Process Section -->
     <section class="py-24 bg-gradient-to-br from-gray-50 to-[#eef0ff]">
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <div class="text-center mb-16">
+        <div v-reveal.stagger="110" class="text-center mb-16">
           <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
             Our Hiring Process
           </h2>
@@ -554,7 +554,7 @@
           </p>
         </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div v-reveal.stagger="100" class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div class="text-center group">
             <div class="relative mb-8">
               <div
@@ -672,7 +672,7 @@
     <section
       class="py-24 bg-gradient-to-r from-[#3533cd] via-[#2d2a7a] to-[#1e1b69]"
     >
-      <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+      <div v-reveal.stagger="120" class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
         <h2 class="text-3xl lg:text-4xl font-bold text-white mb-6">
           Ready to Start Your Journey?
         </h2>

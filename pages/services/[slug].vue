@@ -62,7 +62,7 @@
             </ol>
           </nav>
 
-          <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="enter-rise grid lg:grid-cols-2 gap-12 items-center">
             <!-- Service Info -->
             <div>
               <div
@@ -216,7 +216,7 @@
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
           <div class="grid lg:grid-cols-12 gap-12">
             <!-- Left Column - Description and Details -->
-            <div class="lg:col-span-7">
+            <div v-reveal.stagger="120" class="lg:col-span-7">
               <!-- eslint-disable vue/no-v-html -- sanitized via sanitizeHtml() below, which strips <script> tags, inline event handlers, and javascript: URLs -->
               <div
                 class="prose prose-lg max-w-none"
@@ -278,7 +278,7 @@
             </div>
 
             <!-- Right Column - Gallery Images -->
-            <div class="lg:col-span-5">
+            <div v-reveal:right="{ delay: 150 }" class="lg:col-span-5">
               <div
                 v-if="service.gallery && service.gallery.length > 0"
                 class="sticky top-8"
@@ -518,7 +518,7 @@
       <!-- Pricing Philosophy Section -->
       <section class="py-24 bg-gray-50">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
-          <div class="text-center mb-16">
+          <div v-reveal.stagger="110" class="text-center mb-16">
             <div
               class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-[#3533cd]/10 text-[#1e1b69] mb-4"
             >
@@ -535,7 +535,7 @@
           </div>
 
           <!-- Why Custom Pricing -->
-          <div class="grid md:grid-cols-3 gap-8 mb-20">
+          <div v-reveal.stagger="100" class="grid md:grid-cols-3 gap-8 mb-20">
             <div class="bg-white rounded-xl shadow-lg p-8">
               <div
                 class="w-14 h-14 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full flex items-center justify-center mb-6"
@@ -629,7 +629,7 @@
             <h3 class="text-2xl font-bold text-gray-900 text-center mb-10">
               How We Quote Your Project
             </h3>
-            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div v-reveal.stagger="100" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
               <div
                 v-for="(step, index) in pricingSteps"
                 :key="step.title"
@@ -675,7 +675,7 @@
         class="py-24 bg-white"
       >
         <div class="max-w-4xl mx-auto px-6 lg:px-8">
-          <div class="text-center mb-16">
+          <div v-reveal.stagger="110" class="text-center mb-16">
             <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Frequently Asked Questions
             </h2>
@@ -685,7 +685,7 @@
             </p>
           </div>
 
-          <div class="space-y-6">
+          <div v-reveal.stagger="90" class="space-y-6">
             <div
               v-for="faq in service.faqs"
               :key="faq.id"

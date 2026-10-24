@@ -1,16 +1,11 @@
 <template>
   <section
-    ref="elementRef"
-    class="py-16 md:py-24 lg:py-20 transition-all duration-1000 ease-out"
-    :class="{
-      'opacity-0 translate-y-20': !isVisible,
-      'opacity-100 translate-y-0': isVisible,
-    }"
+    class="py-16 md:py-24 lg:py-20"
     style="background-color: #f9f9ff"
   >
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <!-- Section Header -->
-      <div class="text-center mb-16">
+      <div v-reveal.stagger="110" class="text-center mb-16">
         <!-- Decorative line -->
         <div
           class="w-20 h-1 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full mx-auto mb-6"
@@ -57,13 +52,13 @@
       <!-- Services Grid — same card shell as /services and /products -->
       <div
         v-else-if="featuredServices.length > 0"
+        v-reveal.stagger="90"
         class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
       >
         <NuxtLink
           v-for="service in featuredServices"
           :key="service.id"
           :to="`/services/${service.slug}`"
-          data-animate
           class="group bg-white rounded-2xl shadow-card overflow-hidden hover:shadow-card-hover transition-all duration-500 hover:-translate-y-2 border border-gray-100 flex flex-col"
         >
           <!-- Card Banner -->
@@ -193,7 +188,6 @@
 
 <script setup>
 import { computed } from "vue";
-import { useScrollAnimation } from "~/composables/useScrollAnimation";
 import {
   getServiceIconPath,
   getServiceGradient,
@@ -216,43 +210,4 @@ const { data: featuredServicesData, pending: loading } = await useLazyAsyncData(
   { default: () => [] },
 );
 const featuredServices = computed(() => featuredServicesData.value || []);
-
-// Scroll animation for main section
-const { isVisible, elementRef } = useScrollAnimation();
 </script>
-
-<style scoped>
-@keyframes slideInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-[data-animate] {
-  animation: slideInUp 0.6s ease-out forwards;
-}
-
-[data-animate]:nth-child(1) {
-  animation-delay: 0.1s;
-}
-[data-animate]:nth-child(2) {
-  animation-delay: 0.2s;
-}
-[data-animate]:nth-child(3) {
-  animation-delay: 0.3s;
-}
-[data-animate]:nth-child(4) {
-  animation-delay: 0.4s;
-}
-[data-animate]:nth-child(5) {
-  animation-delay: 0.5s;
-}
-[data-animate]:nth-child(6) {
-  animation-delay: 0.6s;
-}
-</style>

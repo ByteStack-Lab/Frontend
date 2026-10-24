@@ -1,17 +1,12 @@
 <template>
   <section
     id="how-development"
-    ref="elementRef"
-    class="py-14 md:py-20 lg:py-16 transition-all duration-1000 ease-out"
-    :class="{
-      'opacity-0 translate-y-20': !isVisible,
-      'opacity-100 translate-y-0': isVisible,
-    }"
+    class="py-14 md:py-20 lg:py-16"
     style="background-color: #f7f7fa"
   >
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <!-- Section Header -->
-      <div class="text-center mb-20">
+      <div v-reveal.stagger="110" class="text-center mb-20">
         <div
           class="w-16 h-1 bg-gradient-to-r from-[#3533cd] to-[#1e1b69] rounded-full mx-auto mb-6"
         />
@@ -32,8 +27,9 @@
       <div class="relative max-w-7xl mx-auto">
         <!-- Desktop Layout (unchanged) -->
         <div class="hidden lg:block">
-          <!-- Timeline Line -->
+          <!-- Timeline Line — draws itself left to right -->
           <div
+            v-reveal:wipe="{ duration: 1400 }"
             class="absolute top-1/2 left-16 right-16 h-0.5 bg-[#3533cd] transform -translate-y-1/2 z-0"
           />
 
@@ -56,7 +52,7 @@
             <!-- Row 1: Steps 1, 3, 5 (Top Row) -->
             <div class="grid lg:grid-cols-3 gap-12 mb-8">
               <!-- Step 1: Assemble the right team -->
-              <div class="relative">
+              <div v-reveal="{ delay: 0 }" class="relative">
                 <div
                   class="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-200"
                 >
@@ -82,7 +78,7 @@
               </div>
 
               <!-- Step 3: Tech architecture -->
-              <div class="relative">
+              <div v-reveal="{ delay: 220 }" class="relative">
                 <div
                   class="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-200"
                 >
@@ -109,7 +105,7 @@
               </div>
 
               <!-- Step 5: Code reviews -->
-              <div class="relative">
+              <div v-reveal="{ delay: 440 }" class="relative">
                 <div
                   class="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-200"
                 >
@@ -138,7 +134,7 @@
             <!-- Row 2: Steps 2, 4, 6 (Bottom Row) -->
             <div class="grid lg:grid-cols-3 gap-12 lg:mt-16">
               <!-- Step 2: Sprint planning -->
-              <div class="relative">
+              <div v-reveal="{ delay: 110 }" class="relative">
                 <div
                   class="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-200"
                 >
@@ -164,7 +160,7 @@
               </div>
 
               <!-- Step 4: Standups & weekly demos -->
-              <div class="relative">
+              <div v-reveal="{ delay: 330 }" class="relative">
                 <div
                   class="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-200"
                 >
@@ -190,7 +186,7 @@
               </div>
 
               <!-- Step 6: Iterative delivery -->
-              <div class="relative">
+              <div v-reveal="{ delay: 550 }" class="relative">
                 <div
                   class="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-200"
                 >
@@ -220,7 +216,7 @@
 
         <!-- Mobile Layout (new vertical layout) -->
         <div class="lg:hidden">
-          <div class="relative px-6 space-y-6">
+          <div v-reveal.stagger="100" class="relative px-6 space-y-6">
             <!-- Step 1: Assemble the right team -->
             <div class="relative">
               <div
@@ -410,10 +406,6 @@
 </template>
 
 <script setup>
-import { useScrollAnimation } from "~/composables/useScrollAnimation";
-
-// Scroll animation
-const { isVisible, elementRef } = useScrollAnimation();
 </script>
 
 <style scoped>
